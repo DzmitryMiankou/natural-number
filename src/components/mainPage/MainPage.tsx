@@ -1,7 +1,16 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import ImgMain from "../../img/imgMain.svg";
 import ImgMain2 from "../../img/imgMain2.svg";
+
+const rotate = keyframes`
+  0% {
+    opacity: 0;
+  };
+  100% {
+    opacity: 1;
+  }
+`;
 
 const Main = styled.main`
   height: calc(100vh - 40px);
@@ -21,12 +30,17 @@ const Title = styled.h1`
   font-weight: 800;
 `;
 
-const P = styled.p`
+const Pann = styled.p`
   text-align: center;
   font-size: 64px;
   color: #e97b00;
   font-weight: 700;
+  animation: ${rotate} 1s linear;
 `;
+
+const Img = styled.img``;
+
+const P = styled(Pann)``;
 
 const Buttons = styled.ul`
   display: flex;
@@ -41,8 +55,13 @@ const Button = styled.li`
   cursor: pointer;
   transition: 0.2s;
   list-style: none;
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  padding: 0px 15px;
   &:hover {
     color: #d60005;
+    box-shadow: rgba(126, 54, 12, 0.16) 0px 8px 6px,
+      rgba(139, 54, 6, 0.23) 0px 8px 6px;
   }
 `;
 
@@ -56,16 +75,28 @@ const arr: Arrtype = [
   { bool: true, text: 3 },
 ];
 
+const arr2: Arrtype = [
+  { bool: true, text: 4 },
+  { bool: false, text: 7 },
+  { bool: false, text: 3 },
+];
+
 const MaimPage = () => {
   const [getImg, setImg] = React.useState<string>(ImgMain);
   const [getText, setText] = React.useState<string>("яблок");
-  const [getQvest, setAvest] = React.useState<Arrtype>(arr);
+  const [getQvest, setQvest] = React.useState<Arrtype>(arr);
+  const [getAnn, setAnn] = React.useState<boolean>(false);
 
   const handler = (bool: boolean): void => {
     if (bool === false) return;
     if (bool === true) {
+      setAnn(!getAnn);
       setImg(ImgMain2);
       setText("морковки");
+      setQvest(arr2);
+      if (getQvest === arr2) {
+        return console.log("ok");
+      }
     }
   };
 
@@ -75,7 +106,13 @@ const MaimPage = () => {
         <TitleSpan>что такое</TitleSpan>
         <TitleSpan>натуральное число</TitleSpan>
       </Title>
-      <P>{`сколько ${getText} вы видите?`}</P>
+      <>
+        {getAnn ? (
+          <Pann>{`сколько ${getText} вы видите?`}</Pann>
+        ) : (
+          <P>{`сколько ${getText} вы видите?`}</P>
+        )}
+      </>
       <Buttons>
         {getQvest.map(({ bool, text }) => (
           <Button key={text} onClick={() => handler(bool)}>
@@ -83,7 +120,7 @@ const MaimPage = () => {
           </Button>
         ))}
       </Buttons>
-      <img src={getImg} alt="img"></img>
+      <Img src={getImg} alt="img" />
     </Main>
   );
 };

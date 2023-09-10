@@ -14,13 +14,22 @@ const AppDiv = styled.div`
 const Footer = styled.footer`
   background-color: #cd9f6b;
   height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const FooterP = styled.p`
+  color: #9e7b53;
 `;
 
 const App = () => {
   return (
     <AppDiv>
       <PageRoute />
-      <Footer>sdfbgsdb</Footer>
+      <Footer>
+        <FooterP>{`© 2022 - ${new Date().getFullYear()}, Дмитрий Меньков, г. Молодечно`}</FooterP>
+      </Footer>
     </AppDiv>
   );
 };
