@@ -24,6 +24,7 @@ const Pann = styled.p`
   color: #e97b00;
   font-weight: 700;
   animation: ${rotate} 1s linear;
+  width: 50vw;
 `;
 
 const OnePage = () => {

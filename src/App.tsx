@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PageRoute from "./routes/rotes";
 import BG from "./img/backG.svg";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const AppDiv = styled.div`
   min-height: 100vh;
@@ -9,6 +10,14 @@ const AppDiv = styled.div`
   background-image: url(${BG});
   background-size: cover;
   background-repeat: no-repeat;
+`;
+
+const Menu = styled.div`
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 `;
 
 const Footer = styled.footer`
@@ -26,6 +35,9 @@ const FooterP = styled.p`
 const App = () => {
   return (
     <AppDiv>
+      <Menu>
+        <MenuIcon sx={{ color: "#d60005", fontSize: "64px" }} />
+      </Menu>
       <PageRoute />
       <Footer>
         <FooterP>{`© 2022 - ${new Date().getFullYear()}, Дмитрий Меньков, г. Молодечно`}</FooterP>
