@@ -1,5 +1,14 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const rotate = keyframes`
+  0% {
+    opacity: 0;
+  };
+  100% {
+    opacity: 1;
+  }
+`;
 
 const Main = styled.main`
   height: calc(100vh - 40px);
@@ -9,13 +18,20 @@ const Main = styled.main`
   align-items: center;
 `;
 
+const Pann = styled.p`
+  text-align: center;
+  font-size: 64px;
+  color: #e97b00;
+  font-weight: 700;
+  animation: ${rotate} 1s linear;
+`;
+
 const OnePage = () => {
   return (
     <Main>
-      <p>
-        Натурьльные числа — это числа, возникающие естественным образом при
-        счёте (1, 2, 3, 4, 5, 6, 7 и так далее).
-      </p>
+      <Pann>
+        Натурьльные числа — это числа, которые используются при счёте предметов.
+      </Pann>
     </Main>
   );
 };
