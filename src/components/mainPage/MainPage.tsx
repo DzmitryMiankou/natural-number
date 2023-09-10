@@ -2,6 +2,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import ImgMain from "../../img/imgMain.svg";
 import ImgMain2 from "../../img/imgMain2.svg";
+import { useNavigate } from "react-router-dom";
 
 const rotate = keyframes`
   0% {
@@ -82,6 +83,7 @@ const arr2: Arrtype = [
 ];
 
 const MaimPage = () => {
+  const navigate = useNavigate();
   const [getImg, setImg] = React.useState<string>(ImgMain);
   const [getText, setText] = React.useState<string>("яблок");
   const [getQvest, setQvest] = React.useState<Arrtype>(arr);
@@ -95,7 +97,7 @@ const MaimPage = () => {
       setText("морковки");
       setQvest(arr2);
       if (getQvest === arr2) {
-        return console.log("ok");
+        navigate("/numperNat");
       }
     }
   };
