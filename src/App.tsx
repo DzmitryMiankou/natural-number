@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
+import PageRoute from "./routes/rotes";
+import BG from "./img/backG.svg";
 
-function App() {
+const AppDiv = styled.div`
+  min-height: 100vh;
+  overflow-y: hidden;
+  background-image: url(${BG});
+  background-size: cover;
+  background-repeat: no-repeat;
+`;
+
+const Footer = styled.footer`
+  background-color: #cd9f6b;
+  height: 40px;
+`;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppDiv>
+      <PageRoute />
+      <Footer>sdfbgsdb</Footer>
+    </AppDiv>
   );
-}
+};
 
 export default App;
