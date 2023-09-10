@@ -23,10 +23,7 @@ const Main = styled.main`
 
 const Title = styled.h1`
   text-transform: uppercase;
-  text-align: center;
-  font-size: 74px;
-  display: flex;
-  flex-direction: column;
+  font-size: 84px;
   color: #d60005;
   font-weight: 800;
 `;
@@ -41,7 +38,10 @@ const Pann = styled.p`
 
 const Img = styled.img`
   pointer-events: none;
+  animation: ${rotate} 0.5s linear;
 `;
+
+const ImgAn = styled(Img)``;
 
 const P = styled(Pann)``;
 
@@ -67,8 +67,6 @@ const Button = styled.li`
       rgba(139, 54, 6, 0.23) 0px 8px 6px;
   }
 `;
-
-const TitleSpan = styled.span``;
 
 type Arrtype = Array<{ bool: boolean; text: number }>;
 
@@ -96,7 +94,7 @@ const MaimPage = () => {
     if (bool === true) {
       setAnn(!getAnn);
       setImg(ImgMain2);
-      setText("морковки");
+      setText("груш");
       setQvest(arr2);
       if (getQvest === arr2) {
         navigate("/numperNat");
@@ -106,10 +104,7 @@ const MaimPage = () => {
 
   return (
     <Main>
-      <Title>
-        <TitleSpan>что такое</TitleSpan>
-        <TitleSpan>натуральное число</TitleSpan>
-      </Title>
+      <Title>натуральные числа</Title>
       <>
         {getAnn ? (
           <Pann>{`сколько ${getText} вы видите?`}</Pann>
@@ -124,7 +119,13 @@ const MaimPage = () => {
           </Button>
         ))}
       </Buttons>
-      <Img src={getImg} alt="img" />
+      <>
+        {getAnn ? (
+          <Img src={getImg} alt="img" />
+        ) : (
+          <ImgAn src={getImg} alt="img" />
+        )}
+      </>
     </Main>
   );
 };

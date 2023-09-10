@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import Number from "./number/Number";
 
 const rotate = keyframes`
   0% {
@@ -31,8 +32,9 @@ const OnePage = () => {
   return (
     <Main>
       <Pann>
-        Натурьльные числа — это числа, которые используются при счёте предметов.
+        Натурьльные числа — это числа, которые используются при счёте предметов
       </Pann>
+      <Number />
     </Main>
   );
 };
