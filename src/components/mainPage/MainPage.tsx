@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import ImgMain from "../../img/imgMain.svg";
 import ImgMain2 from "../../img/imgMain2.svg";
 import { useNavigate } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const rotate = keyframes`
   0% {
@@ -68,6 +69,14 @@ const Button = styled.li`
 
 const TitleSpan = styled.span``;
 
+const Menu = styled.div`
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+`;
+
 type Arrtype = Array<{ bool: boolean; text: number }>;
 
 const arr: Arrtype = [
@@ -104,6 +113,10 @@ const MaimPage = () => {
 
   return (
     <Main>
+      <Menu>
+        <MenuIcon sx={{ color: "#d60005", fontSize: "64px" }} />
+        <p style={{ color: "#d60005", fontSize: "34px" }}>Меню</p>
+      </Menu>
       <Title>
         <TitleSpan>что такое</TitleSpan>
         <TitleSpan>натуральное число</TitleSpan>
