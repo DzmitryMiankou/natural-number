@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import PageRoute from "./routes/rotes";
 import BG from "./img/backG.svg";
@@ -28,19 +28,37 @@ const Footer = styled.footer`
   justify-content: center;
 `;
 
-const FooterP = styled.p`
-  color: #9e7b53;
+interface Prop {
+  $focus: boolean;
+}
+
+const FooterP = styled.p<Prop>`
+  transition: 0.2s;
+  color: ${(p) => (p.$focus ? "#5b462e" : "#cd9f6b")};
 `;
 
 const App = () => {
+  const [get, set] = useState<boolean>(false);
+
   return (
     <AppDiv>
       <Menu>
-        <MenuIcon sx={{ color: "#d60005", fontSize: "64px" }} />
+        <MenuIcon
+          sx={{
+            color: "#e97b02",
+            fontSize: "64px",
+            transition: "0.2s",
+            "&:hover": {
+              color: "#d60005",
+            },
+          }}
+        />
       </Menu>
       <PageRoute />
-      <Footer>
-        <FooterP>{`© 2022 - ${new Date().getFullYear()}, Дмитрий Меньков, г. Молодечно`}</FooterP>
+      <Footer onMouseEnter={() => set(true)} onMouseLeave={() => set(false)}>
+        <FooterP
+          $focus={get}
+        >{`© 2022 - ${new Date().getFullYear()}, Дмитрий Меньков, г. Молодечно`}</FooterP>
       </Footer>
     </AppDiv>
   );

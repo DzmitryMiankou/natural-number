@@ -39,7 +39,9 @@ const Pann = styled.p`
   animation: ${rotate} 1s linear;
 `;
 
-const Img = styled.img``;
+const Img = styled.img`
+  pointer-events: none;
+`;
 
 const P = styled(Pann)``;
 
