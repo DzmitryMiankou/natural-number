@@ -115,7 +115,6 @@ const MaimPage = () => {
     <Main>
       <Menu>
         <MenuIcon sx={{ color: "#d60005", fontSize: "64px" }} />
-        <p style={{ color: "#d60005", fontSize: "34px" }}>Меню</p>
       </Menu>
       <Title>
         <TitleSpan>что такое</TitleSpan>
