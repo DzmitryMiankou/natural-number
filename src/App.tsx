@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PageRoute from "./routes/rotes";
 import BG from "./img/backG.svg";
+import QuizIcon from "@mui/icons-material/Quiz";
+import { Button } from "@mui/material";
 
 import TemporaryDrawer from "./components/menu/Menu";
 
@@ -16,7 +18,6 @@ const AppDiv = styled.div`
 const Menu = styled.div`
   position: absolute;
   left: 0;
-  cursor: pointer;
   display: flex;
   align-items: center;
 `;
@@ -45,6 +46,18 @@ const App = () => {
     <AppDiv>
       <Menu>
         <TemporaryDrawer />
+        <Button>
+          <QuizIcon
+            sx={{
+              color: "#e97b02",
+              fontSize: "30px",
+              transition: "0.2s",
+              "&:hover": {
+                color: "#d60005",
+              },
+            }}
+          />
+        </Button>
       </Menu>
       <PageRoute />
       <Footer onMouseEnter={() => set(true)} onMouseLeave={() => set(false)}>

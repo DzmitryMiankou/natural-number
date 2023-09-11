@@ -36,12 +36,12 @@ export default function TemporaryDrawer() {
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: 250, bgcolor: "#ffe4c4", height: "100%" }}
+      sx={{ width: 250, bgcolor: "#ffdbae", height: "100%" }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List sx={{ bgcolor: "#f7c68f" }}>
+      <List>
         {[
           { text: "Начало", path: "/" },
           { text: "Что такое натуральные числа", path: "/numperNat" },
@@ -76,7 +76,6 @@ export default function TemporaryDrawer() {
           </ListItem>
         ))}
       </List>
-      <Divider />
     </Box>
   );
 
@@ -88,7 +87,7 @@ export default function TemporaryDrawer() {
             <MenuIcon
               sx={{
                 color: "#e97b02",
-                fontSize: "64px",
+                fontSize: "40px",
                 transition: "0.2s",
                 "&:hover": {
                   color: "#d60005",
