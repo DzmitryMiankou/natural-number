@@ -21,11 +21,11 @@ const Main = styled.main`
 
 const Pann = styled.p`
   text-align: center;
-  font-size: 64px;
+  font-size: 54px;
   color: #e97b00;
   font-weight: 700;
   animation: ${rotate} 1s linear;
-  width: 50vw;
+  width: 70vw;
 `;
 
 const OnePage = () => {

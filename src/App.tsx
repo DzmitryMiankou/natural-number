@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PageRoute from "./routes/rotes";
 import BG from "./img/backG.svg";
-import MenuIcon from "@mui/icons-material/Menu";
+
+import TemporaryDrawer from "./components/menu/Menu";
 
 const AppDiv = styled.div`
   min-height: 100vh;
@@ -43,16 +44,7 @@ const App = () => {
   return (
     <AppDiv>
       <Menu>
-        <MenuIcon
-          sx={{
-            color: "#e97b02",
-            fontSize: "64px",
-            transition: "0.2s",
-            "&:hover": {
-              color: "#d60005",
-            },
-          }}
-        />
+        <TemporaryDrawer />
       </Menu>
       <PageRoute />
       <Footer onMouseEnter={() => set(true)} onMouseLeave={() => set(false)}>

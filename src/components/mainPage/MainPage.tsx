@@ -17,8 +17,8 @@ const Main = styled.main`
   height: calc(100vh - 40px);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const Title = styled.h1`
