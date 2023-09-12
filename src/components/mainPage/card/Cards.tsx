@@ -34,7 +34,7 @@ const sx = {
 const MultiActionAreaCard = ({ state }: { state: StateMaimPageType }) => {
   return (
     <Cards>
-      {state.main[0].list.map(({ text, path, img }: any, i: number) => (
+      {state.main[0].list.map(({ text, path, img }, i) => (
         <Card key={i} component={RouterLink} to={`${path}`} sx={sx.card}>
           <CardActionArea sx={sx.cardArea}>
             <CardMedia component="img" height="140" image={img} alt="image" />
