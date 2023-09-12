@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import MultiActionAreaCard from "./card/Cards";
+import { StateMaimPageType } from "../../routes/rotes";
 
 const rotate = keyframes`
 0% {  opacity: 0;  }
@@ -24,11 +25,11 @@ const Title = styled.h1`
   font-weight: 800;
 `;
 
-const MaimPage = () => {
+const MaimPage = ({ state }: { state: StateMaimPageType }) => {
   return (
     <Main>
-      <Title>натуральные числа</Title>
-      <MultiActionAreaCard />
+      <Title>{state.main[0].title}</Title>
+      <MultiActionAreaCard state={state} />
     </Main>
   );
 };

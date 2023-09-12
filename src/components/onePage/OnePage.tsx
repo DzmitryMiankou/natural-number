@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import Number from "./number/Number";
+import Img1 from "../../img/aaa.svg";
 
 const rotate = keyframes`
   0% {
@@ -39,7 +40,7 @@ const OnePage = () => {
         <Akcent>Натурьльные числа</Akcent> — это числа, которые используются при
         счёте предметов
       </Pann>
-      <Number />
+      <img src={Img1} alt="img" />
     </Main>
   );
 };

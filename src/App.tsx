@@ -4,8 +4,12 @@ import PageRoute from "./routes/rotes";
 import BG from "./img/backG.svg";
 import QuizIcon from "@mui/icons-material/Quiz";
 import { Button } from "@mui/material";
-
+import { useLocation } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
 import TemporaryDrawer from "./components/menu/Menu";
+import { NavLink as RouterLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "./redux/store";
 
 const AppDiv = styled.div`
   min-height: 100vh;
@@ -30,6 +34,17 @@ const Footer = styled.footer`
   justify-content: center;
 `;
 
+const sx = {
+  icon: {
+    color: "#e97b02",
+    fontSize: "30px",
+    transition: "0.2s",
+    "&:hover": {
+      color: "var(--color-red)",
+    },
+  },
+};
+
 interface Prop {
   $focus: boolean;
 }
@@ -40,30 +55,30 @@ const FooterP = styled.p<Prop>`
 `;
 
 const App = () => {
+  const state = useSelector((state: RootState) => state.static);
   const [get, set] = useState<boolean>(false);
+  const location = useLocation();
 
   return (
     <AppDiv>
       <Menu>
         <TemporaryDrawer />
-        <Button>
-          <QuizIcon
-            sx={{
-              color: "#e97b02",
-              fontSize: "30px",
-              transition: "0.2s",
-              "&:hover": {
-                color: "var(--color-red)",
-              },
-            }}
-          />
+        <>
+          {location.pathname !== "/" ? (
+            <Button component={RouterLink} to={"/"} title="button">
+              <HomeIcon sx={sx.icon} />
+            </Button>
+          ) : (
+            <></>
+          )}
+        </>
+        <Button title="button">
+          <QuizIcon sx={sx.icon} />
         </Button>
       </Menu>
-      <PageRoute />
+      <PageRoute state={state} />
       <Footer onMouseEnter={() => set(true)} onMouseLeave={() => set(false)}>
-        <FooterP
-          $focus={get}
-        >{`© 2022 - ${new Date().getFullYear()}, Дмитрий Меньков, г. Молодечно`}</FooterP>
+        <FooterP $focus={get}>{state.main[0].footer}</FooterP>
       </Footer>
     </AppDiv>
   );

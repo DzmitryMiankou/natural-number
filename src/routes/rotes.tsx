@@ -3,9 +3,17 @@ import { Routes, Route } from "react-router-dom";
 import MainPage from "../components/mainPage/MainPage";
 import OnePage from "../components/onePage/OnePage";
 
-const PageRoute = () => {
+export interface StateMaimPageType {
+  main: Array<{
+    title: string;
+    list: Array<{ text: string; path: string; img: string }>;
+    footer: string;
+  }>;
+}
+
+const PageRoute = ({ state }: { state: StateMaimPageType }) => {
   const arrToElem: Array<{ element: JSX.Element; path: string }> = [
-    { element: <MainPage />, path: "/" },
+    { element: <MainPage state={state} />, path: "/" },
     { element: <OnePage />, path: "/numperNat" },
   ];
 

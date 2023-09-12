@@ -78,7 +78,7 @@ export default function TemporaryDrawer() {
     >
       <List>
         {menuArr.map(({ text, path }, index) => (
-          <ListItem sx={sx.listItem} key={text} disablePadding>
+          <ListItem sx={sx.listItem} key={text} disablePadding title="button">
             <ListItemButton
               component={RouterLink}
               to={`${path}`}
