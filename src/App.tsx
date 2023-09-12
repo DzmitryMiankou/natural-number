@@ -53,7 +53,7 @@ const App = () => {
               fontSize: "30px",
               transition: "0.2s",
               "&:hover": {
-                color: "#d60005",
+                color: "var(--color-red)",
               },
             }}
           />

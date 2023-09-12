@@ -21,18 +21,23 @@ const Main = styled.main`
 
 const Pann = styled.p`
   text-align: center;
-  font-size: 54px;
-  color: #e97b00;
+  font-size: 44px;
+  color: var(--color-yellow-title);
   font-weight: 700;
   animation: ${rotate} 1s linear;
   width: 70vw;
+`;
+
+const Akcent = styled.span`
+  color: var(--color-red);
 `;
 
 const OnePage = () => {
   return (
     <Main>
       <Pann>
-        Натурьльные числа — это числа, которые используются при счёте предметов
+        <Akcent>Натурьльные числа</Akcent> — это числа, которые используются при
+        счёте предметов
       </Pann>
       <Number />
     </Main>

@@ -3,12 +3,47 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink as RouterLink } from "react-router-dom";
+
+type menuArrType<T> = Array<{ text: T; path: T }>;
+
+const menuArr: menuArrType<string> = [
+  { text: "Главная", path: "/" },
+  { text: "Что такое натуральные числа", path: "/numperNat" },
+  { text: "Сравнение натуральных чисел", path: "/d" },
+  { text: "Сложение натуральных чисел", path: "/s" },
+  { text: "Вычитание натуральных чисел", path: "/f" },
+  { text: "Умножение натуральных чисел", path: "/g" },
+  { text: "Деление натуральных чисел", path: "/s" },
+];
+
+const sx = {
+  drawer: { width: 250, bgcolor: "var(--color-white)", height: "100%" },
+  listItem: {
+    bgcolor: "var(--color-white)",
+    height: "100%",
+    borderBottom: "2px solid var(--color-yellow-border)",
+  },
+  listBoot: {
+    color: "#9f5500",
+    "&.active": {
+      color: "var(--color-red)",
+      bgcolor: "#ffdfb5",
+    },
+  },
+  icon: {
+    color: "#e97b02",
+    fontSize: "40px",
+    transition: "0.2s",
+    "&:hover": {
+      color: "var(--color-red)",
+    },
+  },
+};
 
 type Anchor = "left";
 
@@ -36,40 +71,18 @@ export default function TemporaryDrawer() {
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: 250, bgcolor: "#ffdbae", height: "100%" }}
+      sx={sx.drawer}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {[
-          { text: "Начало", path: "/" },
-          { text: "Что такое натуральные числа", path: "/numperNat" },
-          { text: "Сравнение натуральных чисел", path: "/d" },
-          { text: "Сложение натуральных чисел", path: "/s" },
-          { text: "Вычитание натуральных чисел", path: "/f" },
-          { text: "Умножение натуральных чисел", path: "/g" },
-          { text: "Деление натуральных чисел", path: "/s" },
-        ].map(({ text, path }, index) => (
-          <ListItem
-            sx={{
-              bgcolor: "#ffe3c2",
-              height: "100%",
-              borderBottom: "2px solid #f7c68f",
-            }}
-            key={text}
-            disablePadding
-          >
+        {menuArr.map(({ text, path }, index) => (
+          <ListItem sx={sx.listItem} key={text} disablePadding>
             <ListItemButton
               component={RouterLink}
               to={`${path}`}
-              sx={{
-                color: "#9f5500",
-                "&.active": {
-                  color: "#d60005",
-                  bgcolor: "#fff8ef",
-                },
-              }}
+              sx={sx.listBoot}
             >
               <ListItemText primary={text} />
             </ListItemButton>
@@ -84,16 +97,7 @@ export default function TemporaryDrawer() {
       {(["left"] as const).map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
-            <MenuIcon
-              sx={{
-                color: "#e97b02",
-                fontSize: "40px",
-                transition: "0.2s",
-                "&:hover": {
-                  color: "#d60005",
-                },
-              }}
-            />
+            <MenuIcon sx={sx.icon} />
           </Button>
           <Drawer
             anchor={anchor}

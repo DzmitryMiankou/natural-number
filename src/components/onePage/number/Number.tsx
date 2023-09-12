@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-interface Type {
-  $fill: string;
+interface Type<T> {
+  $fill: T;
 }
 
-const Path = styled.path<Type>`
+const Path = styled.path<Type<string>>`
   fill: ${(p) => p.$fill};
   cursor: pointer;
   &:hover {

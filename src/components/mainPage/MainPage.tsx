@@ -1,7 +1,5 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import ImgMain from "../../img/imgMain.svg";
-import ImgMain2 from "../../img/imgMain2.svg";
 import MultiActionAreaCard from "./card/Cards";
 
 const rotate = keyframes`
@@ -22,7 +20,7 @@ const Main = styled.main`
 const Title = styled.h1`
   text-transform: uppercase;
   font-size: 84px;
-  color: #de7600;
+  color: var(--color-yellow-title);
   font-weight: 800;
 `;
 

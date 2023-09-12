@@ -6,6 +6,8 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import styled from "styled-components";
 import { NavLink as RouterLink } from "react-router-dom";
+import ImgMain from "../../../img/imgMain.svg";
+import ImgMain2 from "../../../img/imgMain2.svg";
 
 const Cards = styled.div`
   display: grid;
@@ -27,30 +29,31 @@ const sx = {
       backgroundColor: "#ffe3c1",
     },
   },
-  title: { color: "#9c7952" },
+  title: { color: "#9c7952", textAlign: "center" },
 };
 
-const arr = [
-  { text: "Что такое натуральные числа", path: "/numperNat" },
-  { text: "Сравнение натуральных чисел", path: "/d" },
-  { text: "Сложение натуральных чисел", path: "/s" },
-  { text: "Вычитание натуральных чисел", path: "/f" },
-  { text: "Умножение натуральных чисел", path: "/g" },
-  { text: "Деление натуральных чисел", path: "/s" },
+type arrCardType<T> = Array<{
+  text: T;
+  path: T;
+  img: T;
+}>;
+
+const arr: arrCardType<string> = [
+  { text: "Что такое натуральные числа", path: "/numperNat", img: ImgMain },
+  { text: "Сравнение натуральных чисел", path: "/d", img: ImgMain2 },
+  { text: "Сложение натуральных чисел", path: "/s", img: ImgMain2 },
+  { text: "Вычитание натуральных чисел", path: "/f", img: ImgMain2 },
+  { text: "Умножение натуральных чисел", path: "/g", img: ImgMain2 },
+  { text: "Деление натуральных чисел", path: "/s", img: ImgMain2 },
 ];
 
 const MultiActionAreaCard = () => {
   return (
     <Cards>
-      {arr.map(({ text, path }, i) => (
+      {arr.map(({ text, path, img }, i) => (
         <Card key={i} component={RouterLink} to={`${path}`} sx={sx.card}>
           <CardActionArea sx={sx.cardArea}>
-            <CardMedia
-              component="img"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
-              alt="green iguana"
-            />
+            <CardMedia component="img" height="140" image={img} alt="image" />
             <CardContent>
               <Typography
                 gutterBottom
