@@ -71,10 +71,7 @@ const OnePage = () => {
     num === 3 ? setOpen("ok") : setOpen("err");
   };
 
-  const handleClose = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    value: string
-  ) => {
+  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     return setOpen("");
   };
@@ -87,7 +84,7 @@ const OnePage = () => {
       </Pann>
       <BoxQvest>
         <P>Сколько яблок осталось собрать?</P>
-        <SimpleDialog open={open} handleClose={handleClose} />
+        <SimpleDialog opens={open} handleClose={handleClose} />
         <Box sx={{ display: "flex", gap: "5px" }}>
           {[2, 5, 3].map((num, i) => (
             <React.Fragment key={i}>
