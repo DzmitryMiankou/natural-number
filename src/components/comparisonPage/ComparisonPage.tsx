@@ -55,7 +55,7 @@ const ComparisonPage = () => {
           }
         />
       </BoxTitlePage>
-      <P>нажмите на фрукт, которого меньше</P>
+      <P>Нажмите на фрукт, которого меньше</P>
       <div>
         <BoxImg>
           <Img src={apple} alt="img" />
