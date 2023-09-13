@@ -33,7 +33,7 @@ const stringd = `    Последовательность всех натура�
             название класса единиц, а также класса, все три цифры которого -
             нули..`;
 
-const ScrollDialog = ({
+const Window = ({
   open,
   handleClose,
 }: {
@@ -92,4 +92,4 @@ const ScrollDialog = ({
   );
 };
 
-export default ScrollDialog;
+export default Window;

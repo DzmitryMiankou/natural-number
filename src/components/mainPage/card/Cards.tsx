@@ -20,7 +20,13 @@ const Cards = styled.div`
 `;
 
 const sx = {
-  card: { maxWidth: 345, textDecoration: "none", margin: "auto" },
+  card: {
+    maxWidth: 345,
+    textDecoration: "none",
+    transition: "0.5s",
+    margin: "auto",
+    "&:hover": { transform: "translate(0, -5px)" },
+  },
   cardArea: {
     transition: "0.2s",
     backgroundColor: "#ffefdf",

@@ -1,19 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import Img1 from "../../img/aaa.svg";
-import { Button, Box } from "@mui/material";
+import { Button, Box, IconButton } from "@mui/material";
 import SimpleDialog from "./dialog";
-import { Pann, Akcent, Main } from "../../style/style";
+import { Pann, Akcent, Main, P, BoxTitlePage } from "../../style/style";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import TooltipButt from "../globalComponent/Tooltip";
+import Window from "../globalComponent/Window";
 
 const MainVariant = styled(Main)`
   justify-content: space-between;
-`;
-
-const P = styled.p`
-  text-align: center;
-  font-size: 34px;
-  color: #ff6f00;
-  font-weight: 700;
 `;
 
 const BoxQvest = styled.div`
@@ -22,6 +18,10 @@ const BoxQvest = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const PVariant = styled(P)`
+  margin-bottom: 20px;
 `;
 
 const sx = {
@@ -36,6 +36,7 @@ const sx = {
 
 const OnePage = () => {
   const [open, setOpen] = React.useState<string>("");
+  const [openW, setOpenW] = React.useState<boolean>(false);
 
   const handleClickOpen = (
     e: React.MouseEvent<HTMLButtonElement>,
@@ -47,20 +48,35 @@ const OnePage = () => {
 
   const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setOpenW(false);
     return setOpen("");
+  };
+
+  const sortRandomArr = () => {
+    return [2, 5, 3].sort(() => Math.random() - 0.5);
   };
 
   return (
     <MainVariant>
-      <Pann>
-        <Akcent>Натурьльные числа</Akcent> — это числа, которые используются при
-        счёте предметов
-      </Pann>
+      <BoxTitlePage>
+        <Pann>
+          <Akcent>Натурьльные числа</Akcent> — это числа, которые используются
+          при счёте предметов
+        </Pann>
+        <TooltipButt
+          text="Читать больше"
+          element={
+            <IconButton onClick={(e) => setOpenW(true)}>
+              <MenuBookIcon sx={{ color: "#c15400", fontSize: "45px" }} />
+            </IconButton>
+          }
+        />
+      </BoxTitlePage>
       <BoxQvest>
-        <P>Сколько яблок осталось собрать?</P>
+        <PVariant>Сколько яблок осталось собрать?</PVariant>
         <SimpleDialog opens={open} handleClose={handleClose} />
         <Box sx={{ display: "flex", gap: "5px" }}>
-          {[2, 5, 3].map((num, i) => (
+          {sortRandomArr().map((num, i) => (
             <React.Fragment key={i}>
               <Button
                 onClick={(e) => handleClickOpen(e, num)}
@@ -73,6 +89,7 @@ const OnePage = () => {
           ))}
         </Box>
         <img src={Img1} alt="img" />
+        <Window open={openW} handleClose={handleClose} />
       </BoxQvest>
     </MainVariant>
   );
