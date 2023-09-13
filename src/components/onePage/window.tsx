@@ -62,12 +62,15 @@ const ScrollDialog = ({
         aria-describedby="scroll-dialog-description"
       >
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <DialogTitle id="scroll-dialog-title">
+          <DialogTitle
+            id="scroll-dialog-title"
+            sx={{ color: "var(--color-yellow-title)" }}
+          >
             Вы правильно ответили
           </DialogTitle>
           <DialogActions>
             <IconButton onClick={handleClose} aria-label="delete" size="small">
-              <CloseIcon />
+              <CloseIcon sx={{ color: "var(--color-yellow-title)" }} />
             </IconButton>
           </DialogActions>
         </Box>
@@ -78,7 +81,7 @@ const ScrollDialog = ({
               ref={descriptionElementRef}
               tabIndex={-1}
               key={i}
-              sx={{ marginTop: "15px" }}
+              sx={{ marginTop: "15px", color: "#803700" }}
             >
               {text}
             </DialogContentText>

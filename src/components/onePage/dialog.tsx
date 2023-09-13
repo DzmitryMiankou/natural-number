@@ -4,6 +4,10 @@ import Dialog from "@mui/material/Dialog";
 import CloseIcon from "@mui/icons-material/Close";
 import ScrollDialog from "./window";
 
+const sx = {
+  color: { color: "var(--color-yellow-title)" },
+};
+
 const SimpleDialog = ({
   opens,
   handleClose,
@@ -16,11 +20,11 @@ const SimpleDialog = ({
       <Dialog onClose={handleClose} open={true}>
         <Box sx={{ marginLeft: "auto" }}>
           <IconButton onClick={handleClose} aria-label="delete" size="small">
-            <CloseIcon />
+            <CloseIcon sx={sx.color} />
           </IconButton>
         </Box>
         <Divider />
-        <DialogTitle>Неправильно</DialogTitle>
+        <DialogTitle sx={sx.color}>Неправильно</DialogTitle>
       </Dialog>
     );
   }

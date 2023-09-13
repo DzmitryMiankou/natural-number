@@ -10,6 +10,8 @@ import TemporaryDrawer from "./components/menu/Menu";
 import { NavLink as RouterLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
+import Tooltip from "@mui/material/Tooltip";
+import Fade from "@mui/material/Fade";
 
 const AppDiv = styled.div`
   min-height: 100vh;
@@ -65,16 +67,35 @@ const App = () => {
         <TemporaryDrawer />
         <>
           {location.pathname !== "/" ? (
-            <Button component={RouterLink} to={"/"} title="button">
-              <HomeIcon sx={sx.icon} />
-            </Button>
+            <Tooltip
+              title="Главная"
+              TransitionComponent={Fade}
+              enterDelay={1500}
+              TransitionProps={{ timeout: 600 }}
+            >
+              <Button component={RouterLink} to={"/"}>
+                <HomeIcon sx={sx.icon} />
+              </Button>
+            </Tooltip>
           ) : (
             <></>
           )}
         </>
-        <Button title="button">
-          <QuizIcon sx={sx.icon} />
-        </Button>
+        <Tooltip
+          sx={{
+            "& .MuiTooltip-tooltip": {
+              backgroundColor: "red",
+            },
+          }}
+          title="Тест"
+          enterDelay={1500}
+          TransitionComponent={Fade}
+          TransitionProps={{ timeout: 600 }}
+        >
+          <Button>
+            <QuizIcon sx={sx.icon} />
+          </Button>
+        </Tooltip>
       </Menu>
       <PageRoute state={state} />
       <Footer onMouseEnter={() => set(true)} onMouseLeave={() => set(false)}>

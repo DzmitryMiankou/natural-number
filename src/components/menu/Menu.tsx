@@ -8,13 +8,15 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink as RouterLink } from "react-router-dom";
+import Tooltip from "@mui/material/Tooltip";
+import Fade from "@mui/material/Fade";
 
 type menuArrType<T> = Array<{ text: T; path: T }>;
 
 const menuArr: menuArrType<string> = [
   { text: "Главная", path: "/" },
   { text: "Что такое натуральные числа", path: "/numperNat" },
-  { text: "Сравнение натуральных чисел", path: "/d" },
+  { text: "Сравнение натуральных чисел", path: "/comparisonNumb" },
   { text: "Сложение натуральных чисел", path: "/s" },
   { text: "Вычитание натуральных чисел", path: "/f" },
   { text: "Умножение натуральных чисел", path: "/g" },
@@ -96,9 +98,17 @@ export default function TemporaryDrawer() {
     <div>
       {(["left"] as const).map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>
-            <MenuIcon sx={sx.icon} />
-          </Button>
+          <Tooltip
+            title="Меню"
+            TransitionComponent={Fade}
+            TransitionProps={{ timeout: 600 }}
+            enterDelay={1500}
+          >
+            <Button onClick={toggleDrawer(anchor, true)}>
+              <MenuIcon sx={sx.icon} />
+            </Button>
+          </Tooltip>
+
           <Drawer
             anchor={anchor}
             open={state[anchor]}
