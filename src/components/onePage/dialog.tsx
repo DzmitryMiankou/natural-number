@@ -14,7 +14,7 @@ const SimpleDialog = ({
   if (opens === "err") {
     return (
       <Dialog onClose={handleClose} open={true}>
-        <Box>
+        <Box sx={{ marginLeft: "auto" }}>
           <IconButton onClick={handleClose} aria-label="delete" size="small">
             <CloseIcon />
           </IconButton>
