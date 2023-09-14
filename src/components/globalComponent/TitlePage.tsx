@@ -5,8 +5,9 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import { IconButton } from "@mui/material";
 import TooltipButt from "../globalComponent/Tooltip";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
+import Window from "./Window";
 
-const sx = { icon: { color: "#c15400", fontSize: "45px" } };
+const sx = { icon: { color: "var(--color-red-accent)", fontSize: "45px" } };
 
 interface TypeProp {
   $align: string;
@@ -36,23 +37,36 @@ const TitlePage = ({
   title,
   boximg,
   alignMain,
-  click,
 }: {
   title: JSX.Element;
   boximg: JSX.Element;
   alignMain: string;
-  click?: any;
 }) => {
+  const [openWind, setOpenWind] = React.useState<boolean>(false);
+
+  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    return setOpenWind(false);
+  };
+
+  const handleClickOpenWind = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    return setOpenWind(true);
+  };
+
   return (
     <MainVariant $align={alignMain}>
       <BoxTitlePage>
+        <Window open={openWind} handleClose={handleClose} />
         <>{title}</>
         <div>
           {arr.map(({ text, icon }, i) => (
             <TooltipButt
               key={i}
               text={text}
-              element={<IconButton onClick={click}>{icon}</IconButton>}
+              element={
+                <IconButton onClick={handleClickOpenWind}>{icon}</IconButton>
+              }
             />
           ))}
         </div>

@@ -4,8 +4,6 @@ import Img1 from "../../img/aaa.svg";
 import { Button, Box } from "@mui/material";
 import SimpleDialog from "./dialog";
 import { Pann, Akcent, P } from "../../style/style";
-
-import Window from "../globalComponent/Window";
 import TitlePage from "../globalComponent/TitlePage";
 
 const BoxQvest = styled.div`
@@ -22,9 +20,9 @@ const PVariant = styled(P)`
 
 const sx = {
   button: {
-    color: "#ff6f00",
-    border: "solid 1px  #ff6f00",
-    background: "#fff1e6",
+    color: "var(--color-orange-button)",
+    border: "solid 1px  var(--color-orange-button)",
+    background: "var(--color-BG-button)",
     fontSize: "18px",
     "&:hover": { background: "#fffaf6", border: "solid 1px  #ff6f00" },
   },
@@ -32,27 +30,17 @@ const sx = {
 
 const OnePage = () => {
   const [open, setOpen] = React.useState<string>("");
-  const [openW, setOpenW] = React.useState<boolean>(false);
-
-  const handleClickOpenWind = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    num: number
-  ) => {
-    e.preventDefault();
-    return setOpenW(true);
-  };
 
   const handleClickOpen = (
     e: React.MouseEvent<HTMLButtonElement>,
     num: number
   ) => {
     e.preventDefault();
-    num === 3 ? setOpen("ok") : setOpen("err");
+    return num === 3 ? setOpen("ok") : setOpen("err");
   };
 
   const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setOpenW(false);
     return setOpen("");
   };
 
@@ -63,7 +51,6 @@ const OnePage = () => {
   return (
     <TitlePage
       alignMain={"space-between"}
-      click={handleClickOpenWind}
       title={
         <Pann>
           <Akcent>Натурьльные числа</Akcent> — это числа, которые используются
@@ -88,7 +75,6 @@ const OnePage = () => {
             ))}
           </Box>
           <img src={Img1} alt="img" />
-          <Window open={openW} handleClose={handleClose} />
         </BoxQvest>
       }
     />
