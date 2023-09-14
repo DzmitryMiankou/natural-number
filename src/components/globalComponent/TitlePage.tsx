@@ -4,6 +4,9 @@ import styled from "styled-components";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import { IconButton } from "@mui/material";
 import TooltipButt from "../globalComponent/Tooltip";
+import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
+
+const sx = { icon: { color: "#c15400", fontSize: "45px" } };
 
 interface TypeProp {
   $align: string;
@@ -12,6 +15,22 @@ interface TypeProp {
 const MainVariant = styled(Main)<TypeProp>`
   justify-content: ${(prop) => prop.$align};
 `;
+
+interface TypeArr {
+  text: string;
+  icon: JSX.Element;
+}
+
+const arr: Array<TypeArr> = [
+  {
+    text: "Читать больше",
+    icon: <MenuBookIcon sx={sx.icon} />,
+  },
+  {
+    text: "Задания по теме",
+    icon: <FormatListNumberedIcon sx={sx.icon} />,
+  },
+];
 
 const TitlePage = ({
   title,
@@ -28,14 +47,15 @@ const TitlePage = ({
     <MainVariant $align={alignMain}>
       <BoxTitlePage>
         <>{title}</>
-        <TooltipButt
-          text="Читать больше"
-          element={
-            <IconButton onClick={click}>
-              <MenuBookIcon sx={{ color: "#c15400", fontSize: "45px" }} />
-            </IconButton>
-          }
-        />
+        <div>
+          {arr.map(({ text, icon }, i) => (
+            <TooltipButt
+              key={i}
+              text={text}
+              element={<IconButton onClick={click}>{icon}</IconButton>}
+            />
+          ))}
+        </div>
       </BoxTitlePage>
       <>{boximg}</>
     </MainVariant>
