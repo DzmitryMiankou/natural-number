@@ -1,22 +1,9 @@
 import React from "react";
-import {
-  Pann,
-  Akcent,
-  Main,
-  P,
-  rotateAnimation,
-  BoxTitlePage,
-} from "../../style/style";
+import { Pann, Akcent, P, rotateAnimation } from "../../style/style";
 import dishes from "../../img/dishes.svg";
 import apple from "../../img/apple.svg";
 import styled from "styled-components";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import { IconButton } from "@mui/material";
-import TooltipButt from "../globalComponent/Tooltip";
-
-const MainVariant = styled(Main)`
-  justify-content: space-around;
-`;
+import TitlePage from "../globalComponent/TitlePage";
 
 const BoxImg = styled.div`
   display: flex;
@@ -40,30 +27,27 @@ const PVariant = styled(P)`
 
 const ComparisonPage = () => {
   return (
-    <MainVariant>
-      <BoxTitlePage>
+    <TitlePage
+      alignMain={"space-around"}
+      title={
         <Pann>
           <Akcent>Сравнить числа</Akcent> — это значит определить, какое число
           больше, а какое меньше
         </Pann>
-        <TooltipButt
-          text="Читать больше"
-          element={
-            <IconButton>
-              <MenuBookIcon sx={{ color: "#c15400", fontSize: "45px" }} />
-            </IconButton>
-          }
-        />
-      </BoxTitlePage>
-      <P>Нажмите на фрукт, которого меньше</P>
-      <div>
-        <BoxImg>
-          <Img src={apple} alt="img" />
-          <PVariant>{"?"}</PVariant>
-          <Img src={dishes} alt="img" />
-        </BoxImg>
-      </div>
-    </MainVariant>
+      }
+      boximg={
+        <>
+          <P>Нажмите на фрукт, которого меньше</P>
+          <div>
+            <BoxImg>
+              <Img src={apple} alt="img" />
+              <PVariant>{"?"}</PVariant>
+              <Img src={dishes} alt="img" />
+            </BoxImg>
+          </div>
+        </>
+      }
+    />
   );
 };
 

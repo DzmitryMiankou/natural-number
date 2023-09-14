@@ -1,16 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import Img1 from "../../img/aaa.svg";
-import { Button, Box, IconButton } from "@mui/material";
+import { Button, Box } from "@mui/material";
 import SimpleDialog from "./dialog";
-import { Pann, Akcent, Main, P, BoxTitlePage } from "../../style/style";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import TooltipButt from "../globalComponent/Tooltip";
-import Window from "../globalComponent/Window";
+import { Pann, Akcent, P } from "../../style/style";
 
-const MainVariant = styled(Main)`
-  justify-content: space-between;
-`;
+import Window from "../globalComponent/Window";
+import TitlePage from "../globalComponent/TitlePage";
 
 const BoxQvest = styled.div`
   width: 100%;
@@ -38,6 +34,14 @@ const OnePage = () => {
   const [open, setOpen] = React.useState<string>("");
   const [openW, setOpenW] = React.useState<boolean>(false);
 
+  const handleClickOpenWind = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    num: number
+  ) => {
+    e.preventDefault();
+    return setOpenW(true);
+  };
+
   const handleClickOpen = (
     e: React.MouseEvent<HTMLButtonElement>,
     num: number
@@ -57,41 +61,37 @@ const OnePage = () => {
   };
 
   return (
-    <MainVariant>
-      <BoxTitlePage>
+    <TitlePage
+      alignMain={"space-between"}
+      click={handleClickOpenWind}
+      title={
         <Pann>
           <Akcent>Натурьльные числа</Akcent> — это числа, которые используются
           при счёте предметов
         </Pann>
-        <TooltipButt
-          text="Читать больше"
-          element={
-            <IconButton onClick={(e) => setOpenW(true)}>
-              <MenuBookIcon sx={{ color: "#c15400", fontSize: "45px" }} />
-            </IconButton>
-          }
-        />
-      </BoxTitlePage>
-      <BoxQvest>
-        <PVariant>Сколько яблок осталось собрать?</PVariant>
-        <SimpleDialog opens={open} handleClose={handleClose} />
-        <Box sx={{ display: "flex", gap: "5px" }}>
-          {sortRandomArr().map((num, i) => (
-            <React.Fragment key={i}>
-              <Button
-                onClick={(e) => handleClickOpen(e, num)}
-                sx={sx.button}
-                variant="outlined"
-              >
-                {num}
-              </Button>
-            </React.Fragment>
-          ))}
-        </Box>
-        <img src={Img1} alt="img" />
-        <Window open={openW} handleClose={handleClose} />
-      </BoxQvest>
-    </MainVariant>
+      }
+      boximg={
+        <BoxQvest>
+          <PVariant>Сколько яблок осталось собрать?</PVariant>
+          <SimpleDialog opens={open} handleClose={handleClose} />
+          <Box sx={{ display: "flex", gap: "5px" }}>
+            {sortRandomArr().map((num, i) => (
+              <React.Fragment key={i}>
+                <Button
+                  onClick={(e) => handleClickOpen(e, num)}
+                  sx={sx.button}
+                  variant="outlined"
+                >
+                  {num}
+                </Button>
+              </React.Fragment>
+            ))}
+          </Box>
+          <img src={Img1} alt="img" />
+          <Window open={openW} handleClose={handleClose} />
+        </BoxQvest>
+      }
+    />
   );
 };
 
