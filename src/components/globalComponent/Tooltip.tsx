@@ -11,11 +11,6 @@ const TooltipButt = ({
 }) => {
   return (
     <Tooltip
-      sx={{
-        "& .MuiTooltip-tooltip": {
-          backgroundColor: "red",
-        },
-      }}
       title={text}
       enterDelay={500}
       TransitionComponent={Fade}

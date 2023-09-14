@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PageRoute from "./routes/rotes";
 import BG from "./img/backG.svg";
+import BG2 from "./img/backG2.svg";
 import QuizIcon from "@mui/icons-material/Quiz";
 import { Button } from "@mui/material";
 import { useLocation } from "react-router-dom";
@@ -13,10 +14,14 @@ import { RootState } from "./redux/store";
 import Tooltip from "@mui/material/Tooltip";
 import Fade from "@mui/material/Fade";
 
-const AppDiv = styled.div`
+interface TypeBG {
+  $url: string;
+}
+
+const AppDiv = styled.div<TypeBG>`
   min-height: 100vh;
   overflow-y: hidden;
-  background-image: url(${BG});
+  background-image: ${(prop) => `url(${prop.$url})`};
   background-size: cover;
   background-repeat: no-repeat;
 `;
@@ -62,7 +67,7 @@ const App = () => {
   const location = useLocation();
 
   return (
-    <AppDiv>
+    <AppDiv $url={location.pathname === state.main[0].list[1].path ? BG2 : BG}>
       <Menu>
         <TemporaryDrawer />
         <>

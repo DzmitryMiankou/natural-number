@@ -6,6 +6,7 @@
   --color-red-accent: #c15400;
   --color-orange-button: #ff6f00;
   --color-BG-button: #fff1e6;
+  --color-red-tooltip: #913f2d;
 }
 
 * {
@@ -19,4 +20,8 @@ body {
     sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.MuiTooltip-tooltip {
+  background-color: var(--color-red-tooltip) !important;
 }

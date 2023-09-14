@@ -1,6 +1,7 @@
 import ImgMain from "../../img/imgMain.svg";
 import ImgMain2 from "../../img/imgMain2.svg";
 import Comparison from "../../img/Comparison.svg";
+import PlusImg from "../../img/plus.svg";
 
 type arrCardType<T> = {
   main: Array<{
@@ -25,12 +26,16 @@ const initialState: arrCardType<string> = {
           path: "/comparisonNumb",
           img: Comparison,
         },
-        { text: "Сложение натуральных чисел", path: "/s", img: ImgMain2 },
+        {
+          text: "Сложение натуральных чисел",
+          path: "/plusNumber",
+          img: PlusImg,
+        },
         { text: "Вычитание натуральных чисел", path: "/f", img: ImgMain2 },
         { text: "Умножение натуральных чисел", path: "/g", img: ImgMain2 },
         { text: "Деление натуральных чисел", path: "/s", img: ImgMain2 },
       ],
-      footer: `© 2022 - ${new Date().getFullYear()}, Дмитрий Меньков, г. Молодечно`,
+      footer: `© ${new Date().getFullYear()}, Дмитрий Меньков, г. Молодечно`,
     },
   ],
 };

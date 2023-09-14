@@ -34,7 +34,7 @@ const Box = styled.div`
   height: 60vh;
 `;
 
-const ComparisonPage = () => {
+const PlusPage = () => {
   const [open, setOpen] = React.useState<string>("");
   const [openSimbol, setOpenSimbol] = React.useState<string>("?");
 
@@ -57,8 +57,9 @@ const ComparisonPage = () => {
       alignMain={"space-between"}
       title={
         <Pann>
-          <Akcent>Сравнить числа</Akcent> — это значит определить, какое число
-          больше, а какое меньше
+          <Akcent>Умножение </Akcent> — это математическое действие, смысл
+          которого заключается в том, чтобы сложить число само с собой
+          определенное количество раз
         </Pann>
       }
       boximg={
@@ -86,4 +87,4 @@ const ComparisonPage = () => {
   );
 };
 
-export default ComparisonPage;
+export default PlusPage;

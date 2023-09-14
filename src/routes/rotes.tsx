@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import MainPage from "../components/mainPage/MainPage";
 import OnePage from "../components/onePage/OnePage";
 import ComparisonPage from "../components/comparisonPage/ComparisonPage";
+import PlusPage from "../components/plusPage/PlusPage";
 
 export interface StateMaimPageType {
   main: Array<{
@@ -17,6 +18,7 @@ const PageRoute = ({ state }: { state: StateMaimPageType }) => {
     { element: <MainPage state={state} />, path: "/" },
     { element: <OnePage />, path: "/numperNat" },
     { element: <ComparisonPage />, path: "/comparisonNumb" },
+    { element: <PlusPage />, path: "/plusNumber" },
   ];
 
   return (
