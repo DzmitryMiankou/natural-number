@@ -11,16 +11,18 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import mainPageReducer from "./mainPageReducer/mainPageReducer";
+import plusPageInputReducer from "./plusReducer/Input";
 
 const rootReducers = combineReducers({
   static: mainPageReducer,
+  plusPageInputReducer: plusPageInputReducer,
 });
 
 const persistConfig = {
   key: "root",
   storage,
   version: 1,
-  blacklist: ["static"],
+  blacklist: ["static", "plusPageInputReducer"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);

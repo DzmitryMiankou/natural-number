@@ -1,10 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import { inputPlusPageAction } from "../../../redux/plusReducer/Input";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 
-const Input = styled.input`
+interface TypeInputStyle {
+  $id: any;
+  $val: any;
+}
+
+const Input = styled.input<TypeInputStyle>`
   font-size: 80px;
   width: 80px;
-  background-color: #ffda9d;
+  background-color: ${(prop) =>
+    +prop.$id + +prop.$val === 8 ? "#ffda9d" : "#ff3f14"};
   border: none;
   outline: none;
   text-align: center;
@@ -46,7 +55,13 @@ const Text2 = styled.text`
   font-size: 105.4318px;
 `;
 
-const inpArr = [
+interface TypeInpArr<T> {
+  x: T;
+  y: T;
+  b: number;
+}
+
+const inpArr: Array<TypeInpArr<string>> = [
   { x: "492", y: "25", b: 5 },
   { x: "830", y: "162", b: 3 },
   { x: "965", y: "495", b: 2 },
@@ -58,13 +73,32 @@ const inpArr = [
 ];
 
 const StarSVG = () => {
+  const state = useSelector((store: RootState) => store.plusPageInputReducer);
+  const dispatch = useDispatch();
+
+  const onChangeCommit = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
+      const text = e.target.value;
+      return dispatch(inputPlusPageAction({ text: text, id: id }));
+    },
+    [dispatch]
+  );
+
   return (
     <svg version="1.1" x="0px" y="0px" viewBox="-100 0 1280 1280">
       <>
         {inpArr.map(({ x, y, b }) => (
           <foreignObject key={b} x={x} y={y} width="86" height="100">
             <form>
-              <Input type="text" maxLength={1} title="num" />
+              <Input
+                value={state.arr.find((val) => val.id === b)?.text || ""}
+                type="text"
+                maxLength={1}
+                title="num"
+                onChange={(e) => onChangeCommit(e, b)}
+                $id={b}
+                $val={state.arr.find((val) => val.id === b)?.text || ""}
+              />
             </form>
           </foreignObject>
         ))}
