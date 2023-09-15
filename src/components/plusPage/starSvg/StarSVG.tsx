@@ -5,20 +5,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 
 interface TypeInputStyle {
-  $id: any;
-  $val: any;
+  $id: number;
+  $val: string;
 }
 
 const Input = styled.input<TypeInputStyle>`
   font-size: 80px;
   width: 80px;
   background-color: ${(prop) =>
-    +prop.$id + +prop.$val === 8 ? "#ffda9d" : "#ff3f14"};
+    +prop.$id + +prop.$val === 8 ? "#ffda9d" : "#af5946"};
   border: none;
   outline: none;
   text-align: center;
   border-radius: 50px;
-  padding: 3px;
+  padding: 10px;
+  &:hover {
+    background: #b5dce5;
+  }
 `;
 
 const Circle0 = styled.circle`
@@ -62,14 +65,14 @@ interface TypeInpArr<T> {
 }
 
 const inpArr: Array<TypeInpArr<string>> = [
-  { x: "492", y: "25", b: 5 },
-  { x: "830", y: "162", b: 3 },
-  { x: "965", y: "495", b: 2 },
-  { x: "824", y: "825", b: 7 },
-  { x: "498", y: "960", b: 6 },
-  { x: "162", y: "820", b: 8 },
-  { x: "30", y: "492", b: 4 },
-  { x: "170", y: "162", b: 1 },
+  { x: "486", y: "18", b: 5 },
+  { x: "824", y: "158", b: 3 },
+  { x: "958", y: "490", b: 2 },
+  { x: "818", y: "820", b: 7 },
+  { x: "492", y: "955", b: 6 },
+  { x: "156", y: "815", b: 8 },
+  { x: "23", y: "482", b: 4 },
+  { x: "162", y: "152", b: 1 },
 ];
 
 const StarSVG = () => {
@@ -88,16 +91,15 @@ const StarSVG = () => {
     <svg version="1.1" x="0px" y="0px" viewBox="-100 0 1280 1280">
       <>
         {inpArr.map(({ x, y, b }) => (
-          <foreignObject key={b} x={x} y={y} width="86" height="100">
+          <foreignObject key={b} x={x} y={y} width="100" height="120">
             <form>
               <Input
                 value={state.arr.find((val) => val.id === b)?.text || ""}
                 type="text"
                 maxLength={1}
-                title="num"
                 onChange={(e) => onChangeCommit(e, b)}
                 $id={b}
-                $val={state.arr.find((val) => val.id === b)?.text || ""}
+                $val={state.arr.find((val) => val.id === b)?.text || "?"}
               />
             </form>
           </foreignObject>
