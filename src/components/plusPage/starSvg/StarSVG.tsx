@@ -1,8 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { inputPlusPageAction } from "../../../redux/plusReducer/Input";
+import {
+  inputPlusPageAction,
+  updatePlusPageAction,
+} from "../../../redux/plusReducer/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import TooltipButt from "../../globalComponent/Tooltip";
 
 interface TypeInputStyle {
   $id: number;
@@ -81,19 +86,26 @@ const StarSVG = () => {
 
   const onChangeCommit = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
+      e.preventDefault();
       const text = e.target.value;
       dispatch(inputPlusPageAction({ text: text, id: id }));
     },
     [dispatch]
   );
 
-  console.log(state);
+  const restartNumber = React.useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      dispatch(updatePlusPageAction());
+    },
+    [dispatch]
+  );
 
   return (
     <svg version="1.1" x="0px" y="0px" viewBox="-100 0 1280 1280">
       <>
         {inpArr.map(({ x, y, b }) => (
-          <foreignObject key={b} x={x} y={y} width="100" height="120">
+          <foreignObject key={b} x={x} y={y} width="120" height="120">
             <form>
               <Input
                 value={
@@ -113,6 +125,23 @@ const StarSVG = () => {
           </foreignObject>
         ))}
       </>
+      <foreignObject x="1050" y="1" width="120" height="120">
+        <TooltipButt
+          text={"Сбросить"}
+          element={
+            <RestartAltIcon
+              onClick={restartNumber}
+              sx={{
+                fontSize: "100px",
+                cursor: "pointer",
+                color: "#af5946",
+                backgroundColor: "#fff1e8",
+                borderRadius: "50px",
+              }}
+            />
+          }
+        />
+      </foreignObject>
       <g>
         <Circle0 cx="540" cy="540" r="104.9" />
         <Text1 transform="matrix(1 0 0 1 496 600)">8</Text1>

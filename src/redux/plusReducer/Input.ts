@@ -1,9 +1,10 @@
 const INPUT = "INPUT_INPUT";
+const UPDATE = "INPUT_UPDATE";
 
 type TypeActionValue = { text: string; id: number };
 
 interface TypeAction {
-  type: typeof INPUT;
+  type: typeof INPUT | typeof UPDATE;
   value: TypeActionValue;
 }
 
@@ -19,6 +20,11 @@ const plusPageInputReducer = (state = initialState, action: TypeAction) => {
         arr: [...state.arr, action.value],
       };
     }
+    case UPDATE: {
+      return {
+        ...initialState,
+      };
+    }
     default:
       return state;
   }
@@ -27,5 +33,8 @@ const plusPageInputReducer = (state = initialState, action: TypeAction) => {
 export const inputPlusPageAction = (value: { text: string; id: number }) => ({
   type: INPUT,
   value: value,
+});
+export const updatePlusPageAction = () => ({
+  type: UPDATE,
 });
 export default plusPageInputReducer;
