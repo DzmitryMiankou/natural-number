@@ -1,6 +1,6 @@
 const INPUT = "INPUT_INPUT";
 
-type TypeActionValue = { text: string; id: number | undefined };
+type TypeActionValue = { text: string; id: number };
 
 interface TypeAction {
   type: typeof INPUT;
@@ -14,18 +14,17 @@ const initialState: { arr: [] | TypeActionValue[] } = {
 const plusPageInputReducer = (state = initialState, action: TypeAction) => {
   switch (action.type) {
     case INPUT: {
-      console.log({ ...state, arr: [...state.arr, action.value] });
-      return { ...state, arr: [...state.arr, action.value] };
+      return {
+        ...state,
+        arr: [...state.arr, action.value],
+      };
     }
     default:
       return state;
   }
 };
 
-export const inputPlusPageAction = (value: {
-  text: string;
-  id: number | undefined;
-}) => ({
+export const inputPlusPageAction = (value: { text: string; id: number }) => ({
   type: INPUT,
   value: value,
 });

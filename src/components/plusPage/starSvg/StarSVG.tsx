@@ -82,10 +82,12 @@ const StarSVG = () => {
   const onChangeCommit = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
       const text = e.target.value;
-      return dispatch(inputPlusPageAction({ text: text, id: id }));
+      dispatch(inputPlusPageAction({ text: text, id: id }));
     },
     [dispatch]
   );
+
+  console.log(state);
 
   return (
     <svg version="1.1" x="0px" y="0px" viewBox="-100 0 1280 1280">
@@ -94,12 +96,18 @@ const StarSVG = () => {
           <foreignObject key={b} x={x} y={y} width="100" height="120">
             <form>
               <Input
-                value={state.arr.find((val) => val.id === b)?.text || ""}
+                value={
+                  state.arr[state.arr.map((el) => el.id).lastIndexOf(b)]
+                    ?.text || ""
+                }
                 type="text"
                 maxLength={1}
                 onChange={(e) => onChangeCommit(e, b)}
                 $id={b}
-                $val={state.arr.find((val) => val.id === b)?.text || "?"}
+                $val={
+                  state.arr[state.arr.map((el) => el.id).lastIndexOf(b)]
+                    ?.text || "?"
+                }
               />
             </form>
           </foreignObject>
