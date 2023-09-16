@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import TooltipButt from "../../globalComponent/Tooltip";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 interface TypeInputStyle {
   $id: number;
@@ -27,6 +28,11 @@ const Input = styled.input<TypeInputStyle>`
   &:hover {
     background: #b5dce5;
   }
+`;
+
+const ButtonBox = styled.div`
+  display: flex;
+  gap: 5px;
 `;
 
 const Circle0 = styled.circle`
@@ -125,22 +131,39 @@ const StarSVG = () => {
           </foreignObject>
         ))}
       </>
-      <foreignObject x="1050" y="1" width="120" height="120">
-        <TooltipButt
-          text={"Сбросить"}
-          element={
-            <RestartAltIcon
-              onClick={restartNumber}
-              sx={{
-                fontSize: "100px",
-                cursor: "pointer",
-                color: "#af5946",
-                backgroundColor: "#fff1e8",
-                borderRadius: "50px",
-              }}
-            />
-          }
-        />
+      <foreignObject x="950" y="0" width="200" height="120">
+        <ButtonBox>
+          <TooltipButt
+            text={"Сбросить"}
+            element={
+              <RestartAltIcon
+                onClick={restartNumber}
+                sx={{
+                  fontSize: "70px",
+                  cursor: "pointer",
+                  color: "#af5946",
+                  backgroundColor: "#fff1e8",
+                  borderRadius: "50px",
+                }}
+              />
+            }
+          />
+          <TooltipButt
+            text={"Проверить"}
+            element={
+              <CheckCircleOutlineIcon
+                onClick={restartNumber}
+                sx={{
+                  fontSize: "70px",
+                  cursor: "pointer",
+                  color: "#af5946",
+                  backgroundColor: "#fff1e8",
+                  borderRadius: "50px",
+                }}
+              />
+            }
+          />
+        </ButtonBox>
       </foreignObject>
       <g>
         <Circle0 cx="540" cy="540" r="104.9" />

@@ -4,8 +4,8 @@
 	 viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;" xml:space="preserve">
 <style type="text/css">
 	.st0{opacity:0.12;fill:#FF9039;enable-background:new    ;}
-	.st1{fill:#FFAA64;}
-	.st2{fill:#FF9039;}
+	.st1{fill:#FFF1E8;}
+	.st2{fill:#FFCCA5;}
 </style>
 <g id="фон">
 	<circle class="st0" cx="0" cy="48.6" r="275.3"/>
@@ -18,7 +18,7 @@
 	<circle class="st0" cx="1283.8" cy="211" r="29.2"/>
 	<circle class="st0" cx="930.8" cy="540" r="29.2"/>
 	
-		<ellipse transform="matrix(0.1602 -0.9871 0.9871 0.1602 54.3671 1696.7009)" class="st0" cx="1024.3" cy="816.4" rx="29.2" ry="29.2"/>
+		<ellipse transform="matrix(0.3162 -0.9487 0.9487 0.3162 -74.1104 1529.9789)" class="st0" cx="1024.3" cy="816.4" rx="29.2" ry="29.2"/>
 	<circle class="st0" cx="155.8" cy="421.6" r="29.2"/>
 	<circle class="st0" cx="1572.5" cy="886.9" r="29.2"/>
 	<circle class="st0" cx="481.9" cy="1083.5" r="78.7"/>
@@ -37,6 +37,8 @@
 </g>
 <path class="st1" d="M-660.8,401.2c806.1,683.2,3250.9,342.1,3328.1,343.4c351.7,5.8-1526.6,1016.2-1526.6,1016.2L-55,849.9
 	C-55,849.9-862.1,230.6-660.8,401.2z"/>
+<circle class="st0" cx="431.2" cy="871.1" r="74.2"/>
+<circle class="st0" cx="644.2" cy="886.9" r="31.4"/>
 <path class="st2" d="M-347.7,142.7c4.8,1227.5,2756.6,583.8,2999.2,565.8c77-5.7-1979.8,760.8-1979.8,760.8l-811-379.7
 	C-139.3,1089.7-348.7-121.2-347.7,142.7z"/>
 </svg>

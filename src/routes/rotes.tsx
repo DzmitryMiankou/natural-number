@@ -4,6 +4,7 @@ import MainPage from "../components/mainPage/MainPage";
 import OnePage from "../components/onePage/OnePage";
 import ComparisonPage from "../components/comparisonPage/ComparisonPage";
 import PlusPage from "../components/plusPage/PlusPage";
+import MinusPage from "../components/minusPage/MinusPage";
 
 export interface StateMaimPageType {
   main: Array<{
@@ -19,6 +20,7 @@ const PageRoute = ({ state }: { state: StateMaimPageType }) => {
     { element: <OnePage />, path: "/numperNat" },
     { element: <ComparisonPage />, path: "/comparisonNumb" },
     { element: <PlusPage />, path: "/plusNumber" },
+    { element: <MinusPage />, path: "/minusNumber" },
   ];
 
   return (
