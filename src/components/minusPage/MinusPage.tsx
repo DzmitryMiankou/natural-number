@@ -4,6 +4,7 @@ import styled from "styled-components";
 import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
 import Img1 from "../../img/mins.svg";
+import HeroSVG from "./heroSVG/HeroSvg";
 
 const BoxImg = styled.div`
   width: 100%;
@@ -18,6 +19,7 @@ const Box = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 `;
 
 const MinusPage = () => {
@@ -42,8 +44,10 @@ const MinusPage = () => {
           <SimpleDialog opens={open} handleClose={handleClose} />
           <Box>
             <PVariant2>
-              Введите число, которое в сумме со вторым даст 8
+              Нажмите на Джубика, который с правильным ответам
             </PVariant2>
+
+            <HeroSVG />
 
             <img src={Img1} alt="img" />
           </Box>
