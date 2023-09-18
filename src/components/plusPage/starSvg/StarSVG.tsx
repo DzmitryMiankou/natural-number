@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {
   inputPlusPageAction,
   updatePlusPageAction,
@@ -10,21 +10,33 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import TooltipButt from "../../globalComponent/Tooltip";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
+const opacityAnimationErr = keyframes`
+  0% {  background-color: #eec9c1;  }
+  100% {   background-color: #dc3e1b;  }
+`;
+
+const opacityAnimation = keyframes`
+  0% {  background-color: #eec9c1;  }
+  100% {   background-color: #75dc1b;  }
+`;
+
 interface TypeInputStyle {
   $id: number;
   $val: string;
+  $anim: any;
 }
 
 const Input = styled.input<TypeInputStyle>`
   font-size: 80px;
   width: 80px;
   background-color: ${(prop) =>
-    +prop.$id + +prop.$val === 8 ? "#ffda9d" : "#af5946"};
+    +prop.$id + +prop.$val === 8 ? "#ffda9d" : "#eec9c1"};
   border: none;
   outline: none;
   text-align: center;
   border-radius: 50px;
   padding: 10px;
+  animation: ${(prop) => prop.$anim} 0.8s linear infinite;
   &:hover {
     background: #b5dce5;
   }
@@ -89,6 +101,7 @@ const inpArr: Array<TypeInpArr<string>> = [
 const StarSVG = () => {
   const state = useSelector((store: RootState) => store.plusPageInputReducer);
   const dispatch = useDispatch();
+  const [get, set] = React.useState<boolean>(false);
 
   const onChangeCommit = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
@@ -102,9 +115,18 @@ const StarSVG = () => {
   const restartNumber = React.useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
+      set(!get);
       dispatch(updatePlusPageAction());
     },
-    [dispatch]
+    [dispatch, get]
+  );
+
+  const checkNumber = React.useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      set(!get);
+    },
+    [get]
   );
 
   return (
@@ -125,6 +147,15 @@ const StarSVG = () => {
                 $val={
                   state.arr[state.arr.map((el) => el.id).lastIndexOf(b)]
                     ?.text || "?"
+                }
+                $anim={
+                  get === true &&
+                  b +
+                    +state.arr[state.arr.map((el) => el.id).lastIndexOf(b)]
+                      ?.text !==
+                    8
+                    ? opacityAnimationErr
+                    : ""
                 }
               />
             </form>
@@ -152,7 +183,7 @@ const StarSVG = () => {
             text={"Проверить"}
             element={
               <CheckCircleOutlineIcon
-                onClick={restartNumber}
+                onClick={checkNumber}
                 sx={{
                   fontSize: "70px",
                   cursor: "pointer",

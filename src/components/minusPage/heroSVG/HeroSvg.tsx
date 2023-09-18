@@ -46,55 +46,88 @@ const HeroSVG = () => {
       y="0px"
       viewBox="0 0 1920 529.3"
     >
-      <Hero2 onMouseEnter={() => set(!get)} onMouseLeave={() => set(!get)}>
+      <polygon
+        className={SvgStyle.st0}
+        points="901.1,348.4 914,390.4 901.1,395.3 892.6,395.3 899,383.9 892.6,348.4 "
+      />
+      <polygon
+        className={SvgStyle.st0}
+        points="853.2,348.2 853,392.1 839.3,393 831.1,390.5 840.6,381.5 845.1,345.6 "
+      />
+      <Chere1 $logic={get ? posAnimation : false}>
         <polygon
           className={SvgStyle.st0}
-          points="901.1,348.4 914,390.4 901.1,395.3 892.6,395.3 899,383.9 892.6,348.4 "
+          points="940,192.3 925.9,232.6 929.4,235.1 "
+        />
+
+        <ellipse
+          className={SvgStyle.st0}
+          cx="940"
+          cy="192.7"
+          rx="14"
+          ry="10.2"
+        />
+        <ellipse
+          className={SvgStyle.st7}
+          cx="940"
+          cy="192.3"
+          rx="10.1"
+          ry="7.3"
         />
         <polygon
           className={SvgStyle.st0}
-          points="853.2,348.2 853,392.1 839.3,393 831.1,390.5 840.6,381.5 845.1,345.6 "
+          points="806.5,189.7 818.5,230.7 822.8,230.7 "
         />
-        <Chere1 $logic={get ? posAnimation : false}>
+        <ellipse
+          transform="matrix(0.8136 -0.5814 0.5814 0.8136 39.8925 504.4978)"
+          className={SvgStyle.st0}
+          cx="806.8"
+          cy="190"
+          rx="14"
+          ry="10.2"
+        />
+        <ellipse
+          transform="matrix(0.8136 -0.5814 0.5814 0.8136 39.996 504.2898)"
+          className={SvgStyle.st7}
+          cx="806.5"
+          cy="189.8"
+          rx="10.1"
+          ry="7.3"
+        />
+        <Hero2 onMouseEnter={() => set(!get)} onMouseLeave={() => set(!get)}>
           <g>
-            <g>
-              <path
-                id="XMLID_00000062165301448942784280000012332559302885620128_"
-                className={SvgStyle.st0}
-                d="M960,348.4c0-86.9-40.1-157.3-89.6-157.3
+            <path
+              id="XMLID_00000062165301448942784280000012332559302885620128_"
+              className={SvgStyle.st0}
+              d="M960,348.4c0-86.9-40.1-157.3-89.6-157.3
 			s-89.6,70.4-89.6,157.3H960z"
-              />
-            </g>
+            />
             <g>
-              <g>
-                <defs>
-                  <path
-                    id="SVGID_1_"
-                    d="M960,348.4c0-86.9-40.1-157.3-89.6-157.3s-89.6,70.4-89.6,157.3H960z"
-                  />
-                </defs>
-                <clipPath id="SVGID_00000040569316231092944620000005445735015344012984_">
-                  <use xlinkHref="#SVGID_1_" className={SvgStyle.useStyle} />
-                </clipPath>
-                <Path0
-                  d="M860.5,179.7
+              <defs>
+                <path
+                  id="SVGID_1_"
+                  d="M960,348.4c0-86.9-40.1-157.3-89.6-157.3s-89.6,70.4-89.6,157.3H960z"
+                />
+              </defs>
+              <clipPath id="SVGID_00000040569316231092944620000005445735015344012984_">
+                <use xlinkHref="#SVGID_1_" className={SvgStyle.useStyle} />
+              </clipPath>
+              <Path0
+                d="M860.5,179.7
 				c14.7,18.9,28.5,30.9,26.1,43.1s-8.6,9.5-11.5,23.9s0.6,32.5,9.6,42.5c9,9.9,18.5,42,18.5,50.6s87.4,37.3,87.4,37.3l-13.9-173.9
 				L860.5,179.7z"
-                />
-              </g>
+              />
             </g>
           </g>
           <circle className={SvgStyle.st2} cx="840" cy="256.2" r="25.1" />
           <circle className={SvgStyle.st2} cx="906.4" cy="252.1" r="21.6" />
           <g>
-            <g>
-              <path
-                id="XMLID_00000011742463554499203880000015212842669988366216_"
-                className={SvgStyle.st3}
-                d="M816.1,301.2c0,0,7.7,3,18.4,6.6
+            <path
+              id="XMLID_00000011742463554499203880000015212842669988366216_"
+              className={SvgStyle.st3}
+              d="M816.1,301.2c0,0,7.7,3,18.4,6.6
 			c5.4,1.8,11.6,3.8,18,5.7c19,5.5,61.5-16,61.5-16s-1.3,32-40.1,41.1C835,347.7,816.1,301.2,816.1,301.2z"
-              />
-            </g>
+            />
             <g>
               <g>
                 <g>
@@ -164,45 +197,7 @@ const HeroSVG = () => {
               </g>
             </g>
           </g>
-          <polygon
-            className={SvgStyle.st0}
-            points="940,192.3 925.9,232.6 929.4,235.1 "
-          />
 
-          <ellipse
-            className={SvgStyle.st0}
-            cx="940"
-            cy="192.7"
-            rx="14"
-            ry="10.2"
-          />
-          <ellipse
-            className={SvgStyle.st7}
-            cx="940"
-            cy="192.3"
-            rx="10.1"
-            ry="7.3"
-          />
-          <polygon
-            className={SvgStyle.st0}
-            points="806.5,189.7 818.5,230.7 822.8,230.7 "
-          />
-          <ellipse
-            transform="matrix(0.8136 -0.5814 0.5814 0.8136 39.8925 504.4978)"
-            className={SvgStyle.st0}
-            cx="806.8"
-            cy="190"
-            rx="14"
-            ry="10.2"
-          />
-          <ellipse
-            transform="matrix(0.8136 -0.5814 0.5814 0.8136 39.996 504.2898)"
-            className={SvgStyle.st7}
-            cx="806.5"
-            cy="189.8"
-            rx="10.1"
-            ry="7.3"
-          />
           <Eye1
             $logic={get}
             className={SvgStyle.st8}
@@ -217,77 +212,80 @@ const HeroSVG = () => {
             cy="252.6"
             r="9.2"
           />
-          <polygon
-            className={SvgStyle.st9}
-            points="768.1,271.1 766.4,272.3 712.5,199 714,197.9 "
-          />
-          <circle className={SvgStyle.st10} cx="709.4" cy="191" r="48.8" />
-          <g>
-            <path
-              className={SvgStyle.st8}
-              d="M710,219.4v-14.8h-25.2v-4.8l24.2-34.7h7.9v33.8h7.6v5.8h-7.6v14.8H710V219.4z M710,198.9v-18.2
+        </Hero2>
+        <polygon
+          className={SvgStyle.st9}
+          points="768.1,271.1 766.4,272.3 712.5,199 714,197.9 "
+        />
+        <circle className={SvgStyle.st10} cx="709.4" cy="191" r="48.8" />
+
+        <g>
+          <path
+            className={SvgStyle.st8}
+            d="M710,219.4v-14.8h-25.2v-4.8l24.2-34.7h7.9v33.8h7.6v5.8h-7.6v14.8H710V219.4z M710,198.9v-18.2
 		c0-2.8,0.1-5.7,0.3-8.5H710c-1.7,3.2-3,5.5-4.5,8l-13.3,18.5v0.2H710z"
+          />
+        </g>
+        <polygon
+          className={SvgStyle.st0}
+          points="791.4,273.7 767.8,262.1 768.1,271.1 789.2,281.3 "
+        />
+        <rect
+          x="756.3"
+          y="254.5"
+          className={SvgStyle.st0}
+          width="11.6"
+          height="19.1"
+        />
+
+        <polygon
+          className={SvgStyle.st0}
+          points="951.6,287.8 974.9,300 967.5,305.1 946.8,294.1 "
+        />
+        <rect
+          x="967"
+          y="300.1"
+          transform="matrix(0.808 -0.5891 0.5891 0.808 7.2804 634.0479)"
+          className={SvgStyle.st0}
+          width="19.1"
+          height="11.6"
+        />
+
+        <g>
+          <g>
+            <rect
+              id="XMLID_00000016043823093394449270000009189175112191339441_"
+              x="778"
+              y="345.6"
+              className={SvgStyle.st11}
+              width="184.9"
+              height="13.4"
             />
           </g>
-          <polygon
-            className={SvgStyle.st0}
-            points="791.4,273.7 767.8,262.1 768.1,271.1 789.2,281.3 "
-          />
-          <rect
-            x="756.3"
-            y="254.5"
-            className={SvgStyle.st0}
-            width="11.6"
-            height="19.1"
-          />
 
-          <polygon
-            className={SvgStyle.st0}
-            points="951.6,287.8 974.9,300 967.5,305.1 946.8,294.1 "
-          />
-          <rect
-            x="967"
-            y="300.1"
-            transform="matrix(0.808 -0.5891 0.5891 0.808 7.2804 634.0479)"
-            className={SvgStyle.st0}
-            width="19.1"
-            height="11.6"
-          />
           <g>
             <g>
-              <rect
-                id="XMLID_00000016043823093394449270000009189175112191339441_"
-                x="778"
-                y="345.6"
-                className={SvgStyle.st11}
-                width="184.9"
-                height="13.4"
+              <defs>
+                <rect
+                  id="SVGID_00000098902171199937653310000011277531931130492606_"
+                  x="778"
+                  y="345.6"
+                  width="184.9"
+                  height="13.4"
+                />
+              </defs>
+              <clipPath id="SVGID_00000158716676284452875990000006638439357790038146_">
+                <use className={SvgStyle.useStyle} />
+              </clipPath>
+              <path
+                className={SvgStyle.polyline4}
+                d="M773.5,357.6
+				c0,0,75.1-4.4,91.6-5.2s109.8,3.8,109.8,3.8l4,6.4l-208.5,1.1L773.5,357.6z"
               />
             </g>
-            <g>
-              <g>
-                <defs>
-                  <rect
-                    id="SVGID_00000098902171199937653310000011277531931130492606_"
-                    x="778"
-                    y="345.6"
-                    width="184.9"
-                    height="13.4"
-                  />
-                </defs>
-                <clipPath id="SVGID_00000158716676284452875990000006638439357790038146_">
-                  <use className={SvgStyle.useStyle} />
-                </clipPath>
-                <path
-                  className={SvgStyle.polyline4}
-                  d="M773.5,357.6
-				c0,0,75.1-4.4,91.6-5.2s109.8,3.8,109.8,3.8l4,6.4l-208.5,1.1L773.5,357.6z"
-                />
-              </g>
-            </g>
           </g>
-        </Chere1>
-      </Hero2>
+        </g>
+      </Chere1>
       <Hero2>
         <g>
           <polygon
