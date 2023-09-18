@@ -16,6 +16,11 @@ interface Hero1StyleType {
   $logic: string | any;
 }
 
+interface VisabiliType<T, C> {
+  $visabili: T;
+  $bgcolor: C;
+}
+
 const Path0 = styled.path`
   clip-path: url(#SVGID_00000040569316231092944620000005445735015344012984_);
   fill: #c36800;
@@ -23,6 +28,23 @@ const Path0 = styled.path`
 
 const Hero2 = styled.g`
   cursor: pointer;
+`;
+
+const Text = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: wheat;
+  font-size: 40px;
+`;
+
+const ForObg = styled.foreignObject<VisabiliType<boolean, string>>`
+  background-color: ${(prop) => prop.$bgcolor};
+  width: 230px;
+  height: 61px;
+  rotate: 5.5deg;
+  display: ${(prop) => (prop.$visabili ? "defult" : "none")};
 `;
 
 const Eye1 = styled.circle<EyeStyleType>`
@@ -37,6 +59,21 @@ const Chere1 = styled.g<Hero1StyleType>`
 
 const HeroSVG = () => {
   const [get, set] = React.useState<boolean>(false);
+  const [getQv, setQV] = React.useState<boolean>(false);
+  const [getQv2, setQV2] = React.useState<boolean>(false);
+
+  const handleClickHero = (e: React.MouseEvent<SVGAElement>) => {
+    e.preventDefault();
+    setQV(true);
+    return setTimeout(() => setQV(false), 2000);
+  };
+
+  const handleClickHero1 = (e: React.MouseEvent<SVGAElement>) => {
+    e.preventDefault();
+    handleClickHero(e);
+    setQV2(true);
+    return setTimeout(() => setQV2(false), 2000);
+  };
 
   return (
     <svg
@@ -46,6 +83,14 @@ const HeroSVG = () => {
       y="0px"
       viewBox="0 0 1920 529.3"
     >
+      <ForObg
+        x="320"
+        y="173"
+        $visabili={getQv}
+        $bgcolor={getQv2 ? "green" : "red"}
+      >
+        <Text>{getQv2 ? "Верно" : "Неверно"}</Text>
+      </ForObg>
       <polygon
         className={SvgStyle.st0}
         points="901.1,348.4 914,390.4 901.1,395.3 892.6,395.3 899,383.9 892.6,348.4 "
@@ -94,7 +139,11 @@ const HeroSVG = () => {
           rx="10.1"
           ry="7.3"
         />
-        <Hero2 onMouseEnter={() => set(!get)} onMouseLeave={() => set(!get)}>
+        <Hero2
+          onMouseEnter={() => set(!get)}
+          onMouseLeave={() => set(!get)}
+          onClick={handleClickHero}
+        >
           <g>
             <path
               id="XMLID_00000062165301448942784280000012332559302885620128_"
@@ -286,7 +335,7 @@ const HeroSVG = () => {
           </g>
         </g>
       </Chere1>
-      <Hero2>
+      <Hero2 onClick={handleClickHero1}>
         <g>
           <polygon
             className={SvgStyle.st9}

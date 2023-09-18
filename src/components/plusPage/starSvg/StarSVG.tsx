@@ -15,11 +15,6 @@ const opacityAnimationErr = keyframes`
   100% {   background-color: #dc3e1b;  }
 `;
 
-const opacityAnimation = keyframes`
-  0% {  background-color: #eec9c1;  }
-  100% {   background-color: #75dc1b;  }
-`;
-
 interface TypeInputStyle {
   $id: number;
   $val: string;
@@ -115,10 +110,10 @@ const StarSVG = () => {
   const restartNumber = React.useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
-      set(!get);
+      set(false);
       dispatch(updatePlusPageAction());
     },
-    [dispatch, get]
+    [dispatch]
   );
 
   const checkNumber = React.useCallback(
@@ -129,6 +124,10 @@ const StarSVG = () => {
     [get]
   );
 
+  const actualInputData = (b: number) => {
+    return state.arr[state.arr.map((el) => el.id).lastIndexOf(b)]?.text;
+  };
+
   return (
     <svg version="1.1" x="0px" y="0px" viewBox="-100 0 1280 1280">
       <>
@@ -136,24 +135,14 @@ const StarSVG = () => {
           <foreignObject key={b} x={x} y={y} width="120" height="120">
             <form>
               <Input
-                value={
-                  state.arr[state.arr.map((el) => el.id).lastIndexOf(b)]
-                    ?.text || ""
-                }
+                value={actualInputData(b) || ""}
                 type="text"
                 maxLength={1}
                 onChange={(e) => onChangeCommit(e, b)}
                 $id={b}
-                $val={
-                  state.arr[state.arr.map((el) => el.id).lastIndexOf(b)]
-                    ?.text || "?"
-                }
+                $val={actualInputData(b) || "?"}
                 $anim={
-                  get === true &&
-                  b +
-                    +state.arr[state.arr.map((el) => el.id).lastIndexOf(b)]
-                      ?.text !==
-                    8
+                  get === true && b + +actualInputData(b) !== 8
                     ? opacityAnimationErr
                     : ""
                 }
@@ -278,7 +267,7 @@ const StarSVG = () => {
           7
         </Text2>
       </g>
-      <g id="Слой_2">
+      <g>
         <g>
           <g>
             <g>
