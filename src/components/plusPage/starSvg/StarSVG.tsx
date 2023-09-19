@@ -70,10 +70,7 @@ const Text1 = styled.text`
   font-size: 163.8971px;
 `;
 
-const Text2 = styled.text`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif !important;
+const Text2 = styled(Text1)`
   font-size: 105.4318px;
 `;
 
@@ -130,6 +127,44 @@ const StarSVG = () => {
     return state.arr[state.arr.map((el) => el.id).lastIndexOf(b)]?.text;
   };
 
+  interface TypeButtArr {
+    textToolTip: string;
+    icon: JSX.Element;
+  }
+
+  const buttArr: Array<TypeButtArr> = [
+    {
+      textToolTip: "Сбросить",
+      icon: (
+        <RestartAltIcon
+          onClick={restartNumber}
+          sx={{
+            fontSize: "70px",
+            cursor: "pointer",
+            color: "#af5946",
+            backgroundColor: "#fff1e8",
+            borderRadius: "50px",
+          }}
+        />
+      ),
+    },
+    {
+      textToolTip: "Проверить",
+      icon: (
+        <CheckCircleOutlineIcon
+          onClick={checkNumber}
+          sx={{
+            fontSize: "70px",
+            cursor: "pointer",
+            color: "#af5946",
+            backgroundColor: "#fff1e8",
+            borderRadius: "50px",
+          }}
+        />
+      ),
+    },
+  ];
+
   return (
     <svg
       version="1.1"
@@ -162,36 +197,9 @@ const StarSVG = () => {
       </>
       <foreignObject x="950" y="0" width="200" height="120">
         <ButtonBox>
-          <TooltipButt
-            text={"Сбросить"}
-            element={
-              <RestartAltIcon
-                onClick={restartNumber}
-                sx={{
-                  fontSize: "70px",
-                  cursor: "pointer",
-                  color: "#af5946",
-                  backgroundColor: "#fff1e8",
-                  borderRadius: "50px",
-                }}
-              />
-            }
-          />
-          <TooltipButt
-            text={"Проверить"}
-            element={
-              <CheckCircleOutlineIcon
-                onClick={checkNumber}
-                sx={{
-                  fontSize: "70px",
-                  cursor: "pointer",
-                  color: "#af5946",
-                  backgroundColor: "#fff1e8",
-                  borderRadius: "50px",
-                }}
-              />
-            }
-          />
+          {buttArr.map(({ textToolTip, icon }) => (
+            <TooltipButt key={textToolTip} text={textToolTip} element={icon} />
+          ))}
         </ButtonBox>
       </foreignObject>
       <g>
