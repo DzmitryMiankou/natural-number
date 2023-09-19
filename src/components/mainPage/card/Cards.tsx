@@ -14,6 +14,7 @@ const Cards = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(345px, 400px));
   justify-content: center;
   gap: 16px;
+
   @media (max-width: 1570px) {
     width: 92%;
   }
@@ -34,7 +35,7 @@ const sx = {
       backgroundColor: "#ffe3c1",
     },
   },
-  title: { color: "#9c7952", textAlign: "center" },
+  title: { color: "#9c7952", textAlign: "center", height: 50 },
 };
 
 const MultiActionAreaCard = ({ state }: { state: StateMaimPageType }) => {

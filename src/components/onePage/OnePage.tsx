@@ -18,6 +18,8 @@ const PVariant = styled(P)`
   margin-bottom: 20px;
 `;
 
+const Img = styled.img``;
+
 const sx = {
   button: {
     color: "var(--color-orange-button)",
@@ -74,7 +76,7 @@ const OnePage = () => {
               </React.Fragment>
             ))}
           </Box>
-          <img src={Img1} alt="img" />
+          <Img src={Img1} alt="img" />
         </BoxQvest>
       }
     />

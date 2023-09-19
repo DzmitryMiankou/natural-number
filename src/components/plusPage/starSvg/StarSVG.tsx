@@ -129,7 +129,7 @@ const StarSVG = () => {
   };
 
   return (
-    <svg version="1.1" x="0px" y="0px" viewBox="-100 0 1280 1280">
+    <svg version="1.1" x="0px" y="0px" viewBox="-100 0 1280 1160">
       <>
         {inpArr.map(({ x, y, b }) => (
           <foreignObject key={b} x={x} y={y} width="120" height="120">

@@ -27,6 +27,12 @@ const Pann = styled.p`
   color: var(--color-yellow-title);
   font-weight: 700;
   width: 70vw;
+  @media (max-width: 1600px) {
+    font-size: 32px;
+  }
+  @media (max-width: 1195px) {
+    margin: 45px;
+  }
 `;
 
 const Akcent = styled.span`
@@ -38,6 +44,9 @@ const P = styled.p`
   font-size: 34px;
   color: #ff6f00;
   font-weight: 700;
+  @media (max-width: 1600px) {
+    font-size: 26px;
+  }
 `;
 
 const BoxTitlePage = styled.div`

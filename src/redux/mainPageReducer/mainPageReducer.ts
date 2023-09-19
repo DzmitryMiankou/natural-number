@@ -23,17 +23,17 @@ const initialState: arrCardType<string> = {
           img: ImgMain,
         },
         {
-          text: "Сравнение натуральных чисел",
+          text: "Сравнение или что больше",
           path: "/comparisonNumb",
           img: Comparison,
         },
         {
-          text: "Сложение натуральных чисел",
+          text: "Сложение или сумма",
           path: "/plusNumber",
           img: PlusImg,
         },
         {
-          text: "Вычитание натуральных чисел",
+          text: "Вычитание или разность",
           path: "/minusNumber",
           img: Minus,
         },

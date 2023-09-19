@@ -12,6 +12,9 @@ const BoxImg = styled.div`
 
 const PVariant2 = styled(P)`
   margin-bottom: 40px;
+  @media (max-width: 1600px) {
+    font-size: 26px;
+  }
 `;
 
 const Box = styled.div`
@@ -44,7 +47,7 @@ const MinusPage = () => {
           <SimpleDialog opens={open} handleClose={handleClose} />
           <Box>
             <PVariant2>
-              Нажмите на Джубика, который с правильным ответам
+              Нажмите на джубика, который с правильным ответам
             </PVariant2>
 
             <HeroSVG />

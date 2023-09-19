@@ -21,8 +21,15 @@ const Main = styled.main`
 const Title = styled.h1`
   text-transform: uppercase;
   font-size: 84px;
+  text-align: center;
   color: var(--color-yellow-title);
   font-weight: 800;
+  @media (max-width: 1600px) {
+    font-size: 64px;
+  }
+  @media (max-width: 1195px) {
+    margin: 40px;
+  }
 `;
 
 const MaimPage = ({ state }: { state: StateMaimPageType }) => {

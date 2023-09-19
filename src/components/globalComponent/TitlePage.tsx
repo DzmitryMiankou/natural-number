@@ -7,7 +7,15 @@ import TooltipButt from "../globalComponent/Tooltip";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import Window from "./Window";
 
-const sx = { icon: { color: "var(--color-red-accent)", fontSize: "45px" } };
+const sx = {
+  icon: {
+    color: "var(--color-red-accent)",
+    fontSize: "45px",
+    "@media (max-width: 1600px)": {
+      fontSize: "34px",
+    },
+  },
+};
 
 interface TypeProp {
   $align: string;

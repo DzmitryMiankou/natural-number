@@ -14,6 +14,9 @@ const BoxImg = styled.div`
 const PVariant2 = styled(P)`
   max-width: 550px;
   margin-bottom: 40px;
+  @media (max-width: 1600px) {
+    max-width: 600px;
+  }
 `;
 
 const Box = styled.div``;
