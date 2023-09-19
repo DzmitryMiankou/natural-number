@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/natural-number/static/css/main.bf5168d4.css",
-    "main.js": "/natural-number/static/js/main.afc68037.js",
+    "main.css": "/natural-number/static/css/main.26ef6351.css",
+    "main.js": "/natural-number/static/js/main.ce589392.js",
     "static/js/787.b9fb9049.chunk.js": "/natural-number/static/js/787.b9fb9049.chunk.js",
     "static/media/mins.svg": "/natural-number/static/media/mins.22c3b4aa03b6cc1e2d05c2280b5e9ae2.svg",
     "static/media/aaa.svg": "/natural-number/static/media/aaa.0cb0871c2ae303f868124aaac8880da5.svg",
     "static/media/dishes.svg": "/natural-number/static/media/dishes.9048400397be59774df6a184d1e024dc.svg",
     "static/media/plus.svg": "/natural-number/static/media/plus.32b56595683b7ebf86f1f7e7052149ed.svg",
+    "static/media/multiplication.svg": "/natural-number/static/media/multiplication.20c26fb575000fed32e80d430dc8542b.svg",
     "static/media/imgMain.svg": "/natural-number/static/media/imgMain.970e756cdafe33ddd7aa4031d109693c.svg",
-    "static/media/multiplication.svg": "/natural-number/static/media/multiplication.57722777a509494b2b8c24878015a687.svg",
     "static/media/apple.svg": "/natural-number/static/media/apple.26a7b6e02417c32721c057d52fc1de9f.svg",
     "static/media/minus.svg": "/natural-number/static/media/minus.4fcae96364a87c046937b2f7f8f0b8f0.svg",
     "static/media/Comparison.svg": "/natural-number/static/media/Comparison.071aa30b0f76fa342d33133a2ecd5aff.svg",
@@ -16,12 +16,12 @@
     "static/media/backG2.svg": "/natural-number/static/media/backG2.7ae3cd7b1127ad21241d2dbdf98dcb99.svg",
     "static/media/backG.svg": "/natural-number/static/media/backG.5bb15d4d7db65f687b5da19856944b70.svg",
     "index.html": "/natural-number/index.html",
-    "main.bf5168d4.css.map": "/natural-number/static/css/main.bf5168d4.css.map",
-    "main.afc68037.js.map": "/natural-number/static/js/main.afc68037.js.map",
+    "main.26ef6351.css.map": "/natural-number/static/css/main.26ef6351.css.map",
+    "main.ce589392.js.map": "/natural-number/static/js/main.ce589392.js.map",
     "787.b9fb9049.chunk.js.map": "/natural-number/static/js/787.b9fb9049.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bf5168d4.css",
-    "static/js/main.afc68037.js"
+    "static/css/main.26ef6351.css",
+    "static/js/main.ce589392.js"
   ]
 }
