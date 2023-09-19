@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import SvgStyle from "./HeroSVGStyle.module.css";
 
@@ -6,6 +6,12 @@ const posAnimation = keyframes`
   0% {  transform: translateY(0px);  }
   50% {transform: translateY(10px);}
   100% {  transform: translateY(0px);  }
+`;
+
+const posAnimation2 = keyframes`
+  0% {  transform: translateY(0px);   }
+  50% {transform: translateY(6px); }
+  100% {  transform: translateY(0px); rotate: 0deg }
 `;
 
 interface EyeStyleType {
@@ -62,10 +68,10 @@ const Chere2 = styled.g<Hero1StyleType>`
 `;
 
 const HeroSVG = () => {
-  const [get, set] = React.useState<boolean>(false);
-  const [get1, set1] = React.useState<boolean>(false);
-  const [getQv, setQV] = React.useState<boolean>(false);
-  const [getQv2, setQV2] = React.useState<boolean>(false);
+  const [get, set] = useState<boolean>(false);
+  const [get1, set1] = useState<boolean>(false);
+  const [getQv, setQV] = useState<boolean>(false);
+  const [getQv2, setQV2] = useState<boolean>(false);
 
   const handleClickHero = (e: React.MouseEvent<SVGAElement>) => {
     e.preventDefault();
@@ -340,53 +346,83 @@ const HeroSVG = () => {
           </g>
         </g>
       </Chere1>
-      <Hero2
-        onClick={handleClickHero1}
-        onMouseEnter={() => set1(!get1)}
-        onMouseLeave={() => set1(!get1)}
-      >
-        <Chere2 $logic={get1 ? posAnimation : false}>
-          <g>
-            <polygon
-              className={SvgStyle.st9}
-              points="1525.4,379.5 1524,380.7 1472.2,325 1473.3,324 		"
-            />
+      <polygon
+        className={SvgStyle.st0}
+        points="1603.4,435.3 1607.5,471.7 1596.3,473.8 1589.3,472.5 1596.3,464.2 1596.5,433.8 				"
+      />
+      <polygon
+        className={SvgStyle.st0}
+        points="1646.3,434.2 1650.4,470.6 1639.2,472.7 1632.1,471.5 1639.1,463.1 1639.4,432.8 				"
+      />
+      <Chere2 $logic={get1 ? posAnimation2 : false}>
+        <path
+          className={SvgStyle.st0}
+          d="M1547.7,305.7c-61.6-24.6,16.1,31.8,16.1,31.8l3.5-0.7C1567.3,336.9,1554.6,308.4,1547.7,305.7z"
+        />
+        <path
+          className={SvgStyle.st14}
+          d="M1548.7,311.1c-27.5-11,7.1,14.2,7.1,14.2l1.6-0.3C1557.5,325,1551.8,312.3,1548.7,311.1z"
+        />
+        <path
+          className={SvgStyle.st0}
+          d="M1649.8,325.4l3.6,0.5c0,0,74.9-60.2,14.5-32.6C1661.2,296.5,1649.8,325.6,1649.8,325.4z"
+        />
+        <path
+          className={SvgStyle.st14}
+          d="M1659.2,313.1l1.6,0.2c0,0,33.3-26.9,6.4-14.5C1664.2,300.2,1659.1,313.1,1659.2,313.1z"
+        />
+        <polygon
+          className={SvgStyle.st9}
+          points="1525.4,379.5 1524,380.7 1472.2,325 1473.3,324 		"
+        />
 
-            <ellipse
-              transform="matrix(0.9932 -0.1162 0.1162 0.9932 -27.0838 172.8447)"
-              className={SvgStyle.st13}
-              cx="1468.9"
-              cy="318.7"
-              rx="40.8"
-              ry="40.8"
-            />
+        <ellipse
+          transform="matrix(0.9932 -0.1162 0.1162 0.9932 -27.0838 172.8447)"
+          className={SvgStyle.st13}
+          cx="1468.9"
+          cy="318.7"
+          rx="40.8"
+          ry="40.8"
+        />
+        <polygon
+          className={SvgStyle.st0}
+          points="1545,379.4 1524.2,372.1 1525.4,379.5 1543.8,385.9 				"
+        />
+
+        <rect
+          x="1514.9"
+          y="366.3"
+          transform="matrix(0.9932 -0.1162 0.1162 0.9932 -33.1998 179.1303)"
+          className={SvgStyle.st0}
+          width="9.7"
+          height="16"
+        />
+        <polygon
+          className={SvgStyle.st0}
+          points="1679.3,375.5 1699.8,383.4 1694.1,388.3 1676,381.3 				"
+        />
+
+        <rect
+          x="1694"
+          y="383.3"
+          transform="matrix(0.7341 -0.679 0.679 0.7341 188.939 1258.8827)"
+          className={SvgStyle.st0}
+          width="16"
+          height="9.7"
+        />
+        <polygon
+          className={SvgStyle.st17}
+          points="1543.4,442.4 1536.7,461.3 1701.2,441.7 1692.1,425 				"
+        />
+        <Hero2
+          onClick={handleClickHero1}
+          onMouseEnter={() => set1(!get1)}
+          onMouseLeave={() => set1(!get1)}
+        >
+          <g>
             <g>
               <g>
-                <polygon
-                  className={SvgStyle.st0}
-                  points="1603.4,435.3 1607.5,471.7 1596.3,473.8 1589.3,472.5 1596.3,464.2 1596.5,433.8 				"
-                />
-                <polygon
-                  className={SvgStyle.st0}
-                  points="1646.3,434.2 1650.4,470.6 1639.2,472.7 1632.1,471.5 1639.1,463.1 1639.4,432.8 				"
-                />
                 <g>
-                  <path
-                    className={SvgStyle.st0}
-                    d="M1547.7,305.7c-61.6-24.6,16.1,31.8,16.1,31.8l3.5-0.7C1567.3,336.9,1554.6,308.4,1547.7,305.7z"
-                  />
-                  <path
-                    className={SvgStyle.st14}
-                    d="M1548.7,311.1c-27.5-11,7.1,14.2,7.1,14.2l1.6-0.3C1557.5,325,1551.8,312.3,1548.7,311.1z"
-                  />
-                  <path
-                    className={SvgStyle.st0}
-                    d="M1649.8,325.4l3.6,0.5c0,0,74.9-60.2,14.5-32.6C1661.2,296.5,1649.8,325.6,1649.8,325.4z"
-                  />
-                  <path
-                    className={SvgStyle.st14}
-                    d="M1659.2,313.1l1.6,0.2c0,0,33.3-26.9,6.4-14.5C1664.2,300.2,1659.1,313.1,1659.2,313.1z"
-                  />
                   <g>
                     <g>
                       <g>
@@ -461,36 +497,6 @@ const HeroSVG = () => {
                     />
                   </g>
                 </g>
-                <polygon
-                  className={SvgStyle.st0}
-                  points="1545,379.4 1524.2,372.1 1525.4,379.5 1543.8,385.9 				"
-                />
-
-                <rect
-                  x="1514.9"
-                  y="366.3"
-                  transform="matrix(0.9932 -0.1162 0.1162 0.9932 -33.1998 179.1303)"
-                  className={SvgStyle.st0}
-                  width="9.7"
-                  height="16"
-                />
-                <polygon
-                  className={SvgStyle.st0}
-                  points="1679.3,375.5 1699.8,383.4 1694.1,388.3 1676,381.3 				"
-                />
-
-                <rect
-                  x="1694"
-                  y="383.3"
-                  transform="matrix(0.7341 -0.679 0.679 0.7341 188.939 1258.8827)"
-                  className={SvgStyle.st0}
-                  width="16"
-                  height="9.7"
-                />
-                <polygon
-                  className={SvgStyle.st17}
-                  points="1543.4,442.4 1536.7,461.3 1701.2,441.7 1692.1,425 				"
-                />
               </g>
               <g>
                 <g>
@@ -562,8 +568,8 @@ const HeroSVG = () => {
               d="M1461.7,297.9h-0.2l-9,7.4l-2.7-5.7l11.4-9.3l6.7-1.4l11.4,58l-7.6,1.5L1461.7,297.9z"
             />
           </g>
-        </Chere2>
-      </Hero2>
+        </Hero2>
+      </Chere2>
     </svg>
   );
 };

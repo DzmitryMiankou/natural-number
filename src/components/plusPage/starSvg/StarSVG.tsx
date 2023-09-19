@@ -9,6 +9,7 @@ import { RootState } from "../../../redux/store";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import TooltipButt from "../../globalComponent/Tooltip";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { useResize } from "../../../hook/resizeWindHook";
 
 const opacityAnimationErr = keyframes`
   0% {  background-color: #eec9c1;  }
@@ -94,6 +95,7 @@ const inpArr: Array<TypeInpArr<string>> = [
 ];
 
 const StarSVG = () => {
+  const windowHeight = useResize();
   const state = useSelector((store: RootState) => store.plusPageInputReducer);
   const dispatch = useDispatch();
   const [get, set] = React.useState<boolean>(false);
@@ -129,7 +131,14 @@ const StarSVG = () => {
   };
 
   return (
-    <svg version="1.1" x="0px" y="0px" viewBox="-100 0 1280 1160">
+    <svg
+      version="1.1"
+      x="0px"
+      y="0px"
+      viewBox={
+        windowHeight.width < 1600 ? "-290 0 1700 1160" : "-100 0 1280 1160"
+      }
+    >
       <>
         {inpArr.map(({ x, y, b }) => (
           <foreignObject key={b} x={x} y={y} width="120" height="120">
