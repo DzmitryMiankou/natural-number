@@ -65,7 +65,9 @@ const ComparisonPage = () => {
         <>
           <SimpleDialog opens={open} handleClose={handleClose} />
           <Box>
-            <PVariant2>Нажмите на фрукт, которого меньше</PVariant2>
+            <PVariant2>
+              Сравните количество фруктов. Выберите те, которых меньше.
+            </PVariant2>
             <BoxImg>
               <Img
                 onClick={(e) => handleClickOpen(e, "ok")}

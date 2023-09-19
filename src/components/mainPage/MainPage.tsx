@@ -30,6 +30,9 @@ const Title = styled.h1`
   @media (max-width: 1195px) {
     margin: 40px;
   }
+  @media (max-width: 560px) {
+    font-size: 34px;
+  }
 `;
 
 const MaimPage = ({ state }: { state: StateMaimPageType }) => {

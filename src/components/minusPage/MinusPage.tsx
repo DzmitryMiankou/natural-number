@@ -46,12 +46,8 @@ const MinusPage = () => {
         <BoxImg>
           <SimpleDialog opens={open} handleClose={handleClose} />
           <Box>
-            <PVariant2>
-              Нажмите на джубика, который с правильным ответам
-            </PVariant2>
-
+            <PVariant2>Выберите чудика с правильным ответом</PVariant2>
             <HeroSVG />
-
             <img src={Img1} alt="img" />
           </Box>
         </BoxImg>

@@ -26,16 +26,15 @@ const MainVariant = styled(Main)<TypeProp>`
 `;
 
 interface TypeArr {
+  id: number;
   text: string;
   icon: JSX.Element;
 }
 
 const arr: Array<TypeArr> = [
+  { id: 1, text: "Читать больше", icon: <MenuBookIcon sx={sx.icon} /> },
   {
-    text: "Читать больше",
-    icon: <MenuBookIcon sx={sx.icon} />,
-  },
-  {
+    id: 2,
     text: "Задания по теме",
     icon: <FormatListNumberedIcon sx={sx.icon} />,
   },
@@ -45,35 +44,51 @@ const TitlePage = ({
   title,
   boximg,
   alignMain,
+  educationText,
+  educationTest,
 }: {
   title: JSX.Element;
   boximg: JSX.Element;
   alignMain: string;
+  educationText?: string;
+  educationTest?: string;
 }) => {
   const [openWind, setOpenWind] = React.useState<boolean>(false);
+  const [dataWind, setDatanWind] = React.useState<any>();
 
   const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     return setOpenWind(false);
   };
 
-  const handleClickOpenWind = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClickOpenWind = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: number
+  ) => {
     e.preventDefault();
+    setDatanWind(id);
     return setOpenWind(true);
   };
 
   return (
     <MainVariant $align={alignMain}>
       <BoxTitlePage>
-        <Window open={openWind} handleClose={handleClose} />
+        <Window
+          title={dataWind === 1 ? arr[0].text : arr[1].text}
+          open={openWind}
+          handleClose={handleClose}
+          educationData={dataWind === 1 ? educationText : educationTest}
+        />
         <>{title}</>
         <div>
-          {arr.map(({ text, icon }, i) => (
+          {arr.map(({ text, icon, id }) => (
             <TooltipButt
-              key={i}
+              key={id}
               text={text}
               element={
-                <IconButton onClick={handleClickOpenWind}>{icon}</IconButton>
+                <IconButton onClick={(e) => handleClickOpenWind(e, id)}>
+                  {icon}
+                </IconButton>
               }
             />
           ))}

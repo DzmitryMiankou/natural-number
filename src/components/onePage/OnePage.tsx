@@ -5,6 +5,7 @@ import { Button, Box } from "@mui/material";
 import SimpleDialog from "./dialog";
 import { Pann, Akcent, P } from "../../style/style";
 import TitlePage from "../globalComponent/TitlePage";
+import data from "../../data/twoLevelData.json";
 
 const BoxQvest = styled.div`
   width: 100%;
@@ -52,16 +53,18 @@ const OnePage = () => {
 
   return (
     <TitlePage
+      educationText={data[0].naturalData.educationText}
+      educationTest={data[0].naturalData.educationTest}
       alignMain={"space-between"}
       title={
         <Pann>
-          <Akcent>Натурьльные числа</Akcent> — это числа, которые используются
-          при счёте предметов
+          <Akcent>{data[0].naturalData.accent}</Akcent>
+          {data[0].naturalData.title}
         </Pann>
       }
       boximg={
         <BoxQvest>
-          <PVariant>Сколько яблок осталось собрать?</PVariant>
+          <PVariant>{data[0].naturalData.qvest}</PVariant>
           <SimpleDialog opens={open} handleClose={handleClose} />
           <Box sx={{ display: "flex", gap: "5px" }}>
             {sortRandomArr().map((num, i) => (

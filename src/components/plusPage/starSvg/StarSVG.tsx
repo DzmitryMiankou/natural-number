@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled, { keyframes } from "styled-components";
 import {
   inputPlusPageAction,
@@ -97,7 +97,7 @@ const StarSVG = () => {
   const dispatch = useDispatch();
   const [get, set] = React.useState<boolean>(false);
 
-  const onChangeCommit = React.useCallback(
+  const onChangeCommit = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
       e.preventDefault();
       const text = e.target.value;
@@ -106,7 +106,7 @@ const StarSVG = () => {
     [dispatch]
   );
 
-  const restartNumber = React.useCallback(
+  const restartNumber = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
       set(false);
@@ -115,7 +115,7 @@ const StarSVG = () => {
     [dispatch]
   );
 
-  const checkNumber = React.useCallback(
+  const checkNumber = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
       set(!get);
