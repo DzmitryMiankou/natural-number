@@ -3,6 +3,7 @@ import ImgMain2 from "../../img/imgMain2.svg";
 import Comparison from "../../img/Comparison.svg";
 import PlusImg from "../../img/plus.svg";
 import Minus from "../../img/minus.svg";
+import Multiplication from "../../img/multiplication.svg";
 
 type arrCardType<T> = {
   main: Array<{
@@ -37,7 +38,11 @@ const initialState: arrCardType<string> = {
           path: "/minusNumber",
           img: Minus,
         },
-        { text: "Умножение натуральных чисел", path: "/g", img: ImgMain2 },
+        {
+          text: "Умножение натуральных чисел",
+          path: "/g",
+          img: Multiplication,
+        },
         { text: "Деление натуральных чисел", path: "/s", img: ImgMain2 },
       ],
       footer: `© ${new Date().getFullYear()}, Дмитрий Меньков, г. Молодечно`,

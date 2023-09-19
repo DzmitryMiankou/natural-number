@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import styled, { keyframes } from "styled-components";
 import SvgStyle from "./HeroSVGStyle.module.css";
 
@@ -73,18 +73,22 @@ const HeroSVG = () => {
   const [getQv, setQV] = useState<boolean>(false);
   const [getQv2, setQV2] = useState<boolean>(false);
 
-  const handleClickHero = (e: React.MouseEvent<SVGAElement>) => {
+  const handleClickHero = useCallback((e: React.MouseEvent<SVGAElement>) => {
     e.preventDefault();
+    setQV2(false);
     setQV(true);
     return setTimeout(() => setQV(false), 2000);
-  };
+  }, []);
 
-  const handleClickHero1 = (e: React.MouseEvent<SVGAElement>) => {
-    e.preventDefault();
-    handleClickHero(e);
-    setQV2(true);
-    return setTimeout(() => setQV2(false), 2000);
-  };
+  const handleClickHero1 = useCallback(
+    (e: React.MouseEvent<SVGAElement>) => {
+      e.preventDefault();
+      handleClickHero(e);
+      setQV2(true);
+      return setTimeout(() => setQV2(false), 2000);
+    },
+    [handleClickHero]
+  );
 
   return (
     <svg
