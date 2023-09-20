@@ -11,9 +11,19 @@ import TooltipButt from "../../globalComponent/Tooltip";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useResize } from "../../../hook/resizeWindHook";
 
+const sx = {
+  icon: {
+    fontSize: "70px",
+    cursor: "pointer",
+    color: "var(--color-red-title-icon)",
+    backgroundColor: "#fff1e8",
+    borderRadius: "50px",
+  },
+};
+
 const opacityAnimationErr = keyframes`
   0% {  background-color: #eec9c1;  }
-  100% {   background-color: #dc3e1b;  }
+  100% {   background-color: var(--color-red-notRight);  }
 `;
 
 interface TypeInputStyle {
@@ -49,18 +59,16 @@ const Circle0 = styled.circle`
   stroke-miterlimit: 10;
 `;
 
-const Circle1 = styled.circle`
+const Circle1 = styled(Circle0)`
   fill: none;
   stroke: #e38b00;
   stroke-width: 5;
-  stroke-miterlimit: 10;
 `;
 
-const Circle2 = styled.circle`
+const Circle2 = styled(Circle0)`
   fill: none;
   stroke: #008cad;
   stroke-width: 5;
-  stroke-miterlimit: 10;
 `;
 
 const Text1 = styled.text`
@@ -135,33 +143,11 @@ const StarSVG = () => {
   const buttArr: Array<TypeButtArr> = [
     {
       textToolTip: "Сбросить",
-      icon: (
-        <RestartAltIcon
-          onClick={restartNumber}
-          sx={{
-            fontSize: "70px",
-            cursor: "pointer",
-            color: "#af5946",
-            backgroundColor: "#fff1e8",
-            borderRadius: "50px",
-          }}
-        />
-      ),
+      icon: <RestartAltIcon onClick={restartNumber} sx={sx.icon} />,
     },
     {
       textToolTip: "Проверить",
-      icon: (
-        <CheckCircleOutlineIcon
-          onClick={checkNumber}
-          sx={{
-            fontSize: "70px",
-            cursor: "pointer",
-            color: "#af5946",
-            backgroundColor: "#fff1e8",
-            borderRadius: "50px",
-          }}
-        />
-      ),
+      icon: <CheckCircleOutlineIcon onClick={checkNumber} sx={sx.icon} />,
     },
   ];
 

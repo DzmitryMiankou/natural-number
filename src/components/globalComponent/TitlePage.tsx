@@ -35,10 +35,13 @@ const arr: Array<TypeArr> = [
   { id: 1, text: "Читать больше", icon: <MenuBookIcon sx={sx.icon} /> },
   {
     id: 2,
-    text: "Задания по теме",
+    text: "Задания для самопроверки",
     icon: <FormatListNumberedIcon sx={sx.icon} />,
   },
 ];
+
+export type PropTypeText = Array<{ text: string }>;
+export type PropTypeTest = Array<{ qvest: string; answer: string }>;
 
 const TitlePage = ({
   title,
@@ -50,11 +53,11 @@ const TitlePage = ({
   title: JSX.Element;
   boximg: JSX.Element;
   alignMain: string;
-  educationText?: string;
-  educationTest?: string;
+  educationText?: PropTypeText;
+  educationTest?: PropTypeTest;
 }) => {
   const [openWind, setOpenWind] = React.useState<boolean>(false);
-  const [dataWind, setDatanWind] = React.useState<any>();
+  const [dataWind, setDatanWind] = React.useState<number>();
 
   const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

@@ -5,6 +5,14 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import { DialogTitle, IconButton, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { PropTypeTest, PropTypeText } from "./TitlePage";
+import ColorRadioButtons from "./RadioButton";
+import styled from "styled-components";
+
+const AnswerBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 const Window = ({
   open,
@@ -14,7 +22,7 @@ const Window = ({
 }: {
   open: boolean;
   title: string;
-  educationData?: string;
+  educationData?: PropTypeTest | PropTypeText;
   handleClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) => {
   const [scroll] = React.useState<DialogProps["scroll"]>("paper");
@@ -52,16 +60,34 @@ const Window = ({
           </DialogActions>
         </Box>
         <DialogContent dividers={scroll === "paper"}>
-          {educationData?.split("|").map((text, i) => (
-            <DialogContentText
-              id="scroll-dialog-description"
-              ref={descriptionElementRef}
-              tabIndex={-1}
-              key={i}
-              sx={{ marginTop: "15px", color: "#803700" }}
-            >
-              {text}
-            </DialogContentText>
+          {educationData?.map(({ text, qvest, answer }: any, i: number) => (
+            <React.Fragment key={i}>
+              <DialogContentText
+                id="scroll-dialog-description"
+                ref={descriptionElementRef}
+                tabIndex={-1}
+                sx={{ marginTop: "15px", color: "#803700" }}
+              >
+                {text || `${i + 1}) ${qvest}`}
+              </DialogContentText>
+              <>
+                {answer ? (
+                  <>
+                    {answer
+                      .split("|")
+                      .sort(() => Math.random() - 0.5)
+                      .map((data: string, i: number) => (
+                        <AnswerBox key={i}>
+                          <ColorRadioButtons data={data} />
+                          <p>{data}</p>
+                        </AnswerBox>
+                      ))}
+                  </>
+                ) : (
+                  <></>
+                )}
+              </>
+            </React.Fragment>
           ))}
         </DialogContent>
       </Dialog>
