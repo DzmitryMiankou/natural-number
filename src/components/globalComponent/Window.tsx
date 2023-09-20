@@ -6,7 +6,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import { DialogTitle, IconButton, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { PropTypeTest, PropTypeText } from "./TitlePage";
-import ColorRadioButtons from "./RadioButton";
+import Radios from "./RadioButton";
 import styled from "styled-components";
 
 const AnswerBox = styled.div`
@@ -73,15 +73,9 @@ const Window = ({
               <>
                 {answer ? (
                   <>
-                    {answer
-                      .split("|")
-                      .sort(() => Math.random() - 0.5)
-                      .map((data: string, i: number) => (
-                        <AnswerBox key={i}>
-                          <ColorRadioButtons data={data} />
-                          <p>{data}</p>
-                        </AnswerBox>
-                      ))}
+                    <AnswerBox key={i}>
+                      <Radios data={answer} />
+                    </AnswerBox>
                   </>
                 ) : (
                   <></>
