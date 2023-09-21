@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import Button from "@mui/material/Button";
 
-const Radios = ({ data }: { data: any }) => {
+const Radios = ({ data }: { data: string }) => {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState("Выбирай с умом");
@@ -42,7 +42,7 @@ const Radios = ({ data }: { data: any }) => {
           value={value}
           onChange={handleRadioChange}
         >
-          {data.split("|").map((data1: string, i: number) => (
+          {data.split("|").map((data1, i) => (
             <FormControlLabel
               key={i}
               value={data1}

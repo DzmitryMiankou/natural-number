@@ -5,6 +5,7 @@ import apple from "../../img/apple.svg";
 import styled from "styled-components";
 import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
+import data from "../../data/twoLevelData.json";
 
 const BoxImg = styled.div`
   display: flex;
@@ -52,22 +53,24 @@ const ComparisonPage = () => {
     return setOpen("");
   };
 
+  const state = data[0].comparisonData;
+
   return (
     <TitlePage
+      educationText={state.educationText}
+      educationTest={state.educationTest}
       alignMain={"space-between"}
       title={
         <Pann>
-          <Akcent>Сравнить числа</Akcent> — это значит определить, какое число
-          больше, а какое меньше
+          <Akcent>{state.accent}</Akcent>
+          {state.title}
         </Pann>
       }
       boximg={
         <>
           <SimpleDialog opens={open} handleClose={handleClose} />
           <Box>
-            <PVariant2>
-              Сравните количество фруктов. Выберите те, которых меньше.
-            </PVariant2>
+            <PVariant2>{state.qvest}</PVariant2>
             <BoxImg>
               <Img
                 onClick={(e) => handleClickOpen(e, "ok")}

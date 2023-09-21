@@ -51,20 +51,22 @@ const OnePage = () => {
     return [2, 5, 3].sort(() => Math.random() - 0.5);
   };
 
+  const state = data[0].naturalData;
+
   return (
     <TitlePage
-      educationText={data[0].naturalData.educationText}
-      educationTest={data[0].naturalData.educationTest}
+      educationText={state.educationText}
+      educationTest={state.educationTest}
       alignMain={"space-between"}
       title={
         <Pann>
-          <Akcent>{data[0].naturalData.accent}</Akcent>
-          {data[0].naturalData.title}
+          <Akcent>{state.accent}</Akcent>
+          {state.title}
         </Pann>
       }
       boximg={
         <BoxQvest>
-          <PVariant>{data[0].naturalData.qvest}</PVariant>
+          <PVariant>{state.qvest}</PVariant>
           <SimpleDialog opens={open} handleClose={handleClose} />
           <Box sx={{ display: "flex", gap: "5px" }}>
             {sortRandomArr().map((num, i) => (
