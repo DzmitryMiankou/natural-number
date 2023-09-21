@@ -4,9 +4,8 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
-import Button from "@mui/material/Button";
 
-const Radios = ({ data }: { data: string }) => {
+const Radios = ({ data, get }: { data: string; get: boolean }) => {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState("Выбирай с умом");
@@ -31,8 +30,6 @@ const Radios = ({ data }: { data: string }) => {
     }
   };
 
-  console.log(data.split("|"));
-
   return (
     <form onSubmit={handleSubmit}>
       <FormControl sx={{ m: 3 }} error={error} variant="standard">
@@ -52,9 +49,6 @@ const Radios = ({ data }: { data: string }) => {
           ))}
         </RadioGroup>
         <FormHelperText>{helperText}</FormHelperText>
-        <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
-          Check Answer
-        </Button>
       </FormControl>
     </form>
   );
