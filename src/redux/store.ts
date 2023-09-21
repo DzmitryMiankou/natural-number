@@ -12,17 +12,19 @@ import {
 import storage from "redux-persist/lib/storage";
 import mainPageReducer from "./mainPageReducer/mainPageReducer";
 import plusPageInputReducer from "./plusReducer/Input";
+import radioReducer from "./radioReducer/RadioReducer";
 
 const rootReducers = combineReducers({
   static: mainPageReducer,
   plusPageInputReducer: plusPageInputReducer,
+  radio: radioReducer,
 });
 
 const persistConfig = {
   key: "root",
   storage,
   version: 1,
-  blacklist: ["static", "plusPageInputReducer"],
+  blacklist: ["static", "plusPageInputReducer", "radio"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);

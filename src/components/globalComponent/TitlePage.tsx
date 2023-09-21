@@ -78,9 +78,11 @@ const TitlePage = ({
       <BoxTitlePage>
         <Window
           title={dataWind === 1 ? arr[0].text : arr[1].text}
+          dataWind={dataWind}
           open={openWind}
           handleClose={handleClose}
-          educationData={dataWind === 1 ? educationText : educationTest}
+          educationText={educationText}
+          educationTest={educationTest}
         />
         <>{title}</>
         <div>

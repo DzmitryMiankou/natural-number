@@ -1,56 +1,98 @@
 import * as React from "react";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormHelperText from "@mui/material/FormHelperText";
+import { PropTypeTest } from "./TitlePage";
+import {
+  FormLabel,
+  FormHelperText,
+  FormControlLabel,
+  RadioGroup,
+  FormControl,
+  Radio,
+  Button,
+} from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, AppDispatch } from "../../redux/store";
+import { radioAction } from "../../redux/radioReducer/RadioReducer";
 
-const Radios = ({ data, get }: { data: string; get: boolean }) => {
+const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
+  const state = useSelector((store: RootState) => store.radio.arr);
+  const statew = useSelector((store: RootState) => store.radio);
+  const dispatch: AppDispatch = useDispatch();
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState("Выбирай с умом");
+  const [v, setv] = React.useState<Array<string>>([""]);
+  const [errorww, setErrowwr] = React.useState<string | any>("");
 
-  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value);
+  const handleRadioChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    qvest: string,
+    b: any
+  ) => {
     setHelperText(" ");
     setError(false);
+    setv(b);
+    setErrowwr((event.target as HTMLInputElement).value);
+    setValue(qvest);
+
+    dispatch(
+      radioAction({
+        key: qvest,
+        value: (event.target as HTMLInputElement).value,
+      })
+    );
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (value === " 0.") {
+    let arr: any = [];
+    state.forEach((e) => (arr = [e]));
+    if (`${v[2]}` === `${arr}`) {
       setHelperText("Отлично");
       setError(false);
-    } else if (value.length > 0 && value !== " 0.") {
+    } else if (state.length > 0 || `${v[2]}` !== ` 0.`) {
       setHelperText("Плохой ответ");
       setError(true);
     } else {
+      state.forEach((e) => console.log(`${e}`));
       setHelperText("Вы ничего не выбрали");
       setError(true);
     }
   };
 
+  console.log(statew);
   return (
-    <form onSubmit={handleSubmit}>
-      <FormControl sx={{ m: 3 }} error={error} variant="standard">
-        <RadioGroup
-          aria-labelledby="demo-error-radios"
-          name="quiz"
-          value={value}
-          onChange={handleRadioChange}
-        >
-          {data.split("|").map((data1, i) => (
-            <FormControlLabel
-              key={i}
-              value={data1}
-              control={<Radio />}
-              label={data1}
-            />
-          ))}
-        </RadioGroup>
+    <>
+      <form onSubmit={handleSubmit}>
+        {data?.map(({ qvest, answer }, i) => (
+          <React.Fragment key={i}>
+            <FormControl sx={{ m: 3 }} error={error} variant="standard">
+              <FormLabel focused={false}>{qvest}</FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-error-radios"
+                name="quiz"
+                value={new Set(state).forEach((entry) => entry)}
+                onChange={(e) => handleRadioChange(e, qvest, answer.split("|"))}
+              >
+                <>
+                  {answer.split("|").map((data, i) => (
+                    <FormControlLabel
+                      key={i}
+                      value={data}
+                      control={<Radio />}
+                      label={data}
+                    />
+                  ))}
+                </>
+              </RadioGroup>
+            </FormControl>
+          </React.Fragment>
+        ))}
         <FormHelperText>{helperText}</FormHelperText>
-      </FormControl>
-    </form>
+        <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
+          Check Answer
+        </Button>
+      </form>
+    </>
   );
 };
 
