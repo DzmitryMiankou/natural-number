@@ -15,13 +15,11 @@ import { radioAction } from "../../redux/radioReducer/RadioReducer";
 
 const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
   const state = useSelector((store: RootState) => store.radio.arr);
-  const statew = useSelector((store: RootState) => store.radio);
+  const answer = useSelector((store: RootState) => store.radio);
   const dispatch: AppDispatch = useDispatch();
-  const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState("Выбирай с умом");
   const [v, setv] = React.useState<Array<string>>([""]);
-  const [errorww, setErrowwr] = React.useState<string | any>("");
 
   const handleRadioChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -31,9 +29,6 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
     setHelperText(" ");
     setError(false);
     setv(b);
-    setErrowwr((event.target as HTMLInputElement).value);
-    setValue(qvest);
-
     dispatch(
       radioAction({
         key: qvest,
@@ -44,9 +39,21 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    let arr: any = [];
-    state.forEach((e) => (arr = [e]));
-    if (`${v[2]}` === `${arr}`) {
+
+    for (let i in data) {
+      let index: number = +i;
+      if (
+        answer.answer[index]?.key === undefined ||
+        answer.answer.length < data.length
+      )
+        return;
+      if (answer.answer[index].key === data[index].qvest)
+        console.log(
+          `${answer.answer[index].value} = ${data[index].answer.split("|")[0]}`
+        );
+    }
+
+    if (`${v[2]}` === `2`) {
       setHelperText("Отлично");
       setError(false);
     } else if (state.length > 0 || `${v[2]}` !== ` 0.`) {
@@ -59,7 +66,6 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
     }
   };
 
-  console.log(statew);
   return (
     <>
       <form onSubmit={handleSubmit}>

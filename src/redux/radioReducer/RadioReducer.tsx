@@ -8,32 +8,37 @@ interface TypeAction {
 }
 
 const initialState: {
-  arr: [] | TypeActionObj[];
-  obj: [] | TypeActionObj[] | any;
+  arr: TypeActionObj[];
+  obj: TypeActionObj[];
+  answer: TypeActionObj[];
 } = {
   arr: [],
   obj: [],
+  answer: [],
 };
 
 const radioReducer = (state = initialState, action: TypeAction) => {
   switch (action.type) {
     case RADIO: {
-      let fd: any = [];
-      const f = state.arr.map(function (element: any) {
-        console.log(action.value);
-        if (element.key === action.value.key) {
-          return { [element.key]: action.value.value };
-        } else {
-          console.log(action.value);
-          fd.push(action.value);
-          return { [action.value.key]: action.value.value };
+      const obj = [...state.obj, { ...action.value }];
+      const res = obj.reduce((o: TypeActionObj[], i: TypeActionObj) => {
+        if (!o.find((v: TypeActionObj) => v.key === i.key)) {
+          o.push({
+            ...i,
+            value:
+              i.value !== action.value.value && i.key === action.value.key
+                ? action.value.value
+                : i.value,
+          });
         }
-      });
-      console.log(fd);
+        return o;
+      }, []);
+
       return {
         ...state,
         arr: [...state.arr, action.value],
-        obj: [...state.obj, ...f],
+        obj: [...obj],
+        answer: [...res],
       };
     }
     default:
