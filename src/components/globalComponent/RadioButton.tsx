@@ -17,15 +17,21 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
   const state = useSelector((store: RootState) => store.radio.arr);
   const answer = useSelector((store: RootState) => store.radio);
   const dispatch: AppDispatch = useDispatch();
-  const [error, setError] = React.useState(false);
-  const [helperText, setHelperText] = React.useState("Выбирай с умом");
+  const [helperText, setHelperText] = React.useState<string>(" ");
+  const [errorText, setErrorText] = React.useState<Array<string>>([]);
+
+  const simbolSplit = "|";
+  const errText: Array<string> = [
+    "Выберите правильный вариант ответа",
+    "Молодец. Ответы все правильные",
+  ];
 
   const handleRadioChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     qvest: string
   ) => {
     setHelperText(" ");
-    setError(false);
+    setErrorText([" "]);
     dispatch(
       radioAction({
         key: qvest,
@@ -37,26 +43,19 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    let errorQvest: Array<string> = [];
+
     for (let i in data) {
       let index: number = +i;
       const indexData = data[index];
       const line = answer.obj.find((i) => i.key === indexData.qvest);
-      line?.value === indexData.answer.split("|")[indexData?.right || 0]
-        ? console.log(indexData.answer.split("|")[0])
-        : console.log(`no + ${index} `);
+      line?.value === indexData.answer.split(simbolSplit)[indexData?.right || 0]
+        ? errorQvest.push()
+        : errorQvest.push(indexData.qvest);
     }
-
-    if (`${error}` === `2`) {
-      setHelperText("Отлично");
-      setError(false);
-    } else if (state.length > 0 || `${error}` !== ` 0.`) {
-      setHelperText("Плохой ответ");
-      setError(true);
-    } else {
-      state.forEach((e) => console.log(`${e}`));
-      setHelperText("Вы ничего не выбрали");
-      setError(true);
-    }
+    setErrorText(errorQvest);
+    if (errorQvest.length === 0) return setHelperText(errText[1]);
+    setHelperText(errText[0]);
   };
 
   return (
@@ -64,7 +63,11 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
       <form onSubmit={handleSubmit}>
         {data?.map(({ qvest, answer }, i) => (
           <React.Fragment key={i}>
-            <FormControl sx={{ m: 3 }} error={error} variant="standard">
+            <FormControl
+              sx={{ m: 3 }}
+              error={errorText.find((item) => item === qvest) ? true : false}
+              variant="standard"
+            >
               <FormLabel focused={false}>{qvest}</FormLabel>
               <RadioGroup
                 aria-labelledby="demo-error-radios"
@@ -73,7 +76,7 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
                 onChange={(e) => handleRadioChange(e, qvest)}
               >
                 <>
-                  {answer.split("|").map((data, i) => (
+                  {answer.split(simbolSplit).map((data, i) => (
                     <FormControlLabel
                       key={i}
                       value={data}
@@ -86,7 +89,14 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
             </FormControl>
           </React.Fragment>
         ))}
-        <FormHelperText>{helperText}</FormHelperText>
+        <FormHelperText
+          sx={{
+            color: errorText.length === 0 ? "green" : "red",
+            fontSize: "14px",
+          }}
+        >
+          {helperText}
+        </FormHelperText>
         <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
           Проверить ответы
         </Button>
