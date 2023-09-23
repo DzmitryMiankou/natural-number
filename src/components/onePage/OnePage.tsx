@@ -47,10 +47,6 @@ const OnePage = () => {
     return setOpen("");
   };
 
-  const sortRandomArr = () => {
-    return [2, 5, 3].sort(() => Math.random() - 0.5);
-  };
-
   const state = data[0].naturalData;
 
   return (
@@ -69,7 +65,7 @@ const OnePage = () => {
           <PVariant>{state.qvest}</PVariant>
           <SimpleDialog opens={open} handleClose={handleClose} />
           <Box sx={{ display: "flex", gap: "5px" }}>
-            {sortRandomArr().map((num, i) => (
+            {[2, 5, 3].map((num, i) => (
               <React.Fragment key={i}>
                 <Button
                   onClick={(e) => handleClickOpen(e, num)}

@@ -19,16 +19,13 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
   const dispatch: AppDispatch = useDispatch();
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState("Выбирай с умом");
-  const [v, setv] = React.useState<Array<string>>([""]);
 
   const handleRadioChange = (
     event: React.ChangeEvent<HTMLInputElement>,
-    qvest: string,
-    b: any
+    qvest: string
   ) => {
     setHelperText(" ");
     setError(false);
-    setv(b);
     dispatch(
       radioAction({
         key: qvest,
@@ -42,17 +39,17 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
 
     for (let i in data) {
       let index: number = +i;
-      const f = answer.obj.find((i) => i.key === data[index].qvest);
-      const n = data[index]?.right;
-      f?.value === data[index].answer.split("|")[n || 0]
-        ? console.log(data[index].answer.split("|")[0])
+      const indexData = data[index];
+      const line = answer.obj.find((i) => i.key === indexData.qvest);
+      line?.value === indexData.answer.split("|")[indexData?.right || 0]
+        ? console.log(indexData.answer.split("|")[0])
         : console.log(`no + ${index} `);
     }
 
-    if (`${v[2]}` === `2`) {
+    if (`${error}` === `2`) {
       setHelperText("Отлично");
       setError(false);
-    } else if (state.length > 0 || `${v[2]}` !== ` 0.`) {
+    } else if (state.length > 0 || `${error}` !== ` 0.`) {
       setHelperText("Плохой ответ");
       setError(true);
     } else {
@@ -73,7 +70,7 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
                 aria-labelledby="demo-error-radios"
                 name="quiz"
                 value={new Set(state).forEach((entry) => entry)}
-                onChange={(e) => handleRadioChange(e, qvest, answer.split("|"))}
+                onChange={(e) => handleRadioChange(e, qvest)}
               >
                 <>
                   {answer.split("|").map((data, i) => (
@@ -91,7 +88,7 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
         ))}
         <FormHelperText>{helperText}</FormHelperText>
         <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
-          Check Answer
+          Проверить ответы
         </Button>
       </form>
     </>
