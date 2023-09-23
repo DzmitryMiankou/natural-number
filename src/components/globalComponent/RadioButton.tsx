@@ -42,15 +42,11 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
 
     for (let i in data) {
       let index: number = +i;
-      if (
-        answer.answer[index]?.key === undefined ||
-        answer.answer.length < data.length
-      )
-        return;
-      if (answer.answer[index].key === data[index].qvest)
-        console.log(
-          `${answer.answer[index].value} = ${data[index].answer.split("|")[0]}`
-        );
+      const f = answer.obj.find((i) => i.key === data[index].qvest);
+      const n = data[index]?.right;
+      f?.value === data[index].answer.split("|")[n || 0]
+        ? console.log(data[index].answer.split("|")[0])
+        : console.log(`no + ${index} `);
     }
 
     if (`${v[2]}` === `2`) {
@@ -102,4 +98,4 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
   );
 };
 
-export default Radios;
+export default React.memo(Radios);

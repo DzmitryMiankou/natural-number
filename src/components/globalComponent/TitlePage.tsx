@@ -41,7 +41,11 @@ const arr: Array<TypeArr> = [
 ];
 
 export type PropTypeText = Array<{ text: string }>;
-export type PropTypeTest = Array<{ qvest: string; answer: string }>;
+export type PropTypeTest = Array<{
+  qvest: string;
+  answer: string;
+  right?: number;
+}>;
 
 const TitlePage = ({
   title,
