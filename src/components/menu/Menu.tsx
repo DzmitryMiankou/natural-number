@@ -16,10 +16,10 @@ type menuArrType<T> = Array<{ text: T; path: T }>;
 const menuArr: menuArrType<string> = [
   { text: "Главная", path: "/" },
   { text: "Что такое натуральные числа", path: "/numperNat" },
-  { text: "Сравнение натуральных чисел", path: "/comparisonNumb" },
-  { text: "Сложение натуральных чисел", path: "/s" },
-  { text: "Вычитание натуральных чисел", path: "/f" },
-  { text: "Умножение натуральных чисел", path: "/g" },
+  { text: "Сравнение или что больше", path: "/comparisonNumb" },
+  { text: "Сложение или сумма", path: "/plusNumber" },
+  { text: "Вычитание или разность", path: "/minusNumber" },
+  { text: "Умножение натуральных чисел", path: "/multiplicationNumber" },
   { text: "Деление натуральных чисел", path: "/s" },
 ];
 
@@ -28,7 +28,7 @@ const sx = {
   listItem: {
     bgcolor: "var(--color-white)",
     height: "100%",
-    borderBottom: "2px solid var(--color-yellow-border)",
+    borderBottom: "1px solid var(--color-yellow-border)",
   },
   listBoot: {
     color: "#9f5500",

@@ -1,0 +1,47 @@
+.st0 {
+  fill: #506b7c;
+}
+.st1 {
+  fill: #7391aa;
+}
+.st2 {
+  clip-path: url(#SVGID_00000140693347838525365300000004242817212384382125_);
+  fill: #577daa;
+}
+.st3 {
+  clip-path: url(#SVGID_00000008852670472160359700000006982659290404082835_);
+  fill: #97a5aa;
+}
+.st4 {
+  clip-path: url(#SVGID_00000081620972787300659380000001454419730212167564_);
+  fill: #577daa;
+}
+.st5 {
+  fill: #00012e;
+}
+
+.st6:hover,
+.st7:hover,
+.st8:hover {
+  fill: #ff8000;
+  cursor: pointer;
+}
+
+.st6 {
+  font-size: 20;
+  transition: 0.2s;
+}
+.st7 {
+  fill: rgb(0, 136, 11);
+  font-size: 20;
+  transition: 0.2s;
+}
+.st8 {
+  fill: rgb(60, 0, 255);
+  font-size: 20;
+  transition: 0.2s;
+}
+
+.overUse {
+  overflow: visible;
+}

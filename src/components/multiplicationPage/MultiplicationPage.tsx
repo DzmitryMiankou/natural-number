@@ -5,6 +5,7 @@ import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
 import data from "../../data/twoLevelData.json";
 import Img1 from "../../img/multiplGame.svg";
+import MultiSVG from "./multipSVG/MultiSVG";
 
 const Img = styled.img``;
 
@@ -21,7 +22,9 @@ const Box = styled.div`
   width: 100%;
 `;
 
-const BoxImg = styled.div``;
+const BoxImg = styled.div`
+  position: relative;
+`;
 
 const MultiplicationPage = () => {
   const [open, setOpen] = React.useState<string>("");
@@ -51,6 +54,7 @@ const MultiplicationPage = () => {
             <PVariant2>{state.qvest}</PVariant2>
             <BoxImg>
               <Img src={Img1} alt="img" />
+              <MultiSVG />
             </BoxImg>
           </Box>
         </>

@@ -12,7 +12,7 @@ const Modal = ({
   text,
   handleClose,
 }: {
-  opens: string;
+  opens?: string;
   text: string;
   handleClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) => {
@@ -20,7 +20,7 @@ const Modal = ({
     <Dialog onClose={handleClose} open={true}>
       <Box sx={{ marginLeft: "auto" }}>
         <IconButton onClick={handleClose} aria-label="delete" size="small">
-          <CloseIcon sx={sx.color} />
+          <CloseIcon sx={{ color: "var(--color-red)" }} />
         </IconButton>
       </Box>
       <Divider />
