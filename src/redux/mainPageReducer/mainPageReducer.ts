@@ -40,7 +40,7 @@ const initialState: arrCardType<string> = {
         },
         {
           text: "Умножение натуральных чисел",
-          path: "/g",
+          path: "/multiplicationNumber",
           img: Multiplication,
         },
         { text: "Деление натуральных чисел", path: "/s", img: ImgMain2 },

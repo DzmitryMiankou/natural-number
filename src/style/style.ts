@@ -37,6 +37,7 @@ const Pann = styled.p`
 
 const Akcent = styled.span`
   color: var(--color-red);
+  text-align: center;
 `;
 
 const P = styled.p`

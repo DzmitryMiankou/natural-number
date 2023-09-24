@@ -3,26 +3,27 @@ import { Pann, Akcent, P } from "../../style/style";
 import styled from "styled-components";
 import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
-import StarSVG from "./starSvg/StarSVG";
 import data from "../../data/twoLevelData.json";
+import Img1 from "../../img/multiplGame.svg";
 
-const BoxImg = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+const Img = styled.img``;
 
 const PVariant2 = styled(P)`
   max-width: 550px;
   margin-bottom: 40px;
+  margin: auto;
   @media (max-width: 1600px) {
     max-width: 600px;
   }
 `;
 
-const Box = styled.div``;
+const Box = styled.div`
+  width: 100%;
+`;
 
-const PlusPage = () => {
+const BoxImg = styled.div``;
+
+const MultiplicationPage = () => {
   const [open, setOpen] = React.useState<string>("");
 
   const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -30,7 +31,7 @@ const PlusPage = () => {
     return setOpen("");
   };
 
-  const state = data[0].plusPageData;
+  const state = data[0].multiplicationPageData;
 
   return (
     <TitlePage
@@ -49,7 +50,7 @@ const PlusPage = () => {
           <Box>
             <PVariant2>{state.qvest}</PVariant2>
             <BoxImg>
-              <StarSVG />
+              <Img src={Img1} alt="img" />
             </BoxImg>
           </Box>
         </>
@@ -58,4 +59,4 @@ const PlusPage = () => {
   );
 };
 
-export default PlusPage;
+export default MultiplicationPage;

@@ -8,11 +8,13 @@ import {
   FormControl,
   Radio,
   Button,
+  Box,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../../redux/store";
 import { radioAction } from "../../redux/radioReducer/RadioReducer";
 import styled from "styled-components";
+import TextField from "@mui/material/TextField";
 
 const ButtonBox = styled.div`
   display: flex;
@@ -53,7 +55,7 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
   ];
 
   const handleRadioChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     qvest: string
   ) => {
     setHelperText(" ");
@@ -99,25 +101,38 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
               onMouseLeave={() => setFocuse("")}
             >
               <FormLabel focused={false} sx={sx(focuse === qvest).formLabel}>
-                {qvest}
+                {`${i + 1}.${qvest}`}
               </FormLabel>
-              <RadioGroup
-                aria-labelledby="demo-error-radios"
-                name="quiz"
-                value={new Set(answer).forEach((entry) => entry)}
-                onChange={(e) => handleRadioChange(e, qvest)}
-              >
-                <>
-                  {answer.split(simbolSplit).map((data, i) => (
-                    <FormControlLabel
-                      key={i}
-                      value={data}
-                      control={<Radio sx={sx().radio} />}
-                      label={data}
+              <>
+                {answer.split(simbolSplit).length === 1 ? (
+                  <Box>
+                    <TextField
+                      id="filled-basic"
+                      label="ваш ответ"
+                      variant="filled"
+                      onChange={(e) => handleRadioChange(e, qvest)}
                     />
-                  ))}
-                </>
-              </RadioGroup>
+                  </Box>
+                ) : (
+                  <RadioGroup
+                    aria-labelledby="demo-error-radios"
+                    name="quiz"
+                    value={new Set(answer).forEach((entry) => entry)}
+                    onChange={(e) => handleRadioChange(e, qvest)}
+                  >
+                    <>
+                      {answer.split(simbolSplit).map((data, i) => (
+                        <FormControlLabel
+                          key={i}
+                          value={data}
+                          control={<Radio sx={sx().radio} />}
+                          label={data}
+                        />
+                      ))}
+                    </>
+                  </RadioGroup>
+                )}
+              </>
             </div>
           </FormControl>
         </React.Fragment>
