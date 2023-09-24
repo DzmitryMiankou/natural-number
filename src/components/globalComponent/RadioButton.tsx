@@ -16,7 +16,8 @@ import styled from "styled-components";
 
 const ButtonBox = styled.div`
   display: flex;
-  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
 `;
 
 const sx = (prop?: boolean) => ({
@@ -121,15 +122,16 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
           </FormControl>
         </React.Fragment>
       ))}
-      <FormHelperText
-        sx={{
-          color: errorText.length === 0 ? "green" : "red",
-          fontSize: "14px",
-        }}
-      >
-        {helperText}
-      </FormHelperText>
+
       <ButtonBox>
+        <FormHelperText
+          sx={{
+            color: errorText.length === 0 ? "green" : "red",
+            fontSize: "14px",
+          }}
+        >
+          {helperText}
+        </FormHelperText>
         <Button sx={sx().button} type="submit" variant="outlined">
           Проверить ответы
         </Button>
