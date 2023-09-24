@@ -6,6 +6,9 @@ import { IconButton } from "@mui/material";
 import TooltipButt from "../globalComponent/Tooltip";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import Window from "./Window";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store";
+import { clearRadioAction } from "../../redux/radioReducer/RadioReducer";
 
 const sx = {
   icon: {
@@ -60,11 +63,13 @@ const TitlePage = ({
   educationText?: PropTypeText;
   educationTest?: PropTypeTest;
 }) => {
+  const dispatch: AppDispatch = useDispatch();
   const [openWind, setOpenWind] = React.useState<boolean>(false);
   const [dataWind, setDatanWind] = React.useState<number>();
 
   const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    dispatch(clearRadioAction());
     return setOpenWind(false);
   };
 

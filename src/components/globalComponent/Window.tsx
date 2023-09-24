@@ -44,7 +44,6 @@ const Window = ({
   return (
     <div>
       <Dialog
-        onClose={handleClose}
         open={open}
         scroll={scroll}
         aria-labelledby="scroll-dialog-title"
@@ -59,7 +58,7 @@ const Window = ({
           </DialogTitle>
           <DialogActions>
             <IconButton onClick={handleClose} aria-label="delete" size="small">
-              <CloseIcon sx={{ color: "var(--color-yellow-title)" }} />
+              <CloseIcon sx={{ color: "var(--color-red)" }} />
             </IconButton>
           </DialogActions>
         </Box>

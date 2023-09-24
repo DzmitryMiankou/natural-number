@@ -1,17 +1,16 @@
 const RADIO = "IRADIO_RADIO";
+const CLEAR = "CLEAR_RADIO_ALL";
 
 type TypeActionObj = { key: string; value: string };
 
 interface TypeAction {
-  type: typeof RADIO;
+  type: typeof RADIO | typeof CLEAR;
   value: TypeActionObj;
 }
 
 const initialState: {
-  arr: TypeActionObj[];
   obj: TypeActionObj[];
 } = {
-  arr: [],
   obj: [],
 };
 
@@ -32,9 +31,11 @@ const radioReducer = (state = initialState, action: TypeAction) => {
 
       return {
         ...state,
-        arr: [...state.arr, action.value],
         obj: [...res],
       };
+    }
+    case CLEAR: {
+      return { ...initialState };
     }
     default:
       return state;
@@ -44,6 +45,10 @@ const radioReducer = (state = initialState, action: TypeAction) => {
 export const radioAction = (value: TypeActionObj) => ({
   type: RADIO,
   value: value,
+});
+
+export const clearRadioAction = () => ({
+  type: CLEAR,
 });
 
 export default radioReducer;
