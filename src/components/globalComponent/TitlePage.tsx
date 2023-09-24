@@ -6,9 +6,8 @@ import { IconButton } from "@mui/material";
 import TooltipButt from "../globalComponent/Tooltip";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import Window from "./Window";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
-import { clearRadioAction } from "../../redux/radioReducer/RadioReducer";
+import WindowHOCButt from "../../HOC/WindowHOCButt";
+import { PropType } from "../../HOC/WindowHOCButt";
 
 const sx = {
   icon: {
@@ -50,50 +49,34 @@ export type PropTypeTest = Array<{
   right?: number;
 }>;
 
-const TitlePage = ({
-  title,
-  boximg,
-  alignMain,
-  educationText,
-  educationTest,
+const TitlePageH = ({
+  params,
+  openWind,
+  dataWind,
+  handleClose,
+  handleClickOpenWind,
 }: {
-  title: JSX.Element;
-  boximg: JSX.Element;
-  alignMain: string;
-  educationText?: PropTypeText;
-  educationTest?: PropTypeTest;
-}) => {
-  const dispatch: AppDispatch = useDispatch();
-  const [openWind, setOpenWind] = React.useState<boolean>(false);
-  const [dataWind, setDatanWind] = React.useState<number>();
-
-  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    dispatch(clearRadioAction());
-    return setOpenWind(false);
-  };
-
-  const handleClickOpenWind = (
+  params: PropType<JSX.Element>;
+  openWind: boolean;
+  dataWind: number;
+  handleClickOpenWind: (
     e: React.MouseEvent<HTMLButtonElement>,
     id: number
-  ) => {
-    e.preventDefault();
-    setDatanWind(id);
-    return setOpenWind(true);
-  };
-
+  ) => void;
+  handleClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}) => {
   return (
-    <MainVariant $align={alignMain}>
+    <MainVariant $align={params.alignMain}>
       <BoxTitlePage>
         <Window
           title={dataWind === 1 ? arr[0].text : arr[1].text}
           dataWind={dataWind}
           open={openWind}
           handleClose={handleClose}
-          educationText={educationText}
-          educationTest={educationTest}
+          educationText={params.educationText}
+          educationTest={params.educationTest}
         />
-        <>{title}</>
+        <>{params.title}</>
         <div>
           {arr.map(({ text, icon, id }) => (
             <TooltipButt
@@ -108,9 +91,10 @@ const TitlePage = ({
           ))}
         </div>
       </BoxTitlePage>
-      <>{boximg}</>
+      <>{params.boximg}</>
     </MainVariant>
   );
 };
 
+const TitlePage = WindowHOCButt(TitlePageH);
 export default TitlePage;

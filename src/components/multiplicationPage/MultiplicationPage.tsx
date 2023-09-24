@@ -5,29 +5,34 @@ import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
 import data from "../../data/twoLevelData.json";
 import Img1 from "../../img/multiplGame.svg";
-import MultiSVG from "./multipSVG/MultiSVG";
+import { Button, Box } from "@mui/material";
 
 const Img = styled.img``;
 
-const PVariant2 = styled(P)`
-  max-width: 550px;
-  margin-bottom: 40px;
-  margin: auto;
-  @media (max-width: 1600px) {
-    max-width: 600px;
-  }
-`;
+const PVariant2 = styled(P)``;
 
-const Box = styled.div`
-  width: 100%;
-`;
+const sx = {
+  button: {
+    color: "var(--color-orange-button)",
+    border: "solid 1px  var(--color-orange-button)",
+    background: "var(--color-BG-button)",
+    fontSize: "18px",
+    "&:hover": { background: "#fffaf6", border: "solid 1px  #ff6f00" },
+  },
+};
 
-const BoxImg = styled.div`
-  position: relative;
-`;
+const BoxImg = styled.div``;
 
 const MultiplicationPage = () => {
   const [open, setOpen] = React.useState<string>("");
+
+  const handleClickOpen = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    num: number
+  ) => {
+    e.preventDefault();
+    return num === 24 ? setOpen("ok") : setOpen("err");
+  };
 
   const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -50,11 +55,30 @@ const MultiplicationPage = () => {
       boximg={
         <>
           <SimpleDialog opens={open} handleClose={handleClose} />
-          <Box>
+          <Box sx={{ width: "100%" }}>
             <PVariant2>{state.qvest}</PVariant2>
+            <Box
+              sx={{
+                display: "flex",
+                gap: "5px",
+                justifyContent: "center",
+                marginTop: "30px",
+              }}
+            >
+              {[30, 24, 18].map((num, i) => (
+                <React.Fragment key={i}>
+                  <Button
+                    onClick={(e) => handleClickOpen(e, num)}
+                    sx={sx.button}
+                    variant="outlined"
+                  >
+                    {num}
+                  </Button>
+                </React.Fragment>
+              ))}
+            </Box>
             <BoxImg>
               <Img src={Img1} alt="img" />
-              <MultiSVG />
             </BoxImg>
           </Box>
         </>

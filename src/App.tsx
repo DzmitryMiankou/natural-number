@@ -13,6 +13,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 import Tooltip from "@mui/material/Tooltip";
 import Fade from "@mui/material/Fade";
+import Window from "./components/globalComponent/Window";
+import data from "./data/twoLevelData.json";
+import WindowHOCButt from "./HOC/WindowHOCButt";
+import { RequestType } from "./HOC/WindowHOCButt";
 
 interface TypeBG {
   $url: string;
@@ -61,13 +65,25 @@ const FooterP = styled.p<Prop>`
   color: ${(p) => (p.$focus ? "#5b462e" : "#cd9f6b")};
 `;
 
-const App = () => {
+const AppH = ({
+  openWind,
+  dataWind,
+  handleClose,
+  handleClickOpenWind,
+}: RequestType) => {
   const state = useSelector((state: RootState) => state.static);
   const [get, set] = useState<boolean>(false);
   const location = useLocation();
 
   return (
     <AppDiv $url={location.pathname === state.main[0].list[1].path ? BG2 : BG}>
+      <Window
+        title={"Общий тест"}
+        dataWind={dataWind}
+        open={openWind}
+        handleClose={handleClose}
+        educationTest={data[0]?.quiz.educationTest}
+      />
       <Menu>
         <TemporaryDrawer />
         <>
@@ -97,7 +113,7 @@ const App = () => {
           TransitionComponent={Fade}
           TransitionProps={{ timeout: 600 }}
         >
-          <Button>
+          <Button onClick={(e) => handleClickOpenWind(e, 2)}>
             <QuizIcon sx={sx.icon} />
           </Button>
         </Tooltip>
@@ -110,4 +126,5 @@ const App = () => {
   );
 };
 
+const App = WindowHOCButt(AppH);
 export default App;
