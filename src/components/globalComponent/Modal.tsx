@@ -1,9 +1,10 @@
-import * as React from "react";
+import React, { MouseEvent } from "react";
 import { Box, DialogTitle, Divider, IconButton } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import CloseIcon from "@mui/icons-material/Close";
+import { SxProps } from "@mui/material";
 
-const sx = {
+const sx: { color: SxProps } = {
   color: { color: "var(--color-yellow-title)" },
 };
 
@@ -14,7 +15,7 @@ const Modal = ({
 }: {
   opens?: string;
   text: string;
-  handleClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handleClose: (e: MouseEvent<HTMLButtonElement>) => void;
 }) => {
   return (
     <Dialog onClose={handleClose} open={true}>
