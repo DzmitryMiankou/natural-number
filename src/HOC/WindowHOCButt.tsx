@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState, MouseEvent } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import { clearRadioAction } from "../redux/radioReducer/RadioReducer";
@@ -7,39 +7,44 @@ import {
   PropTypeText,
 } from "../components/globalComponent/TitlePage";
 
-export type PropType<T> = {
-  title: T;
-  boximg: T;
-  alignMain: string;
-  educationText?: PropTypeText;
-  educationTest?: PropTypeTest;
+export type PropType = {
+  title: { title: string; accent: string };
+  boximg: JSX.Element;
+  alignMain:
+    | "space-between"
+    | "space-around"
+    | "center"
+    | "start"
+    | "space-evenly";
+  educationText: PropTypeText;
+  educationTest: PropTypeTest;
 };
 
 export type RequestType = {
-  params?: PropType<JSX.Element>;
+  params: PropType;
   openWind: boolean;
   dataWind: number;
   handleClickOpenWind: (
     e: React.MouseEvent<HTMLButtonElement>,
     id: number
   ) => void;
-  handleClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handleClose: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
 const WindowHOCButt = (OriginalComponent: FC<any>) => {
-  function NewComponent(params: PropType<JSX.Element> | {}) {
+  function NewComponent(params: PropType | {}) {
     const dispatch: AppDispatch = useDispatch();
-    const [openWind, setOpenWind] = React.useState<boolean>(false);
-    const [dataWind, setDatanWind] = React.useState<number>();
+    const [openWind, setOpenWind] = useState<boolean>(false);
+    const [dataWind, setDatanWind] = useState<number>();
 
-    const handleClose = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    const handleClose = (e: MouseEvent<HTMLButtonElement>): void => {
       e.preventDefault();
       dispatch(clearRadioAction());
       return setOpenWind(false);
     };
 
     const handleClickOpenWind = (
-      e: React.MouseEvent<HTMLButtonElement>,
+      e: MouseEvent<HTMLButtonElement>,
       id: number
     ): void => {
       e.preventDefault();

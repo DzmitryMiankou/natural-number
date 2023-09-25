@@ -1,5 +1,5 @@
 import React from "react";
-import { Pann, Akcent, P } from "../../style/style";
+import { P } from "../../style/style";
 import styled from "styled-components";
 import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
@@ -37,12 +37,7 @@ const PlusPage = () => {
       educationText={state.educationText}
       educationTest={state.educationTest}
       alignMain={"space-between"}
-      title={
-        <Pann>
-          <Akcent>{state.accent}</Akcent>
-          {state.title}
-        </Pann>
-      }
+      title={{ title: state.title, accent: state.accent }}
       boximg={
         <>
           <SimpleDialog opens={open} handleClose={handleClose} />

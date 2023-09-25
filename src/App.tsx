@@ -4,7 +4,7 @@ import PageRoute from "./routes/rotes";
 import BG from "./img/backG.svg";
 import BG2 from "./img/backG2.svg";
 import QuizIcon from "@mui/icons-material/Quiz";
-import { Button } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import TemporaryDrawer from "./components/menu/Menu";
@@ -94,9 +94,9 @@ const AppH = ({
               enterDelay={1500}
               TransitionProps={{ timeout: 600 }}
             >
-              <Button component={RouterLink} to={"/"}>
+              <IconButton component={RouterLink} to={"/"}>
                 <HomeIcon sx={sx.icon} />
-              </Button>
+              </IconButton>
             </Tooltip>
           ) : (
             <></>
@@ -113,9 +113,9 @@ const AppH = ({
           TransitionComponent={Fade}
           TransitionProps={{ timeout: 600 }}
         >
-          <Button onClick={(e) => handleClickOpenWind(e, 2)}>
+          <IconButton onClick={(e) => handleClickOpenWind(e, 2)}>
             <QuizIcon sx={sx.icon} />
-          </Button>
+          </IconButton>
         </Tooltip>
       </Menu>
       <PageRoute state={state} />

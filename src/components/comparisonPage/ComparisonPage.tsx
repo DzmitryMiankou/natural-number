@@ -1,5 +1,5 @@
-import React from "react";
-import { Pann, Akcent, P, rotateAnimation } from "../../style/style";
+import React, { useState, MouseEvent } from "react";
+import { P, rotateAnimation } from "../../style/style";
 import dishes from "../../img/dishes.svg";
 import apple from "../../img/apple.svg";
 import styled from "styled-components";
@@ -36,19 +36,16 @@ const Box = styled.div`
 `;
 
 const ComparisonPage = () => {
-  const [open, setOpen] = React.useState<string>("");
-  const [openSimbol, setOpenSimbol] = React.useState<string>("?");
+  const [open, setOpen] = useState<string>("");
+  const [openSimbol, setOpenSimbol] = useState<string>("?");
 
-  const handleClickOpen = (
-    e: React.MouseEvent<HTMLImageElement>,
-    str: string
-  ) => {
+  const handleClickOpen = (e: MouseEvent<HTMLImageElement>, str: string) => {
     e.preventDefault();
     str === "ok" ? setOpenSimbol("<") : setOpenSimbol("?");
     return str === "ok" ? setOpen("ok") : setOpen("err");
   };
 
-  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClose = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     return setOpen("");
   };
@@ -60,12 +57,7 @@ const ComparisonPage = () => {
       educationText={state.educationText}
       educationTest={state.educationTest}
       alignMain={"space-between"}
-      title={
-        <Pann>
-          <Akcent>{state.accent}</Akcent>
-          {state.title}
-        </Pann>
-      }
+      title={{ title: state.title, accent: state.accent }}
       boximg={
         <>
           <SimpleDialog opens={open} handleClose={handleClose} />

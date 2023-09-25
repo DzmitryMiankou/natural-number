@@ -1,10 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
+import { IconButton, List, ListItem, ListItemButton } from "@mui/material";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink as RouterLink } from "react-router-dom";
@@ -104,9 +101,9 @@ export default function TemporaryDrawer() {
             TransitionProps={{ timeout: 600 }}
             enterDelay={1500}
           >
-            <Button onClick={toggleDrawer(anchor, true)}>
+            <IconButton onClick={toggleDrawer(anchor, true)}>
               <MenuIcon sx={sx.icon} />
-            </Button>
+            </IconButton>
           </Tooltip>
 
           <Drawer

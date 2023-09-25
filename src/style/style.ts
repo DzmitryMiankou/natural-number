@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-
+import { SxProps } from "@mui/material";
 const opacityAnimation = keyframes`
   0% {  opacity: 0;  }
   100% {  opacity: 1;  }
@@ -56,6 +56,22 @@ const BoxTitlePage = styled.div`
   align-items: center;
 `;
 
+const sxGroupButton: { boxButton: SxProps; button: SxProps } = {
+  boxButton: {
+    display: "flex",
+    gap: "5px",
+    justifyContent: "center",
+    marginTop: "30px",
+  },
+  button: {
+    color: "var(--color-orange-button)",
+    border: "solid 1px  var(--color-orange-button)",
+    background: "var(--color-BG-button)",
+    fontSize: "18px",
+    "&:hover": { background: "#fffaf6", border: "solid 1px  #ff6f00" },
+  },
+};
+
 export {
   Pann,
   Akcent,
@@ -64,4 +80,5 @@ export {
   P,
   rotateAnimation,
   BoxTitlePage,
+  sxGroupButton,
 };

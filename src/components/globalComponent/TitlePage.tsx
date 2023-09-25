@@ -8,8 +8,10 @@ import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import Window from "./Window";
 import WindowHOCButt from "../../HOC/WindowHOCButt";
 import { PropType } from "../../HOC/WindowHOCButt";
+import { Pann, Akcent } from "../../style/style";
+import { SxProps } from "@mui/material";
 
-const sx = {
+const sx: { icon: SxProps } = {
   icon: {
     color: "var(--color-red-accent)",
     fontSize: "45px",
@@ -56,7 +58,7 @@ const TitlePageH = ({
   handleClose,
   handleClickOpenWind,
 }: {
-  params: PropType<JSX.Element>;
+  params: PropType;
   openWind: boolean;
   dataWind: number;
   handleClickOpenWind: (
@@ -76,7 +78,10 @@ const TitlePageH = ({
           educationText={params.educationText}
           educationTest={params.educationTest}
         />
-        <>{params.title}</>
+        <Pann>
+          <Akcent>{params.title.accent}</Akcent>
+          {params.title.title}
+        </Pann>
         <div>
           {arr.map(({ text, icon, id }) => (
             <TooltipButt

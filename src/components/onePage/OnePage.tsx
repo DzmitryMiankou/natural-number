@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Img1 from "../../img/aaa.svg";
 import { Button, Box } from "@mui/material";
 import SimpleDialog from "./dialog";
-import { Pann, Akcent, P } from "../../style/style";
+import { P, sxGroupButton } from "../../style/style";
 import TitlePage from "../globalComponent/TitlePage";
 import data from "../../data/twoLevelData.json";
 
@@ -22,17 +22,12 @@ const PVariant = styled(P)`
 const Img = styled.img``;
 
 const sx = {
-  button: {
-    color: "var(--color-orange-button)",
-    border: "solid 1px  var(--color-orange-button)",
-    background: "var(--color-BG-button)",
-    fontSize: "18px",
-    "&:hover": { background: "#fffaf6", border: "solid 1px  #ff6f00" },
-  },
+  boxButton: { display: "flex", gap: "5px" },
+  button: sxGroupButton.button,
 };
 
 const OnePage = () => {
-  const [open, setOpen] = React.useState<string>("");
+  const [open, setOpen] = React.useState<"ok" | "err" | "">("");
 
   const handleClickOpen = (
     e: React.MouseEvent<HTMLButtonElement>,
@@ -54,17 +49,12 @@ const OnePage = () => {
       educationText={state.educationText}
       educationTest={state.educationTest}
       alignMain={"space-between"}
-      title={
-        <Pann>
-          <Akcent>{state.accent}</Akcent>
-          {state.title}
-        </Pann>
-      }
+      title={{ title: state.title, accent: state.accent }}
       boximg={
         <BoxQvest>
           <PVariant>{state.qvest}</PVariant>
           <SimpleDialog opens={open} handleClose={handleClose} />
-          <Box sx={{ display: "flex", gap: "5px" }}>
+          <Box sx={sx.boxButton}>
             {[2, 5, 3].map((num, i) => (
               <React.Fragment key={i}>
                 <Button

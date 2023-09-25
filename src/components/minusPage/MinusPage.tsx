@@ -1,10 +1,11 @@
 import React from "react";
-import { Pann, Akcent, P } from "../../style/style";
+import { P } from "../../style/style";
 import styled from "styled-components";
 import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
 import Img1 from "../../img/mins.svg";
 import HeroSVG from "./heroSVG/HeroSvg";
+import data from "../../data/twoLevelData.json";
 
 const BoxImg = styled.div`
   width: 100%;
@@ -33,20 +34,19 @@ const MinusPage = () => {
     return setOpen("");
   };
 
+  const state = data[0].minusData;
+
   return (
     <TitlePage
       alignMain={"space-between"}
-      title={
-        <Pann>
-          <Akcent>Вычитание </Akcent> — это арифметическое действие, в котором
-          единицы двух чисел объединяются в одно новое число
-        </Pann>
-      }
+      educationText={state.educationText}
+      educationTest={state.educationTest}
+      title={{ title: state.title, accent: state.accent }}
       boximg={
         <BoxImg>
           <SimpleDialog opens={open} handleClose={handleClose} />
           <Box>
-            <PVariant2>Выберите чудика с правильным ответом</PVariant2>
+            <PVariant2>{state.qvest}</PVariant2>
             <HeroSVG />
             <img src={Img1} alt="img" />
           </Box>

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { PropTypeTest } from "./TitlePage";
 import {
   FormLabel,
@@ -15,6 +15,7 @@ import { RootState, AppDispatch } from "../../redux/store";
 import { radioAction } from "../../redux/radioReducer/RadioReducer";
 import styled from "styled-components";
 import TextField from "@mui/material/TextField";
+import { SxProps } from "@mui/material";
 
 const ButtonBox = styled.div`
   display: flex;
@@ -22,7 +23,11 @@ const ButtonBox = styled.div`
   flex-direction: column;
 `;
 
-const sx = (prop?: boolean) => ({
+const sx: (prop?: boolean) => {
+  button: SxProps;
+  radio: SxProps;
+  formLabel: SxProps;
+} = (prop?: boolean) => ({
   button: {
     color: "var(--color-radio)",
     border: "solid 1px var(--color-radio)",
@@ -43,21 +48,23 @@ const sx = (prop?: boolean) => ({
 const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
   const state = useSelector((store: RootState) => store.radio);
   const dispatch: AppDispatch = useDispatch();
-  const [helperText, setHelperText] = React.useState<string>(" ");
-  const [errorText, setErrorText] = React.useState<Array<string>>([]);
-  const [focuse, setFocuse] = React.useState<string>("");
+  const [helperText, setHelperText] = useState<string>(" ");
+  const [errorText, setErrorText] = useState<Array<string>>([]);
+  const [focuse, setFocuse] = useState<string>("");
 
   const simbolSplit = "|";
-  const errText: Array<string> = [
-    "Ответили не правильно",
-    "Молодец. Ответы все правильные",
-    "Вы ответили не на все вопросы",
-  ];
+
+  const enum TypeErrText {
+    allErr = "Вы ответили не на все вопросы",
+    partErr = "Ответили не правильно",
+    allGood = "Молодец. Ответы все правильные",
+  }
 
   const handleRadioChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     qvest: string
   ) => {
+    event.preventDefault();
     setHelperText(" ");
     setErrorText([" "]);
     dispatch(
@@ -68,7 +75,7 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
     );
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     let errorQvest: Array<string> = [];
@@ -82,9 +89,10 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
         : errorQvest.push(indexData.qvest);
     }
     setErrorText(errorQvest);
-    if (state.obj.length !== data?.length) return setHelperText(errText[2]);
-    if (errorQvest.length === 0) return setHelperText(errText[1]);
-    setHelperText(errText[0]);
+    if (state.obj.length !== data?.length)
+      return setHelperText(TypeErrText.allErr);
+    if (errorQvest.length === 0) return setHelperText(TypeErrText.partErr);
+    setHelperText(TypeErrText.allGood);
   };
 
   return (
@@ -137,7 +145,6 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
           </FormControl>
         </React.Fragment>
       ))}
-
       <ButtonBox>
         <FormHelperText
           sx={{
