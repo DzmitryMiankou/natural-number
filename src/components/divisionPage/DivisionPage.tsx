@@ -4,22 +4,32 @@ import styled from "styled-components";
 import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
 import data from "../../data/twoLevelData.json";
+import img from "../../img/DivisionGame.svg";
+import DivisionSVG from "./divisionSVG/DivisionSVG";
 
 const BoxImg = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const PVariant2 = styled(P)`
   max-width: 550px;
-  margin-bottom: 40px;
+  margin: auto;
+  text-align: center;
   @media (max-width: 1600px) {
     max-width: 600px;
   }
 `;
 
-const Box = styled.div``;
+const Box = styled.div`
+  width: 100%;
+`;
+
+const Img = styled.img`
+  width: 100%;
+`;
 
 const DivisionPage = () => {
   const [open, setOpen] = React.useState<string>("");
@@ -42,7 +52,10 @@ const DivisionPage = () => {
           <SimpleDialog opens={open} handleClose={handleClose} />
           <Box>
             <PVariant2>{state.qvest}</PVariant2>
-            <BoxImg></BoxImg>
+            <BoxImg>
+              <DivisionSVG />
+              <Img src={img} alt="img" />
+            </BoxImg>
           </Box>
         </>
       }

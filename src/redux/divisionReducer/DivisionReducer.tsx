@@ -1,11 +1,11 @@
-import { TypeActionObj } from "../../services/reducersService";
 import { reducerObjActualData } from "../../services/reducersService";
-const RADIO = "IRADIO_RADIO";
-const CLEAR = "CLEAR_RADIO_ALL";
+import { TypeActionObj } from "../../services/reducersService";
+const DIVISION = "DIVISION";
+const CLEAR = "CLEAR_DIVISION_ALL";
 
-export interface TypeActionRadio {
-  type: typeof RADIO | typeof CLEAR;
-  value: TypeActionObj;
+export interface TypeActionDivision {
+  type: typeof DIVISION | typeof CLEAR;
+  value: { key: number; value: string };
 }
 
 const initialState: {
@@ -14,9 +14,9 @@ const initialState: {
   obj: [],
 };
 
-const radioReducer = (state = initialState, action: TypeActionRadio) => {
+const divisionReducer = (state = initialState, action: TypeActionDivision) => {
   switch (action.type) {
-    case RADIO: {
+    case DIVISION: {
       let obj = [...state.obj, { ...action.value }];
       const newFilterArr = reducerObjActualData(obj, action);
       return {
@@ -32,13 +32,13 @@ const radioReducer = (state = initialState, action: TypeActionRadio) => {
   }
 };
 
-export const radioAction = (value: TypeActionObj) => ({
-  type: RADIO,
+export const divisionAction = (value: TypeActionObj) => ({
+  type: DIVISION,
   value: value,
 });
 
-export const clearRadioAction = () => ({
+export const clearDivisionAction = () => ({
   type: CLEAR,
 });
 
-export default radioReducer;
+export default divisionReducer;

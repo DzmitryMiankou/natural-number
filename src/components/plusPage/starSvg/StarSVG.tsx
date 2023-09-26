@@ -1,11 +1,11 @@
-import React, { useCallback } from "react";
+import React, { useCallback, MouseEvent, ChangeEvent } from "react";
 import styled, { keyframes } from "styled-components";
 import {
   inputPlusPageAction,
   updatePlusPageAction,
 } from "../../../redux/plusReducer/Input";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
+import { RootState, AppDispatch } from "../../../redux/store";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import TooltipButt from "../../globalComponent/Tooltip";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
@@ -102,11 +102,11 @@ const inpArr: Array<TypeInpArr<string>> = [
 const StarSVG = () => {
   const windowHeight = useResize();
   const state = useSelector((store: RootState) => store.plusPageInputReducer);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const [get, set] = React.useState<boolean>(false);
 
   const onChangeCommit = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
+    (e: ChangeEvent<HTMLInputElement>, id: number) => {
       e.preventDefault();
       const text = e.target.value;
       dispatch(inputPlusPageAction({ text: text, id: id }));
@@ -115,7 +115,7 @@ const StarSVG = () => {
   );
 
   const restartNumber = useCallback(
-    (e: React.MouseEvent) => {
+    (e: MouseEvent) => {
       e.preventDefault();
       set(false);
       dispatch(updatePlusPageAction());
@@ -124,14 +124,14 @@ const StarSVG = () => {
   );
 
   const checkNumber = useCallback(
-    (e: React.MouseEvent) => {
+    (e: MouseEvent) => {
       e.preventDefault();
       set(!get);
     },
     [get]
   );
 
-  const actualInputData = (b: number) => {
+  const actualInputData = (b: number): string => {
     return state.arr[state.arr.map((el) => el.id).lastIndexOf(b)]?.text;
   };
 
@@ -153,6 +153,7 @@ const StarSVG = () => {
 
   return (
     <svg
+      xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       x="0px"
       y="0px"
