@@ -1,4 +1,10 @@
-import React, { useCallback, ChangeEvent } from "react";
+import React, {
+  useCallback,
+  ChangeEvent,
+  useState,
+  useEffect,
+  memo,
+} from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../../../redux/store";
@@ -41,7 +47,7 @@ const inpArr: Array<TypeInpArr<typeof positionY>> = [
 const DivisionSVG = () => {
   const state = useSelector((store: RootState) => store.division);
   const dispatch: AppDispatch = useDispatch();
-  const [get, set] = React.useState<Array<number>>([]);
+  const [get, set] = useState<Array<number>>([]);
 
   const onChangeCommit = useCallback(
     (e: ChangeEvent<HTMLInputElement>, id: number) => {
@@ -57,7 +63,7 @@ const DivisionSVG = () => {
     [dispatch]
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     let arr: number[] = [];
     arr.push(inpArr[0].id);
     for (let i in state.obj) {
@@ -100,4 +106,4 @@ const DivisionSVG = () => {
   );
 };
 
-export default DivisionSVG;
+export default memo(DivisionSVG);
