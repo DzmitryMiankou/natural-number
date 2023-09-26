@@ -17,7 +17,7 @@ const menuArr: menuArrType<string> = [
   { text: "Сложение или сумма", path: "/plusNumber" },
   { text: "Вычитание или разность", path: "/minusNumber" },
   { text: "Умножение натуральных чисел", path: "/multiplicationNumber" },
-  { text: "Деление натуральных чисел", path: "/s" },
+  { text: "Деление натуральных чисел", path: "/divisionNumber" },
 ];
 
 const sx = {

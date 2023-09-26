@@ -6,6 +6,7 @@ import ComparisonPage from "../components/comparisonPage/ComparisonPage";
 import PlusPage from "../components/plusPage/PlusPage";
 import MinusPage from "../components/minusPage/MinusPage";
 import MultiplicationPage from "../components/multiplicationPage/MultiplicationPage";
+import DivisionPage from "../components/divisionPage/DivisionPage";
 
 export interface StateMaimPageType {
   main: Array<{
@@ -23,6 +24,7 @@ const PageRoute = ({ state }: { state: StateMaimPageType }) => {
     { element: <PlusPage />, path: "/plusNumber" },
     { element: <MinusPage />, path: "/minusNumber" },
     { element: <MultiplicationPage />, path: "/multiplicationNumber" },
+    { element: <DivisionPage />, path: "/divisionNumber" },
   ];
 
   return (

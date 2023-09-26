@@ -43,7 +43,11 @@ const initialState: arrCardType<string> = {
           path: "/multiplicationNumber",
           img: Multiplication,
         },
-        { text: "Деление натуральных чисел", path: "/s", img: Division },
+        {
+          text: "Деление натуральных чисел",
+          path: "/divisionNumber",
+          img: Division,
+        },
       ],
       footer: `© ${new Date().getFullYear()}, Дмитрий Меньков, г. Молодечно`,
     },

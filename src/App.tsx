@@ -62,7 +62,8 @@ interface Prop {
 
 const FooterP = styled.p<Prop>`
   transition: 0.2s;
-  color: ${(p) => (p.$focus ? "#5b462e" : "#cd9f6b")};
+  font-size: ${(p) => (p.$focus ? "14px" : "12px")};
+  color: ${(p) => (p.$focus ? "#5b462e" : "#986f40")};
 `;
 
 const AppH = ({
