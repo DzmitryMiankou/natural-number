@@ -41,6 +41,7 @@ const inpArr: Array<TypeInpArr<typeof positionY>> = [
 const DivisionSVG = () => {
   const state = useSelector((store: RootState) => store.division);
   const dispatch: AppDispatch = useDispatch();
+  const [get, set] = React.useState<Array<number>>([]);
 
   const onChangeCommit = useCallback(
     (e: ChangeEvent<HTMLInputElement>, id: number) => {
@@ -56,8 +57,21 @@ const DivisionSVG = () => {
     [dispatch]
   );
 
+  React.useEffect(() => {
+    let arr: number[] = [];
+    arr.push(inpArr[0].id);
+    for (let i in state.obj) {
+      const index: number = +i;
+      const plusIndex = index + 1;
+      if (plusIndex === inpArr.length) break;
+      if (+state.obj[index].value === arr[index])
+        arr.push(inpArr[plusIndex].id);
+    }
+    set(arr);
+  }, [state.obj]);
+
   const actualInputData = (id: number): string =>
-    state.obj.find((city) => city.key === id)?.value ?? "";
+    state.obj.find((n) => n.key === id)?.value ?? "";
 
   return (
     <SVG
@@ -69,11 +83,17 @@ const DivisionSVG = () => {
     >
       {inpArr.map(({ x, y, id }) => (
         <foreignObject key={x} x={x} y={y} width="147" height="147">
-          <Input
-            maxLength={2}
-            onChange={(e) => onChangeCommit(e, id)}
-            value={actualInputData(id)}
-          />
+          <>
+            {get.find((e) => e === +id) || +id === +inpArr[0].id ? (
+              <Input
+                maxLength={2}
+                onChange={(e) => onChangeCommit(e, id)}
+                value={actualInputData(id)}
+              />
+            ) : (
+              <></>
+            )}
+          </>
         </foreignObject>
       ))}
     </SVG>
