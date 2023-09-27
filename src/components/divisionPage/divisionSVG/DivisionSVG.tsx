@@ -5,11 +5,16 @@ import React, {
   useEffect,
   memo,
 } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../../../redux/store";
 import { divisionAction } from "../../../redux/divisionReducer/DivisionReducer";
 import svgstyle from "./herosvg.module.css";
+
+const heroAnimation = keyframes`
+  0% {  opacity: 0;  }
+  100% {  opacity: 1;  }
+`;
 
 const SVG = styled.svg`
   position: absolute;
@@ -19,11 +24,13 @@ const SVG = styled.svg`
 interface TypeHeroStyle {
   $x: string;
   $time: string;
+  $anim: any;
 }
 
 const Hero = styled.g<TypeHeroStyle>`
   transition: ${(prop) => prop.$time};
   transform: ${(prop) => prop.$x};
+  animation: ${(prop) => prop.$anim} 2s linear infinite;
 `;
 
 const Path = styled.path`
@@ -142,6 +149,12 @@ const DivisionSVG = () => {
       <Hero
         $x={`translateX(${get.length * 450 - 450}px)`}
         $time={`${get.length === 1 ? 0 : 2}s`}
+        $anim={
+          +state?.obj[state.obj.length - 1]?.value ===
+          +inpArr[inpArr.length - 1].id
+            ? heroAnimation
+            : ""
+        }
       >
         <g>
           <g>
