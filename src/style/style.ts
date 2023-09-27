@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { SxProps } from "@mui/material";
+
 const opacityAnimation = keyframes`
   0% {  opacity: 0;  }
   100% {  opacity: 1;  }

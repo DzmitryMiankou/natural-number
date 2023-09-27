@@ -10,10 +10,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../../../redux/store";
 import { divisionAction } from "../../../redux/divisionReducer/DivisionReducer";
 import svgstyle from "./herosvg.module.css";
+import PortalSVG from "./portal/Portal";
 
-const heroAnimation = keyframes`
-  0% {  opacity: 0;  }
-  100% {  opacity: 1;  }
+const opacityAnimation = keyframes`
+  0% {  opacity: 0.8;
+  transform: translate3d(0px, 0px, 0px)  }
+  30% {   opacity: 1;  }
+  50% {   opacity: 1;
+  transform: translate3d(8px, -8px, -8px) }
+  100% {  opacity: 0.8;    transform: translate3d(0px, 0px, 0px)}
+`;
+
+const eyeAnimation = keyframes`
+  0% {transform: translate3d(0, 0, 0)  }
+  50% { transform: translate3d(1.5px, 1.5px, 1.5px)}
+  100% {transform: translate3d(0, 0, 0)  }
+`;
+
+const PortAnimation = keyframes`
+  0% {opacity: 1 }
+  100% {opacity: 0  }
 `;
 
 const SVG = styled.svg`
@@ -21,16 +37,30 @@ const SVG = styled.svg`
   left: 0;
 `;
 
-interface TypeHeroStyle {
-  $x: string;
-  $time: string;
-  $anim: any;
+interface TypeHeroStyle<T> {
+  $x?: T;
+  $time?: T;
+  $anim: boolean;
 }
 
-const Hero = styled.g<TypeHeroStyle>`
-  transition: ${(prop) => prop.$time};
+const Hero = styled.g<TypeHeroStyle<string>>`
+  transition: ${(prop) => (prop.$anim ? "0.7s" : prop.$time)};
   transform: ${(prop) => prop.$x};
-  animation: ${(prop) => prop.$anim} 2s linear infinite;
+  opacity: ${(prop) => (prop.$anim ? 0 : 100)};
+`;
+
+const Portal = styled.g<TypeHeroStyle<string>>`
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  animation: ${opacityAnimation} 2s infinite;
+`;
+
+const Portal2 = styled.g<TypeHeroStyle<string>>`
+  animation: ${PortAnimation} 0.7s;
+  opacity: 0;
+`;
+
+const Eye1 = styled.circle`
+  animation: ${eyeAnimation} 1s linear infinite;
 `;
 
 const Path = styled.path`
@@ -77,6 +107,7 @@ const Input = styled.input`
 `;
 
 const positionY = "291";
+const gapeAnim = 450;
 
 interface TypeInpArr<T> {
   x: string;
@@ -91,7 +122,7 @@ const inpArr: Array<TypeInpArr<typeof positionY>> = [
 ];
 
 const DivisionSVG = () => {
-  const state = useSelector((store: RootState) => store.division);
+  const state = useSelector((store: RootState) => store.division.obj);
   const dispatch: AppDispatch = useDispatch();
   const [get, set] = useState<Array<number>>([]);
 
@@ -112,18 +143,23 @@ const DivisionSVG = () => {
   useEffect(() => {
     let arr: number[] = [];
     arr.push(inpArr[0].id);
-    for (let i in state.obj) {
+    for (let i in state) {
       const index: number = +i;
       const plusIndex = index + 1;
       if (plusIndex === inpArr.length) break;
-      if (+state.obj[index].value === arr[index])
-        arr.push(inpArr[plusIndex].id);
+      if (+state[index].value === arr[index]) arr.push(inpArr[plusIndex].id);
     }
     set(arr);
-  }, [state.obj]);
+  }, [state]);
 
   const actualInputData = (id: number): string =>
-    state.obj.find((n) => n.key === id)?.value ?? "";
+    state.find((n) => n.key === id)?.value ?? "";
+
+  const endInputData = (): boolean =>
+    +state[state.length - 1]?.value === +inpArr[inpArr.length - 1].id &&
+    +state?.length === +inpArr.length
+      ? true
+      : false;
 
   return (
     <SVG
@@ -140,21 +176,33 @@ const DivisionSVG = () => {
               maxLength={2}
               onChange={(e) => onChangeCommit(e, id)}
               value={actualInputData(id)}
+              placeholder="?"
             />
           ) : (
             <></>
           )}
         </foreignObject>
       ))}
+      <>
+        {endInputData() ? (
+          <Portal2 $anim={endInputData()}>
+            <PortalSVG />
+          </Portal2>
+        ) : (
+          <Portal $anim={endInputData()}>
+            <PortalSVG />
+          </Portal>
+        )}
+      </>
+
       <Hero
-        $x={`translateX(${get.length * 450 - 450}px)`}
-        $time={`${get.length === 1 ? 0 : 2}s`}
-        $anim={
-          +state?.obj[state.obj.length - 1]?.value ===
-          +inpArr[inpArr.length - 1].id
-            ? heroAnimation
-            : ""
-        }
+        $x={`translateX(${
+          endInputData()
+            ? get.length * gapeAnim
+            : get.length * gapeAnim - gapeAnim
+        }px)`}
+        $time={`${get.length === 1 ? 0 : 1}s`}
+        $anim={endInputData()}
       >
         <g>
           <g>
@@ -190,6 +238,8 @@ const DivisionSVG = () => {
         </g>
         <circle className={svgstyle.st3} cx="434.4" cy="159.2" r="25.1" />
         <circle className={svgstyle.st3} cx="368" cy="155.1" r="21.6" />
+        <Eye1 className={svgstyle.st10} cx="429.6" cy="157.5" r="9.2" />
+        <Eye1 className={svgstyle.st10} cx="368" cy="155.6" r="9.2" />
         <g>
           <g>
             <path
@@ -286,7 +336,6 @@ const DivisionSVG = () => {
           className={svgstyle.st1}
           points="381.8,251.4 375.4,286.9 381.8,298.3 373.3,298.3 360.4,293.4 373.3,251.4 	"
         />
-
         <rect
           x="483.7"
           y="137"
@@ -333,8 +382,6 @@ const DivisionSVG = () => {
           rx="7.3"
           ry="10.1"
         />
-        <circle className={svgstyle.st10} cx="429.6" cy="157.5" r="9.2" />
-        <circle className={svgstyle.st10} cx="368" cy="155.6" r="9.2" />
         <polygon
           className={svgstyle.st1}
           points="485.2,184.3 506.3,174.1 506.6,165.1 483,176.7 	"
