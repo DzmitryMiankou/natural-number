@@ -194,7 +194,6 @@ const DivisionSVG = () => {
           </Portal>
         )}
       </>
-
       <Hero
         $x={`translateX(${
           endInputData()

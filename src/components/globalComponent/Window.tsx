@@ -14,6 +14,16 @@ const AnswerBox = styled.div`
   align-items: center;
 `;
 
+const sx = {
+  box: { display: "flex", justifyContent: "space-between" },
+  text: {
+    marginTop: "15px",
+    color: "#803700",
+    fontSize: "18px",
+  },
+  closeIcon: { color: "var(--color-red)" },
+};
+
 const Window = ({
   open,
   handleClose,
@@ -49,7 +59,7 @@ const Window = ({
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box sx={sx.box}>
           <DialogTitle
             id="scroll-dialog-title"
             sx={{ color: "var(--color-yellow-title)" }}
@@ -58,7 +68,7 @@ const Window = ({
           </DialogTitle>
           <DialogActions>
             <IconButton onClick={handleClose} aria-label="delete" size="small">
-              <CloseIcon sx={{ color: "var(--color-red)" }} />
+              <CloseIcon sx={sx.closeIcon} />
             </IconButton>
           </DialogActions>
         </Box>
@@ -66,16 +76,21 @@ const Window = ({
           <>
             {dataWind === 1 ? (
               <>
-                {educationText?.map(({ text }, i) => (
+                {educationText?.map(({ text, svg }, i) => (
                   <React.Fragment key={i}>
-                    <DialogContentText
-                      id="scroll-dialog-description"
-                      ref={descriptionElementRef}
-                      tabIndex={-1}
-                      sx={{ marginTop: "15px", color: "#803700" }}
-                    >
-                      {text}
-                    </DialogContentText>
+                    {text.split("|").map((t, i) => (
+                      <DialogContentText
+                        key={i}
+                        id="scroll-dialog-description"
+                        ref={descriptionElementRef}
+                        tabIndex={-1}
+                        sx={sx.text}
+                      >
+                        {t}
+                      </DialogContentText>
+                    ))}
+
+                    <div dangerouslySetInnerHTML={{ __html: svg }} />
                   </React.Fragment>
                 ))}
               </>

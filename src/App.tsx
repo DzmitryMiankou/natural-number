@@ -58,18 +58,6 @@ const sx = {
   },
 };
 
-const Mouse = styled.div`
-  content: " ";
-  background-color: #fff1e8;
-  height: 30px;
-  width: 30px;
-  position: absolute;
-  top: 0;
-  border-radius: 100px;
-  z-index: -6;
-  transition: 0.1s;
-`;
-
 interface Prop {
   $focus: boolean;
 }
@@ -89,18 +77,6 @@ const AppH = ({
   const state = useSelector((state: RootState) => state.static);
   const [get, set] = useState<boolean>(false);
   const location = useLocation();
-  const [getCoord, setCoord] = useState<{ x: number; y: number }>({
-    x: 0,
-    y: 0,
-  });
-
-  React.useEffect(() => {
-    window.addEventListener("mousemove", function (event: MouseEvent) {
-      const x = event.clientX;
-      const y = event.clientY;
-      setCoord({ x: x, y: y });
-    });
-  }, []);
 
   return (
     <AppDiv $url={location.pathname === state.main[0].list[1].path ? BG2 : BG}>
@@ -149,11 +125,6 @@ const AppH = ({
       <Footer onMouseEnter={() => set(true)} onMouseLeave={() => set(false)}>
         <FooterP $focus={get}>{state.main[0].footer}</FooterP>
       </Footer>
-      <Mouse
-        style={{
-          transform: `translate(${getCoord?.x - 15}px, ${getCoord?.y - 15}px)`,
-        }}
-      ></Mouse>
     </AppDiv>
   );
 };

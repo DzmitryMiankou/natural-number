@@ -44,7 +44,10 @@ const arr: Array<TypeArr> = [
   },
 ];
 
-export type PropTypeText = Array<{ text: string }>;
+export type PropTypeText = Array<{
+  text: string;
+  svg?: string | TrustedHTML | undefined | any;
+}>;
 export type PropTypeTest = Array<{
   qvest: string;
   answer: string;
