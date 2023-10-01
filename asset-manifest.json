@@ -1,29 +1,30 @@
 {
   "files": {
-    "main.css": "/natural-number/static/css/main.b577af4c.css",
-    "main.js": "/natural-number/static/js/main.f58f9636.js",
+    "main.css": "/natural-number/static/css/main.5772f013.css",
+    "main.js": "/natural-number/static/js/main.5b771395.js",
     "static/js/787.b9fb9049.chunk.js": "/natural-number/static/js/787.b9fb9049.chunk.js",
     "static/media/multiplGame.svg": "/natural-number/static/media/multiplGame.43ec469592286172fbb6c2ee69ec6891.svg",
     "static/media/mins.svg": "/natural-number/static/media/mins.22c3b4aa03b6cc1e2d05c2280b5e9ae2.svg",
     "static/media/aaa.svg": "/natural-number/static/media/aaa.0cb0871c2ae303f868124aaac8880da5.svg",
     "static/media/dishes.svg": "/natural-number/static/media/dishes.9048400397be59774df6a184d1e024dc.svg",
+    "static/media/multiplication.svg": "/natural-number/static/media/multiplication.35c5ed61793e677f7168d90857491c47.svg",
     "static/media/plus.svg": "/natural-number/static/media/plus.32b56595683b7ebf86f1f7e7052149ed.svg",
-    "static/media/multiplication.svg": "/natural-number/static/media/multiplication.2b0e60a904b903b80b9fc1d2eb929635.svg",
     "static/media/imgMain.svg": "/natural-number/static/media/imgMain.970e756cdafe33ddd7aa4031d109693c.svg",
     "static/media/apple.svg": "/natural-number/static/media/apple.26a7b6e02417c32721c057d52fc1de9f.svg",
     "static/media/minus.svg": "/natural-number/static/media/minus.4fcae96364a87c046937b2f7f8f0b8f0.svg",
     "static/media/Comparison.svg": "/natural-number/static/media/Comparison.071aa30b0f76fa342d33133a2ecd5aff.svg",
     "static/media/Division .svg": "/natural-number/static/media/Division .43d0e6dbb6660cb8eaadef0280df0e79.svg",
-    "static/media/DivisionGame.svg": "/natural-number/static/media/DivisionGame.20aaa92c18b31af82bde97240dd5d0f9.svg",
+    "static/media/plusBG.svg": "/natural-number/static/media/plusBG.ed1731b5b3f501980a3c5c84a677cea2.svg",
     "static/media/backG2.svg": "/natural-number/static/media/backG2.7ae3cd7b1127ad21241d2dbdf98dcb99.svg",
     "static/media/backG.svg": "/natural-number/static/media/backG.5bb15d4d7db65f687b5da19856944b70.svg",
     "index.html": "/natural-number/index.html",
-    "main.b577af4c.css.map": "/natural-number/static/css/main.b577af4c.css.map",
-    "main.f58f9636.js.map": "/natural-number/static/js/main.f58f9636.js.map",
+    "static/media/DivisionGame.svg": "/natural-number/static/media/DivisionGame.d1353b80cfb906961ba91874b243ccb8.svg",
+    "main.5772f013.css.map": "/natural-number/static/css/main.5772f013.css.map",
+    "main.5b771395.js.map": "/natural-number/static/js/main.5b771395.js.map",
     "787.b9fb9049.chunk.js.map": "/natural-number/static/js/787.b9fb9049.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b577af4c.css",
-    "static/js/main.f58f9636.js"
+    "static/css/main.5772f013.css",
+    "static/js/main.5b771395.js"
   ]
 }
