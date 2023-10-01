@@ -8,9 +8,14 @@ import React, {
 import styled, { keyframes } from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../../../redux/store";
-import { divisionAction } from "../../../redux/divisionReducer/DivisionReducer";
+import {
+  clearDivisionAction,
+  divisionAction,
+} from "../../../redux/divisionReducer/DivisionReducer";
 import svgstyle from "./herosvg.module.css";
 import PortalSVG from "./portal/Portal";
+import TooltipButt from "../../globalComponent/Tooltip";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
 
 const opacityAnimation = keyframes`
   0% {  opacity: 0.8;
@@ -106,23 +111,23 @@ const Input = styled.input`
   }
 `;
 
-const positionY = "291";
+const positionY = 291;
 const gapeAnim = 450;
 
 interface TypeInpArr<T> {
-  x: string;
+  x: T;
   y: T;
-  id: number;
+  matrix: T;
 }
 
-const inpArr: Array<TypeInpArr<typeof positionY>> = [
-  { x: "617", y: positionY, id: 8 },
-  { x: "1016", y: positionY, id: 43 },
-  { x: "1433", y: positionY, id: 25 },
+const inpArr: Array<TypeInpArr<number>> = [
+  { x: 617, y: positionY, matrix: 382 },
+  { x: 1016, y: positionY, matrix: 775 },
+  { x: 1433, y: positionY, matrix: 1180 },
 ];
 
 const DivisionSVG = () => {
-  const state = useSelector((store: RootState) => store.division.obj);
+  const state = useSelector((store: RootState) => store.division);
   const dispatch: AppDispatch = useDispatch();
   const [get, set] = useState<Array<number>>([]);
 
@@ -142,24 +147,40 @@ const DivisionSVG = () => {
 
   useEffect(() => {
     let arr: number[] = [];
-    arr.push(inpArr[0].id);
-    for (let i in state) {
+    arr.push(state.startData[0].result);
+    for (let i in state.obj) {
       const index: number = +i;
       const plusIndex = index + 1;
-      if (plusIndex === inpArr.length) break;
-      if (+state[index].value === arr[index]) arr.push(inpArr[plusIndex].id);
+      if (plusIndex === state.startData.length) break;
+      if (+state.obj[index].value === arr[index])
+        arr.push(state.startData[plusIndex].result);
     }
     set(arr);
   }, [state]);
 
   const actualInputData = (id: number): string =>
-    state.find((n) => n.key === id)?.value ?? "";
+    state.obj.find((n) => n.key === id)?.value ?? "";
 
   const endInputData = (): boolean =>
-    +state[state.length - 1]?.value === +inpArr[inpArr.length - 1].id &&
-    +state?.length === +inpArr.length
+    +state.obj[state.obj.length - 1]?.value ===
+      +state.startData[state.startData.length - 1].result &&
+    +state.obj?.length === +state.startData.length
       ? true
       : false;
+
+  const assignObj = () => {
+    let newArr = [];
+    for (let i in inpArr) {
+      const newObj = Object.assign(inpArr[i], state.startData[i]);
+      newArr.push(newObj);
+    }
+    return newArr;
+  };
+
+  const restartNumber = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+    e.preventDefault();
+    dispatch(clearDivisionAction());
+  };
 
   return (
     <SVG
@@ -169,19 +190,28 @@ const DivisionSVG = () => {
       y="0px"
       viewBox="0 0 1920 529.3"
     >
-      {inpArr.map(({ x, y, id }) => (
-        <foreignObject key={x} x={x} y={y} width="147" height="147">
-          {get.find((e) => e === +id) || +id === +inpArr[0].id ? (
-            <Input
-              maxLength={2}
-              onChange={(e) => onChangeCommit(e, id)}
-              value={actualInputData(id)}
-              placeholder="?"
-            />
-          ) : (
-            <></>
-          )}
-        </foreignObject>
+      {assignObj().map(({ x, y, result, a, b, matrix }) => (
+        <React.Fragment key={x}>
+          <text
+            transform={`matrix(1 0 0 1 ${matrix} 390)`}
+            className={svgstyle.text}
+          >
+            {`${a} : ${b} = `}
+          </text>
+          <foreignObject x={x} y={y} width="147" height="147">
+            {get.find((e) => e === +result) ||
+            +result === +state.startData[0].result ? (
+              <Input
+                maxLength={2}
+                onChange={(e) => onChangeCommit(e, result)}
+                value={actualInputData(result)}
+                placeholder="?"
+              />
+            ) : (
+              <></>
+            )}
+          </foreignObject>
+        </React.Fragment>
       ))}
       <>
         {endInputData() ? (
@@ -194,6 +224,23 @@ const DivisionSVG = () => {
           </Portal>
         )}
       </>
+      <foreignObject x="940" y="0" width="35" height="35">
+        <TooltipButt
+          text={"Обновить"}
+          element={
+            <RestartAltIcon
+              onClick={(e) => restartNumber(e)}
+              sx={{
+                fontSize: "35px",
+                cursor: "pointer",
+                color: "var(--color-red-title-icon)",
+                backgroundColor: "#fff1e8",
+                borderRadius: "50px",
+              }}
+            />
+          }
+        />
+      </foreignObject>
       <Hero
         $x={`translateX(${
           endInputData()
