@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PageRoute from "./routes/rotes";
 import BG from "./img/backG.svg";
 import BG2 from "./img/backG2.svg";
+import BG3 from "./img/plusBG.svg";
 import QuizIcon from "@mui/icons-material/Quiz";
 import { IconButton } from "@mui/material";
 import { useLocation } from "react-router-dom";
@@ -40,7 +41,7 @@ const Menu = styled.div`
 `;
 
 const Footer = styled.footer`
-  background-color: #cd9f6b;
+  background-color: var(--color-footerBG);
   height: 40px;
   display: flex;
   align-items: center;
@@ -49,7 +50,7 @@ const Footer = styled.footer`
 
 const sx = {
   icon: {
-    color: "#e97b02",
+    color: "var(--color-orange-icon)",
     fontSize: "30px",
     transition: "0.2s",
     "&:hover": {
@@ -65,7 +66,10 @@ interface Prop {
 const FooterP = styled.p<Prop>`
   transition: 0.2s;
   font-size: ${(p) => (p.$focus ? "14px" : "12px")};
-  color: ${(p) => (p.$focus ? "#5b462e" : "#986f40")};
+  color: ${(p) =>
+    p.$focus
+      ? "var(--color-footerText-dark)"
+      : "var(--color-footerText-light)"};
 `;
 
 const AppH = ({
@@ -79,7 +83,15 @@ const AppH = ({
   const location = useLocation();
 
   return (
-    <AppDiv $url={location.pathname === state.main[0].list[1].path ? BG2 : BG}>
+    <AppDiv
+      $url={
+        location.pathname === state.main[0].list[1].path
+          ? BG2
+          : BG && location.pathname === state.main[0].list[2].path
+          ? BG3
+          : BG
+      }
+    >
       <Window
         title={"Общий тест"}
         dataWind={dataWind}

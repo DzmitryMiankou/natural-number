@@ -4,12 +4,18 @@
   --color-red: #d60005;
   --color-yellow-title: #de7600;
   --color-red-accent: #c15400;
+  --color-orange-icon: #e97b02;
+  --color-orange-circle: #e38b00;
   --color-orange-button: #ff6f00;
   --color-BG-button: #fff1e6;
   --color-red-tooltip: #913f2d;
   --color-red-title-icon: #af5946;
   --color-red-notRight: #dc3e1b;
   --color-radio: #9a6b1b;
+  --color-footerText-dark: #5b462e;
+  --color-footerText-light: #986f40;
+  --color-footerBG: #cd9f6b;
+  --color-black: #000000;
 }
 
 * {

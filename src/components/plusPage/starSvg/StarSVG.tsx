@@ -54,14 +54,14 @@ const ButtonBox = styled.div`
 `;
 
 const Circle0 = styled.circle`
-  fill: #e38b00;
-  stroke: #000000;
+  fill: var(--color-orange-circle);
+  stroke: var(--color-black);
   stroke-miterlimit: 10;
 `;
 
 const Circle1 = styled(Circle0)`
   fill: none;
-  stroke: #e38b00;
+  stroke: var(--color-orange-circle);
   stroke-width: 5;
 `;
 
