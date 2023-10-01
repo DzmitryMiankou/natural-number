@@ -30,6 +30,14 @@ import PortalSVG from "./portal/Portal";
 import TooltipButt from "../../globalComponent/Tooltip";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 
+const sx = {
+  fontSize: "35px",
+  cursor: "pointer",
+  color: "var(--color-red-title-icon)",
+  backgroundColor: "#fff1e8",
+  borderRadius: "50px",
+};
+
 interface TypeTextRight {
   $endInputData: boolean;
 }
@@ -170,18 +178,7 @@ const DivisionSVG = () => {
       <foreignObject x="940" y="0" width="35" height="35">
         <TooltipButt
           text={"Обновить"}
-          element={
-            <RestartAltIcon
-              onClick={(e) => restartNumber(e)}
-              sx={{
-                fontSize: "35px",
-                cursor: "pointer",
-                color: "var(--color-red-title-icon)",
-                backgroundColor: "#fff1e8",
-                borderRadius: "50px",
-              }}
-            />
-          }
+          element={<RestartAltIcon onClick={(e) => restartNumber(e)} sx={sx} />}
         />
       </foreignObject>
       <TextRight

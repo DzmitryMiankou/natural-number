@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, MouseEvent } from "react";
 import { P } from "../../style/style";
 import styled from "styled-components";
 import TitlePage from "../globalComponent/TitlePage";
@@ -21,10 +21,16 @@ const PVariant2 = styled(P)`
   @media (max-width: 1600px) {
     max-width: 600px;
   }
+  @media (max-width: 900px) {
+    width: 60%;
+  }
 `;
 
 const Box = styled.div`
   width: 100%;
+  @media (max-width: 900px) {
+    width: 140%;
+  }
 `;
 
 const Img = styled.img`
@@ -32,9 +38,9 @@ const Img = styled.img`
 `;
 
 const DivisionPage = () => {
-  const [open, setOpen] = React.useState<string>("");
+  const [open, setOpen] = useState<string>("");
 
-  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClose = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     return setOpen("");
   };
