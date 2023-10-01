@@ -147,6 +147,8 @@ const DivisionSVG = () => {
                 onChange={(e) => onChangeCommit(e, result)}
                 value={actualInputData(result)}
                 placeholder="?"
+                type="text"
+                autoFocus
               />
             ) : (
               <></>
