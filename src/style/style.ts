@@ -33,6 +33,7 @@ const Pann = styled.p`
   }
   @media (max-width: 1195px) {
     margin: 45px;
+    width: 90vw;
   }
 `;
 

@@ -1,4 +1,3 @@
-import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -7,6 +6,7 @@ import { CardActionArea } from "@mui/material";
 import styled from "styled-components";
 import { NavLink as RouterLink } from "react-router-dom";
 import { StateMaimPageType } from "../../../routes/rotes";
+import { SxProps } from "@mui/material";
 
 const Cards = styled.div`
   display: grid;
@@ -14,16 +14,20 @@ const Cards = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(345px, 400px));
   justify-content: center;
   gap: 16px;
-
+  margin-bottom: 20px;
   @media (max-width: 1570px) {
     width: 92%;
   }
+  @media (max-width: 400px) {
+    grid-template-columns: repeat(auto-fit, minmax(245px, 400px));
+  }
 `;
 
-const sx = {
+const sx: { card: SxProps; cardArea: SxProps; title: SxProps } = {
   card: {
     maxWidth: 345,
     textDecoration: "none",
+
     transition: "0.5s",
     margin: "auto",
     "&:hover": { transform: "translate(0, -5px)" },

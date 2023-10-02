@@ -91,8 +91,8 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
     setErrorText(errorQvest);
     if (state.obj.length !== data?.length)
       return setHelperText(TypeErrText.allErr);
-    if (errorQvest.length === 0) return setHelperText(TypeErrText.partErr);
-    setHelperText(TypeErrText.allGood);
+    if (errorQvest.length === 0) return setHelperText(TypeErrText.allGood);
+    setHelperText(TypeErrText.partErr);
   };
 
   return (

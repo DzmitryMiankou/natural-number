@@ -29,8 +29,9 @@ import svgstyle from "./herosvg.module.css";
 import PortalSVG from "./portal/Portal";
 import TooltipButt from "../../globalComponent/Tooltip";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import { SxProps } from "@mui/material";
 
-const sx = {
+const sx: SxProps = {
   fontSize: "35px",
   cursor: "pointer",
   color: "var(--color-red-title-icon)",

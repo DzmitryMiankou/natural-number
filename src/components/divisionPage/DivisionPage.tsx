@@ -4,8 +4,8 @@ import styled from "styled-components";
 import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
 import data from "../../data/twoLevelData.json";
-import img from "../../img/DivisionGame.svg";
 import DivisionSVG from "./divisionSVG/DivisionSVG";
+import SvgBGgame from "./svgBGgame/SvgBGgame";
 
 const BoxImg = styled.div`
   display: flex;
@@ -33,10 +33,6 @@ const Box = styled.div`
   }
 `;
 
-const Img = styled.img`
-  width: 100%;
-`;
-
 const DivisionPage = () => {
   const [open, setOpen] = useState<string>("");
 
@@ -60,7 +56,7 @@ const DivisionPage = () => {
             <PVariant2>{state.qvest}</PVariant2>
             <BoxImg>
               <DivisionSVG />
-              <Img src={img} alt="img" />
+              <SvgBGgame />
             </BoxImg>
           </Box>
         </>
