@@ -1,3 +1,4 @@
+import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -23,11 +24,14 @@ const Cards = styled.div`
   }
 `;
 
-const sx: { card: SxProps; cardArea: SxProps; title: SxProps } = {
+const sx: {
+  card: SxProps;
+  cardArea: SxProps;
+  title: SxProps;
+} = {
   card: {
     maxWidth: 345,
     textDecoration: "none",
-
     transition: "0.5s",
     margin: "auto",
     "&:hover": { transform: "translate(0, -5px)" },
