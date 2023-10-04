@@ -18,6 +18,7 @@ import Window from "./components/globalComponent/Window";
 import data from "./data/twoLevelData.json";
 import WindowHOCButt from "./HOC/WindowHOCButt";
 import { RequestType } from "./HOC/WindowHOCButt";
+import { SxProps } from "@mui/material";
 
 interface TypeBG {
   $url: string;
@@ -48,7 +49,7 @@ const Footer = styled.footer`
   justify-content: center;
 `;
 
-const sx = {
+const sx: { icon: SxProps } = {
   icon: {
     color: "var(--color-orange-icon)",
     fontSize: "30px",
