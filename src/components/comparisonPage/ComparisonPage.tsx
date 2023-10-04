@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent } from "react";
+import React, { useState } from "react";
 import { P, rotateAnimation } from "../../style/style";
 import dishes from "../../img/dishes.svg";
 import apple from "../../img/apple.svg";
@@ -35,20 +35,23 @@ const Box = styled.div`
   height: 60vh;
 `;
 
-const ComparisonPage = () => {
-  const [open, setOpen] = useState<string>("");
-  const [openSimbol, setOpenSimbol] = useState<string>("?");
+const enum OkErrType {
+  ok,
+  err,
+}
 
-  const handleClickOpen = (e: MouseEvent<HTMLImageElement>, str: string) => {
-    e.preventDefault();
+type OkErrTypeStrings = keyof typeof OkErrType;
+
+const ComparisonPage = () => {
+  const [open, setOpen] = useState<OkErrTypeStrings | "">("");
+  const [openSimbol, setOpenSimbol] = useState<"<" | "?">("?");
+
+  const handleClickOpen = (str: string) => {
     str === "ok" ? setOpenSimbol("<") : setOpenSimbol("?");
     return str === "ok" ? setOpen("ok") : setOpen("err");
   };
 
-  const handleClose = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    return setOpen("");
-  };
+  const handleClose = () => setOpen("");
 
   const state = data[0].comparisonData;
 
@@ -65,13 +68,13 @@ const ComparisonPage = () => {
             <PVariant2>{state.qvest}</PVariant2>
             <BoxImg>
               <Img
-                onClick={(e) => handleClickOpen(e, "ok")}
+                onClick={() => handleClickOpen("ok")}
                 src={apple}
                 alt="img"
               />
               <PVariant>{openSimbol}</PVariant>
               <Img
-                onClick={(e) => handleClickOpen(e, "no")}
+                onClick={() => handleClickOpen("no")}
                 src={dishes}
                 alt="img"
               />

@@ -37,13 +37,17 @@ const sx: {
     "&:hover": { transform: "translate(0, -5px)" },
   },
   cardArea: {
-    transition: "0.2s",
-    backgroundColor: "#ffefdf",
+    transition: "var(--transition-prop-0_2s)",
+    backgroundColor: "var(--color-yellow-card)",
     "&:hover": {
-      backgroundColor: "#ffe3c1",
+      backgroundColor: "var(--color-yellow-card-hover)",
     },
   },
-  title: { color: "#9c7952", textAlign: "center", height: 50 },
+  title: {
+    color: "var(--color-orange-card-title)",
+    textAlign: "center",
+    height: 50,
+  },
 };
 
 const MultiActionAreaCard = ({ state }: { state: StateMaimPageType }) => {

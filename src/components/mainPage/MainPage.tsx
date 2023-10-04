@@ -4,7 +4,7 @@ import MultiActionAreaCard from "./card/Cards";
 import { StateMaimPageType } from "../../routes/rotes";
 
 const rotate = keyframes`
-0% {  opacity: 0;  }
+ 0% {  opacity: 0;  }
  100% {  opacity: 1;  }
 `;
 

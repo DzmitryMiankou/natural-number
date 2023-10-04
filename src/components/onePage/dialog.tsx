@@ -8,14 +8,12 @@ const SimpleDialog = ({
   opens: string;
   handleClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) => {
-  if (opens === "err") {
+  if (opens === "err")
     return (
       <Modal handleClose={handleClose} opens={opens} text={"Неправильно"} />
     );
-  }
-  if (opens === "ok") {
+  if (opens === "ok")
     return <Modal handleClose={handleClose} opens={opens} text={"Правильно"} />;
-  }
   return <></>;
 };
 

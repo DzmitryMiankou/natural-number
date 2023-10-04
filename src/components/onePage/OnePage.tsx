@@ -6,6 +6,9 @@ import SimpleDialog from "./dialog";
 import { P, sxGroupButton } from "../../style/style";
 import TitlePage from "../globalComponent/TitlePage";
 import data from "../../data/twoLevelData.json";
+import ButtonClickQvestHOC from "../../HOC/ButtonClickQvestHOC";
+import { ReturnPropType } from "../../HOC/ButtonClickQvestHOC";
+import { SxProps } from "@mui/material";
 
 const BoxQvest = styled.div`
   width: 100%;
@@ -19,29 +22,12 @@ const PVariant = styled(P)`
   margin-bottom: 20px;
 `;
 
-const Img = styled.img``;
-
-const sx = {
+const sx: { boxButton: SxProps; button: SxProps } = {
   boxButton: { display: "flex", gap: "5px" },
   button: sxGroupButton.button,
 };
 
-const OnePage = () => {
-  const [open, setOpen] = React.useState<"ok" | "err" | "">("");
-
-  const handleClickOpen = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    num: number
-  ) => {
-    e.preventDefault();
-    return num === 3 ? setOpen("ok") : setOpen("err");
-  };
-
-  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    return setOpen("");
-  };
-
+const OnePageH = ({ handleClose, open, handleClickOpen }: ReturnPropType) => {
   const state = data[0].naturalData;
 
   return (
@@ -58,7 +44,7 @@ const OnePage = () => {
             {[2, 5, 3].map((num, i) => (
               <React.Fragment key={i}>
                 <Button
-                  onClick={(e) => handleClickOpen(e, num)}
+                  onClick={() => handleClickOpen(num, 3)}
                   sx={sx.button}
                   variant="outlined"
                 >
@@ -67,11 +53,12 @@ const OnePage = () => {
               </React.Fragment>
             ))}
           </Box>
-          <Img src={Img1} alt="img" />
+          <img src={Img1} alt="img" />
         </BoxQvest>
       }
     />
   );
 };
 
+const OnePage = ButtonClickQvestHOC(OnePageH);
 export default OnePage;

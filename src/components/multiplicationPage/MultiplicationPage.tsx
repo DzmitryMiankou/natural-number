@@ -1,31 +1,18 @@
-import React, { MouseEvent, useState } from "react";
+import React from "react";
 import { P, sxGroupButton } from "../../style/style";
-import styled from "styled-components";
 import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
 import data from "../../data/twoLevelData.json";
 import Img1 from "../../img/multiplGame.svg";
 import { Button, Box } from "@mui/material";
+import ButtonClickQvestHOC from "../../HOC/ButtonClickQvestHOC";
+import { ReturnPropType } from "../../HOC/ButtonClickQvestHOC";
 
-const Img = styled.img``;
-
-const PVariant2 = styled(P)``;
-
-const BoxImg = styled.div``;
-
-const MultiplicationPage = () => {
-  const [open, setOpen] = useState<string>("");
-
-  const handleClickOpen = (e: MouseEvent<HTMLButtonElement>, num: number) => {
-    e.preventDefault();
-    return num === 24 ? setOpen("ok") : setOpen("err");
-  };
-
-  const handleClose = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    return setOpen("");
-  };
-
+const MultiplicationPageH = ({
+  handleClose,
+  open,
+  handleClickOpen,
+}: ReturnPropType) => {
   const state = data[0].multiplicationPageData;
 
   return (
@@ -38,12 +25,12 @@ const MultiplicationPage = () => {
         <>
           <SimpleDialog opens={open} handleClose={handleClose} />
           <Box sx={{ width: "100%" }}>
-            <PVariant2>{state.qvest}</PVariant2>
+            <P>{state.qvest}</P>
             <Box sx={sxGroupButton.boxButton}>
               {[30, 24, 18].map((num, i) => (
                 <React.Fragment key={i}>
                   <Button
-                    onClick={(e) => handleClickOpen(e, num)}
+                    onClick={() => handleClickOpen(num, 24)}
                     sx={sxGroupButton.button}
                     variant="outlined"
                   >
@@ -52,9 +39,9 @@ const MultiplicationPage = () => {
                 </React.Fragment>
               ))}
             </Box>
-            <BoxImg>
-              <Img src={Img1} alt="img" />
-            </BoxImg>
+            <div>
+              <img src={Img1} alt="img" />
+            </div>
           </Box>
         </>
       }
@@ -62,4 +49,5 @@ const MultiplicationPage = () => {
   );
 };
 
+const MultiplicationPage = ButtonClickQvestHOC(MultiplicationPageH);
 export default MultiplicationPage;

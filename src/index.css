@@ -16,6 +16,10 @@
   --color-footerText-light: #986f40;
   --color-footerBG: #cd9f6b;
   --color-black: #000000;
+  --color-yellow-card: #ffefdf;
+  --color-yellow-card-hover: #ffe3c1;
+  --color-orange-card-title: #9c7952;
+  --transition-prop-0_2s: 0.2s;
 }
 
 * {
