@@ -26,13 +26,10 @@ const Box = styled.div`
   position: relative;
 `;
 
-const MinusPage = () => {
+const MinusPage: React.FC = () => {
   const [open, setOpen] = React.useState<string>("");
 
-  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    return setOpen("");
-  };
+  const handleClose = () => setOpen("");
 
   const state = data[0].minusData;
 

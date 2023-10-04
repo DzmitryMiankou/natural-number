@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, MouseEvent } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import { clearRadioAction } from "../redux/radioReducer/RadioReducer";
@@ -24,14 +24,11 @@ export type RequestType = {
   params: PropType;
   openWind: boolean;
   dataWind: number;
-  handleClickOpenWind: (
-    e: React.MouseEvent<HTMLButtonElement>,
-    id: number
-  ) => void;
-  handleClose: () => void;
+  handleClickOpenWind: (id: number) => void;
+  handleClose: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
-const WindowHOCButt = (OriginalComponent: FC<RequestType | any>) => {
+const WindowHOCButt = (OriginalComponent: FC<PropType | any>) => {
   function NewComponent(params: PropType | {}) {
     const dispatch: AppDispatch = useDispatch();
     const [openWind, setOpenWind] = useState<boolean>(false);

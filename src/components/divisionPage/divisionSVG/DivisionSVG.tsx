@@ -76,7 +76,7 @@ const inpArr: Array<TypeInpArr<number>> = [
   { x: 1433, y: positionY, matrix: 1180 },
 ];
 
-const DivisionSVG = () => {
+const DivisionSVG: React.FC = () => {
   const state = useSelector((store: RootState) => store.division);
   const dispatch: AppDispatch = useDispatch();
   const [get, set] = useState<Array<number>>([]);

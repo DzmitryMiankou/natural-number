@@ -33,7 +33,7 @@ const Box = styled.div`
   }
 `;
 
-const DivisionPage = () => {
+const DivisionPage: React.FC = () => {
   const [open, setOpen] = useState<string>("");
 
   const handleClose = (e: MouseEvent<HTMLButtonElement>) => {

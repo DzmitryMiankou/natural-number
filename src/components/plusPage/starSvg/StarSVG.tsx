@@ -10,8 +10,9 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import TooltipButt from "../../globalComponent/Tooltip";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useResize } from "../../../hook/resizeWindHook";
+import { SxProps } from "@mui/material";
 
-const sx = {
+const sx: { icon: SxProps } = {
   icon: {
     fontSize: "70px",
     cursor: "pointer",
@@ -99,7 +100,7 @@ const inpArr: Array<TypeInpArr<string>> = [
   { x: "162", y: "152", b: 1 },
 ];
 
-const StarSVG = () => {
+const StarSVG: React.FC = () => {
   const windowHeight = useResize();
   const state = useSelector((store: RootState) => store.plusPageInputReducer);
   const dispatch: AppDispatch = useDispatch();

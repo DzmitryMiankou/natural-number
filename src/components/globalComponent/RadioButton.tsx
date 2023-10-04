@@ -45,7 +45,7 @@ const sx: (prop?: boolean) => {
   formLabel: { color: prop ? "var(--color-red-accent)" : "" },
 });
 
-const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
+const Radios: React.FC<{ data?: PropTypeTest }> = ({ data }) => {
   const state = useSelector((store: RootState) => store.radio);
   const dispatch: AppDispatch = useDispatch();
   const [helperText, setHelperText] = useState<string>(" ");
@@ -115,7 +115,6 @@ const Radios = ({ data }: { data: PropTypeTest | undefined }) => {
                 {answer.split(simbolSplit).length === 1 ? (
                   <Box>
                     <TextField
-                      id="filled-basic"
                       label="ваш ответ"
                       variant="filled"
                       onChange={(e) => handleRadioChange(e, qvest)}

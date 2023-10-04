@@ -57,21 +57,20 @@ export type PropTypeTest = Array<{
   right?: number;
 }>;
 
-const TitlePageH = ({
+interface FCpropType {
+  params: PropType;
+  openWind: boolean;
+  dataWind: number;
+  handleClickOpenWind: (id: number) => void;
+  handleClose: () => void;
+}
+
+const TitlePageH: React.FC<FCpropType> = ({
   params,
   openWind,
   dataWind,
   handleClose,
   handleClickOpenWind,
-}: {
-  params: PropType;
-  openWind: boolean;
-  dataWind: number;
-  handleClickOpenWind: (
-    e: React.MouseEvent<HTMLButtonElement>,
-    id: number
-  ) => void;
-  handleClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) => {
   return (
     <MainVariant $align={params.alignMain}>
@@ -94,7 +93,7 @@ const TitlePageH = ({
               key={id}
               text={text}
               element={
-                <IconButton onClick={(e) => handleClickOpenWind(e, id)}>
+                <IconButton onClick={(e) => handleClickOpenWind(id)}>
                   {icon}
                 </IconButton>
               }

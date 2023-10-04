@@ -22,7 +22,7 @@ const PVariant2 = styled(P)`
 
 const Box = styled.div``;
 
-const PlusPage = () => {
+const PlusPage: React.FC = () => {
   const [open, setOpen] = React.useState<string>("");
 
   const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {

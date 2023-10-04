@@ -49,13 +49,18 @@ const Footer = styled.footer`
   justify-content: center;
 `;
 
-const sx: { icon: SxProps } = {
+const sx: { icon: SxProps; tooltip: SxProps } = {
   icon: {
     color: "var(--color-orange-icon)",
     fontSize: "30px",
     transition: "0.2s",
     "&:hover": {
       color: "var(--color-red)",
+    },
+  },
+  tooltip: {
+    "& .MuiTooltip-tooltip": {
+      backgroundColor: "red",
     },
   },
 };
@@ -73,26 +78,24 @@ const FooterP = styled.p<Prop>`
       : "var(--color-footerText-light)"};
 `;
 
-const AppH = ({
+const AppH: React.FC<RequestType> = ({
   openWind,
   dataWind,
   handleClose,
   handleClickOpenWind,
-}: RequestType) => {
+}) => {
   const state = useSelector((state: RootState) => state.static);
   const [get, set] = useState<boolean>(false);
   const location = useLocation();
 
+  const chooseVariantBG = (): string => {
+    if (location.pathname === state.main[0].list[1].path) return BG2;
+    if (location.pathname === state.main[0].list[2].path) return BG3;
+    return BG;
+  };
+
   return (
-    <AppDiv
-      $url={
-        location.pathname === state.main[0].list[1].path
-          ? BG2
-          : BG && location.pathname === state.main[0].list[2].path
-          ? BG3
-          : BG
-      }
-    >
+    <AppDiv $url={chooseVariantBG()}>
       <Window
         title={"Общий тест"}
         dataWind={dataWind}
@@ -119,17 +122,13 @@ const AppH = ({
           )}
         </>
         <Tooltip
-          sx={{
-            "& .MuiTooltip-tooltip": {
-              backgroundColor: "red",
-            },
-          }}
+          sx={sx.tooltip}
           title="Тест"
           enterDelay={1500}
           TransitionComponent={Fade}
           TransitionProps={{ timeout: 600 }}
         >
-          <IconButton onClick={(e) => handleClickOpenWind(e, 2)}>
+          <IconButton onClick={() => handleClickOpenWind(2)}>
             <QuizIcon sx={sx.icon} />
           </IconButton>
         </Tooltip>

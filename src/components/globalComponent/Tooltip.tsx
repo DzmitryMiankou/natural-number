@@ -2,12 +2,9 @@ import React from "react";
 import Tooltip from "@mui/material/Tooltip";
 import Fade from "@mui/material/Fade";
 
-const TooltipButt = ({
+const TooltipButt: React.FC<{ text: string; element: JSX.Element }> = ({
   text,
   element,
-}: {
-  text: string;
-  element: JSX.Element;
 }) => {
   return (
     <Tooltip

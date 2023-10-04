@@ -67,7 +67,7 @@ const Chere2 = styled.g<Hero1StyleType>`
   animation: ${(prop) => prop.$logic} 0.8s linear infinite;
 `;
 
-const HeroSVG = () => {
+const HeroSVG: React.FC = () => {
   const [get, set] = useState<boolean>(false);
   const [get1, set1] = useState<boolean>(false);
   const [getQv, setQV] = useState<boolean>(false);

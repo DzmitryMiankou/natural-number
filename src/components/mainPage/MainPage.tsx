@@ -35,7 +35,7 @@ const Title = styled.h1`
   }
 `;
 
-const MaimPage = ({ state }: { state: StateMaimPageType }) => {
+const MaimPage: React.FC<{ state: StateMaimPageType }> = ({ state }) => {
   return (
     <Main>
       <Title>{state.main[0].title}</Title>

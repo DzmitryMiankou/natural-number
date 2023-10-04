@@ -42,7 +42,7 @@ const enum OkErrType {
 
 type OkErrTypeStrings = keyof typeof OkErrType;
 
-const ComparisonPage = () => {
+const ComparisonPage: React.FC = () => {
   const [open, setOpen] = useState<OkErrTypeStrings | "">("");
   const [openSimbol, setOpenSimbol] = useState<"<" | "?">("?");
 
