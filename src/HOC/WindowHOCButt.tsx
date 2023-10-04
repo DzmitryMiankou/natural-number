@@ -31,7 +31,7 @@ export type RequestType = {
   handleClose: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
-const WindowHOCButt = (OriginalComponent: FC<any>) => {
+const WindowHOCButt = (OriginalComponent: FC<PropType | any>) => {
   function NewComponent(params: PropType | {}) {
     const dispatch: AppDispatch = useDispatch();
     const [openWind, setOpenWind] = useState<boolean>(false);
