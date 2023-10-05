@@ -198,7 +198,7 @@
                     "right": 2
                 },
                 {
-                    "qvest": "Дима ехал на велосипеде со скоростью 12 км/ч. Поездка длилась 2 часа. Сколько километров проехал дима? (введите только число(Пример: 15))",
+                    "qvest": "Дима ехал на велосипеде со скоростью 12 км/ч. Поездка длилась 2 часа. Сколько километров проехал Дима? (введите только число(Пример: 15))",
                     "answer": "24",
                     "right": 0
                 }
@@ -256,33 +256,42 @@
             "qvest": "Найди частное и помоги чудику попасть домой через телепорт",
             "educationText": [
                 {
-                    "text": "Последовательность всех натуральных чисел называют натуральным рядом. Самое маленькое натуральное число - единица (1). | Натуральный ряд бесконечен. Каждое последующее число в нём на 1 больше предыдущего. | Нуль (0) не относится к натуральным числам. | Значение цифры в числе зависит не только от её начертания, но и от места, которое она занимает в числе. Такая запись чисел называется  позиционной. Место каждой цифры в числе называется разрядом."
+                    "text": "Деление — арифметическое действие обратное умножению. В результате деления получается число (частное), которое при умножении на делитель дает делимое.",
+                    "svg": "<?xml version='1.0' encoding='utf-8'?> <!-- Generator: Adobe Illustrator 26.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg version='1.1' id='Слой_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 700 200' enable-background='new 0 0 700 200' xml:space='preserve'> <text transform='matrix(1 0 0 1 146.6247 89.4393)' fill='#3D006F' font-family=''Tahoma'' font-size='108.3456px'>a : b = c</text> <g> <rect x='164.9' y='100.4' transform='matrix(0.9479 0.3185 -0.3185 0.9479 50.0681 -46.2231)' fill='#020000' width='3.1' height='59.2'/> <rect x='163.8' y='96.6' transform='matrix(0.5024 0.8646 -0.8646 0.5024 175.6138 -88.7249)' fill='#020000' width='2.1' height='23.1'/> <rect x='179.6' y='102' transform='matrix(-0.9226 0.3859 -0.3859 -0.9226 391.2274 148.5295)' fill='#020000' width='2.1' height='23.1'/> </g> <g> <rect x='322.6' y='103.6' transform='matrix(0.9992 3.893909e-02 -3.893909e-02 0.9992 5.4312 -12.5212)' fill='#020000' width='3.1' height='59.2'/> <rect x='315.5' y='101.1' transform='matrix(0.7254 0.6884 -0.6884 0.7254 164.5136 -186.9841)' fill='#020000' width='2.1' height='23.1'/> <rect x='332.2' y='101.8' transform='matrix(-0.7767 0.6298 -0.6298 -0.7767 663.5006 -8.5433)' fill='#020000' width='2.1' height='23.1'/> </g> <g> <rect x='546.5' y='100.4' transform='matrix(0.9517 -0.307 0.307 0.9517 -13.4427 174.539)' fill='#020000' width='3.1' height='59.2'/> <rect x='532.8' y='101.8' transform='matrix(0.9178 0.397 -0.397 0.9178 88.8694 -202.6219)' fill='#020000' width='2.1' height='23.1'/> <rect x='548.7' y='96.7' transform='matrix(-0.5128 0.8585 -0.8585 -0.5128 924.5992 -308.2384)' fill='#020000' width='2.1' height='23.1'/> </g> <text transform='matrix(1 0 0 1 96.8508 185.6361)' fill='#FF3F2E' font-family=''MyriadPro-Regular'' font-size='27.6135px'>делимое</text> <text transform='matrix(1 0 0 1 276.173 185.6371)' fill='#FF3F2E' font-family=''MyriadPro-Regular'' font-size='27.6135px'>делитель</text> <text transform='matrix(1 0 0 1 507.5803 185.6361)' fill='#FF3F2E' font-family=''MyriadPro-Regular'' font-size='27.6135px'>частное</text> </svg>"
+                },
+                {
+                    "text": "ЗАКОНЫ ДЕЛЕНИЯ: | 1. Деление равных чисел:",
+                    "svg": "<?xml version='1.0' encoding='utf-8'?> <!-- Generator: Adobe Illustrator 26.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg version='1.1' id='Слой_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 700 200' enable-background='new 0 0 700 200' xml:space='preserve'> <text transform='matrix(1 0 0 1 137.2766 86.1817)' fill='#3D006F' font-family=''Tahoma'' font-size='108.3456px'>a : a = 1</text> <text transform='matrix(1 0 0 1 203.9115 177.5078)' fill='#E11900' font-family=''Tahoma'' font-size='73.6192px'>5 : 5 = 1</text> </svg> "
+                },
+                {
+                    "text": "2. Деление на единицу:",
+                    "svg": "<?xml version='1.0' encoding='utf-8'?> <!-- Generator: Adobe Illustrator 26.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg version='1.1' id='Слой_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 700 200' enable-background='new 0 0 700 200' xml:space='preserve'> <text transform='matrix(1 0 0 1 137.2766 86.1817)' fill='#3D006F' font-family=''Tahoma'' font-size='108.3456px'>a : 1 = a</text> <text transform='matrix(1 0 0 1 203.9117 177.5078)' fill='#E11900' font-family=''Tahoma'' font-size='73.6192px'>5 : 1 = 5</text> </svg> "
                 }
             ],
             "educationTest": [
                 {
-                    "qvest": "Уменьшаемое - это:",
-                    "answer": "Число которе уменьшают;| Результат вычитания;| Число на сколько уменьшют.",
-                    "right": 0
-                },
-                {
-                    "qvest": "Найдите разность. 128 - 28 - 15:",
-                    "answer": "85",
-                    "right": 0
-                },
-                {
-                    "qvest": "Выберите правильный вариант ответа. а)(16 - 12) + 34; б) (34 - 16) + 12",
-                    "answer": "а) = б);| а) > б);| а) < б).",
+                    "qvest": "Частное - это. Выберите правильный вариант ответа:",
+                    "answer": "Результат сложения;| Результат деления;| Результат умножения.",
                     "right": 1
                 },
                 {
-                    "qvest": "3 - это вычитаемое, 6 - это разность, 9 - уменьшаемое. Выбирите правильный вариант ответа:",
-                    "answer": "а) 6 + 3 = 9;| б) 6 - 3 = 9;| в) 9 - 3 = 6.",
+                    "qvest": "Найдите частное. 64 : 2 = :",
+                    "answer": "32",
+                    "right": 0
+                },
+                {
+                    "qvest": "Проверьте, правильно ли выполнено деление.Выберите правильный вариант ответа:",
+                    "answer": "88 : 2 = 43;| 45 : 5 = 8;| 90 : 2 = 45.",
                     "right": 2
                 },
                 {
-                    "qvest": "Площадь прямоугольного помещения равна 20м2, ширина - 5м. Найдите длину помещения. Выберете правильный вариант ответа. Длина помещения:",
-                    "answer": "однозначное число;| трёхзначное число;| двухзначное число.",
+                    "qvest": "Вычислите, 18 : 2 ∙ 4 :",
+                    "answer": "36",
+                    "right": 0
+                },
+                {
+                    "qvest": "Николай проехал за 3 часа 18 км. Найдите скорость движения Николая. Запишите толкько число:",
+                    "answer": "6",
                     "right": 0
                 }
             ]
