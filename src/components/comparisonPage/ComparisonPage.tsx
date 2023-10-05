@@ -17,7 +17,7 @@ const BoxImg = styled.div`
 const Img = styled.img`
   width: 25vw;
   cursor: pointer;
-  transition: 0.2s;
+  transition: var(--transition-prop-0_2s);
   &:hover {
     animation: ${rotateAnimation} 0.6s linear infinite;
   }

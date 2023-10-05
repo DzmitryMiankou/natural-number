@@ -8,13 +8,14 @@ import CloseIcon from "@mui/icons-material/Close";
 import { PropTypeTest, PropTypeText } from "./TitlePage";
 import Radios from "./RadioButton";
 import styled from "styled-components";
+import { SxProps } from "@mui/material";
 
 const AnswerBox = styled.div`
   display: flex;
   align-items: center;
 `;
 
-const sx = {
+const sx: { box: SxProps; text: SxProps; closeIcon: SxProps } = {
   box: { display: "flex", justifyContent: "space-between" },
   text: {
     marginTop: "15px",
@@ -24,21 +25,14 @@ const sx = {
   closeIcon: { color: "var(--color-red)" },
 };
 
-const Window = ({
-  open,
-  handleClose,
-  title,
-  educationText,
-  dataWind,
-  educationTest,
-}: {
+const Window: React.FC<{
   open: boolean;
   title: string;
   dataWind: number | undefined;
   educationText?: PropTypeText;
   educationTest?: PropTypeTest;
   handleClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}) => {
+}> = ({ open, handleClose, title, educationText, dataWind, educationTest }) => {
   const [scroll] = React.useState<DialogProps["scroll"]>("paper");
 
   const descriptionElementRef = React.useRef<HTMLElement>(null);

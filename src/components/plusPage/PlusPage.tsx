@@ -25,10 +25,7 @@ const Box = styled.div``;
 const PlusPage: React.FC = () => {
   const [open, setOpen] = React.useState<string>("");
 
-  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    return setOpen("");
-  };
+  const handleClose = () => setOpen("");
 
   const state = data[0].plusPageData;
 

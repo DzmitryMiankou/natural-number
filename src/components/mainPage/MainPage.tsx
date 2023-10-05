@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import MultiActionAreaCard from "./card/Cards";
-import { StateMaimPageType } from "../../routes/rotes";
+import { StateMaimPageType } from "../../routes/routes";
 
 const rotate = keyframes`
  0% {  opacity: 0;  }

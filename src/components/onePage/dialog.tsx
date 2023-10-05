@@ -1,13 +1,10 @@
-import * as React from "react";
+import React from "react";
 import Modal from "../globalComponent/Modal";
 
-const SimpleDialog = ({
-  opens,
-  handleClose,
-}: {
+const SimpleDialog: React.FC<{
   opens: string;
   handleClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}) => {
+}> = ({ opens, handleClose }) => {
   if (opens === "err")
     return (
       <Modal handleClose={handleClose} opens={opens} text={"Неправильно"} />

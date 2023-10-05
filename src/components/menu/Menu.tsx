@@ -7,6 +7,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink as RouterLink } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
 import Fade from "@mui/material/Fade";
+import { SxProps } from "@mui/material";
 
 type menuArrType<T> = Array<{ text: T; path: T }>;
 
@@ -20,7 +21,12 @@ const menuArr: menuArrType<string> = [
   { text: "Деление натуральных чисел", path: "/divisionNumber" },
 ];
 
-const sx = {
+const sx: {
+  drawer: SxProps;
+  listItem: SxProps;
+  listBoot: SxProps;
+  icon: SxProps;
+} = {
   drawer: { width: 250, bgcolor: "var(--color-white)", height: "100%" },
   listItem: {
     bgcolor: "var(--color-white)",
@@ -64,11 +70,10 @@ export default function TemporaryDrawer() {
       ) {
         return;
       }
-
       setState({ ...state, [anchor]: open });
     };
 
-  const list = (anchor: Anchor) => (
+  const list: React.FC<Anchor> = (anchor) => (
     <Box
       sx={sx.drawer}
       role="presentation"
@@ -105,7 +110,6 @@ export default function TemporaryDrawer() {
               <MenuIcon sx={sx.icon} />
             </IconButton>
           </Tooltip>
-
           <Drawer
             anchor={anchor}
             open={state[anchor]}

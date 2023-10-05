@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import PageRoute from "./routes/rotes";
+import PageRoute from "./routes/routes";
 import BG from "./img/backG.svg";
 import BG2 from "./img/backG2.svg";
 import BG3 from "./img/plusBG.svg";

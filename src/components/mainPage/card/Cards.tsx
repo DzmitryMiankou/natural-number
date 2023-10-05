@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import styled from "styled-components";
 import { NavLink as RouterLink } from "react-router-dom";
-import { StateMaimPageType } from "../../../routes/rotes";
+import { StateMaimPageType } from "../../../routes/routes";
 import { SxProps } from "@mui/material";
 
 const Cards = styled.div`

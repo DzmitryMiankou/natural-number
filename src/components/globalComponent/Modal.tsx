@@ -8,15 +8,11 @@ const sx: { color: SxProps } = {
   color: { color: "var(--color-yellow-title)" },
 };
 
-const Modal = ({
-  opens,
-  text,
-  handleClose,
-}: {
+const Modal: React.FC<{
   opens?: string;
   text: string;
   handleClose: (e: MouseEvent<HTMLButtonElement>) => void;
-}) => {
+}> = ({ opens, text, handleClose }) => {
   return (
     <Dialog onClose={handleClose} open={true}>
       <Box sx={{ marginLeft: "auto" }}>

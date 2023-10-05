@@ -8,11 +8,11 @@ import { Button, Box } from "@mui/material";
 import ButtonClickQvestHOC from "../../HOC/ButtonClickQvestHOC";
 import { ReturnPropType } from "../../HOC/ButtonClickQvestHOC";
 
-const MultiplicationPageH = ({
+const MultiplicationPageH: React.FC<ReturnPropType> = ({
   handleClose,
   open,
   handleClickOpen,
-}: ReturnPropType) => {
+}) => {
   const state = data[0].multiplicationPageData;
 
   return (

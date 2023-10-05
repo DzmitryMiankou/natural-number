@@ -16,7 +16,7 @@ export interface StateMaimPageType {
   }>;
 }
 
-const PageRoute = ({ state }: { state: StateMaimPageType }) => {
+const PageRoute: React.FC<{ state: StateMaimPageType }> = ({ state }) => {
   const arrToElem: Array<{ element: JSX.Element; path: string }> = [
     { element: <MainPage state={state} />, path: "/" },
     { element: <OnePage />, path: "/numperNat" },
