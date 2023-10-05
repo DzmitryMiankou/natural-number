@@ -44,6 +44,7 @@ const Input = styled.input<TypeInputStyle>`
   border-radius: 50px;
   padding: 10px;
   animation: ${(prop) => prop.$anim} 0.8s linear infinite;
+  transition: var(--transition-prop-0_2s);
   &:hover {
     background: #b5dce5;
   }
