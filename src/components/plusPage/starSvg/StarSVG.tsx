@@ -1,4 +1,4 @@
-import React, { useCallback, MouseEvent, ChangeEvent } from "react";
+import React, { useCallback, ChangeEvent } from "react";
 import styled, { keyframes } from "styled-components";
 import {
   inputPlusPageAction,
@@ -23,8 +23,13 @@ const sx: { icon: SxProps } = {
 };
 
 const opacityAnimationErr = keyframes`
-  0% {  background-color: #eec9c1;  }
-  100% {   background-color: var(--color-red-notRight);  }
+  0% { background-color: #eec9c1;}
+  100% { background-color: var(--color-red-notRight);}
+`;
+
+const move = keyframes`
+  0% { stroke-dashoffset: 0;}
+  100% { stroke-dashoffset: 60;}
 `;
 
 interface TypeInputStyle {
@@ -71,6 +76,8 @@ const Circle2 = styled(Circle0)`
   fill: none;
   stroke: #008cad;
   stroke-width: 5;
+  stroke-dasharray: 10;
+  animation: ${move} 7s linear infinite;
 `;
 
 const Text1 = styled.text`
@@ -101,6 +108,25 @@ const inpArr: Array<TypeInpArr<string>> = [
   { x: "162", y: "152", b: 1 },
 ];
 
+interface TypeButtArr {
+  textToolTip: string;
+  icon: JSX.Element;
+}
+
+const buttArrF = (
+  restartNumber: () => void,
+  checkNumber: () => void
+): Array<TypeButtArr> => [
+  {
+    textToolTip: "Сбросить",
+    icon: <RestartAltIcon onClick={restartNumber} sx={sx.icon} />,
+  },
+  {
+    textToolTip: "Проверить",
+    icon: <CheckCircleOutlineIcon onClick={checkNumber} sx={sx.icon} />,
+  },
+];
+
 const StarSVG: React.FC = () => {
   const windowHeight = useResize();
   const state = useSelector((store: RootState) => store.plusPageInputReducer);
@@ -116,47 +142,19 @@ const StarSVG: React.FC = () => {
     [dispatch]
   );
 
-  const restartNumber = useCallback(
-    (e: MouseEvent) => {
-      e.preventDefault();
-      set(false);
-      dispatch(updatePlusPageAction());
-    },
-    [dispatch]
-  );
+  const restartNumber = () => {
+    set(false);
+    dispatch(updatePlusPageAction());
+  };
 
-  const checkNumber = useCallback(
-    (e: MouseEvent) => {
-      e.preventDefault();
-      set(!get);
-    },
-    [get]
-  );
+  const checkNumber = () => set(!get);
 
   const actualInputData = (b: number): string => {
     return state.arr[state.arr.map((el) => el.id).lastIndexOf(b)]?.text;
   };
 
-  interface TypeButtArr {
-    textToolTip: string;
-    icon: JSX.Element;
-  }
-
-  const buttArr: Array<TypeButtArr> = [
-    {
-      textToolTip: "Сбросить",
-      icon: <RestartAltIcon onClick={restartNumber} sx={sx.icon} />,
-    },
-    {
-      textToolTip: "Проверить",
-      icon: <CheckCircleOutlineIcon onClick={checkNumber} sx={sx.icon} />,
-    },
-  ];
-
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      version="1.1"
       x="0px"
       y="0px"
       viewBox={
@@ -167,9 +165,12 @@ const StarSVG: React.FC = () => {
         {inpArr.map(({ x, y, b }) => (
           <foreignObject key={b} x={x} y={y} width="120" height="120">
             <form>
+              <label htmlFor={`text-id-${b}`}></label>
               <Input
+                aria-label={`text-id-${b}`}
                 value={actualInputData(b) || ""}
                 type="text"
+                id={`text-id-${b}`}
                 maxLength={1}
                 onChange={(e) => onChangeCommit(e, b)}
                 $id={b}
@@ -186,175 +187,79 @@ const StarSVG: React.FC = () => {
       </>
       <foreignObject x="950" y="0" width="200" height="120">
         <ButtonBox>
-          {buttArr.map(({ textToolTip, icon }) => (
+          {buttArrF(restartNumber, checkNumber).map(({ textToolTip, icon }) => (
             <TooltipButt key={textToolTip} text={textToolTip} element={icon} />
           ))}
         </ButtonBox>
       </foreignObject>
-      <g>
-        <Circle0 cx="540" cy="540" r="104.9" />
-        <Text1 transform="matrix(1 0 0 1 496 600)">8</Text1>
-        <g>
-          <g>
-            <g>
-              <path d="M532.6,716.6l-6.7,0l0-57.4l6.7,0L532.6,716.6z M554.4,716.6l-6.7,0l0-57.4l6.7,0L554.4,716.6z" />
-            </g>
-          </g>
-          <g>
-            <g>
-              <path d="M409.9,659.6l-4.7-4.7l40.5-40.6l4.7,4.7L409.9,659.6z M425.3,675l-4.7-4.7l40.5-40.6l4.7,4.7L425.3,675z" />
-            </g>
-          </g>
-          <g>
-            <g>
-              <path d="M363.4,532.6l0-6.7l57.4,0l0,6.7L363.4,532.6z M363.4,554.4l0-6.7l57.4,0l0,6.7L363.4,554.4z" />
-            </g>
-          </g>
-          <g>
-            <g>
-              <path d="M420.4,409.9l4.7-4.7l40.6,40.5l-4.7,4.7L420.4,409.9z M405,425.3l4.7-4.7l40.6,40.5l-4.7,4.7L405,425.3z" />
-            </g>
-          </g>
-          <g>
-            <g>
-              <path d="M547.4,363.4l6.7,0l0,57.4l-6.7,0L547.4,363.4z M525.6,363.4l6.7,0l0,57.4l-6.7,0L525.6,363.4z" />
-            </g>
-          </g>
-          <g>
-            <g>
-              <path d="M670.1,420.4l4.7,4.7l-40.5,40.6l-4.7-4.7L670.1,420.4z M654.7,405l4.7,4.7l-40.5,40.6l-4.7-4.7L654.7,405z" />
-            </g>
-          </g>
-          <g>
-            <g>
-              <path d="M716.6,547.4l0,6.7l-57.4,0l0-6.7L716.6,547.4z M716.6,525.6l0,6.7l-57.4,0l0-6.7L716.6,525.6z" />
-            </g>
-          </g>
-          <g>
-            <g>
-              <path d="M659.6,670.1l-4.7,4.7l-40.6-40.5l4.7-4.7L659.6,670.1z M675,654.7l-4.7,4.7l-40.6-40.5l4.7-4.7L675,654.7z" />
-            </g>
-          </g>
-        </g>
-        <Circle1 cx="544.6" cy="790.3" r="59.7" />
-        <Text2 transform="matrix(0.9998 -1.844189e-02 1.844189e-02 0.9998 518.1503 824.7524)">
-          6
-        </Text2>
-        <g>
-          <Circle1 cx="364.3" cy="723.3" r="59.7" />
-          <Text2 transform="matrix(1 0 0 1 337.223 754.2089)">8</Text2>
-        </g>
-        <Circle1 cx="289.7" cy="544.6" r="59.7" />
-        <Text2 transform="matrix(0.9998 -1.843502e-02 1.843502e-02 0.9998 259.2195 576.0526)">
-          4
-        </Text2>
-        <g>
-          <g>
-            <Circle1 cx="359.7" cy="366.3" r="59.7" />
-            <Text2 transform="matrix(0.6939 -0.72 0.72 0.6939 363.2527 407.2113)">
-              1
-            </Text2>
-          </g>
-        </g>
-        <Circle1 cx="535.4" cy="289.7" r="59.7" />
-        <Text2 transform="matrix(0.9998 -1.844159e-02 1.844159e-02 0.9998 508.9168 321.1252)">
-          5
-        </Text2>
-        <Circle1 cx="713.7" cy="359.7" r="59.7" />
-        <Text2 transform="matrix(0.72 0.6939 -0.6939 0.72 674.7882 365.2527)">
-          3
-        </Text2>
-        <Circle1 cx="790.3" cy="535.4" r="59.7" />
-        <Text2 transform="matrix(0.9998 -1.843505e-02 1.843505e-02 0.9998 763.8461 566.8228)">
-          2
-        </Text2>
-        <Circle1 cx="720.3" cy="713.7" r="59.7" />
-        <Text2 transform="matrix(0.9998 -1.843443e-02 1.843443e-02 0.9998 695.7951 750.1721)">
-          7
-        </Text2>
-      </g>
-      <g>
-        <g>
-          <g>
-            <g>
-              <path d="M538.9,922l-0.2-25.7l-24.7,0.2l0-6.6l24.7-0.2l-0.2-25.9l7,0l0.2,25.9l24.7-0.2l0,6.6l-24.7,0.2l0.2,25.7L538.9,922z" />
-            </g>
-          </g>
-          <g>
-            <g>
-              <path
-                d="M269.1,809.3l18.1-18.3l-17.6-17.4l4.6-4.7l17.6,17.4l18.2-18.4l5,4.9l-18.2,18.4l17.6,17.4l-4.6,4.7L292.1,796
+      <Circle0 cx="540" cy="540" r="104.9" />
+      <Text1 transform="matrix(1 0 0 1 496 600)">8</Text1>
+      <path d="M532.6,716.6l-6.7,0l0-57.4l6.7,0L532.6,716.6z M554.4,716.6l-6.7,0l0-57.4l6.7,0L554.4,716.6z" />
+      <path d="M409.9,659.6l-4.7-4.7l40.5-40.6l4.7,4.7L409.9,659.6z M425.3,675l-4.7-4.7l40.5-40.6l4.7,4.7L425.3,675z" />
+      <path d="M363.4,532.6l0-6.7l57.4,0l0,6.7L363.4,532.6z M363.4,554.4l0-6.7l57.4,0l0,6.7L363.4,554.4z" />
+      <path d="M420.4,409.9l4.7-4.7l40.6,40.5l-4.7,4.7L420.4,409.9z M405,425.3l4.7-4.7l40.6,40.5l-4.7,4.7L405,425.3z" />
+      <path d="M547.4,363.4l6.7,0l0,57.4l-6.7,0L547.4,363.4z M525.6,363.4l6.7,0l0,57.4l-6.7,0L525.6,363.4z" />
+      <path d="M670.1,420.4l4.7,4.7l-40.5,40.6l-4.7-4.7L670.1,420.4z M654.7,405l4.7,4.7l-40.5,40.6l-4.7-4.7L654.7,405z" />
+      <path d="M716.6,547.4l0,6.7l-57.4,0l0-6.7L716.6,547.4z M716.6,525.6l0,6.7l-57.4,0l0-6.7L716.6,525.6z" />
+      <path d="M659.6,670.1l-4.7,4.7l-40.6-40.5l4.7-4.7L659.6,670.1z M675,654.7l-4.7,4.7l-40.6-40.5l4.7-4.7L675,654.7z" />
+      <Circle1 cx="544.6" cy="790.3" r="59.7" />
+      <Text2 transform="matrix(0.9998 -1.844189e-02 1.844189e-02 0.9998 514 830)">
+        6
+      </Text2>
+      <Circle1 cx="364.3" cy="723.3" r="59.7" />
+      <Text2 transform="matrix(1 0 0 1 335 760)">8</Text2>
+      <Circle1 cx="289.7" cy="544.6" r="59.7" />
+      <Text2 transform="matrix(0.9998 -1.843502e-02 1.843502e-02 0.9998 259.2195 576.0526)">
+        4
+      </Text2>
+      <Circle1 cx="359.7" cy="366.3" r="59.7" />
+      <Text2 transform="matrix(0.9998 -1.844159e-02 1.844159e-02 0.9998 330 407.2113)">
+        1
+      </Text2>
+      <Circle1 cx="535.4" cy="289.7" r="59.7" />
+      <Text2 transform="matrix(0.9998 -1.844159e-02 1.844159e-02 0.9998 509 325)">
+        5
+      </Text2>
+      <Circle1 cx="713.7" cy="359.7" r="59.7" />
+      <Text2 transform="matrix(0.9998 -1.844159e-02 1.844159e-02 0.9998 690 396)">
+        3
+      </Text2>
+      <Circle1 cx="790.3" cy="535.4" r="59.7" />
+      <Text2 transform="matrix(0.9998 -1.843505e-02 1.843505e-02 0.9998 763.8461 566.8228)">
+        2
+      </Text2>
+      <Circle1 cx="720.3" cy="713.7" r="59.7" />
+      <Text2 transform="matrix(0.9998 -1.843443e-02 1.843443e-02 0.9998 695.7951 750.1721)">
+        7
+      </Text2>
+      <path d="M538.9,922l-0.2-25.7l-24.7,0.2l0-6.6l24.7-0.2l-0.2-25.9l7,0l0.2,25.9l24.7-0.2l0,6.6l-24.7,0.2l0.2,25.7L538.9,922z" />
+      <path
+        d="M269.1,809.3l18.1-18.3l-17.6-17.4l4.6-4.7l17.6,17.4l18.2-18.4l5,4.9l-18.2,18.4l17.6,17.4l-4.6,4.7L292.1,796
 					L274,814.2L269.1,809.3z"
-              />
-            </g>
-          </g>
-          <g>
-            <g>
-              <path d="M158,538.9l25.7-0.2l-0.2-24.7l6.6,0l0.2,24.7l25.9-0.2l0,7l-25.9,0.2l0.2,24.7l-6.6,0l-0.2-24.7l-25.7,0.2L158,538.9z" />
-            </g>
-          </g>
-          <g>
-            <g>
-              <path
-                d="M270.7,269.1l18.3,18.1l17.4-17.6l4.7,4.6l-17.4,17.6l18.4,18.2l-4.9,5l-18.4-18.2l-17.4,17.6l-4.7-4.6l17.4-17.6
+      />
+      <path d="M158,538.9l25.7-0.2l-0.2-24.7l6.6,0l0.2,24.7l25.9-0.2l0,7l-25.9,0.2l0.2,24.7l-6.6,0l-0.2-24.7l-25.7,0.2L158,538.9z" />
+      <path
+        d="M270.7,269.1l18.3,18.1l17.4-17.6l4.7,4.6l-17.4,17.6l18.4,18.2l-4.9,5l-18.4-18.2l-17.4,17.6l-4.7-4.6l17.4-17.6
 					L265.8,274L270.7,269.1z"
-              />
-            </g>
-          </g>
-          <g>
-            <g>
-              <path d="M541.1,158l0.2,25.7l24.7-0.2l0,6.6l-24.7,0.2l0.2,25.9l-7,0l-0.2-25.9l-24.7,0.2l0-6.6l24.7-0.2l-0.2-25.7L541.1,158z" />
-            </g>
-          </g>
-          <g>
-            <g>
-              <path
-                d="M810.9,270.7L792.9,289l17.6,17.4l-4.6,4.7l-17.6-17.4l-18.2,18.4l-5-4.9l18.2-18.4l-17.6-17.4l4.6-4.7l17.6,17.4
+      />
+      <path d="M541.1,158l0.2,25.7l24.7-0.2l0,6.6l-24.7,0.2l0.2,25.9l-7,0l-0.2-25.9l-24.7,0.2l0-6.6l24.7-0.2l-0.2-25.7L541.1,158z" />
+      <path
+        d="M810.9,270.7L792.9,289l17.6,17.4l-4.6,4.7l-17.6-17.4l-18.2,18.4l-5-4.9l18.2-18.4l-17.6-17.4l4.6-4.7l17.6,17.4
 					l18.1-18.3L810.9,270.7z"
-              />
-            </g>
-          </g>
-          <g>
-            <g>
-              <path d="M922,541.1l-25.7,0.2l0.2,24.7l-6.6,0l-0.2-24.7l-25.9,0.2l0-7l25.9-0.2l-0.2-24.7l6.6,0l0.2,24.7l25.7-0.2L922,541.1z" />
-            </g>
-          </g>
-          <g>
-            <g>
-              <path
-                d="M809.3,810.9L791,792.9l-17.4,17.6l-4.7-4.6l17.4-17.6l-18.4-18.2l4.9-5l18.4,18.2l17.4-17.6l4.7,4.6L796,787.9
+      />
+      <path d="M922,541.1l-25.7,0.2l0.2,24.7l-6.6,0l-0.2-24.7l-25.9,0.2l0-7l25.9-0.2l-0.2-24.7l6.6,0l0.2,24.7l25.7-0.2L922,541.1z" />
+      <path
+        d="M809.3,810.9L791,792.9l-17.4,17.6l-4.7-4.6l17.4-17.6l-18.4-18.2l4.9-5l18.4,18.2l17.4-17.6l4.7,4.6L796,787.9
 					l18.3,18.1L809.3,810.9z"
-              />
-            </g>
-          </g>
-        </g>
-        <g>
-          <g>
-            <Circle2 cx="541" cy="1007.3" r="67.4" />
-          </g>
-          <g>
-            <Circle2 cx="207.3" cy="868.2" r="67.4" />
-          </g>
-          <g>
-            <Circle2 cx="72.7" cy="536.8" r="67.4" />
-          </g>
-          <g>
-            <Circle2 cx="211.8" cy="207.3" r="67.4" />
-          </g>
-          <g>
-            <Circle2 cx="536" cy="72.7" r="67.4" />
-          </g>
-          <g>
-            <Circle2 cx="872.7" cy="211.8" r="67.4" />
-          </g>
-          <g>
-            <Circle2 cx="1007.3" cy="543.2" r="67.4" />
-          </g>
-          <g>
-            <Circle2 cx="868.2" cy="872.7" r="67.4" />
-          </g>
-        </g>
-      </g>
+      />
+      <Circle2 cx="541" cy="1007.3" r="67.4" />
+      <Circle2 cx="207.3" cy="868.2" r="67.4" />
+      <Circle2 cx="72.7" cy="536.8" r="67.4" />
+      <Circle2 cx="211.8" cy="207.3" r="67.4" />
+      <Circle2 cx="536" cy="72.7" r="67.4" />
+      <Circle2 cx="872.7" cy="211.8" r="67.4" />
+      <Circle2 cx="1007.3" cy="543.2" r="67.4" />
+      <Circle2 cx="868.2" cy="872.7" r="67.4" />
     </svg>
   );
 };

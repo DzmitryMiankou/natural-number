@@ -22,9 +22,8 @@ interface Hero1StyleType {
   $logic: string | any;
 }
 
-interface VisabiliType<T, C> {
-  $visabili: T;
-  $bgcolor: C;
+interface VisabiliType<T> {
+  $bgcolor: T;
 }
 
 const SVG = styled.svg`
@@ -50,12 +49,11 @@ const Text = styled.p`
   font-size: 40px;
 `;
 
-const ForObg = styled.foreignObject<VisabiliType<boolean, string>>`
+const ForObg = styled.foreignObject<VisabiliType<string>>`
   background-color: ${(prop) => prop.$bgcolor};
   width: 230px;
   height: 61px;
   rotate: 5.5deg;
-  display: ${(prop) => (prop.$visabili ? "defult" : "none")};
 `;
 
 const Eye1 = styled.circle<EyeStyleType>`
@@ -94,18 +92,15 @@ const HeroSVG: React.FC = () => {
 
   return (
     <SVG x="0px" y="0px" viewBox="0 0 1920 529.3">
-      <ForObg
-        x="320"
-        y="173"
-        $visabili={getQv || getQv2}
-        $bgcolor={getQv2 ? "green" : "red"}
-      >
+      <>
         {getQv || getQv2 === true ? (
-          <Text>{getQv2 ? "Верно" : "Неверно"}</Text>
+          <ForObg x="320" y="173" $bgcolor={getQv2 ? "green" : "red"}>
+            <Text>{getQv2 ? "Верно" : "Неверно"}</Text>
+          </ForObg>
         ) : (
           <></>
         )}
-      </ForObg>
+      </>
       <polygon
         className={SvgStyle.st0}
         points="901.1,348.4 914,390.4 901.1,395.3 892.6,395.3 899,383.9 892.6,348.4 "
