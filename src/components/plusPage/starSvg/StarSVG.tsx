@@ -35,6 +35,7 @@ const move = keyframes`
 interface TypeInputStyle {
   $id: number;
   $val: string;
+  $c: number;
   $anim: any;
 }
 
@@ -95,17 +96,56 @@ interface TypeInpArr<T> {
   x: T;
   y: T;
   id: number;
+  matrix: string;
 }
 
 const inpArr: Array<TypeInpArr<string>> = [
-  { x: "486", y: "18", id: 5 },
-  { x: "824", y: "158", id: 3 },
-  { x: "958", y: "490", id: 2 },
-  { x: "818", y: "820", id: 7 },
-  { x: "492", y: "955", id: 6 },
-  { x: "156", y: "815", id: 8 },
-  { x: "23", y: "482", id: 4 },
-  { x: "162", y: "152", id: 1 },
+  {
+    x: "486",
+    y: "18",
+    id: 5,
+    matrix: "matrix(0.9998 -1.844189e-02 1.844189e-02 0.9998 514 830)",
+  },
+  { x: "824", y: "158", id: 3, matrix: "matrix(1 0 0 1 335 760)" },
+  {
+    x: "958",
+    y: "490",
+    id: 2,
+    matrix:
+      "matrix(0.9998 -1.843502e-02 1.843502e-02 0.9998 259.2195 576.0526)",
+  },
+  {
+    x: "818",
+    y: "820",
+    id: 7,
+    matrix: "matrix(0.9998 -1.844159e-02 1.844159e-02 0.9998 330 407.2113)",
+  },
+  {
+    x: "492",
+    y: "955",
+    id: 6,
+    matrix: "matrix(0.9998 -1.844159e-02 1.844159e-02 0.9998 509 325)",
+  },
+  {
+    x: "156",
+    y: "815",
+    id: 8,
+    matrix: "matrix(0.9998 -1.844159e-02 1.844159e-02 0.9998 690 396)",
+  },
+  {
+    x: "23",
+    y: "482",
+    id: 4,
+    matrix:
+      "matrix(0.9998 -1.843505e-02 1.843505e-02 0.9998 763.8461 566.8228)",
+  },
+  {
+    x: "162",
+    y: "152",
+    id: 1,
+    matrix:
+      "matrix(0.9998 -1.843443e-02 1.843443e-02 0.9998 695.7951 750.1721)",
+  },
 ];
 
 interface TypeButtArr {
@@ -149,8 +189,19 @@ const StarSVG: React.FC = () => {
 
   const checkNumber = () => set(!get);
 
+  console.log(state.startData);
+
   const actualInputData = (id: number): string =>
     state.obj.find((n) => n.key === id)?.value ?? "";
+
+  const assignObj = () => {
+    let newArr = [];
+    for (let i in inpArr) {
+      const newObj = Object.assign(inpArr[i], state.startData[i]);
+      newArr.push(newObj);
+    }
+    return newArr;
+  };
 
   return (
     <svg
@@ -161,21 +212,22 @@ const StarSVG: React.FC = () => {
       }
     >
       <>
-        {inpArr.map(({ x, y, id }) => (
+        {assignObj().map(({ x, y, id, c }) => (
           <foreignObject key={id} x={x} y={y} width="120" height="120">
             <form>
               <label htmlFor={`text-id-${id}`}></label>
               <Input
                 aria-label={`text-id-${id}`}
-                value={actualInputData(id)}
+                value={actualInputData(c)}
                 type="text"
                 id={`text-id-${id}`}
                 maxLength={1}
-                onChange={(e) => onChangeCommit(e, id)}
+                onChange={(e) => onChangeCommit(e, c)}
                 $id={id}
-                $val={actualInputData(id)}
+                $val={actualInputData(c)}
+                $c={c}
                 $anim={
-                  get === true && id + +actualInputData(id) !== 8
+                  get === true && id + +actualInputData(c) !== 8
                     ? opacityAnimationErr
                     : ""
                 }
@@ -192,7 +244,11 @@ const StarSVG: React.FC = () => {
         </ButtonBox>
       </foreignObject>
       <Circle0 cx="540" cy="540" r="104.9" />
-      <Text1 transform="matrix(1 0 0 1 496 600)">8</Text1>
+      <Text1
+        transform={`matrix(1 0 0 1 ${`${8}`.length === 2 ? 450 : 498} 600)`}
+      >
+        8
+      </Text1>
       <path d="M532.6,716.6l-6.7,0l0-57.4l6.7,0L532.6,716.6z M554.4,716.6l-6.7,0l0-57.4l6.7,0L554.4,716.6z" />
       <path d="M409.9,659.6l-4.7-4.7l40.5-40.6l4.7,4.7L409.9,659.6z M425.3,675l-4.7-4.7l40.5-40.6l4.7,4.7L425.3,675z" />
       <path d="M363.4,532.6l0-6.7l57.4,0l0,6.7L363.4,532.6z M363.4,554.4l0-6.7l57.4,0l0,6.7L363.4,554.4z" />
@@ -264,3 +320,9 @@ const StarSVG: React.FC = () => {
 };
 
 export default StarSVG;
+
+/*<>
+        {assignObj().map(({ matrix, b }) => (
+          <Text2 key={b} transform={matrix}>{b}</Text2>
+        ))}
+      </> */

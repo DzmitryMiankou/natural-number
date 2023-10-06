@@ -18,7 +18,7 @@ import {
   Portal,
   SVG,
 } from "./style";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../../../redux/store";
 import {
@@ -39,16 +39,6 @@ const sx: SxProps = {
   borderRadius: "50px",
 };
 
-interface TypeTextRight {
-  $endInputData: boolean;
-}
-
-const TextRight = styled.text<TypeTextRight>`
-  display: ${(prop) => (prop.$endInputData ? "blok" : "none")};
-  fill: green;
-  font-size: 35px;
-`;
-
 interface TypeHeroStyle<T> {
   $x?: T;
   $time?: T;
@@ -59,6 +49,19 @@ const Hero = styled.g<TypeHeroStyle<string>>`
   transition: ${(prop) => (prop.$anim ? "0.7s" : prop.$time)};
   transform: ${(prop) => prop.$x};
   opacity: ${(prop) => (prop.$anim ? 0 : 100)};
+`;
+
+const move = keyframes`
+  0% { stroke-dashoffset: 320;}
+  100% { stroke-dashoffset: 0;}
+`;
+
+const PathAnim = styled.path`
+  fill: none;
+  stroke-dasharray: 300;
+  animation: ${move} 4s linear;
+  stroke: #2a8200;
+  stroke-width: 2;
 `;
 
 const positionY = 291;
@@ -179,12 +182,61 @@ const DivisionSVG: React.FC = () => {
           element={<RestartAltIcon onClick={() => restartNumber()} sx={sx} />}
         />
       </foreignObject>
-      <TextRight
-        $endInputData={endInputData()}
-        transform={`matrix(1 0 0 1 850 130)`}
-      >
-        Все правильно
-      </TextRight>
+      {endInputData() ? (
+        <g>
+          <PathAnim
+            stroke-miterlimit="10"
+            d="M798.6,113.4c2.7-0.6,6.9-1,11.1-1c6.1,0,10,1,12.9,3.4
+		c2.4,1.8,3.9,4.6,3.9,8.3c0,4.5-3,8.5-8,10.4v0.1c4.5,1.1,9.7,4.8,9.7,11.8c0,4.1-1.6,7.1-4,9.4c-3.3,3-8.6,4.4-16.3,4.4
+		c-4.2,0-7.4-0.3-9.4-0.6V113.4z M804.7,132.7h5.5c6.4,0,10.2-3.4,10.2-7.9c0-5.5-4.2-7.7-10.4-7.7c-2.8,0-4.4,0.2-5.4,0.4V132.7z
+		 M804.7,155.3c1.2,0.2,2.9,0.3,5.1,0.3c6.3,0,12.1-2.3,12.1-9.2c0-6.4-5.5-9.1-12.2-9.1h-5V155.3z"
+          />
+          <PathAnim
+            stroke-miterlimit="10"
+            d="M869,158.4c-2.2,1.1-6.7,2.2-12.5,2.2c-13.3,0-23.3-8.4-23.3-23.9
+		c0-14.8,10-24.8,24.6-24.8c5.9,0,9.6,1.3,11.2,2.1l-1.5,5c-2.3-1.1-5.6-2-9.5-2c-11.1,0-18.4,7.1-18.4,19.5c0,11.5,6.6,19,18.1,19
+		c3.7,0,7.5-0.8,9.9-2L869,158.4z"
+          />
+          <PathAnim
+            stroke-miterlimit="10"
+            d="M902.4,137.5h-19.2v17.8h21.4v5.3h-27.7v-49.3h26.6v5.3h-20.3v15.6
+			h19.2V137.5z M879.6,104.2c0-2,1.6-3.7,3.7-3.7c2,0,3.5,1.6,3.5,3.7s-1.4,3.7-3.5,3.7C881.1,107.9,879.6,106.2,879.6,104.2z
+			 M893.2,104.2c0-2,1.5-3.7,3.6-3.7c2.1,0,3.6,1.6,3.6,3.7s-1.4,3.7-3.6,3.7C894.7,107.9,893.2,106.2,893.2,104.2z"
+          />
+          <PathAnim
+            stroke-miterlimit="10"
+            d="M925.8,113.4c2.7-0.6,6.9-1,11.1-1c6.1,0,10,1,12.9,3.4
+		c2.4,1.8,3.9,4.6,3.9,8.3c0,4.5-3,8.5-8,10.4v0.1c4.5,1.1,9.7,4.8,9.7,11.8c0,4.1-1.6,7.1-4,9.4c-3.3,3-8.6,4.4-16.3,4.4
+		c-4.2,0-7.4-0.3-9.4-0.6V113.4z M931.9,132.7h5.5c6.4,0,10.2-3.4,10.2-7.9c0-5.5-4.2-7.7-10.4-7.7c-2.8,0-4.4,0.2-5.4,0.4V132.7z
+		 M931.9,155.3c1.2,0.2,2.9,0.3,5.1,0.3c6.3,0,12.1-2.3,12.1-9.2c0-6.4-5.5-9.1-12.2-9.1h-5V155.3z"
+          />
+          <PathAnim
+            stroke-miterlimit="10"
+            d="M988.2,137.8h-18.3v17h20.4v5.1h-26.5v-47.2h25.5v5.1h-19.4v14.9
+		h18.3V137.8z"
+          />
+          <PathAnim
+            stroke-miterlimit="10"
+            d="M998.2,113.3c2.9-0.5,6.8-0.9,11.7-0.9c6,0,10.4,1.4,13.2,3.9
+		c2.6,2.2,4.1,5.7,4.1,9.9c0,4.3-1.3,7.6-3.6,10.1c-3.2,3.4-8.5,5.2-14.4,5.2c-1.8,0-3.5-0.1-4.9-0.4v18.9h-6.1V113.3z M1004.3,136
+		c1.3,0.3,3,0.5,5,0.5c7.3,0,11.8-3.6,11.8-10.1c0-6.2-4.4-9.2-11.1-9.2c-2.7,0-4.7,0.2-5.7,0.5V136z"
+          />
+          <PathAnim
+            stroke-miterlimit="10"
+            d="M1041.5,112.7v19.7h22.8v-19.7h6.2v47.2h-6.2v-22.1h-22.8v22.1h-6.1
+		v-47.2H1041.5z"
+          />
+          <PathAnim
+            stroke-miterlimit="10"
+            d="M1121.4,135.8c0,16.2-9.9,24.8-21.9,24.8c-12.5,0-21.2-9.7-21.2-23.9
+		c0-15,9.3-24.8,21.9-24.8C1113.1,112,1121.4,121.8,1121.4,135.8z M1084.8,136.6c0,10.1,5.5,19.1,15,19.1c9.7,0,15.1-8.9,15.1-19.6
+		c0-9.4-4.9-19.2-15-19.2C1089.8,116.9,1084.8,126.2,1084.8,136.6z"
+          />
+        </g>
+      ) : (
+        <></>
+      )}
+
       <Hero
         $x={`translateX(${
           endInputData()

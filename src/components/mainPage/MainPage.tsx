@@ -23,6 +23,10 @@ const Title = styled.h1`
   font-size: 84px;
   text-align: center;
   color: var(--color-yellow-title);
+  text-shadow: 0 0 1px #ffffff,
+    -1px -1px 0 hsl(13.92, 69.83240223463687%, 35.09803921568627%),
+    -1px -1px 1px hsl(23.04, 69.83240223463687%, 35.09803921568627%),
+    -1px -1px 1px hsl(80, 10%, 15%);
   font-weight: 800;
   @media (max-width: 1600px) {
     font-size: 64px;
