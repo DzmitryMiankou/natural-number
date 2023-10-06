@@ -42,7 +42,7 @@ const Input = styled.input<TypeInputStyle>`
   font-size: 80px;
   width: 80px;
   background-color: ${(prop) =>
-    +prop.$id + +prop.$val === 8 ? "#ffda9d" : "#eec9c1"};
+    +prop.$id + +prop.$val === 8 && prop.$val !== "" ? "#ffda9d" : "#eec9c1"};
   border: none;
   outline: none;
   text-align: center;
@@ -94,18 +94,18 @@ const Text2 = styled(Text1)`
 interface TypeInpArr<T> {
   x: T;
   y: T;
-  b: number;
+  id: number;
 }
 
 const inpArr: Array<TypeInpArr<string>> = [
-  { x: "486", y: "18", b: 5 },
-  { x: "824", y: "158", b: 3 },
-  { x: "958", y: "490", b: 2 },
-  { x: "818", y: "820", b: 7 },
-  { x: "492", y: "955", b: 6 },
-  { x: "156", y: "815", b: 8 },
-  { x: "23", y: "482", b: 4 },
-  { x: "162", y: "152", b: 1 },
+  { x: "486", y: "18", id: 5 },
+  { x: "824", y: "158", id: 3 },
+  { x: "958", y: "490", id: 2 },
+  { x: "818", y: "820", id: 7 },
+  { x: "492", y: "955", id: 6 },
+  { x: "156", y: "815", id: 8 },
+  { x: "23", y: "482", id: 4 },
+  { x: "162", y: "152", id: 1 },
 ];
 
 interface TypeButtArr {
@@ -137,7 +137,7 @@ const StarSVG: React.FC = () => {
     (e: ChangeEvent<HTMLInputElement>, id: number) => {
       e.preventDefault();
       const text = e.target.value;
-      dispatch(inputPlusPageAction({ text: text, id: id }));
+      dispatch(inputPlusPageAction({ key: id, value: text }));
     },
     [dispatch]
   );
@@ -149,9 +149,8 @@ const StarSVG: React.FC = () => {
 
   const checkNumber = () => set(!get);
 
-  const actualInputData = (b: number): string => {
-    return state.arr[state.arr.map((el) => el.id).lastIndexOf(b)]?.text;
-  };
+  const actualInputData = (id: number): string =>
+    state.obj.find((n) => n.key === id)?.value ?? "";
 
   return (
     <svg
@@ -162,21 +161,21 @@ const StarSVG: React.FC = () => {
       }
     >
       <>
-        {inpArr.map(({ x, y, b }) => (
-          <foreignObject key={b} x={x} y={y} width="120" height="120">
+        {inpArr.map(({ x, y, id }) => (
+          <foreignObject key={id} x={x} y={y} width="120" height="120">
             <form>
-              <label htmlFor={`text-id-${b}`}></label>
+              <label htmlFor={`text-id-${id}`}></label>
               <Input
-                aria-label={`text-id-${b}`}
-                value={actualInputData(b) || ""}
+                aria-label={`text-id-${id}`}
+                value={actualInputData(id)}
                 type="text"
-                id={`text-id-${b}`}
+                id={`text-id-${id}`}
                 maxLength={1}
-                onChange={(e) => onChangeCommit(e, b)}
-                $id={b}
-                $val={actualInputData(b) || "?"}
+                onChange={(e) => onChangeCommit(e, id)}
+                $id={id}
+                $val={actualInputData(id)}
                 $anim={
-                  get === true && b + +actualInputData(b) !== 8
+                  get === true && id + +actualInputData(id) !== 8
                     ? opacityAnimationErr
                     : ""
                 }

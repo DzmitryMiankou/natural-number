@@ -1,23 +1,27 @@
+import { reducerObjActualData } from "../../services/reducersService";
+import { TypeActionObj } from "../../services/reducersService";
 const INPUT = "INPUT_INPUT";
 const UPDATE = "INPUT_UPDATE";
 
-type TypeActionValue = { text: string; id: number };
+type TypeActionValue = { key: number; value: string };
 
-interface TypeAction {
+export interface TypeActionStar {
   type: typeof INPUT | typeof UPDATE;
   value: TypeActionValue;
 }
 
-const initialState: { arr: [] | TypeActionValue[] } = {
-  arr: [],
+const initialState: { obj: TypeActionObj[] } = {
+  obj: [],
 };
 
-const plusPageInputReducer = (state = initialState, action: TypeAction) => {
+const plusPageInputReducer = (state = initialState, action: TypeActionStar) => {
   switch (action.type) {
     case INPUT: {
+      let obj = [...state.obj, { ...action.value }];
+      const newFilterArr = reducerObjActualData(obj, action);
       return {
         ...state,
-        arr: [...state.arr, action.value],
+        obj: [...newFilterArr],
       };
     }
     case UPDATE: {
@@ -30,7 +34,7 @@ const plusPageInputReducer = (state = initialState, action: TypeAction) => {
   }
 };
 
-export const inputPlusPageAction = (value: { text: string; id: number }) => ({
+export const inputPlusPageAction = (value: TypeActionValue) => ({
   type: INPUT,
   value: value,
 });
