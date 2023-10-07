@@ -27,6 +27,11 @@ const opacityAnimationErr = keyframes`
   100% { background-color: var(--color-red-notRight);}
 `;
 
+const opacityAnimationOk = keyframes`
+  0% { background-color: #fff1e8;}
+  100% { background-color: #7ab700;}
+`;
+
 const move = keyframes`
   0% { stroke-dashoffset: 0;}
   100% { stroke-dashoffset: 60;}
@@ -37,13 +42,16 @@ interface TypeInputStyle {
   $val: string;
   $c: number;
   $anim: any;
+  $res: number;
 }
 
 const Input = styled.input<TypeInputStyle>`
   font-size: 80px;
-  width: 80px;
+  width: 85px;
   background-color: ${(prop) =>
-    +prop.$id + +prop.$val === 8 && prop.$val !== "" ? "#ffda9d" : "#eec9c1"};
+    +prop.$c + +prop.$val === prop.$res && prop.$val !== ""
+      ? "#ffda9d"
+      : "#eec9c1"};
   border: none;
   outline: none;
   text-align: center;
@@ -82,21 +90,15 @@ const Circle2 = styled(Circle0)`
 `;
 
 const Text1 = styled.text`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif !important;
   font-size: 163.8971px;
-`;
-
-const Text2 = styled(Text1)`
-  font-size: 105.4318px;
 `;
 
 interface TypeInpArr<T> {
   x: T;
   y: T;
   id: number;
-  matrix: string;
+  matrixX: number;
+  matrixY: number;
 }
 
 const inpArr: Array<TypeInpArr<string>> = [
@@ -104,47 +106,57 @@ const inpArr: Array<TypeInpArr<string>> = [
     x: "486",
     y: "18",
     id: 5,
-    matrix: "matrix(0.9998 -1.844189e-02 1.844189e-02 0.9998 514 830)",
+    matrixX: 515,
+    matrixY: 325,
   },
-  { x: "824", y: "158", id: 3, matrix: "matrix(1 0 0 1 335 760)" },
+  {
+    x: "824",
+    y: "158",
+    id: 3,
+    matrixX: 695,
+    matrixY: 394,
+  },
   {
     x: "958",
     y: "490",
     id: 2,
-    matrix:
-      "matrix(0.9998 -1.843502e-02 1.843502e-02 0.9998 259.2195 576.0526)",
+    matrixX: 770,
+    matrixY: 567,
   },
   {
     x: "818",
     y: "820",
     id: 7,
-    matrix: "matrix(0.9998 -1.844159e-02 1.844159e-02 0.9998 330 407.2113)",
+    matrixX: 700,
+    matrixY: 745,
   },
   {
     x: "492",
     y: "955",
     id: 6,
-    matrix: "matrix(0.9998 -1.844159e-02 1.844159e-02 0.9998 509 325)",
+    matrixX: 524,
+    matrixY: 820,
   },
   {
     x: "156",
     y: "815",
     id: 8,
-    matrix: "matrix(0.9998 -1.844159e-02 1.844159e-02 0.9998 690 396)",
+    matrixX: 345,
+    matrixY: 755,
   },
   {
     x: "23",
     y: "482",
     id: 4,
-    matrix:
-      "matrix(0.9998 -1.843505e-02 1.843505e-02 0.9998 763.8461 566.8228)",
+    matrixX: 270,
+    matrixY: 576.0526,
   },
   {
     x: "162",
     y: "152",
     id: 1,
-    matrix:
-      "matrix(0.9998 -1.843443e-02 1.843443e-02 0.9998 695.7951 750.1721)",
+    matrixX: 340,
+    matrixY: 400,
   },
 ];
 
@@ -189,18 +201,21 @@ const StarSVG: React.FC = () => {
 
   const checkNumber = () => set(!get);
 
-  console.log(state.startData);
-
-  const actualInputData = (id: number): string =>
-    state.obj.find((n) => n.key === id)?.value ?? "";
-
   const assignObj = () => {
     let newArr = [];
     for (let i in inpArr) {
-      const newObj = Object.assign(inpArr[i], state.startData[i]);
+      const newObj = Object.assign(inpArr[i], state.startData[i], state.obj[i]);
       newArr.push(newObj);
     }
     return newArr;
+  };
+
+  const actualInputData = (id: number): string =>
+    state.obj.find((n) => +n.key === id)?.value ?? "";
+
+  const animQvest = (id: number, c: number) => {
+    if (get === true && id !== c) return opacityAnimationErr;
+    if (get === true && id === c) return opacityAnimationOk;
   };
 
   return (
@@ -212,29 +227,38 @@ const StarSVG: React.FC = () => {
       }
     >
       <>
-        {assignObj().map(({ x, y, id, c }) => (
-          <foreignObject key={id} x={x} y={y} width="120" height="120">
-            <form>
-              <label htmlFor={`text-id-${id}`}></label>
-              <Input
-                aria-label={`text-id-${id}`}
-                value={actualInputData(c)}
-                type="text"
-                id={`text-id-${id}`}
-                maxLength={1}
-                onChange={(e) => onChangeCommit(e, c)}
-                $id={id}
-                $val={actualInputData(c)}
-                $c={c}
-                $anim={
-                  get === true && id + +actualInputData(c) !== 8
-                    ? opacityAnimationErr
-                    : ""
-                }
-              />
-            </form>
-          </foreignObject>
-        ))}
+        {assignObj().map(({ x, y, id, c, a, b, matrixX, matrixY }) => {
+          return (
+            <React.Fragment key={id}>
+              <text
+                fontSize="85px"
+                transform={`matrix(0.9998 -1.844159e-02 1.844159e-02 0.9998 ${
+                  `${b}`.length === 2 ? matrixX - 25 : matrixX
+                } ${matrixY})`}
+              >
+                {b}
+              </text>
+              <foreignObject x={x} y={y} width="120" height="120">
+                <form>
+                  <label htmlFor={`text-id-${id}`}></label>
+                  <Input
+                    aria-label={`text-id-${id}`}
+                    value={actualInputData(id)}
+                    type="text"
+                    id={`text-id-${id}`}
+                    maxLength={2}
+                    onChange={(e) => onChangeCommit(e, id)}
+                    $id={id}
+                    $res={a}
+                    $val={actualInputData(id)}
+                    $c={b}
+                    $anim={animQvest(+actualInputData(id), c)}
+                  />
+                </form>
+              </foreignObject>
+            </React.Fragment>
+          );
+        })}
       </>
       <foreignObject x="950" y="0" width="200" height="120">
         <ButtonBox>
@@ -245,9 +269,11 @@ const StarSVG: React.FC = () => {
       </foreignObject>
       <Circle0 cx="540" cy="540" r="104.9" />
       <Text1
-        transform={`matrix(1 0 0 1 ${`${8}`.length === 2 ? 450 : 498} 600)`}
+        transform={`matrix(1 0 0 1 ${
+          `${state.startData[0].a}`.length === 2 ? 454 : 498
+        } 600)`}
       >
-        8
+        {state.startData[0].a}
       </Text1>
       <path d="M532.6,716.6l-6.7,0l0-57.4l6.7,0L532.6,716.6z M554.4,716.6l-6.7,0l0-57.4l6.7,0L554.4,716.6z" />
       <path d="M409.9,659.6l-4.7-4.7l40.5-40.6l4.7,4.7L409.9,659.6z M425.3,675l-4.7-4.7l40.5-40.6l4.7,4.7L425.3,675z" />
@@ -258,35 +284,13 @@ const StarSVG: React.FC = () => {
       <path d="M716.6,547.4l0,6.7l-57.4,0l0-6.7L716.6,547.4z M716.6,525.6l0,6.7l-57.4,0l0-6.7L716.6,525.6z" />
       <path d="M659.6,670.1l-4.7,4.7l-40.6-40.5l4.7-4.7L659.6,670.1z M675,654.7l-4.7,4.7l-40.6-40.5l4.7-4.7L675,654.7z" />
       <Circle1 cx="544.6" cy="790.3" r="59.7" />
-      <Text2 transform="matrix(0.9998 -1.844189e-02 1.844189e-02 0.9998 514 830)">
-        6
-      </Text2>
       <Circle1 cx="364.3" cy="723.3" r="59.7" />
-      <Text2 transform="matrix(1 0 0 1 335 760)">8</Text2>
       <Circle1 cx="289.7" cy="544.6" r="59.7" />
-      <Text2 transform="matrix(0.9998 -1.843502e-02 1.843502e-02 0.9998 259.2195 576.0526)">
-        4
-      </Text2>
       <Circle1 cx="359.7" cy="366.3" r="59.7" />
-      <Text2 transform="matrix(0.9998 -1.844159e-02 1.844159e-02 0.9998 330 407.2113)">
-        1
-      </Text2>
       <Circle1 cx="535.4" cy="289.7" r="59.7" />
-      <Text2 transform="matrix(0.9998 -1.844159e-02 1.844159e-02 0.9998 509 325)">
-        5
-      </Text2>
       <Circle1 cx="713.7" cy="359.7" r="59.7" />
-      <Text2 transform="matrix(0.9998 -1.844159e-02 1.844159e-02 0.9998 690 396)">
-        3
-      </Text2>
       <Circle1 cx="790.3" cy="535.4" r="59.7" />
-      <Text2 transform="matrix(0.9998 -1.843505e-02 1.843505e-02 0.9998 763.8461 566.8228)">
-        2
-      </Text2>
       <Circle1 cx="720.3" cy="713.7" r="59.7" />
-      <Text2 transform="matrix(0.9998 -1.843443e-02 1.843443e-02 0.9998 695.7951 750.1721)">
-        7
-      </Text2>
       <path d="M538.9,922l-0.2-25.7l-24.7,0.2l0-6.6l24.7-0.2l-0.2-25.9l7,0l0.2,25.9l24.7-0.2l0,6.6l-24.7,0.2l0.2,25.7L538.9,922z" />
       <path
         d="M269.1,809.3l18.1-18.3l-17.6-17.4l4.6-4.7l17.6,17.4l18.2-18.4l5,4.9l-18.2,18.4l17.6,17.4l-4.6,4.7L292.1,796
@@ -320,9 +324,3 @@ const StarSVG: React.FC = () => {
 };
 
 export default StarSVG;
-
-/*<>
-        {assignObj().map(({ matrix, b }) => (
-          <Text2 key={b} transform={matrix}>{b}</Text2>
-        ))}
-      </> */
