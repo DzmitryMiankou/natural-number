@@ -38,7 +38,6 @@ const move = keyframes`
 `;
 
 interface TypeInputStyle {
-  $id: number;
   $val: string;
   $c: number;
   $anim: any;
@@ -240,15 +239,15 @@ const StarSVG: React.FC = () => {
               </text>
               <foreignObject x={x} y={y} width="120" height="120">
                 <form>
-                  <label htmlFor={`text-id-${id}`}></label>
+                  <label htmlFor={`text-id-${b}`}></label>
                   <Input
-                    aria-label={`text-id-${id}`}
+                    aria-label={`text-id-${b}`}
                     value={actualInputData(id)}
                     type="text"
-                    id={`text-id-${id}`}
+                    id={`text-id-${b}`}
                     maxLength={2}
+                    placeholder="?"
                     onChange={(e) => onChangeCommit(e, id)}
-                    $id={id}
                     $res={a}
                     $val={actualInputData(id)}
                     $c={b}
