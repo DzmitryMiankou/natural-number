@@ -27,9 +27,6 @@ interface TypeProp {
 
 const MainVariant = styled(Main)<TypeProp>`
   justify-content: ${(prop) => prop.$align};
-  @media (max-width: 900px) {
-    justify-content: space-around;
-  }
 `;
 
 interface TypeArr {
