@@ -45,7 +45,7 @@ const MultiplicationPageH: React.FC<ReturnPropType> = ({
   const restartNumber = () => dispatch(updateMultiplicationPageAction());
 
   const stringQvest: any = state.qvest;
-  const updateStringQvest = parseInt(stringQvest.match(/\d+/));
+  const updateStringQvest: number = parseInt(stringQvest.match(/\d+/));
 
   return (
     <TitlePage
