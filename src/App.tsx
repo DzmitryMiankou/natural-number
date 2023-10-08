@@ -78,6 +78,11 @@ const FooterP = styled.p<Prop>`
       : "var(--color-footerText-light)"};
 `;
 
+const enum TypeStrTooltip {
+  titleQuiztButt = "Обобщающий тест",
+  titleMainButt = "Главная",
+}
+
 const AppH: React.FC<RequestType> = ({
   openWind,
   dataWind,
@@ -97,7 +102,7 @@ const AppH: React.FC<RequestType> = ({
   return (
     <AppDiv $url={chooseVariantBG()}>
       <Window
-        title={"Общий тест"}
+        title={TypeStrTooltip.titleQuiztButt}
         dataWind={dataWind}
         open={openWind}
         handleClose={handleClose}
@@ -108,7 +113,7 @@ const AppH: React.FC<RequestType> = ({
         <>
           {location.pathname !== "/" ? (
             <Tooltip
-              title="Главная"
+              title={TypeStrTooltip.titleMainButt}
               TransitionComponent={Fade}
               enterDelay={1500}
               TransitionProps={{ timeout: 600 }}
@@ -123,7 +128,7 @@ const AppH: React.FC<RequestType> = ({
         </>
         <Tooltip
           sx={sx.tooltip}
-          title="Тест"
+          title={TypeStrTooltip.titleQuiztButt}
           enterDelay={1500}
           TransitionComponent={Fade}
           TransitionProps={{ timeout: 600 }}

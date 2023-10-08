@@ -62,15 +62,17 @@ const Radios: React.FC<{ data?: PropTypeTest }> = ({ data }) => {
 
   const handleRadioChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    qvest: string
+    qvest: string,
+    typeInput: number
   ) => {
     event.preventDefault();
     setHelperText(" ");
     setErrorText([" "]);
+    const value: string = (event.target as HTMLInputElement).value;
     dispatch(
       radioAction({
         key: qvest,
-        value: (event.target as HTMLInputElement).value,
+        value: typeInput === 1 ? value.replaceAll(" ", "") : value,
       })
     );
   };
@@ -117,7 +119,13 @@ const Radios: React.FC<{ data?: PropTypeTest }> = ({ data }) => {
                     <TextField
                       label="ваш ответ"
                       variant="filled"
-                      onChange={(e) => handleRadioChange(e, qvest)}
+                      onChange={(e) =>
+                        handleRadioChange(
+                          e,
+                          qvest,
+                          answer.split(simbolSplit).length
+                        )
+                      }
                     />
                   </Box>
                 ) : (
@@ -125,7 +133,13 @@ const Radios: React.FC<{ data?: PropTypeTest }> = ({ data }) => {
                     aria-labelledby="demo-error-radios"
                     name="quiz"
                     value={new Set(answer).forEach((entry) => entry)}
-                    onChange={(e) => handleRadioChange(e, qvest)}
+                    onChange={(e) =>
+                      handleRadioChange(
+                        e,
+                        qvest,
+                        answer.split(simbolSplit).length
+                      )
+                    }
                   >
                     <>
                       {answer.split(simbolSplit).map((data, i) => (
