@@ -29,12 +29,12 @@ const initialState: arrCardType<string> = {
           img: Comparison,
         },
         {
-          text: "Сложение или сумма",
+          text: "Сложение, или сумма",
           path: "/plusNumber",
           img: PlusImg,
         },
         {
-          text: "Вычитание или разность",
+          text: "Вычитание, или разность",
           path: "/minusNumber",
           img: Minus,
         },

@@ -56,8 +56,8 @@ const Radios: React.FC<{ data?: PropTypeTest }> = ({ data }) => {
 
   const enum TypeErrText {
     allErr = "Вы ответили не на все вопросы",
-    partErr = "Ответили не правильно",
-    allGood = "Молодец. Ответы все правильные",
+    partErr = "Ответили неправильно",
+    allGood = "Молодец. Все ответы правильные",
   }
 
   const handleRadioChange = (

@@ -15,8 +15,8 @@ const menuArr: menuArrType<string> = [
   { text: "Главная", path: "/" },
   { text: "Что такое натуральные числа?", path: "/numperNat" },
   { text: "Сравнение, или что больше", path: "/comparisonNumb" },
-  { text: "Сложение или сумма", path: "/plusNumber" },
-  { text: "Вычитание или разность", path: "/minusNumber" },
+  { text: "Сложение, или сумма", path: "/plusNumber" },
+  { text: "Вычитание, или разность", path: "/minusNumber" },
   { text: "Умножение натуральных чисел", path: "/multiplicationNumber" },
   { text: "Деление натуральных чисел", path: "/divisionNumber" },
 ];
