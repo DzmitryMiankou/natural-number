@@ -14,19 +14,27 @@ import mainPageReducer from "./mainPageReducer/mainPageReducer";
 import plusPageInputReducer from "./plusReducer/Input";
 import radioReducer from "./radioReducer/RadioReducer";
 import divisionReducer from "./divisionReducer/DivisionReducer";
+import multiplicationReducer from "./multiplicationReducer/MultiplicationReducer";
 
 const rootReducers = combineReducers({
   static: mainPageReducer,
   plusPageInputReducer: plusPageInputReducer,
   radio: radioReducer,
   division: divisionReducer,
+  multiplication: multiplicationReducer,
 });
 
 const persistConfig = {
   key: "root",
   storage,
   version: 1,
-  blacklist: ["static", "plusPageInputReducer", "radio", "division"],
+  blacklist: [
+    "static",
+    "plusPageInputReducer",
+    "radio",
+    "division",
+    "multiplication",
+  ],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);

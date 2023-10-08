@@ -19,12 +19,12 @@ const initialState: arrCardType<string> = {
       title: "натуральные числа",
       list: [
         {
-          text: "Что такое натуральные числа",
+          text: "Что такое натуральные числа?",
           path: "/numperNat",
           img: ImgMain,
         },
         {
-          text: "Сравнение или что больше",
+          text: "Сравнение, или что больше",
           path: "/comparisonNumb",
           img: Comparison,
         },
