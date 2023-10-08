@@ -5,6 +5,8 @@ import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
 import StarSVG from "./starSvg/StarSVG";
 import data from "../../data/twoLevelData.json";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const BoxImg = styled.div`
   display: flex;
@@ -23,11 +25,17 @@ const PVariant2 = styled(P)`
 const Box = styled.div``;
 
 const PlusPage: React.FC = () => {
+  const stateRedux = useSelector(
+    (store: RootState) => store.plusPageInputReducer.startData[0].a
+  );
   const [open, setOpen] = React.useState<string>("");
 
   const handleClose = () => setOpen("");
 
   const state = data[0].plusPageData;
+
+  const stringQvest: any = state.qvest;
+  const updateStringQvest: number = parseInt(stringQvest.match(/\d+/));
 
   return (
     <TitlePage
@@ -39,7 +47,9 @@ const PlusPage: React.FC = () => {
         <>
           <SimpleDialog opens={open} handleClose={handleClose} />
           <Box>
-            <PVariant2>{state.qvest}</PVariant2>
+            <PVariant2>
+              {stringQvest.replace(updateStringQvest, stateRedux)}
+            </PVariant2>
             <BoxImg>
               <StarSVG />
             </BoxImg>
