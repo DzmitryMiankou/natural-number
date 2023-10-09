@@ -8,18 +8,8 @@ import { NavLink as RouterLink } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
 import Fade from "@mui/material/Fade";
 import { SxProps } from "@mui/material";
-
-type menuArrType<T> = Array<{ text: T; path: T }>;
-
-const menuArr: menuArrType<string> = [
-  { text: "Главная", path: "/" },
-  { text: "Что такое натуральные числа?", path: "/numperNat" },
-  { text: "Сравнение, или что больше", path: "/comparisonNumb" },
-  { text: "Сложение, или сумма", path: "/plusNumber" },
-  { text: "Вычитание, или разность", path: "/minusNumber" },
-  { text: "Умножение натуральных чисел", path: "/multiplicationNumber" },
-  { text: "Деление натуральных чисел", path: "/divisionNumber" },
-];
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const sx: {
   drawer: SxProps;
@@ -59,6 +49,9 @@ export default function TemporaryDrawer() {
     bottom: false,
     right: false,
   });
+  const stateRedux = useSelector(
+    (store: RootState) => store.static.main[0].list
+  );
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -81,7 +74,7 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {menuArr.map(({ text, path }, index) => (
+        {stateRedux.map(({ text, path }, index) => (
           <ListItem sx={sx.listItem} key={text} disablePadding title="button">
             <ListItemButton
               component={RouterLink}

@@ -34,7 +34,7 @@ const PlusPage: React.FC = () => {
 
   const state = data[0].plusPageData;
 
-  const stringQvest: any = state.qvest;
+  const stringQvest = state.qvest as any;
   const updateStringQvest: number = parseInt(stringQvest.match(/\d+/));
 
   return (
