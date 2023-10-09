@@ -16,6 +16,7 @@ import {
   Button,
   Box,
 } from "@mui/material";
+import AlertDialog from "./modalQuiz/ModalQuiz";
 
 const ButtonBox = styled.div`
   display: flex;
@@ -45,12 +46,24 @@ const sx: (prop?: boolean) => {
   formLabel: { color: prop ? "var(--color-red-accent)" : "" },
 });
 
-const Radios: React.FC<{ data?: PropTypeTest }> = ({ data }) => {
+const Radios: React.FC<{ data?: PropTypeTest; testType: string }> = ({
+  data,
+  testType,
+}) => {
   const state = useSelector((store: RootState) => store.radio);
   const dispatch: AppDispatch = useDispatch();
   const [helperText, setHelperText] = useState<string>(" ");
   const [errorText, setErrorText] = useState<Array<string>>([]);
   const [focuse, setFocuse] = useState<string>("");
+  const [open, setOpen] = React.useState<boolean>(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   const simbolSplit = "|";
 
@@ -167,10 +180,16 @@ const Radios: React.FC<{ data?: PropTypeTest }> = ({ data }) => {
         >
           {helperText}
         </FormHelperText>
-        <Button sx={sx().button} type="submit" variant="outlined">
+        <Button
+          onClick={testType === "Обобщающий тест" ? handleOpen : undefined}
+          sx={sx().button}
+          type="submit"
+          variant="outlined"
+        >
           Проверить ответы
         </Button>
       </ButtonBox>
+      <AlertDialog handleClose={handleClose} open={open} state={state} />
     </form>
   );
 };

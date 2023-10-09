@@ -25,14 +25,23 @@ const sx: { box: SxProps; text: SxProps; closeIcon: SxProps } = {
   closeIcon: { color: "var(--color-red)" },
 };
 
-const Window: React.FC<{
+interface PropType {
   open: boolean;
   title: string;
   dataWind: number | undefined;
   educationText?: PropTypeText;
   educationTest?: PropTypeTest;
   handleClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}> = ({ open, handleClose, title, educationText, dataWind, educationTest }) => {
+}
+
+const Window: React.FC<PropType> = ({
+  open,
+  handleClose,
+  title,
+  educationText,
+  dataWind,
+  educationTest,
+}) => {
   const [scroll] = React.useState<DialogProps["scroll"]>("paper");
 
   const descriptionElementRef = React.useRef<HTMLElement>(null);
@@ -90,7 +99,7 @@ const Window: React.FC<{
               </>
             ) : (
               <AnswerBox>
-                <Radios data={educationTest} />
+                <Radios data={educationTest} testType={title} />
               </AnswerBox>
             )}
           </>

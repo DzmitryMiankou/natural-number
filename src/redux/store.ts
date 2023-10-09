@@ -15,6 +15,7 @@ import plusPageInputReducer from "./plusReducer/Input";
 import radioReducer from "./radioReducer/RadioReducer";
 import divisionReducer from "./divisionReducer/DivisionReducer";
 import multiplicationReducer from "./multiplicationReducer/MultiplicationReducer";
+import storeQuizReducer from "./storeQuiz/storeQuizReducer";
 
 const rootReducers = combineReducers({
   static: mainPageReducer,
@@ -22,6 +23,7 @@ const rootReducers = combineReducers({
   radio: radioReducer,
   division: divisionReducer,
   multiplication: multiplicationReducer,
+  storeQuiz: storeQuizReducer,
 });
 
 const persistConfig = {
@@ -31,9 +33,9 @@ const persistConfig = {
   blacklist: [
     "static",
     "plusPageInputReducer",
-    "radio",
     "division",
     "multiplication",
+    "radio",
   ],
 };
 
