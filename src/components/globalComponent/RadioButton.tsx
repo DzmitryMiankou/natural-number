@@ -17,11 +17,12 @@ import {
   Box,
 } from "@mui/material";
 import AlertDialog from "./modalQuiz/ModalQuiz";
+import { radioActionErrList } from "../../redux/radioReducer/RadioReducer";
 
 const ButtonBox = styled.div`
   display: flex;
-  align-items: flex-end;
-  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
 `;
 
 const sx: (prop?: boolean) => {
@@ -46,11 +47,12 @@ const sx: (prop?: boolean) => {
   formLabel: { color: prop ? "var(--color-red-accent)" : "" },
 });
 
-const Radios: React.FC<{ data?: PropTypeTest; testType: string }> = ({
-  data,
-  testType,
-}) => {
+const Radios: React.FC<{
+  data?: PropTypeTest;
+  testType: string;
+}> = ({ data, testType }) => {
   const state = useSelector((store: RootState) => store.radio);
+
   const dispatch: AppDispatch = useDispatch();
   const [helperText, setHelperText] = useState<string>(" ");
   const [errorText, setErrorText] = useState<Array<string>>([]);
@@ -104,6 +106,7 @@ const Radios: React.FC<{ data?: PropTypeTest; testType: string }> = ({
         : errorQvest.push(indexData.qvest);
     }
     setErrorText(errorQvest);
+    dispatch(radioActionErrList(errorQvest));
     if (state.obj.length !== data?.length)
       return setHelperText(TypeErrText.allErr);
     if (errorQvest.length === 0) return setHelperText(TypeErrText.allGood);
@@ -180,6 +183,7 @@ const Radios: React.FC<{ data?: PropTypeTest; testType: string }> = ({
         >
           {helperText}
         </FormHelperText>
+
         <Button
           onClick={testType === "Обобщающий тест" ? handleOpen : undefined}
           sx={sx().button}

@@ -9,6 +9,10 @@ import { PropTypeTest, PropTypeText } from "./TitlePage";
 import Radios from "./RadioButton";
 import styled from "styled-components";
 import { SxProps } from "@mui/material";
+import RecentActorsIcon from "@mui/icons-material/RecentActors";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import FullScreenDialog from "./modalFullTable/FullScreenDialog";
 
 const AnswerBox = styled.div`
   display: flex;
@@ -43,6 +47,16 @@ const Window: React.FC<PropType> = ({
   educationTest,
 }) => {
   const [scroll] = React.useState<DialogProps["scroll"]>("paper");
+  const stateQuiz = useSelector((store: RootState) => store.storeQuiz);
+  const [openW, setOpenW] = React.useState(false);
+
+  const handleClickOpenW = () => {
+    setOpenW(true);
+  };
+
+  const handleCloseW = () => {
+    setOpenW(false);
+  };
 
   const descriptionElementRef = React.useRef<HTMLElement>(null);
   React.useEffect(() => {
@@ -70,6 +84,22 @@ const Window: React.FC<PropType> = ({
             {title}
           </DialogTitle>
           <DialogActions>
+            <>
+              {stateQuiz?.data?.length !== 0 && title === "Обобщающий тест" ? (
+                <>
+                  <IconButton onClick={handleClickOpenW}>
+                    <RecentActorsIcon sx={{ color: "var(--color-radio)" }} />
+                  </IconButton>
+                  <FullScreenDialog
+                    handleCloseW={handleCloseW}
+                    openW={openW}
+                    stateQuiz={stateQuiz}
+                  />
+                </>
+              ) : (
+                <></>
+              )}
+            </>
             <IconButton onClick={handleClose} aria-label="delete" size="small">
               <CloseIcon sx={sx.closeIcon} />
             </IconButton>
@@ -92,7 +122,6 @@ const Window: React.FC<PropType> = ({
                         {t}
                       </DialogContentText>
                     ))}
-
                     <div dangerouslySetInnerHTML={{ __html: svg }} />
                   </React.Fragment>
                 ))}

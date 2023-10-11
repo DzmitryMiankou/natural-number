@@ -1,6 +1,10 @@
 const SETQUIZ = "STORE_QUIZ_EWSGREHD34342FDB_drbgtr$$_RF_1514";
 
-const initialState: [] = [];
+interface InitialStateType {
+  data: Array<Object>;
+}
+
+const initialState: InitialStateType = { data: [] };
 
 interface TypeAction<T> {
   type: T;
@@ -11,7 +15,7 @@ type Action = TypeAction<typeof SETQUIZ>;
 const storeQuizReducer = (state = initialState, action: Action | any) => {
   switch (action.type) {
     case SETQUIZ: {
-      return { ...state, ...action.value };
+      return { ...state, data: [...state.data, { ...action.value }] };
     }
     default:
       return state;

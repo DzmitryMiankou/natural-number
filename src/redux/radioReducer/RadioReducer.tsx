@@ -2,16 +2,19 @@ import { TypeActionObj } from "../../services/reducersService";
 import { reducerObjActualData } from "../../services/reducersService";
 const RADIO = "IRADIO_RADIO";
 const CLEAR = "CLEAR_RADIO_ALL";
+const RADIOERRORLIST = "RADIO_ERROR_LIST";
 
 export interface TypeActionRadio {
-  type: typeof RADIO | typeof CLEAR;
+  type: typeof RADIO | typeof CLEAR | typeof RADIOERRORLIST;
   value: TypeActionObj;
 }
 
 const initialState: {
   obj: TypeActionObj[];
+  err: any;
 } = {
   obj: [],
+  err: [],
 };
 
 const radioReducer = (state = initialState, action: TypeActionRadio) => {
@@ -24,6 +27,9 @@ const radioReducer = (state = initialState, action: TypeActionRadio) => {
         obj: [...newFilterArr],
       };
     }
+    case RADIOERRORLIST: {
+      return { ...state, err: action.value };
+    }
     case CLEAR: {
       return { ...initialState };
     }
@@ -34,6 +40,11 @@ const radioReducer = (state = initialState, action: TypeActionRadio) => {
 
 export const radioAction = (value: TypeActionObj) => ({
   type: RADIO,
+  value: value,
+});
+
+export const radioActionErrList = (value: Array<any>) => ({
+  type: RADIOERRORLIST,
   value: value,
 });
 

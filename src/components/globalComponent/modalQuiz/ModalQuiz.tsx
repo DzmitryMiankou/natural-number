@@ -9,12 +9,15 @@ import { Box } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../redux/store";
 import { setQuizAction } from "../../../redux/storeQuiz/storeQuizReducer";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 
 export default function AlertDialog({ handleClose, open, state }: any) {
   const dispatch: AppDispatch = useDispatch();
   const [getName, setName] = React.useState<string>("");
   const [getSurname, setSurname] = React.useState<string>("");
   const [getClass, setClass] = React.useState<string>("");
+  const stateErrList = useSelector((store: RootState) => store.radio.err);
 
   const handleRadioChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -31,7 +34,7 @@ export default function AlertDialog({ handleClose, open, state }: any) {
         setClass((event.target as HTMLInputElement).value);
         break;
       default:
-        alert("Нет таких значений");
+        console.log("ERR_Modal_Quiz");
     }
   };
 
@@ -42,6 +45,7 @@ export default function AlertDialog({ handleClose, open, state }: any) {
           dataStud: { name: getName, surname: getSurname, class: getClass },
           quizData: state,
           timeSave: new Date().toLocaleString(),
+          errList: stateErrList,
         })
       );
     } else {
