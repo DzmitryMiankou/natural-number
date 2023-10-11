@@ -59,21 +59,25 @@ const Radios: React.FC<{
   const [focuse, setFocuse] = useState<string>("");
   const [open, setOpen] = React.useState<boolean>(false);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const simbolSplit = "|";
-
   const enum TypeErrText {
     allErr = "Вы ответили не на все вопросы",
     partErr = "Ответили неправильно",
     allGood = "Молодец. Все ответы правильные",
   }
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    if (state.obj.length !== data?.length) {
+      setOpen(false);
+      return setHelperText(TypeErrText.allErr);
+    }
+    setOpen(true);
+  };
+
+  const simbolSplit = "|";
 
   const handleRadioChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -107,9 +111,13 @@ const Radios: React.FC<{
     }
     setErrorText(errorQvest);
     dispatch(radioActionErrList(errorQvest));
-    if (state.obj.length !== data?.length)
+    if (state.obj.length !== data?.length) {
       return setHelperText(TypeErrText.allErr);
-    if (errorQvest.length === 0) return setHelperText(TypeErrText.allGood);
+    }
+    if (errorQvest.length === 0) {
+      return setHelperText(TypeErrText.allGood);
+    }
+
     setHelperText(TypeErrText.partErr);
   };
 
@@ -183,7 +191,6 @@ const Radios: React.FC<{
         >
           {helperText}
         </FormHelperText>
-
         <Button
           onClick={testType === "Обобщающий тест" ? handleOpen : undefined}
           sx={sx().button}
