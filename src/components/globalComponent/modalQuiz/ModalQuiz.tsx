@@ -8,7 +8,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { Box } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../redux/store";
-import { setQuizAction } from "../../../redux/storeQuiz/storeQuizReducer";
+import {
+  setQuizAction,
+  cleartQuizAction,
+} from "../../../redux/storeQuiz/storeQuizReducer";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 
@@ -17,7 +20,10 @@ export default function AlertDialog({ handleClose, open, state }: any) {
   const [getName, setName] = React.useState<string>("");
   const [getSurname, setSurname] = React.useState<string>("");
   const [getClass, setClass] = React.useState<string>("");
-  const stateErrList = useSelector((store: RootState) => store.radio.err);
+  const stateRedux = useSelector((store: RootState) => store.radio);
+  const stateRedux2: any = useSelector(
+    (store: RootState) => store.storeQuiz.data
+  );
 
   const handleRadioChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -40,12 +46,15 @@ export default function AlertDialog({ handleClose, open, state }: any) {
 
   const handleSave = () => {
     if (getName !== "" && getSurname !== "" && getClass !== "") {
+      if (stateRedux2.length >= 60) {
+        dispatch(cleartQuizAction());
+      }
       dispatch(
         setQuizAction({
           dataStud: { name: getName, surname: getSurname, class: getClass },
           quizData: state,
           timeSave: new Date().toLocaleString(),
-          errList: stateErrList,
+          errList: stateRedux.err,
         })
       );
     } else {

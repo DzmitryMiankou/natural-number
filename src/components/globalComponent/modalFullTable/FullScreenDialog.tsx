@@ -53,6 +53,7 @@ export default function FullScreenDialog({
                 <ListItem
                   sx={{ flexDirection: "column", alignItems: "flex-start" }}
                 >
+                  <Typography>{`№: ${i + 1}`}</Typography>
                   <Typography
                     sx={{ color: "blue" }}
                   >{`Время сохранения: ${timeSave}`}</Typography>
@@ -66,6 +67,15 @@ export default function FullScreenDialog({
                       key={`${i}-quizList`}
                     >{`${str}: ${data}`}</Typography>
                   ))}
+                  <Typography>{`Всего вопросов ${
+                    AllList[0]?.quiz.educationTest.length
+                  }. Правильных: ${
+                    AllList[0]?.quiz.educationTest.length - errList?.length
+                  }. Процент верных ответов: ${Math.floor(
+                    ((AllList[0]?.quiz.educationTest.length - errList?.length) /
+                      AllList[0]?.quiz.educationTest.length) *
+                      100
+                  )}`}</Typography>
                   <>
                     {AllList[0]?.quiz.educationTest.map(
                       ({ qvest }, i: number) => (
