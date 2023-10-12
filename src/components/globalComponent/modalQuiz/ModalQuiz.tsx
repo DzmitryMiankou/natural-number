@@ -140,18 +140,19 @@ export default function AlertDialog({ handleClose, open, state }: any) {
         ) : (
           <>
             <Typography
-              sx={{ minWidth: "200px", color: "green", textAlign: "center" }}
+              sx={{
+                minHeight: "100px",
+                minWidth: "200px",
+                color: "green",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "20px",
+              }}
             >
               СОХРАНЕНО
             </Typography>
-            <Button
-              onClick={() => {
-                handleClose();
-                setErr("");
-              }}
-            >
-              Выйти
-            </Button>
           </>
         )}
       </Dialog>
