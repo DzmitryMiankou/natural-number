@@ -69,32 +69,41 @@ const FullScreenDialog: React.FC<{
         TransitionComponent={Transition}
       >
         <AppBar component={"div"} sx={SX.appBar}>
-          <Toolbar sx={{ marginLeft: "auto" }}>
-            <Tooltip
-              title={"Удалить все данные"}
-              TransitionComponent={Fade}
-              TransitionProps={{ timeout: 600 }}
+          <Toolbar>
+            <Typography sx={{ fontSize: "25px" }}>Список ответов</Typography>
+            <Box
+              sx={{
+                marginLeft: "auto",
+                display: "flex",
+                gap: "20px",
+              }}
             >
+              <Tooltip
+                title={"Удалить все данные"}
+                TransitionComponent={Fade}
+                TransitionProps={{ timeout: 600 }}
+              >
+                <IconButton
+                  edge="end"
+                  color="inherit"
+                  onClick={clearState}
+                  aria-label="delete"
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Tooltip>
               <IconButton
                 edge="end"
                 color="inherit"
-                onClick={clearState}
-                aria-label="delete"
+                onClick={handleCloseW}
+                aria-label="close"
               >
-                <DeleteIcon />
+                <CloseIcon />
               </IconButton>
-            </Tooltip>
-            <IconButton
-              edge="end"
-              color="inherit"
-              onClick={handleCloseW}
-              aria-label="close"
-            >
-              <CloseIcon />
-            </IconButton>
+            </Box>
           </Toolbar>
         </AppBar>
-        <Box>
+        <Box sx={{ padding: "17px" }}>
           {stateQuiz?.data?.map(
             ({ dataStud, errList, timeSave }: any, i: number) => (
               <React.Fragment key={i}>

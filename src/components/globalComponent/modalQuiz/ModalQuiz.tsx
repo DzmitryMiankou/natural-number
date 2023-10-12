@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import TextField from "@mui/material/TextField";
@@ -15,13 +15,17 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 
-export default function AlertDialog({ handleClose, open, state }: any) {
+const AlertDialog: React.FC<{
+  handleClose: () => void;
+  open: boolean;
+  state: any;
+}> = ({ handleClose, open, state }) => {
   const dispatch: AppDispatch = useDispatch();
-  const [getName, setName] = React.useState<string>("");
-  const [getSurname, setSurname] = React.useState<string>("");
-  const [getClass, setClass] = React.useState<string>("");
   const stateRedux = useSelector((store: RootState) => store.radio);
-  const [getErr, setErr] = React.useState<"" | "Заполните все поля" | "ok">("");
+  const [getName, setName] = useState<string>("");
+  const [getSurname, setSurname] = useState<string>("");
+  const [getClass, setClass] = useState<string>("");
+  const [getErr, setErr] = useState<"" | "Заполните все поля" | "ok">("");
   const stateRedux2 = useSelector((store: RootState) => store.storeQuiz.data);
 
   const handleRadioChange = (
@@ -44,7 +48,7 @@ export default function AlertDialog({ handleClose, open, state }: any) {
     }
   };
 
-  const handleSave = () => {
+  const handleSave = React.useCallback(() => {
     if (getName !== "" && getSurname !== "" && getClass !== "") {
       setErr("ok");
       if (stateRedux2.length >= 60) {
@@ -66,7 +70,16 @@ export default function AlertDialog({ handleClose, open, state }: any) {
     } else {
       return setErr("Заполните все поля");
     }
-  };
+  }, [
+    dispatch,
+    getClass,
+    getName,
+    getSurname,
+    handleClose,
+    state,
+    stateRedux.err,
+    stateRedux2.length,
+  ]);
 
   return (
     <div>
@@ -158,4 +171,6 @@ export default function AlertDialog({ handleClose, open, state }: any) {
       </Dialog>
     </div>
   );
-}
+};
+
+export default AlertDialog;
