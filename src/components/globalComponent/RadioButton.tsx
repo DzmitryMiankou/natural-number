@@ -117,7 +117,6 @@ const Radios: React.FC<{
     if (errorQvest.length === 0) {
       return setHelperText(TypeErrText.allGood);
     }
-
     setHelperText(TypeErrText.partErr);
   };
 

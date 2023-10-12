@@ -1,6 +1,13 @@
 import React from "react";
 import Dialog from "@mui/material/Dialog";
-import { Divider, Box, AppBar, Toolbar, IconButton } from "@mui/material";
+import {
+  Divider,
+  Box,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Tooltip,
+} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
@@ -11,6 +18,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../redux/store";
 import { cleartQuizAction } from "../../../redux/storeQuiz/storeQuizReducer";
+import Fade from "@mui/material/Fade";
 
 const SX: { appBar: SxProps; boxTimeNumber: SxProps; boxDataUser: SxProps } = {
   appBar: {
@@ -39,11 +47,11 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function FullScreenDialog({
-  handleCloseW,
-  openW,
-  stateQuiz,
-}: any) {
+const FullScreenDialog: React.FC<{
+  handleCloseW: () => void;
+  openW: boolean;
+  stateQuiz: any;
+}> = ({ handleCloseW, openW, stateQuiz }) => {
   const AllListLength = AllList[0]?.quiz?.educationTest?.length;
   const dispatch: AppDispatch = useDispatch();
 
@@ -62,14 +70,20 @@ export default function FullScreenDialog({
       >
         <AppBar component={"div"} sx={SX.appBar}>
           <Toolbar sx={{ marginLeft: "auto" }}>
-            <IconButton
-              edge="end"
-              color="inherit"
-              onClick={clearState}
-              aria-label="delete"
+            <Tooltip
+              title={"Удалить все данные"}
+              TransitionComponent={Fade}
+              TransitionProps={{ timeout: 600 }}
             >
-              <DeleteIcon />
-            </IconButton>
+              <IconButton
+                edge="end"
+                color="inherit"
+                onClick={clearState}
+                aria-label="delete"
+              >
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
             <IconButton
               edge="end"
               color="inherit"
@@ -142,4 +156,6 @@ export default function FullScreenDialog({
       </Dialog>
     </div>
   );
-}
+};
+
+export default FullScreenDialog;

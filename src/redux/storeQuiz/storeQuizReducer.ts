@@ -7,13 +7,22 @@ interface InitialStateType {
 
 const initialState: InitialStateType = { data: [] };
 
-interface TypeAction<T> {
-  type: T;
+type ValueType<T> = {
+  dataStud: { name: T; surname: T; class: T };
+  quizData: {
+    obj: Array<{ key: T; value: T }>;
+    err: Array<T>;
+  };
+  timeSave: T;
+  errList: Array<T>;
+};
+
+interface TypeAction {
+  type: typeof SETQUIZ | typeof CLEARQUIZ;
+  value: ValueType<string>;
 }
 
-type Action = TypeAction<typeof SETQUIZ | typeof CLEARQUIZ>;
-
-const storeQuizReducer = (state = initialState, action: Action | any) => {
+const storeQuizReducer = (state = initialState, action: TypeAction) => {
   switch (action.type) {
     case SETQUIZ: {
       return { ...state, data: [...state.data, { ...action.value }] };
@@ -26,12 +35,10 @@ const storeQuizReducer = (state = initialState, action: Action | any) => {
   }
 };
 
-export const setQuizAction = (value: {
-  dataStud: { name: string; surname: string; class: string };
-  quizData: any;
-  timeSave: string;
-  errList: Array<string>;
-}) => ({ type: SETQUIZ, value });
+export const setQuizAction = (value: ValueType<string>) => ({
+  type: SETQUIZ,
+  value,
+});
 
 export const cleartQuizAction = () => ({ type: CLEARQUIZ });
 

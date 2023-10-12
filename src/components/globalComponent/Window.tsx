@@ -3,7 +3,7 @@ import Dialog, { DialogProps } from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
-import { DialogTitle, IconButton, Box } from "@mui/material";
+import { DialogTitle, IconButton, Box, Tooltip } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { PropTypeTest, PropTypeText } from "./TitlePage";
 import Radios from "./RadioButton";
@@ -13,6 +13,7 @@ import RecentActorsIcon from "@mui/icons-material/RecentActors";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import FullScreenDialog from "./modalFullTable/FullScreenDialog";
+import Fade from "@mui/material/Fade";
 
 const AnswerBox = styled.div`
   display: flex;
@@ -87,9 +88,16 @@ const Window: React.FC<PropType> = ({
             <>
               {stateQuiz?.data?.length !== 0 && title === "Обобщающий тест" ? (
                 <>
-                  <IconButton onClick={handleClickOpenW}>
-                    <RecentActorsIcon sx={{ color: "var(--color-radio)" }} />
-                  </IconButton>
+                  <Tooltip
+                    title={"Сохраненные ответы"}
+                    TransitionComponent={Fade}
+                    TransitionProps={{ timeout: 600 }}
+                  >
+                    <IconButton onClick={handleClickOpenW}>
+                      <RecentActorsIcon sx={{ color: "var(--color-radio)" }} />
+                    </IconButton>
+                  </Tooltip>
+
                   <FullScreenDialog
                     handleCloseW={handleCloseW}
                     openW={openW}

@@ -21,10 +21,8 @@ export default function AlertDialog({ handleClose, open, state }: any) {
   const [getSurname, setSurname] = React.useState<string>("");
   const [getClass, setClass] = React.useState<string>("");
   const stateRedux = useSelector((store: RootState) => store.radio);
-  const [getErr, setErr] = React.useState<string>("");
-  const stateRedux2: any = useSelector(
-    (store: RootState) => store.storeQuiz.data
-  );
+  const [getErr, setErr] = React.useState<"" | "Заполните все поля" | "ok">("");
+  const stateRedux2 = useSelector((store: RootState) => store.storeQuiz.data);
 
   const handleRadioChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
