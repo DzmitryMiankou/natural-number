@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { P, rotateAnimation } from "../../style/style";
-import dishes from "../../img/dishes.svg";
-import apple from "../../img/apple.svg";
 import styled from "styled-components";
 import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
 import data from "../../data/twoLevelData.json";
+import { ReactComponent as Dishes } from "../../img/dishes.svg";
+import { ReactComponent as Apple } from "../../img/apple.svg";
 
 const BoxImg = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const BoxImg = styled.div`
   gap: 50px;
 `;
 
-const Img = styled.img`
+const DivSVG = styled.div`
   width: 25vw;
   cursor: pointer;
   transition: var(--transition-prop-0_2s);
@@ -46,7 +46,7 @@ const ComparisonPage: React.FC = () => {
   const [open, setOpen] = useState<OkErrTypeStrings | "">("");
   const [openSimbol, setOpenSimbol] = useState<"<" | "?">("?");
 
-  const handleClickOpen = (str: string) => {
+  const handleClickOpen = (str: "ok" | "no") => {
     str === "ok" ? setOpenSimbol("<") : setOpenSimbol("?");
     return str === "ok" ? setOpen("ok") : setOpen("err");
   };
@@ -67,17 +67,13 @@ const ComparisonPage: React.FC = () => {
           <Box>
             <PVariant2>{state.qvest}</PVariant2>
             <BoxImg>
-              <Img
-                onClick={() => handleClickOpen("ok")}
-                src={apple}
-                alt="img"
-              />
+              <DivSVG onClick={() => handleClickOpen("ok")}>
+                <Apple />
+              </DivSVG>
               <PVariant>{openSimbol}</PVariant>
-              <Img
-                onClick={() => handleClickOpen("no")}
-                src={dishes}
-                alt="img"
-              />
+              <DivSVG onClick={() => handleClickOpen("no")}>
+                <Dishes />
+              </DivSVG>
             </BoxImg>
           </Box>
         </>

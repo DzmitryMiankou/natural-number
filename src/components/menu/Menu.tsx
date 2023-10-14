@@ -74,7 +74,7 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {stateRedux.map(({ text, path }, index) => (
+        {stateRedux.map(({ text, path }) => (
           <ListItem sx={sx.listItem} key={text} disablePadding title="button">
             <ListItemButton
               component={RouterLink}

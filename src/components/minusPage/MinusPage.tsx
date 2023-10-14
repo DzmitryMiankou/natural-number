@@ -3,9 +3,9 @@ import { P } from "../../style/style";
 import styled from "styled-components";
 import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
-import Img1 from "../../img/mins.svg";
 import HeroSVG from "./heroSVG/HeroSvg";
 import data from "../../data/twoLevelData.json";
+import { ReactComponent as Img } from "../../img/mins.svg";
 
 const BoxImg = styled.div`
   width: 100%;
@@ -45,7 +45,7 @@ const MinusPage: React.FC = () => {
           <Box>
             <PVariant2>{state.qvest}</PVariant2>
             <HeroSVG />
-            <img src={Img1} alt="img" />
+            <Img />
           </Box>
         </BoxImg>
       }

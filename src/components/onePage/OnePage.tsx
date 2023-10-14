@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Img1 from "../../img/aaa.svg";
+import { ReactComponent as Img } from "../../img/aaa.svg";
 import { Button, Box } from "@mui/material";
 import SimpleDialog from "./dialog";
 import { P, sxGroupButton } from "../../style/style";
@@ -53,7 +53,7 @@ const OnePageH = ({ handleClose, open, handleClickOpen }: ReturnPropType) => {
               </React.Fragment>
             ))}
           </Box>
-          <img src={Img1} alt="img" />
+          <Img />
         </BoxQvest>
       }
     />

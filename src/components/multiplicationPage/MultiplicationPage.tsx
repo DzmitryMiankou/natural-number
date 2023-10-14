@@ -3,7 +3,7 @@ import { P, sxGroupButton } from "../../style/style";
 import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
 import data from "../../data/twoLevelData.json";
-import Img1 from "../../img/multiplGame.svg";
+import { ReactComponent as Img } from "../../img/multiplGame.svg";
 import { Button, Box } from "@mui/material";
 import ButtonClickQvestHOC from "../../HOC/ButtonClickQvestHOC";
 import { ReturnPropType } from "../../HOC/ButtonClickQvestHOC";
@@ -97,7 +97,7 @@ const MultiplicationPageH: React.FC<ReturnPropType> = ({
                     </text>
                   ))}
               </SVG>
-              <img src={Img1} alt="img" />
+              <Img />
             </DivImg>
           </Box>
         </>
