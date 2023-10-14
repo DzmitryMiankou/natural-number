@@ -133,13 +133,7 @@ const DivisionSVG: React.FC = () => {
   const restartNumber = () => dispatch(clearDivisionAction());
 
   return (
-    <SVG
-      xmlns="http://www.w3.org/2000/svg"
-      version="1.1"
-      x="0px"
-      y="0px"
-      viewBox="0 0 1920 529.3"
-    >
+    <SVG x="0px" y="0px" viewBox="0 0 1920 529.3">
       {assignObj().map(({ x, y, result, a, b, matrix }) => (
         <React.Fragment key={x}>
           <text
