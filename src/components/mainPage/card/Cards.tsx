@@ -8,7 +8,6 @@ import styled from "styled-components";
 import { NavLink as RouterLink } from "react-router-dom";
 import { StateMaimPageType } from "../../../routes/routes";
 import { SxProps } from "@mui/material";
-
 import { ReactComponent as ImgMain } from "../../../img/imgMain.svg";
 import { ReactComponent as Comparison } from "../../../img/Comparison.svg";
 import { ReactComponent as PlusImg } from "../../../img/plus.svg";
@@ -72,15 +71,11 @@ const MultiActionAreaCard = ({ state }: { state: StateMaimPageType }) => {
   const assignObj = () => {
     let newArr = [];
     for (let i in state.main[0].list) {
-      const dd: number = +i;
-      const newObj = Object.assign(SVGArr[dd], state.main[0].list[dd]);
-
+      const newObj = Object.assign(SVGArr[i], state.main[0].list[i]);
       newArr.push(newObj);
     }
     return newArr;
   };
-
-  console.log(assignObj());
 
   return (
     <Cards>
