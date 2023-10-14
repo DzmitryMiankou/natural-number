@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/natural-number/static/css/main.d91a2610.css",
-    "main.js": "/natural-number/static/js/main.d3949da5.js",
+    "main.js": "/natural-number/static/js/main.b7122f60.js",
     "static/js/787.b9fb9049.chunk.js": "/natural-number/static/js/787.b9fb9049.chunk.js",
-    "static/media/multiplGame.svg": "/natural-number/static/media/multiplGame.e9aeaae0539115280dac041521ce0196.svg",
-    "static/media/mins.svg": "/natural-number/static/media/mins.ca811dfe119ec3b239cc85477bcce4ed.svg",
+    "static/media/multiplGame.svg": "/natural-number/static/media/multiplGame.ed94dcd62dec296dbe956510d582454e.svg",
+    "static/media/mins.svg": "/natural-number/static/media/mins.758664d6702ccae22c30996d1ae52f0c.svg",
     "static/media/aaa.svg": "/natural-number/static/media/aaa.0cb0871c2ae303f868124aaac8880da5.svg",
     "static/media/plus.svg": "/natural-number/static/media/plus.0962a3fd8e9775762b3d535c468a4e44.svg",
-    "static/media/dishes.svg": "/natural-number/static/media/dishes.9048400397be59774df6a184d1e024dc.svg",
     "static/media/multiplication.svg": "/natural-number/static/media/multiplication.35c5ed61793e677f7168d90857491c47.svg",
+    "static/media/dishes.svg": "/natural-number/static/media/dishes.156111d1e28d79a509477df6ca729d41.svg",
     "static/media/imgMain.svg": "/natural-number/static/media/imgMain.970e756cdafe33ddd7aa4031d109693c.svg",
-    "static/media/apple.svg": "/natural-number/static/media/apple.26a7b6e02417c32721c057d52fc1de9f.svg",
+    "static/media/apple.svg": "/natural-number/static/media/apple.1209a45e925bb3a126205d0325ec36d8.svg",
     "static/media/minus.svg": "/natural-number/static/media/minus.4fcae96364a87c046937b2f7f8f0b8f0.svg",
     "static/media/Comparison.svg": "/natural-number/static/media/Comparison.071aa30b0f76fa342d33133a2ecd5aff.svg",
     "static/media/Division .svg": "/natural-number/static/media/Division .43d0e6dbb6660cb8eaadef0280df0e79.svg",
@@ -19,11 +19,11 @@
     "static/media/backG.svg": "/natural-number/static/media/backG.5bb15d4d7db65f687b5da19856944b70.svg",
     "index.html": "/natural-number/index.html",
     "main.d91a2610.css.map": "/natural-number/static/css/main.d91a2610.css.map",
-    "main.d3949da5.js.map": "/natural-number/static/js/main.d3949da5.js.map",
+    "main.b7122f60.js.map": "/natural-number/static/js/main.b7122f60.js.map",
     "787.b9fb9049.chunk.js.map": "/natural-number/static/js/787.b9fb9049.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d91a2610.css",
-    "static/js/main.d3949da5.js"
+    "static/js/main.b7122f60.js"
   ]
 }
