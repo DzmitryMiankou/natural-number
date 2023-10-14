@@ -9,6 +9,13 @@ import { NavLink as RouterLink } from "react-router-dom";
 import { StateMaimPageType } from "../../../routes/routes";
 import { SxProps } from "@mui/material";
 
+import { ReactComponent as ImgMain } from "../../../img/imgMain.svg";
+import { ReactComponent as Comparison } from "../../../img/Comparison.svg";
+import { ReactComponent as PlusImg } from "../../../img/plus.svg";
+import { ReactComponent as Minus } from "../../../img/minus.svg";
+import { ReactComponent as Multiplication } from "../../../img/multiplication.svg";
+import { ReactComponent as Division } from "../../../img/Division .svg";
+
 const Cards = styled.div`
   display: grid;
   width: 80%;
@@ -51,12 +58,41 @@ const sx: {
 };
 
 const MultiActionAreaCard = ({ state }: { state: StateMaimPageType }) => {
+  const SVGArr: Array<{
+    Img: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  }> = [
+    { Img: ImgMain },
+    { Img: Comparison },
+    { Img: PlusImg },
+    { Img: Minus },
+    { Img: Multiplication },
+    { Img: Division },
+  ];
+
+  const assignObj = () => {
+    let newArr = [];
+    for (let i in state.main[0].list) {
+      const dd: number = +i;
+      const newObj = Object.assign(SVGArr[dd], state.main[0].list[dd]);
+
+      newArr.push(newObj);
+    }
+    return newArr;
+  };
+
+  console.log(assignObj());
+
   return (
     <Cards>
-      {state.main[0].list.map(({ text, path, img }, i) => (
+      {assignObj().map(({ text, path, Img }, i) => (
         <Card key={i} component={RouterLink} to={`${path}`} sx={sx.card}>
           <CardActionArea sx={sx.cardArea}>
-            <CardMedia component="img" height="140" image={img} alt="image" />
+            <CardMedia component="div">
+              <Img
+                width={"202%"}
+                style={{ marginLeft: "-180px", minHeight: "140px" }}
+              />
+            </CardMedia>
             <CardContent>
               <Typography
                 gutterBottom

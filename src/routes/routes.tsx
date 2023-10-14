@@ -11,7 +11,7 @@ import DivisionPage from "../components/divisionPage/DivisionPage";
 export interface StateMaimPageType {
   main: Array<{
     title: string;
-    list: Array<{ text: string; path: string; img: string }>;
+    list: Array<{ text: string; path: string }>;
     footer: string;
   }>;
 }
