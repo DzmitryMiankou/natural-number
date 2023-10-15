@@ -18,13 +18,23 @@ const BoxQvest = styled.div`
   align-items: center;
 `;
 
-const PVariant = styled(P)`
-  margin-bottom: 20px;
-`;
+const PVariant = styled(P)``;
 
-const sx: { boxButton: SxProps; button: SxProps } = {
+const sx: { boxButton: SxProps; button: SxProps; boxImg: SxProps } = {
   boxButton: { display: "flex", gap: "5px" },
-  button: sxGroupButton.button,
+  button: { ...sxGroupButton.button, marginBottom: "5px" },
+  boxImg: {
+    width: "100vw",
+    marginBottom: "-5px",
+    "@media (max-width: 1000px)": {
+      width: "120vw",
+      transform: "translateX(-45px)",
+    },
+    "@media (max-width: 540px)": {
+      width: "130vw",
+      transform: "translateX(-25px)",
+    },
+  },
 };
 
 const OnePageH = ({ handleClose, open, handleClickOpen }: ReturnPropType) => {
@@ -37,24 +47,28 @@ const OnePageH = ({ handleClose, open, handleClickOpen }: ReturnPropType) => {
       alignMain={"space-between"}
       title={{ title: state.title, accent: state.accent }}
       boximg={
-        <BoxQvest>
-          <PVariant>{state.qvest}</PVariant>
-          <SimpleDialog opens={open} handleClose={handleClose} />
-          <Box sx={sx.boxButton}>
-            {[2, 5, 3].map((num, i) => (
-              <React.Fragment key={i}>
-                <Button
-                  onClick={() => handleClickOpen(num, 3)}
-                  sx={sx.button}
-                  variant="outlined"
-                >
-                  {num}
-                </Button>
-              </React.Fragment>
-            ))}
+        <>
+          <PVariant>{state.qvest}</PVariant>{" "}
+          <BoxQvest>
+            <SimpleDialog opens={open} handleClose={handleClose} />
+            <Box sx={sx.boxButton}>
+              {[2, 5, 3].map((num, i) => (
+                <React.Fragment key={i}>
+                  <Button
+                    onClick={() => handleClickOpen(num, 3)}
+                    sx={sx.button}
+                    variant="outlined"
+                  >
+                    {num}
+                  </Button>
+                </React.Fragment>
+              ))}
+            </Box>
+          </BoxQvest>
+          <Box sx={sx.boxImg}>
+            <Img />
           </Box>
-          <Img />
-        </BoxQvest>
+        </>
       }
     />
   );

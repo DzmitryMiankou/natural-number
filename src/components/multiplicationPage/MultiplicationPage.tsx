@@ -56,8 +56,8 @@ const MultiplicationPageH: React.FC<ReturnPropType> = ({
       boximg={
         <>
           <SimpleDialog opens={open} handleClose={handleClose} />
+          <P>{stringQvest.replace(updateStringQvest, stateRedux.a)}</P>
           <Box sx={{ width: "100%" }}>
-            <P>{stringQvest.replace(updateStringQvest, stateRedux.a)}</P>
             <Box sx={sxGroupButton.boxButton}>
               {stateRedux.b.map((num, i) => (
                 <React.Fragment key={i}>

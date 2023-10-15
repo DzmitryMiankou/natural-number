@@ -52,8 +52,8 @@ const DivisionPage: React.FC = () => {
       boximg={
         <>
           <SimpleDialog opens={open} handleClose={handleClose} />
+          <PVariant2>{state.qvest}</PVariant2>
           <Box>
-            <PVariant2>{state.qvest}</PVariant2>
             <BoxImg>
               <DivisionSVG />
               <SvgBGgame />

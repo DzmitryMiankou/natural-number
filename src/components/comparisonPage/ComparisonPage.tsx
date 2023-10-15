@@ -21,18 +21,22 @@ const DivSVG = styled.div`
   &:hover {
     animation: ${rotateAnimation} 0.6s linear infinite;
   }
+  @media (max-width: 1500px) {
+    width: 38vw;
+  }
+  @media (max-width: 490px) {
+    width: 36vw;
+  }
 `;
 
 const PVariant = styled(P)`
   font-size: 60px;
 `;
 
-const PVariant2 = styled(P)`
-  margin-bottom: 50px;
-`;
+const PVariant2 = styled(P)``;
 
 const Box = styled.div`
-  height: 60vh;
+  margin-bottom: 50px;
 `;
 
 const enum OkErrType {
@@ -64,8 +68,8 @@ const ComparisonPage: React.FC = () => {
       boximg={
         <>
           <SimpleDialog opens={open} handleClose={handleClose} />
+          <PVariant2>{state.qvest}</PVariant2>
           <Box>
-            <PVariant2>{state.qvest}</PVariant2>
             <BoxImg>
               <DivSVG onClick={() => handleClickOpen("ok")}>
                 <Apple />

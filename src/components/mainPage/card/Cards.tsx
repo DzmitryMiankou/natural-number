@@ -85,7 +85,7 @@ const MultiActionAreaCard = ({ state }: { state: StateMaimPageType }) => {
             <CardMedia component="div">
               <Img
                 width={"202%"}
-                style={{ marginLeft: "-180px", minHeight: "140px" }}
+                style={{ marginLeft: "-170px", minHeight: "140px" }}
               />
             </CardMedia>
             <CardContent>

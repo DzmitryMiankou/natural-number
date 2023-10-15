@@ -68,6 +68,12 @@ const Chere1 = styled.g<Hero1StyleType>`
 
 const Chere2 = styled(Chere1)<Hero1StyleType>``;
 
+const Gg = styled.g`
+  @media (max-width: 1000px) {
+    transform: translate(-280px, 25px);
+  }
+`;
+
 const HeroSVG: React.FC = () => {
   const [get, set] = useState<boolean>(false);
   const [get1, set1] = useState<boolean>(false);
@@ -309,199 +315,208 @@ const HeroSVG: React.FC = () => {
 				c0,0,75.1-4.4,91.6-5.2s109.8,3.8,109.8,3.8l4,6.4l-208.5,1.1L773.5,357.6z"
         />
       </Chere1>
-      <polygon
-        className={SvgStyle.st0}
-        points="1603.4,435.3 1607.5,471.7 1596.3,473.8 1589.3,472.5 1596.3,464.2 1596.5,433.8 				"
-      />
-      <polygon
-        className={SvgStyle.st0}
-        points="1646.3,434.2 1650.4,470.6 1639.2,472.7 1632.1,471.5 1639.1,463.1 1639.4,432.8 				"
-      />
-      <Chere2 $logic={get1 ? posAnimation2 : false}>
-        <polygon
-          fill="#DE8800"
-          points="1660.1,286.4 1646,326.7 1649.5,329.2 "
-        />
-        <ellipse fill="#DE8800" cx="1660.1" cy="286.8" rx="14" ry="10.2" />
-        <ellipse fill="#B37200" cx="1660.1" cy="286.4" rx="10.1" ry="7.3" />
-        <polygon fill="#DE8800" points="1552,291.6 1574.2,328.1 1578.3,327 " />
-        <ellipse
-          transform="matrix(0.6341 -0.7732 0.7732 0.6341 342.2336 1307.0428)"
-          fill="#DE8800"
-          cx="1552.3"
-          cy="291.9"
-          rx="14"
-          ry="10.2"
-        />
-        <ellipse
-          transform="matrix(0.6341 -0.7732 0.7732 0.6341 342.3166 1306.7109)"
-          fill="#B37200"
-          cx="1552"
-          cy="291.6"
-          rx="10.1"
-          ry="7.3"
-        />
-        <polygon
-          className={SvgStyle.st9}
-          points="1525.4,379.5 1524,380.7 1472.2,325 1473.3,324 		"
-        />
-        <polygon
-          className={SvgStyle.st0}
-          points="1545,379.4 1524.2,372.1 1525.4,379.5 1543.8,385.9 				"
-        />
-        <rect
-          x="1514.9"
-          y="366.3"
-          transform="matrix(0.9932 -0.1162 0.1162 0.9932 -33.1998 179.1303)"
-          className={SvgStyle.st0}
-          width="9.7"
-          height="16"
-        />
-        <polygon
-          className={SvgStyle.st0}
-          points="1679.3,375.5 1699.8,383.4 1694.1,388.3 1676,381.3 				"
-        />
-        <rect
-          x="1694"
-          y="383.3"
-          transform="matrix(0.7341 -0.679 0.679 0.7341 188.939 1258.8827)"
-          className={SvgStyle.st0}
-          width="16"
-          height="9.7"
-        />
-        <polygon
-          className={SvgStyle.st17}
-          points="1543.4,442.4 1536.7,461.3 1701.2,441.7 1692.1,425 				"
-        />
-        <Hero2
-          onClick={() => handleClickHero(2)}
-          onMouseEnter={() => set1(!get1)}
-          onMouseLeave={() => set1(!get1)}
-        >
-          <path
-            id="XMLID_00000183971108852983643050000015031458085189013915_"
-            className={SvgStyle.st0}
-            d="M1692.1,425
-									c-8.5-72.1-48.6-126.7-89.7-121.8c-41.1,4.8-67.6,67.2-59.1,139.3L1692.1,425z"
+
+      <Gg>
+        <g>
+          <polygon
+            className={SvgStyle.st02}
+            points="1603.4,435.3 1607.5,471.7 1596.3,473.8 1589.3,472.5 1596.3,464.2 1596.5,433.8 				"
           />
-          <defs>
+          <polygon
+            className={SvgStyle.st02}
+            points="1646.3,434.2 1650.4,470.6 1639.2,472.7 1632.1,471.5 1639.1,463.1 1639.4,432.8 				"
+          />
+        </g>
+
+        <Chere2 $logic={get1 ? posAnimation2 : false}>
+          <polygon
+            fill="#DE8800"
+            points="1660.1,286.4 1646,326.7 1649.5,329.2 "
+          />
+          <ellipse fill="#DE8800" cx="1660.1" cy="286.8" rx="14" ry="10.2" />
+          <ellipse fill="#B37200" cx="1660.1" cy="286.4" rx="10.1" ry="7.3" />
+          <polygon
+            fill="#DE8800"
+            points="1552,291.6 1574.2,328.1 1578.3,327 "
+          />
+          <ellipse
+            transform="matrix(0.6341 -0.7732 0.7732 0.6341 342.2336 1307.0428)"
+            fill="#DE8800"
+            cx="1552.3"
+            cy="291.9"
+            rx="14"
+            ry="10.2"
+          />
+          <ellipse
+            transform="matrix(0.6341 -0.7732 0.7732 0.6341 342.3166 1306.7109)"
+            fill="#B37200"
+            cx="1552"
+            cy="291.6"
+            rx="10.1"
+            ry="7.3"
+          />
+          <polygon
+            className={SvgStyle.st9}
+            points="1525.4,379.5 1524,380.7 1472.2,325 1473.3,324 		"
+          />
+          <polygon
+            className={SvgStyle.st0}
+            points="1545,379.4 1524.2,372.1 1525.4,379.5 1543.8,385.9 				"
+          />
+          <rect
+            x="1514.9"
+            y="366.3"
+            transform="matrix(0.9932 -0.1162 0.1162 0.9932 -33.1998 179.1303)"
+            className={SvgStyle.st0}
+            width="9.7"
+            height="16"
+          />
+          <polygon
+            className={SvgStyle.st0}
+            points="1679.3,375.5 1699.8,383.4 1694.1,388.3 1676,381.3 				"
+          />
+          <rect
+            x="1694"
+            y="383.3"
+            transform="matrix(0.7341 -0.679 0.679 0.7341 188.939 1258.8827)"
+            className={SvgStyle.st0}
+            width="16"
+            height="9.7"
+          />
+          <polygon
+            className={SvgStyle.st17}
+            points="1543.4,442.4 1536.7,461.3 1701.2,441.7 1692.1,425 				"
+          />
+          <Hero2
+            onClick={() => handleClickHero(2)}
+            onMouseEnter={() => set1(!get1)}
+            onMouseLeave={() => set1(!get1)}
+          >
             <path
-              id="SVGID_00000167396979344414128100000006418156710506828468_"
-              d="M1692.1,425c-8.5-72.1-48.6-126.7-89.7-121.8
+              id="XMLID_00000183971108852983643050000015031458085189013915_"
+              className={SvgStyle.st0}
+              d="M1692.1,425
+									c-8.5-72.1-48.6-126.7-89.7-121.8c-41.1,4.8-67.6,67.2-59.1,139.3L1692.1,425z"
+            />
+            <defs>
+              <path
+                id="SVGID_00000167396979344414128100000006418156710506828468_"
+                d="M1692.1,425c-8.5-72.1-48.6-126.7-89.7-121.8
 											c-41.1,4.8-67.6,67.2-59.1,139.3L1692.1,425z"
-            />
-          </defs>
-          <clipPath id="SVGID_00000047751731353927735400000005009473937519451290_">
-            <use
-              xlinkHref="#SVGID_00000167396979344414128100000006418156710506828468_"
-              className={SvgStyle.useStyle}
-            />
-          </clipPath>
-          <path
-            style={{
-              clipPath:
-                "url(#SVGID_00000047751731353927735400000005009473937519451290_)",
-              fill: "#C36800",
-            }}
-            d="M1588.3,286.5
+              />
+            </defs>
+            <clipPath id="SVGID_00000047751731353927735400000005009473937519451290_">
+              <use
+                xlinkHref="#SVGID_00000167396979344414128100000006418156710506828468_"
+                className={SvgStyle.useStyle}
+              />
+            </clipPath>
+            <path
+              style={{
+                clipPath:
+                  "url(#SVGID_00000047751731353927735400000005009473937519451290_)",
+                fill: "#C36800",
+              }}
+              d="M1588.3,286.5
 										c14.1,14.3,31.5,31,30.7,41.4c-0.7,10.3-6.3,8.8-7.2,21c-0.9,12.2-14.9,37.3-6.5,44.7c8.4,7.4-1.3,44.6-0.5,51.8
 										c0.9,7.2,115.5,0.5,115.5,0.5L1691.8,303L1588.3,286.5z"
-          />
-          <ellipse
-            className={SvgStyle.st2}
-            cx="1583.7"
-            cy="360.1"
-            rx="21"
-            ry="21"
-          />
-          <ellipse
-            transform="matrix(0.9932 -0.1162 0.1162 0.9932 -29.6086 192.7434)"
-            className={SvgStyle.st2}
-            cx="1638.3"
-            cy="350.3"
-            rx="18.1"
-            ry="18.1"
-          />
-          <ellipse
-            transform="matrix(0.9997 -2.442132e-02 2.442132e-02 0.9997 -8.3978 38.7575)"
-            className={SvgStyle.st16}
-            cx="1582.6"
-            cy="363.2"
-            rx="7.7"
-            ry="7.7"
-          />
-          <ellipse
-            transform="matrix(0.9932 -0.1162 0.1162 0.9932 -35 200)"
-            className={SvgStyle.st8}
-            cx="1646"
-            cy="347.3"
-            rx="7.7"
-            ry="7.7"
-          />
-          <path
-            id="XMLID_00000005968229845401618830000012768252352051386250_"
-            className={SvgStyle.st3}
-            d="M1616.7,410.8c-9.6,0.6-51.5-7.6-49-5.8
+            />
+            <ellipse
+              className={SvgStyle.st2}
+              cx="1583.7"
+              cy="360.1"
+              rx="21"
+              ry="21"
+            />
+            <ellipse
+              transform="matrix(0.9932 -0.1162 0.1162 0.9932 -29.6086 192.7434)"
+              className={SvgStyle.st2}
+              cx="1638.3"
+              cy="350.3"
+              rx="18.1"
+              ry="18.1"
+            />
+            <ellipse
+              transform="matrix(0.9997 -2.442132e-02 2.442132e-02 0.9997 -8.3978 38.7575)"
+              className={SvgStyle.st16}
+              cx="1582.6"
+              cy="363.2"
+              rx="7.7"
+              ry="7.7"
+            />
+            <ellipse
+              transform="matrix(0.9932 -0.1162 0.1162 0.9932 -35 200)"
+              className={SvgStyle.st8}
+              cx="1646"
+              cy="347.3"
+              rx="7.7"
+              ry="7.7"
+            />
+            <path
+              id="XMLID_00000005968229845401618830000012768252352051386250_"
+              className={SvgStyle.st3}
+              d="M1616.7,410.8c-9.6,0.6-51.5-7.6-49-5.8
 						c2.5,1.8,39.1,23,49.3,21.9c10-1.1,48.2-29,48.2-29S1626.9,410.2,1616.7,410.8z"
-          />
-          <defs>
-            <path
-              id="SVGID_00000106118758344501369990000003812345483335351962_"
-              d="M1616.7,410.8c-9.6,0.6-51.5-7.6-49-5.8
+            />
+            <defs>
+              <path
+                id="SVGID_00000106118758344501369990000003812345483335351962_"
+                d="M1616.7,410.8c-9.6,0.6-51.5-7.6-49-5.8
 								c2.5,1.8,39.1,23,49.3,21.9c10-1.1,48.2-29,48.2-29S1626.9,410.2,1616.7,410.8z"
-            />
-          </defs>
-          <clipPath id="SVGID_00000049903431977776816390000003771809011713004209_">
-            <use
-              xlinkHref="#SVGID_00000106118758344501369990000003812345483335351962_"
-              className={SvgStyle.useStyle}
-            />
-          </clipPath>
-          <polyline
-            style={{
-              clipPath:
-                "url(#SVGID_00000049903431977776816390000003771809011713004209_)",
-              fill: "#FBFFC3",
-            }}
-            points="
+              />
+            </defs>
+            <clipPath id="SVGID_00000049903431977776816390000003771809011713004209_">
+              <use
+                xlinkHref="#SVGID_00000106118758344501369990000003812345483335351962_"
+                className={SvgStyle.useStyle}
+              />
+            </clipPath>
+            <polyline
+              style={{
+                clipPath:
+                  "url(#SVGID_00000049903431977776816390000003771809011713004209_)",
+                fill: "#FBFFC3",
+              }}
+              points="
 							1592.3,412.5 1601.6,413.3 1600.8,404 1593.5,399.2 						"
-          />
-          <defs>
-            <path
-              id="SVGID_00000049216694494443498850000007641232603422274492_"
-              d="M1616.7,410.8c-9.6,0.6-51.5-7.6-49-5.8
+            />
+            <defs>
+              <path
+                id="SVGID_00000049216694494443498850000007641232603422274492_"
+                d="M1616.7,410.8c-9.6,0.6-51.5-7.6-49-5.8
 								c2.5,1.8,39.1,23,49.3,21.9c10-1.1,48.2-29,48.2-29S1626.9,410.2,1616.7,410.8z"
-            />
-          </defs>
-          <clipPath id="SVGID_00000110462562695184824620000015318880800612314040_">
-            <use
-              xlinkHref="#SVGID_00000049216694494443498850000007641232603422274492_"
-              className={SvgStyle.useStyle}
-            />
-          </clipPath>
-          <polyline
-            style={{
-              clipPath:
-                "url(#SVGID_00000110462562695184824620000015318880800612314040_)",
-              fill: "#FBFFC3",
-            }}
-            points="
+              />
+            </defs>
+            <clipPath id="SVGID_00000110462562695184824620000015318880800612314040_">
+              <use
+                xlinkHref="#SVGID_00000049216694494443498850000007641232603422274492_"
+                className={SvgStyle.useStyle}
+              />
+            </clipPath>
+            <polyline
+              style={{
+                clipPath:
+                  "url(#SVGID_00000110462562695184824620000015318880800612314040_)",
+                fill: "#FBFFC3",
+              }}
+              points="
 							1644.9,409.2 1636.1,412.2 1640.6,420.4 1649.2,421.8 						"
-          />
-          <ellipse
-            transform="matrix(0.9932 -0.1162 0.1162 0.9932 -27.0838 172.8447)"
-            className={SvgStyle.st13}
-            cx="1468.9"
-            cy="318.7"
-            rx="40.8"
-            ry="40.8"
-          />
-          <path
-            className={SvgStyle.st8}
-            d="M1461.7,297.9h-0.2l-9,7.4l-2.7-5.7l11.4-9.3l6.7-1.4l11.4,58l-7.6,1.5L1461.7,297.9z"
-          />
-        </Hero2>
-      </Chere2>
+            />
+            <ellipse
+              transform="matrix(0.9932 -0.1162 0.1162 0.9932 -27.0838 172.8447)"
+              className={SvgStyle.st13}
+              cx="1468.9"
+              cy="318.7"
+              rx="40.8"
+              ry="40.8"
+            />
+            <path
+              className={SvgStyle.st8}
+              d="M1461.7,297.9h-0.2l-9,7.4l-2.7-5.7l11.4-9.3l6.7-1.4l11.4,58l-7.6,1.5L1461.7,297.9z"
+            />
+          </Hero2>
+        </Chere2>
+      </Gg>
     </SVG>
   );
 };

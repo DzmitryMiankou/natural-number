@@ -2,7 +2,6 @@ import React from "react";
 import { P } from "../../style/style";
 import styled from "styled-components";
 import TitlePage from "../globalComponent/TitlePage";
-import SimpleDialog from "../onePage/dialog";
 import HeroSVG from "./heroSVG/HeroSvg";
 import data from "../../data/twoLevelData.json";
 import { ReactComponent as Img } from "../../img/mins.svg";
@@ -24,13 +23,17 @@ const Box = styled.div`
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  @media (max-width: 1000px) {
+    width: 120vw;
+    transform: translateX(-15px);
+  }
+  @media (max-width: 700px) {
+    width: 140vw;
+    transform: translateX(-25px);
+  }
 `;
 
 const MinusPage: React.FC = () => {
-  const [open, setOpen] = React.useState<string>("");
-
-  const handleClose = () => setOpen("");
-
   const state = data[0].minusData;
 
   return (
@@ -40,14 +43,15 @@ const MinusPage: React.FC = () => {
       educationTest={state.educationTest}
       title={{ title: state.title, accent: state.accent }}
       boximg={
-        <BoxImg>
-          <SimpleDialog opens={open} handleClose={handleClose} />
-          <Box>
-            <PVariant2>{state.qvest}</PVariant2>
-            <HeroSVG />
-            <Img />
-          </Box>
-        </BoxImg>
+        <>
+          <PVariant2>{state.qvest}</PVariant2>
+          <BoxImg>
+            <Box>
+              <HeroSVG />
+              <Img />
+            </Box>
+          </BoxImg>
+        </>
       }
     />
   );
