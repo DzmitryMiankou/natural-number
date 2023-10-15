@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/natural-number/static/css/main.aa80b50f.css",
-    "main.js": "/natural-number/static/js/main.afc61530.js",
+    "main.js": "/natural-number/static/js/main.24caeb2d.js",
     "static/js/787.b9fb9049.chunk.js": "/natural-number/static/js/787.b9fb9049.chunk.js",
     "static/media/multiplGame.svg": "/natural-number/static/media/multiplGame.ed94dcd62dec296dbe956510d582454e.svg",
     "static/media/mins.svg": "/natural-number/static/media/mins.38a62c747d24285568a8833a6a5104a8.svg",
-    "static/media/aaa.svg": "/natural-number/static/media/aaa.0cb0871c2ae303f868124aaac8880da5.svg",
+    "static/media/aaa.svg": "/natural-number/static/media/aaa.4ab430aaba55aeb32997fbc0f42ba241.svg",
     "static/media/plus.svg": "/natural-number/static/media/plus.bd8a9a3f6ae07ab34bd5a71969d690ef.svg",
     "static/media/multiplication.svg": "/natural-number/static/media/multiplication.cbb32da71cbef57ec3dbf42f6528f8d1.svg",
     "static/media/dishes.svg": "/natural-number/static/media/dishes.156111d1e28d79a509477df6ca729d41.svg",
@@ -19,11 +19,11 @@
     "static/media/backG.svg": "/natural-number/static/media/backG.5bb15d4d7db65f687b5da19856944b70.svg",
     "index.html": "/natural-number/index.html",
     "main.aa80b50f.css.map": "/natural-number/static/css/main.aa80b50f.css.map",
-    "main.afc61530.js.map": "/natural-number/static/js/main.afc61530.js.map",
+    "main.24caeb2d.js.map": "/natural-number/static/js/main.24caeb2d.js.map",
     "787.b9fb9049.chunk.js.map": "/natural-number/static/js/787.b9fb9049.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.aa80b50f.css",
-    "static/js/main.afc61530.js"
+    "static/js/main.24caeb2d.js"
   ]
 }
