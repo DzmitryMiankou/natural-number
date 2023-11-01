@@ -100,7 +100,7 @@ const AlertDialog: React.FC<{
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
                 Введите свои данные и нажмите на кнопку "сохранить". Это
-                позвалит вам сохранить ваш результат теста
+                позволит вам сохранить ваш результат теста
               </DialogContentText>
             </DialogContent>
             <Typography sx={{ color: "red", marginLeft: "12px" }}>
