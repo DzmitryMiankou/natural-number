@@ -5,23 +5,20 @@ const CLEAR = "CLEAR_DIVISION_ALL";
 
 type genType<T> = { a: T; b: T; result: T };
 
-const rundomNumber = (startNumber: number): number => {
-  return Math.floor(2 + Math.random() * (startNumber + 1 - 2));
-};
+const rundomNumber = (startNumber: number): number =>
+  Math.floor(2 + Math.random() * (startNumber + 1 - 2));
 
 const generateMathExpression = (): Array<genType<number>> => {
   let arr: Array<genType<number>> = [];
-  for (let i = 0; i < 200; i++) {
+  for (let i = 0; arr.length !== 3; i++) {
     const a = rundomNumber(99);
     const b = rundomNumber(50);
-    if (arr.length === 3) break;
     if (
       a % b === 0 &&
       a !== b &&
       a / b !== arr.find((e) => e.result === a / b)?.result
-    ) {
+    )
       arr.push({ a: a, b: b, result: a / b });
-    }
   }
   return arr;
 };
@@ -49,9 +46,8 @@ const divisionReducer = (state = initialState, action: TypeActionDivision) => {
         obj: [...newFilterArr],
       };
     }
-    case CLEAR: {
+    case CLEAR:
       return { ...initialState, startData: generateMathExpression() };
-    }
     default:
       return state;
   }

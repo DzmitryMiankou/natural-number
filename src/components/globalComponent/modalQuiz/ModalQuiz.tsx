@@ -51,9 +51,8 @@ const AlertDialog: React.FC<{
   const handleSave = React.useCallback(() => {
     if (getName !== "" && getSurname !== "" && getClass !== "") {
       setErr("ok");
-      if (stateRedux2.length >= 60) {
-        dispatch(cleartQuizAction());
-      }
+      if (stateRedux2.length >= 60) dispatch(cleartQuizAction());
+
       dispatch(
         setQuizAction({
           dataStud: { name: getName, surname: getSurname, class: getClass },

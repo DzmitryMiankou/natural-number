@@ -67,7 +67,7 @@ const PathAnim = styled.path`
 const positionY = 291;
 const gapeAnim = 450;
 
-interface TypeInpArr<T> {
+interface TypeInpArr<T extends number> {
   x: T;
   y: T;
   matrix: T;
@@ -123,10 +123,8 @@ const DivisionSVG: React.FC = () => {
 
   const assignObj = () => {
     let newArr = [];
-    for (let i in inpArr) {
-      const newObj = Object.assign(inpArr[i], state.startData[i]);
-      newArr.push(newObj);
-    }
+    for (let i in inpArr)
+      newArr.push(Object.assign(inpArr[i], state.startData[i]));
     return newArr;
   };
 

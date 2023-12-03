@@ -2,16 +2,14 @@ const UPDATE = "MULTIPLICATION_UPDATE";
 
 type genType<T> = { a: T; b: number[]; c: T };
 
-const rundomNumber = (startNumber: number, b: number): number => {
-  return Math.floor(b + Math.random() * (startNumber + 1 - b));
-};
+const rundomNumber = (startNumber: number, b: number): number =>
+  Math.floor(b + Math.random() * (startNumber + 1 - b));
 
 const generateMathExpression = (): Array<genType<number>> => {
   const productNumbers = rundomNumber(9, 2);
   const productResult = productNumbers * 3;
   let arrAnswerErr = [];
-  for (let i = 0; i < 300; i++) {
-    if (arrAnswerErr.length === 2) break;
+  for (let i = 0; arrAnswerErr.length !== 2; i++) {
     const errNumber = rundomNumber(40, 9);
     if (
       errNumber !== productResult &&

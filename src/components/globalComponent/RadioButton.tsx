@@ -65,9 +65,7 @@ const Radios: React.FC<{
     allGood = "Молодец. Все ответы правильные",
   }
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleClose = () => setOpen(false);
 
   const handleOpen = () => {
     if (state.obj.length !== data?.length) {
@@ -111,12 +109,11 @@ const Radios: React.FC<{
     }
     setErrorText(errorQvest);
     dispatch(radioActionErrList(errorQvest));
-    if (state.obj.length !== data?.length) {
+    if (state.obj.length !== data?.length)
       return setHelperText(TypeErrText.allErr);
-    }
-    if (errorQvest.length === 0) {
-      return setHelperText(TypeErrText.allGood);
-    }
+
+    if (errorQvest.length === 0) return setHelperText(TypeErrText.allGood);
+
     setHelperText(TypeErrText.partErr);
   };
 

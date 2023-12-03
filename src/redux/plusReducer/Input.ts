@@ -5,26 +5,22 @@ const UPDATE = "INPUT_UPDATE";
 
 type genType<T> = { a: T; b: number; c: T };
 
-const rundomNumber = (startNumber: number, b: number): number => {
-  return Math.floor(b + Math.random() * (startNumber + 1 - b));
-};
+const rundomNumber = (startNumber: number, b: number): number =>
+  Math.floor(b + Math.random() * (startNumber + 1 - b));
 
 const generateMathExpression = (): Array<genType<number>> => {
   const a = rundomNumber(90, 20);
   let arr: Array<genType<number>> = [];
 
-  for (let i = 0; i < 500; i++) {
+  for (let i = 0; arr.length !== 8; i++) {
     const b = rundomNumber(88, 1);
-    if (a > b && a - b !== arr.find((e) => e.c === a - b)?.c) {
+    if (a > b && a - b !== arr.find((e) => e.c === a - b)?.c)
       arr.push({
         a: a,
         b: b,
         c: a - b,
       });
-    }
-    if (+arr.length === 8) break;
   }
-
   return arr;
 };
 
