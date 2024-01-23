@@ -36,7 +36,7 @@ const initialState: arrCardType<string> = {
           path: "/divisionNumber",
         },
       ],
-      footer: `© ${new Date().getFullYear()}, Дмитрий Меньков, г. Молодечно`,
+      footer: `© 2023 - ${new Date().getFullYear()}, Дмитрий Меньков, г. Молодечно`,
     },
   ],
 };

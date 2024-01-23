@@ -11,7 +11,7 @@ const BoxImg = styled.div`
 `;
 
 const PVariant2 = styled(P)`
-  margin-bottom: 40px;
+  margin-bottom: 35px;
   @media (max-width: 1600px) {
     font-size: 26px;
   }

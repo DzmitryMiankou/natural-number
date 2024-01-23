@@ -16,7 +16,7 @@ const BoxQvest = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: -25px;
+  margin-bottom: -45px;
 `;
 
 const PVariant = styled(P)``;
