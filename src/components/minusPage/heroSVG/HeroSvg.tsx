@@ -29,6 +29,7 @@ interface VisabiliType<T> {
 const SVG = styled.svg`
   position: absolute;
   bottom: 0;
+  display: inline-block;
 `;
 
 const Path0 = styled.path`
