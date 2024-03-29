@@ -1,6 +1,6 @@
 const UPDATE = "MULTIPLICATION_UPDATE";
 
-type genType<T> = { a: T; b: number[]; c: T };
+type genType<T extends number> = { a: T; b: number[]; c: T };
 
 const rundomNumber = (startNumber: number, b: number): number =>
   Math.floor(b + Math.random() * (startNumber + 1 - b));

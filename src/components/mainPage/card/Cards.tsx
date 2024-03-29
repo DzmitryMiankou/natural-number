@@ -37,6 +37,7 @@ const sx: {
 } = {
   card: {
     maxWidth: 345,
+    minWidth: 300,
     textDecoration: "none",
     transition: "0.5s",
     margin: "auto",
@@ -84,8 +85,12 @@ const MultiActionAreaCard = ({ state }: { state: StateMaimPageType }) => {
           <CardActionArea sx={sx.cardArea}>
             <CardMedia component="div">
               <Img
-                width={"202%"}
-                style={{ marginLeft: "-170px", minHeight: "140px" }}
+                style={{
+                  marginLeft: "-170px",
+                  minHeight: "140px",
+                  width: "202%",
+                  minWidth: "200",
+                }}
               />
             </CardMedia>
             <CardContent>

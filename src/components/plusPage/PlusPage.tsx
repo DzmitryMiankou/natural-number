@@ -9,9 +9,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
 const BoxImg = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
 `;
 
 const PVariant2 = styled(P)`

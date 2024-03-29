@@ -17,14 +17,16 @@ import divisionReducer from "./divisionReducer/DivisionReducer";
 import multiplicationReducer from "./multiplicationReducer/MultiplicationReducer";
 import storeQuizReducer from "./storeQuiz/storeQuizReducer";
 
-const rootReducers = combineReducers({
+const reducers = {
   static: mainPageReducer,
   plusPageInputReducer: plusPageInputReducer,
   radio: radioReducer,
   division: divisionReducer,
   multiplication: multiplicationReducer,
   storeQuiz: storeQuizReducer,
-});
+};
+
+const rootReducers = combineReducers<typeof reducers>(reducers);
 
 const persistConfig = {
   key: "root",
@@ -52,7 +54,6 @@ const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-export default store;
-
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+export default store;

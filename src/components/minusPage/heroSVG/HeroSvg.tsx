@@ -22,7 +22,7 @@ interface Hero1StyleType {
   $logic: string | any;
 }
 
-interface VisabiliType<T> {
+interface VisabiliType<T extends string> {
   $bgcolor: T;
 }
 
@@ -42,12 +42,10 @@ const Hero2 = styled.g`
 `;
 
 const Text = styled.p`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
   color: wheat;
   font-size: 40px;
+  text-align: center;
 `;
 
 const ForObg = styled.foreignObject<VisabiliType<string>>`
@@ -85,14 +83,14 @@ const HeroSVG: React.FC = () => {
     const timerId1 = setTimeout(() => setQV(false), 2000);
     const timerId2 = setTimeout(() => setQV2(false), 2000);
     if (id === 1) {
-      clearTimeout(timerId2);
       setQV2(false);
-      return setQV(true);
+      setQV(true);
+      return () => clearTimeout(timerId2);
     }
     if (id === 2) {
-      clearTimeout(timerId1);
       setQV(false);
-      return setQV2(true);
+      setQV2(true);
+      return () => clearTimeout(timerId1);
     }
     return;
   };
@@ -316,7 +314,6 @@ const HeroSVG: React.FC = () => {
 				c0,0,75.1-4.4,91.6-5.2s109.8,3.8,109.8,3.8l4,6.4l-208.5,1.1L773.5,357.6z"
         />
       </Chere1>
-
       <Gg>
         <g>
           <polygon
@@ -328,7 +325,6 @@ const HeroSVG: React.FC = () => {
             points="1646.3,434.2 1650.4,470.6 1639.2,472.7 1632.1,471.5 1639.1,463.1 1639.4,432.8 				"
           />
         </g>
-
         <Chere2 $logic={get1 ? posAnimation2 : false}>
           <polygon
             fill="#DE8800"

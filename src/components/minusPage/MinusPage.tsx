@@ -6,17 +6,6 @@ import HeroSVG from "./heroSVG/HeroSvg";
 import data from "../../data/twoLevelData.json";
 import { ReactComponent as Img } from "../../img/mins.svg";
 
-const BoxImg = styled.div`
-  width: 100%;
-`;
-
-const PVariant2 = styled(P)`
-  margin-bottom: 35px;
-  @media (max-width: 1600px) {
-    font-size: 26px;
-  }
-`;
-
 const Box = styled.div`
   width: 100%;
   display: flex;
@@ -33,6 +22,17 @@ const Box = styled.div`
   }
 `;
 
+const Block = styled.div`
+  display: block;
+`;
+
+const PVariant2 = styled(P)`
+  margin-bottom: 35px;
+  @media (max-width: 1600px) {
+    font-size: 26px;
+  }
+`;
+
 const MinusPage: React.FC = () => {
   const state = data[0].minusData;
 
@@ -45,12 +45,12 @@ const MinusPage: React.FC = () => {
       boximg={
         <>
           <PVariant2>{state.qvest}</PVariant2>
-          <BoxImg>
-            <Box>
+          <Box>
+            <Block>
               <HeroSVG />
-              <Img />
-            </Box>
-          </BoxImg>
+            </Block>
+            <Img />
+          </Box>
         </>
       }
     />
