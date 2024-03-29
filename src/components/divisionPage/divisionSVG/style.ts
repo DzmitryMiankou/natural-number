@@ -21,7 +21,6 @@ const PortAnimation = keyframes`
 `;
 
 const SVG = styled.svg`
-  position: absolute;
   left: 0;
 `;
 

@@ -5,13 +5,10 @@ import TitlePage from "../globalComponent/TitlePage";
 import SimpleDialog from "../onePage/dialog";
 import data from "../../data/twoLevelData.json";
 import DivisionSVG from "./divisionSVG/DivisionSVG";
-import SvgBGgame from "./svgBGgame/SvgBGgame";
 
 const BoxImg = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
+  display: block;
 `;
 
 const PVariant2 = styled(P)`
@@ -56,7 +53,6 @@ const DivisionPage: React.FC = () => {
           <Box>
             <BoxImg>
               <DivisionSVG />
-              <SvgBGgame />
             </BoxImg>
           </Box>
         </>

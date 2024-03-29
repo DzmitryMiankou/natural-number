@@ -64,7 +64,7 @@ const PathAnim = styled.path`
   stroke-width: 2;
 `;
 
-const positionY = 291;
+const positionY = 290;
 const gapeAnim = 450;
 
 interface TypeInpArr<T extends number> {
@@ -131,11 +131,29 @@ const DivisionSVG: React.FC = () => {
   const restartNumber = () => dispatch(clearDivisionAction());
 
   return (
-    <SVG x="0px" y="0px" viewBox="0 0 1920 529.3">
+    <SVG x="0px" y="0px" viewBox="0 0 1920 529">
+      <g>
+        <rect x="341" y="291.5" fill="#8C604E" width="1238.1" height="145.8" />
+        <rect x="617.6" y="291.5" fill="#2D0000" width="145.8" height="145.8" />
+        <rect
+          x="1016.6"
+          y="291.5"
+          fill="#2D0000"
+          width="145.8"
+          height="145.8"
+        />
+        <rect
+          x="1433.3"
+          y="291.5"
+          fill="#2D0000"
+          width="145.8"
+          height="145.8"
+        />
+      </g>
       {assignObj().map(({ x, y, result, a, b, matrix }) => (
         <React.Fragment key={x}>
           <text
-            transform={`matrix(1 0 0 1 ${matrix} 390)`}
+            transform={`matrix(1 0 0 1 ${matrix} 385)`}
             className={svgstyle.text}
           >
             {`${a} : ${b} = `}
