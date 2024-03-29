@@ -243,7 +243,7 @@ const StarSVG: React.FC = () => {
                   <Input
                     aria-label={`text-id-${b}`}
                     value={actualInputData(id)}
-                    type="text"
+                    type="number"
                     id={`text-id-${b}`}
                     maxLength={2}
                     placeholder="?"

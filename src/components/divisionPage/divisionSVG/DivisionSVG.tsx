@@ -166,7 +166,7 @@ const DivisionSVG: React.FC = () => {
                 onChange={(e) => onChangeCommit(e, result)}
                 value={actualInputData(result)}
                 placeholder="?"
-                type="text"
+                type="number"
                 autoFocus
               />
             ) : (

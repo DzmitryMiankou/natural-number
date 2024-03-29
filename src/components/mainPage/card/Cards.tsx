@@ -37,7 +37,7 @@ const sx: {
 } = {
   card: {
     maxWidth: 345,
-    minWidth: 300,
+    minWidth: "300px",
     textDecoration: "none",
     transition: "0.5s",
     margin: "auto",
@@ -54,6 +54,7 @@ const sx: {
     color: "var(--color-orange-card-title)",
     textAlign: "center",
     height: 50,
+    minWidth: "300px",
   },
 };
 
