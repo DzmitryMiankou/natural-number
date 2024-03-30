@@ -14,11 +14,11 @@ const Box = styled.div`
   position: relative;
   @media (max-width: 1000px) {
     width: 120vw;
-    transform: translateX(-15px);
+    transform: translateX(15px);
   }
   @media (max-width: 700px) {
     width: 140vw;
-    transform: translateX(-25px);
+    transform: translateX(25px);
   }
 `;
 

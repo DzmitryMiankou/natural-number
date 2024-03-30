@@ -37,6 +37,7 @@ const sx: {
 } = {
   card: {
     maxWidth: 345,
+    width: "100%",
     minWidth: "300px",
     textDecoration: "none",
     transition: "0.5s",

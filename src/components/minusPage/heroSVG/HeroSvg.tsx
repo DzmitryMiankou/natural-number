@@ -53,8 +53,6 @@ const ForObg = styled.foreignObject<VisabiliType<string>>`
   display: block;
   visibility: ${(prop) => (prop.$visability ? "visible" : "hidden")};
   background-color: ${(prop) => prop.$bgcolor};
-  width: 230px;
-  height: 61px;
   rotate: 5.5deg;
   -moz-box-shadow: 0 0 40px ${(prop) => prop.$bgcolor};
   -webkit-box-shadow: 0 0 40px ${(prop) => prop.$bgcolor};
@@ -82,34 +80,25 @@ const Gg = styled.g`
 const HeroSVG: React.FC = () => {
   const [get, set] = useState<boolean>(false);
   const [get1, set1] = useState<boolean>(false);
-  const [getQv, setQV] = useState<boolean>(false);
-  const [getQv2, setQV2] = useState<boolean>(false);
+  const [getQv, setQV] = useState<1 | 2 | 0>(0);
 
-  const handleClickHero = (id: number) => {
-    const timerId1 = setTimeout(() => setQV(false), 2000);
-    const timerId2 = setTimeout(() => setQV2(false), 2000);
-    if (id === 1) {
-      setQV2(false);
-      setQV(true);
-      return () => clearTimeout(timerId2);
-    }
-    if (id === 2) {
-      setQV(false);
-      setQV2(true);
-      return () => clearTimeout(timerId1);
-    }
-    return;
+  const handleClickHero = (id: 1 | 2) => {
+    setQV(id);
+    const timerId2 = setTimeout(() => setQV(0), 2000);
+    return () => clearTimeout(timerId2);
   };
 
   return (
     <SVG x="0px" y="0px" viewBox="0 0 1920 529.3">
       <ForObg
+        width="230"
+        height="61"
         x="320"
         y="173"
-        $bgcolor={getQv2 ? "green" : "red"}
-        $visability={getQv || getQv2}
+        $bgcolor={getQv === 1 ? "green" : "red"}
+        $visability={getQv !== 0}
       >
-        <Text>{getQv2 ? "Верно" : "Неверно"}</Text>
+        <Text>{getQv === 1 ? "Верно" : "Неверно"}</Text>
       </ForObg>
       <polygon
         className={SvgStyle.st0}
