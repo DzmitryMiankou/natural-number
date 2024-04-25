@@ -3,19 +3,24 @@ import styled, { keyframes } from "styled-components";
 import MultiActionAreaCard from "./card/Cards";
 import { StateMaimPageType } from "../../routes/routes";
 
-const rotate = keyframes`
- 0% {  opacity: 0;  }
- 100% {  opacity: 1;  }
+const openWindAnim = keyframes`
+ 0% {  
+  opacity: 0;  
+  transform: translateY(-20px);
+  }
+ 100% {  
+  opacity: 1; 
+  transform: translateY(0px);
+  }
 `;
 
 const Main = styled.main`
+  max-width: 1900px;
+  display: grid;
+  place-items: center;
+  margin: auto;
   min-height: calc(100vh - 40px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  animation: ${rotate} 0.6s linear;
+  animation: ${openWindAnim} 300ms ease-in-out;
 `;
 
 const Title = styled.h1`

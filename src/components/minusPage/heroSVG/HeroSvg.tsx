@@ -95,10 +95,10 @@ const HeroSVG: React.FC = () => {
         height="61"
         x="320"
         y="173"
-        $bgcolor={getQv === 1 ? "green" : "red"}
+        $bgcolor={getQv === 2 ? "green" : "red"}
         $visability={getQv !== 0}
       >
-        <Text>{getQv === 1 ? "Верно" : "Неверно"}</Text>
+        <Text>{getQv === 2 ? "Верно" : "Неверно"}</Text>
       </ForObg>
       <polygon
         className={SvgStyle.st0}
