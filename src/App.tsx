@@ -42,11 +42,11 @@ const Menu = styled.div`
 `;
 
 const Footer = styled.footer`
+  z-index: 99;
   background-color: var(--color-footerBG);
   height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-content: center;
 `;
 
 const sx: { icon: SxProps; tooltip: SxProps } = {
@@ -65,11 +65,7 @@ const sx: { icon: SxProps; tooltip: SxProps } = {
   },
 };
 
-interface Prop {
-  $focus: boolean;
-}
-
-const FooterP = styled.p<Prop>`
+const FooterP = styled.p<{ $focus: boolean }>`
   transition: 0.2s;
   font-size: ${(p) => (p.$focus ? "14px" : "12px")};
   color: ${(p) =>
@@ -140,7 +136,9 @@ const AppH: React.FC<RequestType> = ({
       </Menu>
       <PageRoute state={state} />
       <Footer onMouseEnter={() => set(true)} onMouseLeave={() => set(false)}>
-        <FooterP $focus={get}>{state.main[0].footer}</FooterP>
+        <FooterP $focus={get}>
+          {state.main[0].footer + ". __VERSION 0.1__"}
+        </FooterP>
       </Footer>
     </AppDiv>
   );

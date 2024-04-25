@@ -35,6 +35,10 @@ const initialState: arrCardType<string> = {
           text: "Деление натуральных чисел",
           path: "/divisionNumber",
         },
+        {
+          text: "Простой множитель",
+          path: "/factorization",
+        },
       ],
       footer: `© 2023 - ${new Date().getFullYear()}, Дмитрий Меньков, г. Молодечно`,
     },

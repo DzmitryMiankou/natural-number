@@ -7,6 +7,7 @@ import PlusPage from "../components/plusPage/PlusPage";
 import MinusPage from "../components/minusPage/MinusPage";
 import MultiplicationPage from "../components/multiplicationPage/MultiplicationPage";
 import DivisionPage from "../components/divisionPage/DivisionPage";
+import FactorizationPage from "../components/factorization/index";
 
 export interface StateMaimPageType {
   main: Array<{
@@ -25,6 +26,7 @@ const PageRoute: React.FC<{ state: StateMaimPageType }> = ({ state }) => {
     { element: <MinusPage />, path: "/minusNumber" },
     { element: <MultiplicationPage />, path: "/multiplicationNumber" },
     { element: <DivisionPage />, path: "/divisionNumber" },
+    { element: <FactorizationPage />, path: "/factorization" },
   ];
 
   return (

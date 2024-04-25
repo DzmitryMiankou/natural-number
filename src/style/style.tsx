@@ -2,8 +2,14 @@ import styled, { keyframes } from "styled-components";
 import { SxProps } from "@mui/material";
 
 const opacityAnimation = keyframes`
-  0% {  opacity: 0;  }
-  100% {  opacity: 1;  }
+ 0% {  
+  opacity: 0;  
+  transform: translateY(20px);
+  }
+ 100% {  
+  opacity: 1; 
+  transform: translateY(0px);
+  }
 `;
 
 const rotateAnimation = keyframes`
@@ -19,7 +25,7 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   gap: 30px;
-  animation: ${opacityAnimation} 0.6s linear;
+  animation: ${opacityAnimation} 300ms ease-in-out;
 `;
 
 const Pann = styled.p`

@@ -17,6 +17,7 @@ const openWindAnim = keyframes`
 const Main = styled.main`
   max-width: 1900px;
   display: grid;
+  gap: 20px;
   place-items: center;
   margin: auto;
   min-height: calc(100vh - 40px);

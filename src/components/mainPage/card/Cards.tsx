@@ -69,6 +69,7 @@ const MultiActionAreaCard = ({ state }: { state: StateMaimPageType }) => {
     { Img: Minus },
     { Img: Multiplication },
     { Img: Division },
+    { Img: Division },
   ];
 
   const assignObj = () => {
