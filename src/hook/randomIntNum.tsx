@@ -20,30 +20,21 @@ export const useRandomInt = ({ min, max }: { min: number; max: number }) => {
   };
 
   function pushInArr(el: number) {
-    let l = el;
-    let n = 2;
+    let quotient: number = el;
 
-    function getFactorization() {
-      if (l % n !== 0) {
-        n = n + 1;
-      }
-      if (l % n === 0) {
-        resultNumbers[el].push(n);
-        l = l / n;
-        getFactorization();
-      }
-    }
-    getFactorization();
-    /* for (let i: number = 2; i <= res; i++) { let res: number = el;
-      if (res % i === 0) {
-        //console.log(i);
-        res = res / i;
+    for (let i = 2; i <= quotient; ) {
+      if (quotient % i === 0) {
         resultNumbers[el].push(i);
-      }
-    }*/
+        quotient = quotient / i;
+      } else i = i + 1;
+    }
   }
 
-  pushInArr(n1);
-  pushInArr(n2);
+  const keys = Object.keys(resultNumbers);
+
+  console.log(keys);
+
+  keys.forEach((item) => pushInArr(+item));
+
   return resultNumbers;
 };
