@@ -7,7 +7,7 @@ import { useRandomInt } from "../../hook/randomIntNum";
 
 const FactorizationPage: React.FC = () => {
   const state = data[0].factorizationData;
-  const useRandomI = useRandomInt({ min: 4, max: 20 });
+  const useRandomI = useRandomInt({ min: 4, max: 20, length: 2 });
 
   console.log(useRandomI);
 

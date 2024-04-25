@@ -1,23 +1,19 @@
-export const useRandomInt = ({ min, max }: { min: number; max: number }) => {
-  function randomInteger(min: number, max: number): number {
-    const rand: number = min + Math.random() * (max + 1 - min);
-    return Math.floor(rand);
-  }
+type Prop<N extends number> = { min: N; max: N; length: N };
+type RandomProp<N extends number> = Pick<Prop<N>, "min" | "max">;
 
-  let n1: number = 0;
-  let n2: number = 0;
+export const useRandomInt = ({ min, max, length }: Prop<number>) => {
+  const randomInteger = (params: RandomProp<number>): number =>
+    +Math.floor(params.min + Math.random() * (params.max + 1 - params.min));
 
-  for (let i = 0; n2 === n1; i++) {
-    n1 = randomInteger(min, max);
-    n2 = randomInteger(min, max);
-  }
-
+  type ReturnTypeRandom = ReturnType<typeof randomInteger>;
   const resultNumbers: {
-    [key: number]: Array<number>;
-  } = {
-    [n1]: [],
-    [n2]: [],
-  };
+    [key: ReturnTypeRandom]: Array<ReturnTypeRandom>;
+  } = {};
+
+  for (let i = 1; i <= length; i++)
+    resultNumbers[randomInteger({ min, max })] = [];
+
+  const keys: Array<string> = Object.keys(resultNumbers);
 
   function pushInArr(el: number) {
     let quotient: number = el;
@@ -29,10 +25,6 @@ export const useRandomInt = ({ min, max }: { min: number; max: number }) => {
       } else i = i + 1;
     }
   }
-
-  const keys = Object.keys(resultNumbers);
-
-  console.log(keys);
 
   keys.forEach((item) => pushInArr(+item));
 
