@@ -7,21 +7,26 @@ export const useRandomInt = ({ min, max, length }: Prop<number>) => {
 
   type ReturnTypeRandom = ReturnType<typeof randomInteger>;
   const resultNumbers: {
-    [key: ReturnTypeRandom]: Array<ReturnTypeRandom>;
+    [key: ReturnTypeRandom]: { multiplier: number[]; quotient: number[] };
   } = {};
 
   for (let i = 1; i <= length; i++)
-    resultNumbers[randomInteger({ min, max })] = [];
+    resultNumbers[randomInteger({ min, max })] = {
+      multiplier: [],
+      quotient: [],
+    };
 
   const keys: Array<string> = Object.keys(resultNumbers);
 
-  function pushInArr(el: number) {
+  function pushInArr(el: number): void {
     let quotient: number = el;
 
     for (let i = 2; i <= quotient; ) {
       if (quotient % i === 0) {
-        resultNumbers[el].push(i);
+        const objData = resultNumbers[el];
+        objData.multiplier.push(i);
         quotient /= i;
+        objData.quotient.push(quotient);
       } else i++;
     }
   }
