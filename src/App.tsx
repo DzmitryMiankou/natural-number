@@ -35,7 +35,7 @@ const AppDiv = styled.div<TypeBG>`
 `;
 
 const Menu = styled.div`
-  position: absolute;
+  position: fixed;
   left: 0;
   display: flex;
   align-items: center;
