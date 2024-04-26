@@ -21,8 +21,8 @@ export const useRandomInt = ({ min, max, length }: Prop<number>) => {
     for (let i = 2; i <= quotient; ) {
       if (quotient % i === 0) {
         resultNumbers[el].push(i);
-        quotient = quotient / i;
-      } else i = i + 1;
+        quotient /= i;
+      } else i++;
     }
   }
 
