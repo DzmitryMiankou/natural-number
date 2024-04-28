@@ -1,13 +1,17 @@
+const enum NameEnum {
+  multiplier = "multiplier",
+  quotient = "quotient",
+}
 type Prop<N extends number> = { min: N; max: N; length: N };
-type RandomProp<N extends number> = Pick<Prop<N>, "min" | "max">;
+type RandomProp<N extends number> = Omit<Prop<N>, "length">;
 type ResultNumbersType<N extends number> = {
-  multiplier: N[];
-  quotient: N[];
+  [NameEnum.multiplier]: N[];
+  [NameEnum.quotient]: N[];
 };
 type PushNumbType = {
   objData: ResultNumbersType<number>;
   data: number;
-  path: "multiplier" | "quotient";
+  path: NameEnum.multiplier | NameEnum.quotient;
 };
 type StateType<N extends number> = {
   [K: number]: ResultNumbersType<N>;
@@ -21,8 +25,8 @@ export const useRandomInt = ({ min, max, length }: Prop<number>) => {
 
   for (let i = 1; i <= length; i++)
     resultNumbers[randomInteger({ min, max })] = {
-      multiplier: [],
-      quotient: [],
+      [NameEnum.multiplier]: [],
+      [NameEnum.quotient]: [],
     };
 
   const keys: Array<string> = Object.keys(resultNumbers);
@@ -35,12 +39,12 @@ export const useRandomInt = ({ min, max, length }: Prop<number>) => {
     const initData: PushNumbType = {
       objData: resultNumbers[el],
       data: el,
-      path: "quotient",
+      path: NameEnum.quotient,
     };
     pushNumberInArray({ ...initData });
     for (let i = 2; i <= quotient; ) {
       if (quotient % i === 0) {
-        pushNumberInArray({ ...initData, data: i, path: "multiplier" });
+        pushNumberInArray({ ...initData, data: i, path: NameEnum.multiplier });
         quotient /= i;
         pushNumberInArray({ ...initData, data: quotient });
       } else i++;
