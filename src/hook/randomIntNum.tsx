@@ -1,25 +1,26 @@
 const enum NameEnum {
   multiplier = "multiplier",
   quotient = "quotient",
+  min = "min",
+  max = "max",
+  length = "length",
 }
-type Prop<N extends number> = { min: N; max: N; length: N };
-type RandomProp<N extends number> = Omit<Prop<N>, "length">;
-type ResultNumbersType<N extends number> = {
-  [NameEnum.multiplier]: N[];
-  [NameEnum.quotient]: N[];
-};
-type ResultNumbersTypeReadonly = Readonly<ResultNumbersType<number>>;
+type ResultName = NameEnum.multiplier | NameEnum.quotient;
+type PropName = NameEnum.min | NameEnum.max | NameEnum.length;
+type ResultNumbersTypeReadonly = Readonly<Record<ResultName, number[]>>;
+type PropType = Readonly<Record<PropName, number>>;
+type RandomProp = Omit<PropType, "length">;
 type PushNumbType = {
   objData: ResultNumbersTypeReadonly;
   data: number;
-  readonly path: NameEnum.multiplier | NameEnum.quotient;
+  readonly path: ResultName;
 };
 type StateType = {
   [K: number]: ResultNumbersTypeReadonly;
 };
 
-export const useRandomInt = ({ min, max, length }: Prop<number>) => {
-  const randomInteger = (params: RandomProp<number>): number =>
+export const useRandomInt = ({ min, max, length }: PropType) => {
+  const randomInteger = (params: RandomProp): number =>
     +Math.floor(params.min + Math.random() * (params.max + 1 - params.min));
 
   const resultNumbers: StateType = {};
