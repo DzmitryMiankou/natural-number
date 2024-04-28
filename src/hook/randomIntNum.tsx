@@ -30,8 +30,6 @@ export const useRandomInt = ({ min, max, length }: Prop<number>) => {
       [NameEnum.quotient]: [],
     };
 
-  const keys: Array<string> = Object.keys(resultNumbers);
-
   const pushNumberInArray = ({ objData, data, path }: PushNumbType): number =>
     objData[path].push(data);
 
@@ -52,6 +50,7 @@ export const useRandomInt = ({ min, max, length }: Prop<number>) => {
     }
   }
 
+  const keys: Array<string> = Object.keys(resultNumbers);
   keys.forEach((item) => getFactorizationNumber(+item));
 
   return resultNumbers;
