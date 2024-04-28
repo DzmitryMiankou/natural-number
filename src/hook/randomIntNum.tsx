@@ -9,8 +9,8 @@ type ResultNumbersType<N extends number> = {
   readonly [NameEnum.quotient]: N[];
 };
 type PushNumbType = {
-  readonly objData: ResultNumbersType<number>;
-  readonly data: number;
+  objData: ResultNumbersType<number>;
+  data: number;
   readonly path: NameEnum.multiplier | NameEnum.quotient;
 };
 type StateType<N extends number> = {
