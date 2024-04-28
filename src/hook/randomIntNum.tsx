@@ -7,11 +7,11 @@ type PropName = "min" | "max" | "length";
 type ResultNumbersTypeReadonly = Readonly<Record<ResultName, number[]>>;
 type PropType = Readonly<Record<PropName, number>>;
 type RandomProp = Omit<PropType, "length">;
-type PushNumbType = {
+interface PushNumbType {
   objData: ResultNumbersTypeReadonly;
   data: number;
   readonly path: ResultName;
-};
+}
 type StateType = {
   [K: number]: ResultNumbersTypeReadonly;
 };
