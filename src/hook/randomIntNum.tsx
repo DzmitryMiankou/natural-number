@@ -1,12 +1,9 @@
 const enum NameEnum {
   multiplier = "multiplier",
   quotient = "quotient",
-  min = "min",
-  max = "max",
-  length = "length",
 }
 type ResultName = NameEnum.multiplier | NameEnum.quotient;
-type PropName = NameEnum.min | NameEnum.max | NameEnum.length;
+type PropName = "min" | "max" | "length";
 type ResultNumbersTypeReadonly = Readonly<Record<ResultName, number[]>>;
 type PropType = Readonly<Record<PropName, number>>;
 type RandomProp = Omit<PropType, "length">;
