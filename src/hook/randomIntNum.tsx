@@ -5,13 +5,13 @@ const enum NameEnum {
 type Prop<N extends number> = { min: N; max: N; length: N };
 type RandomProp<N extends number> = Omit<Prop<N>, "length">;
 type ResultNumbersType<N extends number> = {
-  [NameEnum.multiplier]: N[];
-  [NameEnum.quotient]: N[];
+  readonly [NameEnum.multiplier]: N[];
+  readonly [NameEnum.quotient]: N[];
 };
 type PushNumbType = {
-  objData: ResultNumbersType<number>;
-  data: number;
-  path: NameEnum.multiplier | NameEnum.quotient;
+  readonly objData: ResultNumbersType<number>;
+  readonly data: number;
+  readonly path: NameEnum.multiplier | NameEnum.quotient;
 };
 type StateType<N extends number> = {
   [K: number]: ResultNumbersType<N>;
