@@ -5,23 +5,24 @@ const enum NameEnum {
 type Prop<N extends number> = { min: N; max: N; length: N };
 type RandomProp<N extends number> = Omit<Prop<N>, "length">;
 type ResultNumbersType<N extends number> = {
-  readonly [NameEnum.multiplier]: N[];
-  readonly [NameEnum.quotient]: N[];
+  [NameEnum.multiplier]: N[];
+  [NameEnum.quotient]: N[];
 };
+type ResultNumbersTypeReadonly = Readonly<ResultNumbersType<number>>;
 type PushNumbType = {
-  objData: ResultNumbersType<number>;
+  objData: ResultNumbersTypeReadonly;
   data: number;
   readonly path: NameEnum.multiplier | NameEnum.quotient;
 };
-type StateType<N extends number> = {
-  [K: number]: ResultNumbersType<N>;
+type StateType = {
+  [K: number]: ResultNumbersTypeReadonly;
 };
 
 export const useRandomInt = ({ min, max, length }: Prop<number>) => {
   const randomInteger = (params: RandomProp<number>): number =>
     +Math.floor(params.min + Math.random() * (params.max + 1 - params.min));
 
-  const resultNumbers: StateType<number> = {};
+  const resultNumbers: StateType = {};
 
   for (let i = 1; i <= length; i++)
     resultNumbers[randomInteger({ min, max })] = {
