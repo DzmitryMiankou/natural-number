@@ -15,7 +15,7 @@ interface PushNumbType {
   readonly path: ResultName;
 }
 type StateType = {
-  [K: number]: ResultNumbersTypeReadonly;
+  [K: string]: ResultNumbersTypeReadonly;
 };
 
 export const useRandomInt = ({ min, max, length }: PropType) => {
@@ -27,12 +27,12 @@ export const useRandomInt = ({ min, max, length }: PropType) => {
     const resultNumbers: StateType = {};
 
     for (let i = 1; ; i++)
-      if (Object.keys(resultNumbers).length < length) {
+      if (Object.keys(resultNumbers).length < length)
         resultNumbers[randomInteger({ min, max })] = {
           [NameEnum.multiplier]: [],
           [NameEnum.quotient]: [],
         };
-      } else break;
+      else break;
 
     const pushNumberInArray = ({ objData, data, path }: PushNumbType): number =>
       objData[path].push(data);

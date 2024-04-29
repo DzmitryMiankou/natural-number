@@ -3,8 +3,13 @@ import styled from "styled-components";
 
 const Box = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 100%;
+  grid-template-columns: repeat(2, min(200px));
+  gap: 20px;
+  justify-content: center;
+`;
+
+const Block = styled.div`
+  display: block;
 `;
 
 const PVariant2 = styled(P)`
@@ -14,4 +19,4 @@ const PVariant2 = styled(P)`
   }
 `;
 
-export const ST = { Box, PVariant2 };
+export const ST = { Box, PVariant2, Block };
