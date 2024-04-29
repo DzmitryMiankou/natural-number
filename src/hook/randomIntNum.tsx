@@ -1,3 +1,5 @@
+import React from "react";
+
 const enum NameEnum {
   multiplier = "multiplier",
   quotient = "quotient",
@@ -17,39 +19,49 @@ type StateType = {
 };
 
 export const useRandomInt = ({ min, max, length }: PropType) => {
-  const randomInteger = (params: RandomProp): number =>
-    +Math.floor(params.min + Math.random() * (params.max + 1 - params.min));
+  const [get, set] = React.useState<StateType | null>(null);
+  React.useEffect(() => {
+    const randomInteger = (params: RandomProp): number =>
+      +Math.floor(params.min + Math.random() * (params.max + 1 - params.min));
 
-  const resultNumbers: StateType = {};
+    const resultNumbers: StateType = {};
 
-  for (let i = 1; i <= length; i++)
-    resultNumbers[randomInteger({ min, max })] = {
-      [NameEnum.multiplier]: [],
-      [NameEnum.quotient]: [],
-    };
+    for (let i = 1; ; i++)
+      if (Object.keys(resultNumbers).length < length) {
+        resultNumbers[randomInteger({ min, max })] = {
+          [NameEnum.multiplier]: [],
+          [NameEnum.quotient]: [],
+        };
+      } else break;
 
-  const pushNumberInArray = ({ objData, data, path }: PushNumbType): number =>
-    objData[path].push(data);
+    const pushNumberInArray = ({ objData, data, path }: PushNumbType): number =>
+      objData[path].push(data);
 
-  function getFactorizationNumber(el: number): void {
-    let quotient: number = el;
-    const initData: PushNumbType = {
-      objData: resultNumbers[el],
-      data: el,
-      path: NameEnum.quotient,
-    };
-    pushNumberInArray({ ...initData });
-    for (let i = 2; i <= quotient; ) {
-      if (quotient % i === 0) {
-        pushNumberInArray({ ...initData, data: i, path: NameEnum.multiplier });
-        quotient /= i;
-        pushNumberInArray({ ...initData, data: quotient });
-      } else i++;
+    function getFactorizationNumber(el: number): void {
+      let quotient: number = el;
+      const initData: PushNumbType = {
+        objData: resultNumbers[el],
+        data: el,
+        path: NameEnum.quotient,
+      };
+      pushNumberInArray({ ...initData });
+
+      for (let i = 2; i <= quotient; )
+        if (quotient % i === 0) {
+          pushNumberInArray({
+            ...initData,
+            data: i,
+            path: NameEnum.multiplier,
+          });
+          quotient /= i;
+          pushNumberInArray({ ...initData, data: quotient });
+        } else i++;
     }
-  }
 
-  const keys: Array<string> = Object.keys(resultNumbers);
-  keys.forEach((item) => getFactorizationNumber(+item));
+    const keys: Array<string> = Object.keys(resultNumbers);
+    keys.forEach((item) => getFactorizationNumber(+item));
 
-  return resultNumbers;
+    set(resultNumbers);
+  }, [length, max, min]);
+  return get;
 };
