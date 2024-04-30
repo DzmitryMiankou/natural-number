@@ -1,11 +1,11 @@
 const PARAMS = "PARAMS___$#t34tEFWD$#7745%%#$#er";
 const SETVALUESFACT = "SETVALUESFACT-43tfdsEGW34$%%@";
 
-const enum NameEnum {
+export const enum NameEnum {
   multiplier = "multiplier",
   quotient = "quotient",
 }
-type ResultName = NameEnum.multiplier | NameEnum.quotient;
+export type ResultName = NameEnum.multiplier | NameEnum.quotient;
 type PropName = "min" | "max" | "length";
 type ResultNumbersTypeReadonly<S extends string> = Readonly<
   Record<ResultName, { [K: string]: S }[]>
@@ -93,6 +93,7 @@ const factorizationReducer = (state = initialState, action: TypeAction) => {
         [nameNumb]: { ...newState[nameNumb], [resultDiv]: [...mutationArr] },
       };
     }
+
     default:
       return state;
   }
@@ -108,7 +109,7 @@ export const FactorActions = {
     nameNumb: number;
     index: string;
     val: number;
-    resultDiv: "multiplier" | "quotient";
+    resultDiv: ResultName;
   }) => {
     return {
       type: SETVALUESFACT,
