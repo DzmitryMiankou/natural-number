@@ -16,6 +16,7 @@ import radioReducer from "./radioReducer/RadioReducer";
 import divisionReducer from "./divisionReducer/DivisionReducer";
 import multiplicationReducer from "./multiplicationReducer/MultiplicationReducer";
 import storeQuizReducer from "./storeQuiz/storeQuizReducer";
+import factorizationReducer from "./factorizationReducer/factorizationReducer";
 
 const reducers = {
   static: mainPageReducer,
@@ -24,6 +25,7 @@ const reducers = {
   division: divisionReducer,
   multiplication: multiplicationReducer,
   storeQuiz: storeQuizReducer,
+  factorization: factorizationReducer,
 };
 
 const rootReducers = combineReducers<typeof reducers>(reducers);
@@ -38,6 +40,7 @@ const persistConfig = {
     "division",
     "multiplication",
     "radio",
+    "factorization",
   ],
 };
 

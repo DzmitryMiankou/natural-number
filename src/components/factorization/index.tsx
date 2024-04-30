@@ -2,18 +2,38 @@ import React from "react";
 import { ST } from "./style";
 import TitlePage from "../globalComponent/TitlePage";
 import data from "../../data/twoLevelData.json";
-import { useRandomInt } from "../../hook/randomIntNum";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, AppDispatch } from "../../redux/store";
+import { setParamsAction } from "../../redux/factorizationReducer/factorizationReducer";
 
 const FactorizationPage: React.FC = () => {
+  const factorizationState = useSelector(
+    (store: RootState) => store.factorization
+  );
+  const dispatch: AppDispatch = useDispatch();
   const [get, set] = React.useState<{ val: number; ind: number }[]>([]);
   const state = data[0].factorizationData;
-  const useRandomI = useRandomInt({ min: 4, max: 20, length: 2 });
-  const keysObj = useRandomI && Object.keys(useRandomI);
+  const keysObj = factorizationState && Object.keys(factorizationState);
+
+  React.useEffect(() => {
+    dispatch(setParamsAction({ min: 4, max: 20, length: 2 }));
+  }, [dispatch]);
+
+  console.log(factorizationState);
 
   const setValue = (
+    oneInd: number,
     index: number,
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
+    const o: { [key: number]: Object[] } = {};
+    for (const i in keysObj) {
+      o[+keysObj[+i]] = [];
+    }
+    o[oneInd].push({
+      ind: +index,
+      val: +event.target.value,
+    });
     set((el) => [
       ...el,
       {
@@ -22,8 +42,6 @@ const FactorizationPage: React.FC = () => {
       },
     ]);
   };
-
-  console.log(get);
 
   return (
     <TitlePage
@@ -44,29 +62,6 @@ const FactorizationPage: React.FC = () => {
                   enableBackground="new 0 0 82 141.7"
                   xmlSpace="preserve"
                 >
-                  <foreignObject x={10} y={0} width="25" height="115">
-                    {useRandomI &&
-                      useRandomI[dataKey]?.quotient.map((data, i) =>
-                        i === 0 ? (
-                          <div key={"we$%fg" + i + data}>{data}</div>
-                        ) : (
-                          <ST.Input
-                            $rightColor={get[i]?.val === +data}
-                            key={"we$%fg" + i + data}
-                            type="number"
-                            placeholder="?"
-                            onChange={(e) => setValue(data, e)}
-                            value={get[i]?.ind === data ? get[i]?.val : ""}
-                          />
-                        )
-                      )}
-                  </foreignObject>
-                  <foreignObject x={50} y={0} width="30" height="115">
-                    {useRandomI &&
-                      useRandomI[dataKey]?.multiplier.map((data, i) => (
-                        <div key={"43ef" + i + data}>{data}</div>
-                      ))}
-                  </foreignObject>
                   <line
                     fill="none"
                     stroke="#1D1D1B"
@@ -76,6 +71,33 @@ const FactorizationPage: React.FC = () => {
                     x2="39.5"
                     y2="133.6"
                   />
+                  <foreignObject x={10} y={0} width="25" height="115">
+                    {factorizationState &&
+                      factorizationState[dataKey]?.quotient.map((data, i) =>
+                        i === 0 ? (
+                          <div key={"we$%fg" + i + data}>
+                            {Object.keys(data)[0]}
+                          </div>
+                        ) : (
+                          <ST.Input
+                            $rightColor={get[i]?.val === +data}
+                            key={"we$%fg" + i + data}
+                            type="number"
+                            placeholder="?"
+                            onChange={(e) => setValue(+dataKey, +data, e)}
+                            value={""}
+                          />
+                        )
+                      )}
+                  </foreignObject>
+                  <foreignObject x={50} y={0} width="30" height="115">
+                    {factorizationState &&
+                      factorizationState[dataKey]?.multiplier.map((data, i) => (
+                        <div key={"43ef" + i + data}>
+                          {Object.keys(data)[0]}
+                        </div>
+                      ))}
+                  </foreignObject>
                 </svg>
               </ST.Block>
             ))}
