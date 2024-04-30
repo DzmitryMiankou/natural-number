@@ -5,9 +5,25 @@ import data from "../../data/twoLevelData.json";
 import { useRandomInt } from "../../hook/randomIntNum";
 
 const FactorizationPage: React.FC = () => {
+  const [get, set] = React.useState<{ val: number; ind: number }[]>([]);
   const state = data[0].factorizationData;
   const useRandomI = useRandomInt({ min: 4, max: 20, length: 2 });
-  const k = useRandomI && Object.keys(useRandomI);
+  const keysObj = useRandomI && Object.keys(useRandomI);
+
+  const setValue = (
+    index: number,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    set((el) => [
+      ...el,
+      {
+        ind: +index,
+        val: +event.target.value,
+      },
+    ]);
+  };
+
+  console.log(get);
 
   return (
     <TitlePage
@@ -19,7 +35,7 @@ const FactorizationPage: React.FC = () => {
         <>
           <ST.PVariant2>{state.qvest}</ST.PVariant2>
           <ST.Box>
-            {k?.map((data) => (
+            {keysObj?.map((data) => (
               <ST.Block key={data}>
                 <svg
                   x="0px"
@@ -28,16 +44,27 @@ const FactorizationPage: React.FC = () => {
                   enableBackground="new 0 0 82 141.7"
                   xmlSpace="preserve"
                 >
-                  <foreignObject x={50} y={0} width="50" height="100">
+                  <foreignObject x={10} y={0} width="25" height="110">
                     {useRandomI &&
-                      useRandomI[data].multiplier.map((data, i) => (
-                        <div key={"43ef" + i + data}>{data}</div>
-                      ))}
+                      useRandomI[data]?.quotient.map((data, i) =>
+                        i === 0 ? (
+                          <div key={"we$%fg" + i + data}>{data}</div>
+                        ) : (
+                          <ST.Input
+                            $rightColor={get[i]?.val === +data}
+                            key={"we$%fg" + i + data}
+                            type="number"
+                            placeholder="?"
+                            onChange={(e) => setValue(data, e)}
+                            value={get[i]?.ind === data ? get[i]?.val : ""}
+                          />
+                        )
+                      )}
                   </foreignObject>
-                  <foreignObject x={10} y={0} width="50" height="100">
+                  <foreignObject x={50} y={0} width="30" height="110">
                     {useRandomI &&
-                      useRandomI[data].quotient.map((data, i) => (
-                        <div key={"we$%fg" + i + data}>{data}</div>
+                      useRandomI[data]?.multiplier.map((data, i) => (
+                        <div key={"43ef" + i + data}>{data}</div>
                       ))}
                   </foreignObject>
                   <line

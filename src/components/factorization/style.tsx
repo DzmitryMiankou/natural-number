@@ -12,6 +12,16 @@ const Block = styled.div`
   display: block;
 `;
 
+const Input = styled.input<{ $rightColor: boolean }>`
+  text-align: center;
+  width: 20px;
+  border-radius: 0px;
+  border: ${(prop) => (prop.$rightColor ? "black" : "red")} 1px solid;
+  &:focus {
+    outline: none;
+  }
+`;
+
 const PVariant2 = styled(P)`
   margin-bottom: 35px;
   @media (max-width: 1600px) {
@@ -19,4 +29,4 @@ const PVariant2 = styled(P)`
   }
 `;
 
-export const ST = { Box, PVariant2, Block };
+export const ST = { Box, PVariant2, Block, Input };
