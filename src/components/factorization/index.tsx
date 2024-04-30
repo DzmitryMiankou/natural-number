@@ -12,6 +12,8 @@ import {
 import TooltipButt from "../globalComponent/Tooltip";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import { SxProps } from "@mui/material";
+import HdrStrongIcon from "@mui/icons-material/HdrStrong";
+import HdrWeakIcon from "@mui/icons-material/HdrWeak";
 
 const sx: SxProps = {
   fontSize: "35px",
@@ -22,6 +24,7 @@ const sx: SxProps = {
 };
 
 const FactorizationPage: React.FC = () => {
+  const [getMod, setMod] = React.useState<boolean>(false);
   const factorizationState = useSelector(
     (store: RootState) => store.factorization
   );
@@ -30,8 +33,10 @@ const FactorizationPage: React.FC = () => {
   const keysObj = factorizationState && Object.keys(factorizationState);
 
   React.useEffect(() => {
-    dispatch(FactorActions.setParamsAction({ min: 4, max: 40, length: 2 }));
-  }, [dispatch]);
+    dispatch(
+      FactorActions.setParamsAction({ min: 4, max: 40, length: getMod ? 2 : 1 })
+    );
+  }, [dispatch, getMod]);
 
   const setValue = (
     nameNumb: number,
@@ -48,8 +53,14 @@ const FactorizationPage: React.FC = () => {
       );
   };
 
+  const setMode = () => {
+    setMod(!getMod);
+  };
+
   const restartNumber = () =>
-    dispatch(FactorActions.setParamsAction({ min: 4, max: 40, length: 2 }));
+    dispatch(
+      FactorActions.setParamsAction({ min: 4, max: 40, length: getMod ? 2 : 1 })
+    );
 
   return (
     <TitlePage
@@ -60,11 +71,29 @@ const FactorizationPage: React.FC = () => {
       boximg={
         <>
           <ST.PVariant2>{state.qvest}</ST.PVariant2>
-          <TooltipButt
-            text={"Обновить"}
-            element={<RestartAltIcon onClick={() => restartNumber()} sx={sx} />}
-          />
-          <ST.Box>
+          <ST.InputBlock>
+            <TooltipButt
+              text={"Обновить"}
+              element={
+                <RestartAltIcon onClick={() => restartNumber()} sx={sx} />
+              }
+            />
+            <TooltipButt
+              text={getMod ? "Учебный режим" : "Тренировка"}
+              element={
+                getMod ? (
+                  <HdrStrongIcon onClick={() => setMode()} sx={sx} />
+                ) : (
+                  <HdrWeakIcon onClick={() => setMode()} sx={sx} />
+                )
+              }
+            />
+          </ST.InputBlock>
+          <ST.Box
+            $gridTemplateColumns={
+              getMod ? "repeat(2, min(200px))" : "repeat(1, min(200px))"
+            }
+          >
             {keysObj?.map((dataKey) => (
               <ST.Block key={dataKey}>
                 <svg
@@ -83,7 +112,7 @@ const FactorizationPage: React.FC = () => {
                     x2="39.5"
                     y2="133.6"
                   />
-                  <foreignObject x={10} y={0} width="25" height="115">
+                  <foreignObject x={10} y={0} width="25" height="130">
                     {factorizationState &&
                       factorizationState[dataKey]?.quotient.map((data, i) =>
                         i === 0 ? (
@@ -114,7 +143,7 @@ const FactorizationPage: React.FC = () => {
                         )
                       )}
                   </foreignObject>
-                  <foreignObject x={50} y={0} width="30" height="115">
+                  <foreignObject x={50} y={0} width="30" height="130">
                     {factorizationState &&
                       factorizationState[dataKey]?.multiplier.map((data, i) => (
                         <ST.Input

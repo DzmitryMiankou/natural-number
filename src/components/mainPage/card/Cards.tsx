@@ -14,6 +14,7 @@ import { ReactComponent as PlusImg } from "../../../img/plus.svg";
 import { ReactComponent as Minus } from "../../../img/minus.svg";
 import { ReactComponent as Multiplication } from "../../../img/multiplication.svg";
 import { ReactComponent as Division } from "../../../img/Division .svg";
+import { ReactComponent as Factorization } from "../../../img/factorization.svg";
 
 const Cards = styled.div`
   display: grid;
@@ -69,7 +70,7 @@ const MultiActionAreaCard = ({ state }: { state: StateMaimPageType }) => {
     { Img: Minus },
     { Img: Multiplication },
     { Img: Division },
-    { Img: Division },
+    { Img: Factorization },
   ];
 
   const assignObj = () => {
