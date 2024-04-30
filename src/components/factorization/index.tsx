@@ -4,43 +4,29 @@ import TitlePage from "../globalComponent/TitlePage";
 import data from "../../data/twoLevelData.json";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../../redux/store";
-import { setParamsAction } from "../../redux/factorizationReducer/factorizationReducer";
+import { FactorActions } from "../../redux/factorizationReducer/factorizationReducer";
 
 const FactorizationPage: React.FC = () => {
   const factorizationState = useSelector(
     (store: RootState) => store.factorization
   );
   const dispatch: AppDispatch = useDispatch();
-  const [get, set] = React.useState<{ val: number; ind: number }[]>([]);
   const state = data[0].factorizationData;
   const keysObj = factorizationState && Object.keys(factorizationState);
 
   React.useEffect(() => {
-    dispatch(setParamsAction({ min: 4, max: 20, length: 2 }));
+    dispatch(FactorActions.setParamsAction({ min: 4, max: 20, length: 2 }));
   }, [dispatch]);
 
   console.log(factorizationState);
 
   const setValue = (
-    oneInd: number,
+    nameNumb: number,
     index: number,
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const o: { [key: number]: Object[] } = {};
-    for (const i in keysObj) {
-      o[+keysObj[+i]] = [];
-    }
-    o[oneInd].push({
-      ind: +index,
-      val: +event.target.value,
-    });
-    set((el) => [
-      ...el,
-      {
-        ind: +index,
-        val: +event.target.value,
-      },
-    ]);
+    const val: number = +event.target.value;
+    dispatch(FactorActions.setValueAction({ nameNumb, index, val }));
   };
 
   return (
@@ -80,12 +66,14 @@ const FactorizationPage: React.FC = () => {
                           </div>
                         ) : (
                           <ST.Input
-                            $rightColor={get[i]?.val === +data}
-                            key={"we$%fg" + i + data}
+                            $rightColor={3 === +Object.keys(data)[0]}
+                            key={"we$%fg" + i + Object.keys(data)[0]}
                             type="number"
                             placeholder="?"
-                            onChange={(e) => setValue(+dataKey, +data, e)}
-                            value={""}
+                            onChange={(e) =>
+                              setValue(+dataKey, +Object.keys(data)[0], e)
+                            }
+                            value={data[+Object.keys(data)[0]]}
                           />
                         )
                       )}
@@ -93,7 +81,7 @@ const FactorizationPage: React.FC = () => {
                   <foreignObject x={50} y={0} width="30" height="115">
                     {factorizationState &&
                       factorizationState[dataKey]?.multiplier.map((data, i) => (
-                        <div key={"43ef" + i + data}>
+                        <div key={"43ef" + i + Object.keys(data)[0]}>
                           {Object.keys(data)[0]}
                         </div>
                       ))}

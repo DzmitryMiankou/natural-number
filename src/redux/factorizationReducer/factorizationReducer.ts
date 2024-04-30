@@ -21,20 +21,15 @@ type StateType = {
   [K: string]: ResultNumbersTypeReadonly;
 };
 
-export interface TypeActionDivision {
-  type: typeof PARAMS | typeof SETVALUESFACT;
-  value: PropType;
-}
+type TypeAction = ReturnType<ActionType<typeof FactorActions>>;
+type ActionType<T> = T extends { [key: string]: infer V } ? V : never;
 
 const randomInteger = (params: RandomProp): number =>
   +Math.floor(params.min + Math.random() * (params.max + 1 - params.min));
 
 const initialState: StateType = {};
 
-const factorizationReducer = (
-  state = initialState,
-  action: TypeActionDivision
-) => {
+const factorizationReducer = (state = initialState, action: TypeAction) => {
   switch (action.type) {
     case PARAMS: {
       const resultNumbers: StateType = {};
@@ -79,20 +74,39 @@ const factorizationReducer = (
       keys.forEach((item) => getFactorizationNumber(+item));
       return { ...resultNumbers };
     }
+    case SETVALUESFACT: {
+      const newState = { ...state };
 
+      const { nameNumb, index, val } = action.value;
+      const gr = [...state[nameNumb].quotient];
+      const d = newState[nameNumb].quotient.findIndex((el) => {
+        return +Object.keys(el)[0] === index;
+      });
+
+      gr[d] = { [index]: `${val}` };
+
+      return {
+        ...newState,
+        [nameNumb]: { ...newState[nameNumb], quotient: [...gr] },
+      };
+    }
     default:
       return state;
   }
 };
 
-export const setParamsAction = (value: PropType) => ({
-  type: PARAMS,
-  value: value,
-});
-
-export const setValuesAction = (value: {}) => ({
-  type: SETVALUESFACT,
-  value: value,
-});
+export const FactorActions = {
+  setParamsAction: (value: PropType) =>
+    ({
+      type: PARAMS,
+      value: value,
+    } as const),
+  setValueAction: (value: { nameNumb: number; index: number; val: number }) => {
+    return {
+      type: SETVALUESFACT,
+      value: value,
+    } as const;
+  },
+};
 
 export default factorizationReducer;
