@@ -15,18 +15,24 @@ const FactorizationPage: React.FC = () => {
   const keysObj = factorizationState && Object.keys(factorizationState);
 
   React.useEffect(() => {
-    dispatch(FactorActions.setParamsAction({ min: 4, max: 20, length: 2 }));
+    dispatch(FactorActions.setParamsAction({ min: 4, max: 40, length: 2 }));
   }, [dispatch]);
 
   console.log(factorizationState);
 
   const setValue = (
     nameNumb: number,
-    index: number,
-    event: React.ChangeEvent<HTMLInputElement>
+    ind: number,
+    event: React.ChangeEvent<HTMLInputElement>,
+    resultDiv: "multiplier" | "quotient",
+    i: number
   ) => {
     const val: number = +event.target.value;
-    dispatch(FactorActions.setValueAction({ nameNumb, index, val }));
+    const index = `${i}-` + ind;
+    if (`${val}`.length <= 2)
+      dispatch(
+        FactorActions.setValueAction({ nameNumb, index, val, resultDiv })
+      );
   };
 
   return (
@@ -62,16 +68,25 @@ const FactorizationPage: React.FC = () => {
                       factorizationState[dataKey]?.quotient.map((data, i) =>
                         i === 0 ? (
                           <div key={"we$%fg" + i + data}>
-                            {Object.keys(data)[0]}
+                            {Object.keys(data)[0].split("-")[1]}
                           </div>
                         ) : (
                           <ST.Input
-                            $rightColor={3 === +Object.keys(data)[0]}
+                            $rightColor={
+                              +data[+Object.keys(data)[0].split("-")[1]] ===
+                              +Object.keys(data)[0].split("-")[1]
+                            }
                             key={"we$%fg" + i + Object.keys(data)[0]}
                             type="number"
                             placeholder="?"
                             onChange={(e) =>
-                              setValue(+dataKey, +Object.keys(data)[0], e)
+                              setValue(
+                                +dataKey,
+                                +Object.keys(data)[0].split("-")[1],
+                                e,
+                                "quotient",
+                                i
+                              )
                             }
                             value={data[+Object.keys(data)[0]]}
                           />
@@ -81,9 +96,25 @@ const FactorizationPage: React.FC = () => {
                   <foreignObject x={50} y={0} width="30" height="115">
                     {factorizationState &&
                       factorizationState[dataKey]?.multiplier.map((data, i) => (
-                        <div key={"43ef" + i + Object.keys(data)[0]}>
-                          {Object.keys(data)[0]}
-                        </div>
+                        <ST.Input
+                          $rightColor={
+                            +data[+Object.keys(data)[0].split("-")[1]] ===
+                            +Object.keys(data)[0].split("-")[1]
+                          }
+                          key={"we$g" + i + Object.keys(data)[0]}
+                          type="number"
+                          placeholder="?"
+                          onChange={(e) =>
+                            setValue(
+                              +dataKey,
+                              +Object.keys(data)[0].split("-")[1],
+                              e,
+                              "multiplier",
+                              i
+                            )
+                          }
+                          value={data[+Object.keys(data)[0]]}
+                        />
                       ))}
                   </foreignObject>
                 </svg>
