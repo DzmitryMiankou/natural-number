@@ -8,7 +8,7 @@ const enum NameEnum {
 type ResultName = NameEnum.multiplier | NameEnum.quotient;
 type PropName = "min" | "max" | "length";
 type ResultNumbersTypeReadonly = Readonly<
-  Record<ResultName, { [K: number]: string }[]>
+  Record<ResultName, { [K: string]: string }[]>
 >;
 type PropType = Readonly<Record<PropName, number>>;
 type RandomProp = Omit<PropType, "length">;
@@ -83,10 +83,11 @@ const factorizationReducer = (state = initialState, action: TypeAction) => {
       const findIndexInArr = newState[nameNumb][resultDiv].findIndex((el) => {
         return Object.keys(el)[0] === index;
       });
+
       mutationArr[findIndexInArr] = {
         [index]: val !== 0 ? `${val}` : "?",
       };
-      console.log(index);
+
       return {
         ...newState,
         [nameNumb]: { ...newState[nameNumb], [resultDiv]: [...mutationArr] },

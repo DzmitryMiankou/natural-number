@@ -17,7 +17,6 @@ const FactorizationPage: React.FC = () => {
   React.useEffect(() => {
     dispatch(FactorActions.setParamsAction({ min: 4, max: 40, length: 2 }));
   }, [dispatch]);
-
   console.log(factorizationState);
 
   const setValue = (
@@ -29,7 +28,8 @@ const FactorizationPage: React.FC = () => {
   ) => {
     const val: number = +event.target.value;
     const index = `${i}-` + ind;
-    if (`${val}`.length <= 2)
+    const log = `${val}`.length <= 2;
+    if (log === true)
       dispatch(
         FactorActions.setValueAction({ nameNumb, index, val, resultDiv })
       );
@@ -73,12 +73,13 @@ const FactorizationPage: React.FC = () => {
                         ) : (
                           <ST.Input
                             $rightColor={
-                              +data[+Object.keys(data)[0].split("-")[1]] ===
-                              +Object.keys(data)[0].split("-")[1]
+                              data[Object.keys(data)[0]] ===
+                              Object.keys(data)[0].split("-")[1]
                             }
                             key={"we$%fg" + i + Object.keys(data)[0]}
                             type="number"
                             placeholder="?"
+                            maxLength={2}
                             onChange={(e) =>
                               setValue(
                                 +dataKey,
@@ -88,7 +89,7 @@ const FactorizationPage: React.FC = () => {
                                 i
                               )
                             }
-                            value={data[+Object.keys(data)[0]]}
+                            value={data[Object.keys(data)[0]]}
                           />
                         )
                       )}
@@ -98,12 +99,13 @@ const FactorizationPage: React.FC = () => {
                       factorizationState[dataKey]?.multiplier.map((data, i) => (
                         <ST.Input
                           $rightColor={
-                            +data[+Object.keys(data)[0].split("-")[1]] ===
-                            +Object.keys(data)[0].split("-")[1]
+                            data[Object.keys(data)[0]] ===
+                            Object.keys(data)[0].split("-")[1]
                           }
                           key={"we$g" + i + Object.keys(data)[0]}
                           type="number"
                           placeholder="?"
+                          maxLength={2}
                           onChange={(e) =>
                             setValue(
                               +dataKey,
@@ -113,7 +115,7 @@ const FactorizationPage: React.FC = () => {
                               i
                             )
                           }
-                          value={data[+Object.keys(data)[0]]}
+                          value={data[Object.keys(data)[0]]}
                         />
                       ))}
                   </foreignObject>
