@@ -35,8 +35,8 @@ const FactorizationPage: React.FC = () => {
         <>
           <ST.PVariant2>{state.qvest}</ST.PVariant2>
           <ST.Box>
-            {keysObj?.map((data) => (
-              <ST.Block key={data}>
+            {keysObj?.map((dataKey) => (
+              <ST.Block key={dataKey}>
                 <svg
                   x="0px"
                   y="0px"
@@ -44,9 +44,9 @@ const FactorizationPage: React.FC = () => {
                   enableBackground="new 0 0 82 141.7"
                   xmlSpace="preserve"
                 >
-                  <foreignObject x={10} y={0} width="25" height="110">
+                  <foreignObject x={10} y={0} width="25" height="115">
                     {useRandomI &&
-                      useRandomI[data]?.quotient.map((data, i) =>
+                      useRandomI[dataKey]?.quotient.map((data, i) =>
                         i === 0 ? (
                           <div key={"we$%fg" + i + data}>{data}</div>
                         ) : (
@@ -61,9 +61,9 @@ const FactorizationPage: React.FC = () => {
                         )
                       )}
                   </foreignObject>
-                  <foreignObject x={50} y={0} width="30" height="110">
+                  <foreignObject x={50} y={0} width="30" height="115">
                     {useRandomI &&
-                      useRandomI[data]?.multiplier.map((data, i) => (
+                      useRandomI[dataKey]?.multiplier.map((data, i) => (
                         <div key={"43ef" + i + data}>{data}</div>
                       ))}
                   </foreignObject>
