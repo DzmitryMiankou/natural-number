@@ -65,6 +65,7 @@ const FooterWrapper = styled.div`
   color: #6b4400;
   @media (max-width: 780px) {
     padding: 0px 20px;
+    flex-direction: column-reverse;
   }
 `;
 
@@ -76,6 +77,33 @@ const Contact = styled.address`
 
 const ContactLink = styled.a`
   color: #00546b;
+`;
+
+const ProductCards = styled.div`
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, auto);
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(1, auto);
+  }
+`;
+
+const ProductCard = styled.div`
+  min-width: 200px;
+  min-height: 200px;
+  background-color: #6b440055;
+  padding: 20px;
+`;
+
+const Title = styled.h1`
+  padding: 0px 0px 150px 0px;
+  max-width: 700px;
+  font-weight: 500;
+`;
+
+const TitleSpan = styled.span`
+  color: #6b4400;
+  font-weight: 900;
 `;
 
 const TitlePage = () => {
@@ -106,9 +134,10 @@ const TitlePage = () => {
       </Header>
       <MainWrapper>
         <main>
-          <h1>
-            MathPush - это продук, который создан помочь тебе понять математику
-          </h1>
+          <Title>
+            <TitleSpan>MathPush</TitleSpan> - это продук, который создан помочь
+            тебе понять математику
+          </Title>
           <h2 style={{ color: "red" }}>
             В ближайшее время сайт будет доработан и переведен на платную форму!
           </h2>
@@ -117,47 +146,45 @@ const TitlePage = () => {
             не предаст
           </p>
           <Menu>
-            <svg
-              version="1.1"
-              x="0px"
-              y="0px"
-              viewBox="0 0 100 60"
-              enableBackground="new 0 0 100 60"
-              xmlSpace="preserve"
-            >
-              <rect x="0" y="0" fill="#D7E9A5" width="60" height="60" />
-              <rect x="60" y="0" fill="#47CD85" width="38" height="38" />
-              <rect x="60" y="47" fill="#437729" width="15" height="15" />
-              <rect x="75" y="38" fill="#BC9241" width="23" height="24" />
-              <rect x="60" y="38" fill="#9BE9D7" width="9" height="9" />
-              <rect x="69" y="38" fill="#588BE9" width="6" height="6" />
-              <rect x="69" y="44" fill="#D84B9A" width="3" height="3" />
-              <rect x="72" y="44" fill="#B5B0E9" width="3" height="3" />
-            </svg>
+            <Items>
+              <Item>
+                <RouterLink to="five_class">5 класс</RouterLink>
+              </Item>
+              <Item>
+                <RouterLink to="five_class">6 класс</RouterLink>
+              </Item>
+              <Item>
+                <RouterLink to="five_class">7 класс</RouterLink>
+              </Item>
+              <Item>
+                <RouterLink to="five_class">8 класс</RouterLink>
+              </Item>
+              <Item>
+                <RouterLink to="five_class">9 класс</RouterLink>
+              </Item>
+              <Item>
+                <RouterLink to="five_class">10 класс</RouterLink>
+              </Item>
+              <Item>
+                <RouterLink to="five_class">11 класс</RouterLink>
+              </Item>
+            </Items>
           </Menu>
-          <Items>
-            <Item>
-              <RouterLink to="five_class">5 класс</RouterLink>
-            </Item>
-            <Item>
-              <RouterLink to="five_class">6 класс</RouterLink>
-            </Item>
-            <Item>
-              <RouterLink to="five_class">7 класс</RouterLink>
-            </Item>
-            <Item>
-              <RouterLink to="five_class">8 класс</RouterLink>
-            </Item>
-            <Item>
-              <RouterLink to="five_class">9 класс</RouterLink>
-            </Item>
-            <Item>
-              <RouterLink to="five_class">10 класс</RouterLink>
-            </Item>
-            <Item>
-              <RouterLink to="five_class">11 класс</RouterLink>
-            </Item>
-          </Items>
+          <h2>Современные технологии на временем проверенном фундаменте</h2>
+          <ProductCards>
+            <ProductCard>
+              Учебный материал создан на базе школьной программы Республики
+              Беларусь
+            </ProductCard>
+            <ProductCard>
+              Текстовая информация сведена к минимуму. Материал насыщен яркими
+              авторскими иллюстрациями
+            </ProductCard>
+            <ProductCard>
+              Компьютерные программы генерируют и контролируют выполнение
+              интрактивных заданий
+            </ProductCard>
+          </ProductCards>
         </main>
       </MainWrapper>
       <Footer $bg={"#DB953A"}>
