@@ -173,20 +173,24 @@ const AppH: React.FC<RequestType> = ({
       </>
 
       <PageRoute state={state} />
-      <Footer
-        $bg={location.pathname !== "/" ? "var(--color-footerBG)" : "#92a7c6"}
-      >
-        <FooterWrapper>
-          <p>{state.main[0].footer}</p>
-          <p> __VERSION 0.1__</p>
-          <Contact>
-            <p>Контакты:</p>
-            <ContactLink href="mailto: gmiankou@gmail.com">
-              gmiankou@gmail.com
-            </ContactLink>
-          </Contact>
-        </FooterWrapper>
-      </Footer>
+      <>
+        {location.pathname !== "/" ? (
+          <Footer $bg={"var(--color-footerBG)"}>
+            <FooterWrapper>
+              <p>{state.main[0].footer}</p>
+              <p> __VERSION 0.1__</p>
+              <Contact>
+                <p>Контакты:</p>
+                <ContactLink href="mailto: gmiankou@gmail.com">
+                  gmiankou@gmail.com
+                </ContactLink>
+              </Contact>
+            </FooterWrapper>
+          </Footer>
+        ) : (
+          <></>
+        )}
+      </>
     </AppDiv>
   );
 };
