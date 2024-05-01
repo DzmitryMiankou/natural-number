@@ -9,9 +9,9 @@ const TooltipButt: React.FC<{ text: string; element: JSX.Element }> = ({
   return (
     <Tooltip
       title={text}
-      enterDelay={500}
+      enterDelay={800}
       TransitionComponent={Fade}
-      TransitionProps={{ timeout: 600 }}
+      TransitionProps={{ timeout: 500 }}
     >
       {element}
     </Tooltip>

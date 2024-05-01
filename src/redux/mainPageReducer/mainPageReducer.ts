@@ -13,34 +13,34 @@ const initialState: arrCardType<string> = {
       list: [
         {
           text: "Что такое натуральные числа?",
-          path: "/numperNat",
+          path: "numperNat",
         },
         {
           text: "Сравнение или что больше",
-          path: "/comparisonNumb",
+          path: "comparisonNumb",
         },
         {
           text: "Сложение или сумма",
-          path: "/plusNumber",
+          path: "plusNumber",
         },
         {
           text: "Вычитание или разность",
-          path: "/minusNumber",
+          path: "minusNumber",
         },
         {
           text: "Умножение натуральных чисел",
-          path: "/multiplicationNumber",
+          path: "multiplicationNumber",
         },
         {
           text: "Деление натуральных чисел",
-          path: "/divisionNumber",
+          path: "divisionNumber",
         },
         {
           text: "Простой множитель",
-          path: "/factorization",
+          path: "factorization",
         },
       ],
-      footer: `© 2023 - ${new Date().getFullYear()}, Дмитрий Меньков, г. Молодечно`,
+      footer: `© 2023 - ${new Date().getFullYear()}, Дмитрий Меньков`,
     },
   ],
 };

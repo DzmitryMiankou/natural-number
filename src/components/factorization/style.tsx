@@ -18,11 +18,11 @@ const InputBlock = styled.div`
   gap: 10px;
 `;
 
-const Input = styled.input<{ $rightColor: boolean }>`
+const Input = styled.input<{ $rightColor: string }>`
   text-align: center;
   width: 20px;
   border-radius: 0px;
-  border: ${(prop) => (prop.$rightColor ? "green" : "red")} 1px solid;
+  border: ${(prop) => prop.$rightColor} 1px solid;
   &:focus {
     outline: none;
   }

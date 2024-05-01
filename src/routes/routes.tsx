@@ -1,13 +1,23 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import MainPage from "../components/mainPage/MainPage";
-import OnePage from "../components/onePage/OnePage";
-import ComparisonPage from "../components/comparisonPage/ComparisonPage";
-import PlusPage from "../components/plusPage/PlusPage";
-import MinusPage from "../components/minusPage/MinusPage";
-import MultiplicationPage from "../components/multiplicationPage/MultiplicationPage";
-import DivisionPage from "../components/divisionPage/DivisionPage";
-import FactorizationPage from "../components/factorization/index";
+import TitlePage from "../components/titlePage/TitlePage";
+import LoadingPage from "../components/loadingPage/LoadingPage";
+const MainPage = React.lazy(() => import("../components/mainPage/MainPage"));
+const OnePage = React.lazy(() => import("../components/onePage/OnePage"));
+const PlusPage = React.lazy(() => import("../components/plusPage/PlusPage"));
+const MinusPage = React.lazy(() => import("../components/minusPage/MinusPage"));
+const MultiplicationPage = React.lazy(
+  () => import("../components/multiplicationPage/MultiplicationPage")
+);
+const DivisionPage = React.lazy(
+  () => import("../components/divisionPage/DivisionPage")
+);
+const ComparisonPage = React.lazy(
+  () => import("../components/comparisonPage/ComparisonPage")
+);
+const FactorizationPage = React.lazy(
+  () => import("../components/factorization/index")
+);
 
 export interface StateMaimPageType {
   main: Array<{
@@ -19,21 +29,40 @@ export interface StateMaimPageType {
 
 const PageRoute: React.FC<{ state: StateMaimPageType }> = ({ state }) => {
   const arrToElem: Array<{ element: JSX.Element; path: string }> = [
-    { element: <MainPage state={state} />, path: "/" },
-    { element: <OnePage />, path: "/numperNat" },
-    { element: <ComparisonPage />, path: "/comparisonNumb" },
-    { element: <PlusPage />, path: "/plusNumber" },
-    { element: <MinusPage />, path: "/minusNumber" },
-    { element: <MultiplicationPage />, path: "/multiplicationNumber" },
-    { element: <DivisionPage />, path: "/divisionNumber" },
-    { element: <FactorizationPage />, path: "/factorization" },
+    { element: <OnePage />, path: "numperNat" },
+    { element: <ComparisonPage />, path: "comparisonNumb" },
+    { element: <PlusPage />, path: "plusNumber" },
+    { element: <MinusPage />, path: "minusNumber" },
+    { element: <MultiplicationPage />, path: "multiplicationNumber" },
+    { element: <DivisionPage />, path: "divisionNumber" },
+    { element: <FactorizationPage />, path: "factorization" },
   ];
 
   return (
     <Routes>
-      {arrToElem.map(({ element, path }, i) => (
-        <Route key={i} path={path} element={element} />
-      ))}
+      <Route path="/" element={<TitlePage />}></Route>
+      <Route path="five_class">
+        <Route
+          index
+          element={
+            <Suspense fallback={<LoadingPage />}>
+              <MainPage state={state} />
+            </Suspense>
+          }
+        ></Route>
+        {arrToElem.map(({ element, path }, i) => (
+          <Route
+            key={i}
+            path={path}
+            element={<Suspense fallback={<LoadingPage />}>{element}</Suspense>}
+          />
+        ))}
+      </Route>
+
+      <Route
+        path="*"
+        element={<div>Уппс! Страница не найдена (404-я ошибка)</div>}
+      ></Route>
     </Routes>
   );
 };

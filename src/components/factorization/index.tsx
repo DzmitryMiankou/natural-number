@@ -45,7 +45,7 @@ const FactorizationPage: React.FC = () => {
     resultDiv: ResultName,
     i: number
   ) => {
-    const val: number = +event.target.value;
+    const val = Number(event.target.value);
     const index = `${i}-` + ind;
     if (String(val).length <= 2)
       dispatch(
@@ -53,14 +53,21 @@ const FactorizationPage: React.FC = () => {
       );
   };
 
-  const setMode = () => {
-    setMod(!getMod);
-  };
+  const setMode = () => setMod(!getMod);
 
   const restartNumber = () =>
     dispatch(
       FactorActions.setParamsAction({ min: 4, max: 40, length: getMod ? 2 : 1 })
     );
+
+  const getColor = (data: { [K: string]: string }): string => {
+    const key = Object.keys(data);
+    if (data[key[0]].length === 0) return "black";
+    if (data[key[0]] === key[0].split("-")[1]) {
+      return "green";
+    }
+    return "red";
+  };
 
   return (
     <TitlePage
@@ -79,7 +86,7 @@ const FactorizationPage: React.FC = () => {
               }
             />
             <TooltipButt
-              text={getMod ? "Учебный режим" : "Тренировка"}
+              text={""}
               element={
                 getMod ? (
                   <HdrStrongIcon onClick={() => setMode()} sx={sx} />
@@ -121,13 +128,10 @@ const FactorizationPage: React.FC = () => {
                           </div>
                         ) : (
                           <ST.Input
-                            $rightColor={
-                              data[Object.keys(data)[0]] ===
-                              Object.keys(data)[0].split("-")[1]
-                            }
+                            $rightColor={getColor(data)}
                             key={"we$%fg" + i + Object.keys(data)[0]}
                             type="number"
-                            placeholder="?"
+                            name="quotient"
                             maxLength={2}
                             onChange={(e) =>
                               setValue(
@@ -147,14 +151,11 @@ const FactorizationPage: React.FC = () => {
                     {factorizationState &&
                       factorizationState[dataKey]?.multiplier.map((data, i) => (
                         <ST.Input
-                          $rightColor={
-                            data[Object.keys(data)[0]] ===
-                            Object.keys(data)[0].split("-")[1]
-                          }
+                          $rightColor={getColor(data)}
                           key={"we$g" + i + Object.keys(data)[0]}
                           type="number"
-                          placeholder="?"
                           maxLength={2}
+                          name="multiplier"
                           onChange={(e) =>
                             setValue(
                               +dataKey,

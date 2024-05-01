@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import PageRoute from "./routes/routes";
 import BG from "./img/backG.svg";
@@ -34,19 +34,40 @@ const AppDiv = styled.div<TypeBG>`
   overflow-x: hidden;
 `;
 
-const Menu = styled.div`
+const Menu = styled.menu`
   position: absolute;
   left: 0;
   display: flex;
   align-items: center;
 `;
 
-const Footer = styled.footer`
-  z-index: 99;
-  background-color: var(--color-footerBG);
-  height: 40px;
+const Contact = styled.address`
+  display: flex;
+  gap: 10px;
+  font-style: normal;
+`;
+
+const Footer = styled.footer<{ $bg: string }>`
   display: grid;
-  place-content: center;
+  place-items: center;
+  z-index: 99;
+  background-color: ${(props) => props.$bg};
+  height: 40px;
+`;
+
+const FooterWrapper = styled.div`
+  max-width: 1900px;
+  padding: 0px 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #6b4400;
+`;
+
+const ContactLink = styled.a`
+  color: #00546b;
 `;
 
 const sx: { icon: SxProps; tooltip: SxProps } = {
@@ -65,15 +86,6 @@ const sx: { icon: SxProps; tooltip: SxProps } = {
   },
 };
 
-const FooterP = styled.p<{ $focus: boolean }>`
-  transition: 0.2s;
-  font-size: ${(p) => (p.$focus ? "14px" : "12px")};
-  color: ${(p) =>
-    p.$focus
-      ? "var(--color-footerText-dark)"
-      : "var(--color-footerText-light)"};
-`;
-
 const enum TypeStrTooltip {
   titleQuiztButt = "Обобщающий тест",
   titleMainButt = "Главная",
@@ -86,12 +98,12 @@ const AppH: React.FC<RequestType> = ({
   handleClickOpenWind,
 }) => {
   const state = useSelector((state: RootState) => state.static);
-  const [get, set] = useState<boolean>(false);
   const location = useLocation();
 
   const chooseVariantBG = (): string => {
     if (location.pathname === state.main[0].list[1].path) return BG2;
     if (location.pathname === state.main[0].list[2].path) return BG3;
+    if (location.pathname === "/") return "";
     return BG;
   };
 
@@ -104,41 +116,55 @@ const AppH: React.FC<RequestType> = ({
         handleClose={handleClose}
         educationTest={data[0]?.quiz.educationTest}
       />
-      <Menu>
-        <TemporaryDrawer />
-        <>
-          {location.pathname !== "/" ? (
+      <>
+        {location.pathname !== "/" && (
+          <Menu>
+            <TemporaryDrawer />
+            <>
+              {location.pathname !== "/" ? (
+                <Tooltip
+                  title={TypeStrTooltip.titleMainButt}
+                  TransitionComponent={Fade}
+                  enterDelay={1500}
+                  TransitionProps={{ timeout: 600 }}
+                >
+                  <IconButton component={RouterLink} to={"/"}>
+                    <HomeIcon sx={sx.icon} />
+                  </IconButton>
+                </Tooltip>
+              ) : (
+                <></>
+              )}
+            </>
             <Tooltip
-              title={TypeStrTooltip.titleMainButt}
-              TransitionComponent={Fade}
+              sx={sx.tooltip}
+              title={TypeStrTooltip.titleQuiztButt}
               enterDelay={1500}
+              TransitionComponent={Fade}
               TransitionProps={{ timeout: 600 }}
             >
-              <IconButton component={RouterLink} to={"/"}>
-                <HomeIcon sx={sx.icon} />
+              <IconButton onClick={() => handleClickOpenWind(2)}>
+                <QuizIcon sx={sx.icon} />
               </IconButton>
             </Tooltip>
-          ) : (
-            <></>
-          )}
-        </>
-        <Tooltip
-          sx={sx.tooltip}
-          title={TypeStrTooltip.titleQuiztButt}
-          enterDelay={1500}
-          TransitionComponent={Fade}
-          TransitionProps={{ timeout: 600 }}
-        >
-          <IconButton onClick={() => handleClickOpenWind(2)}>
-            <QuizIcon sx={sx.icon} />
-          </IconButton>
-        </Tooltip>
-      </Menu>
+          </Menu>
+        )}
+      </>
+
       <PageRoute state={state} />
-      <Footer onMouseEnter={() => set(true)} onMouseLeave={() => set(false)}>
-        <FooterP $focus={get}>
-          {state.main[0].footer + ". __VERSION 0.1__"}
-        </FooterP>
+      <Footer
+        $bg={location.pathname !== "/" ? "var(--color-footerBG)" : "#92a7c6"}
+      >
+        <FooterWrapper>
+          <p>{state.main[0].footer}</p>
+          <p> __VERSION 0.1__</p>
+          <Contact>
+            <p>Контакты:</p>
+            <ContactLink href="mailto: gmiankou@gmail.com">
+              gmiankou@gmail.com
+            </ContactLink>
+          </Contact>
+        </FooterWrapper>
       </Footer>
     </AppDiv>
   );

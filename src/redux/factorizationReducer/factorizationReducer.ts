@@ -46,7 +46,7 @@ const factorizationReducer = (state = initialState, action: TypeAction) => {
         objData,
         data,
         path,
-      }: PushNumbType): number => objData[path].push({ [data]: "?" });
+      }: PushNumbType): number => objData[path].push({ [data]: "" });
 
       const getFactorizationNumber = (el: number): void => {
         let quotient: number = el;
@@ -85,7 +85,7 @@ const factorizationReducer = (state = initialState, action: TypeAction) => {
       );
 
       mutationArr[findIndexInArr] = {
-        [index]: val !== 0 ? `${val}` : "?",
+        [index]: val !== 0 ? `${val}` : "",
       };
 
       return {
