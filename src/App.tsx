@@ -19,6 +19,7 @@ import data from "./data/twoLevelData.json";
 import WindowHOCButt from "./HOC/WindowHOCButt";
 import { RequestType } from "./HOC/WindowHOCButt";
 import { SxProps } from "@mui/material";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
 interface TypeBG {
   $url: string;
@@ -99,6 +100,7 @@ const AppH: React.FC<RequestType> = ({
 }) => {
   const state = useSelector((state: RootState) => state.static);
   const location = useLocation();
+  console.log(location.pathname.split("/"));
 
   const chooseVariantBG = (): string => {
     if (location.pathname === state.main[0].list[1].path) return BG2;
@@ -120,6 +122,17 @@ const AppH: React.FC<RequestType> = ({
         {location.pathname !== "/" && (
           <Menu>
             <TemporaryDrawer />
+            <Tooltip
+              sx={sx.tooltip}
+              title={TypeStrTooltip.titleQuiztButt}
+              enterDelay={1500}
+              TransitionComponent={Fade}
+              TransitionProps={{ timeout: 600 }}
+            >
+              <IconButton onClick={() => handleClickOpenWind(2)}>
+                <QuizIcon sx={sx.icon} />
+              </IconButton>
+            </Tooltip>
             <>
               {location.pathname !== "/" ? (
                 <Tooltip
@@ -136,17 +149,25 @@ const AppH: React.FC<RequestType> = ({
                 <></>
               )}
             </>
-            <Tooltip
-              sx={sx.tooltip}
-              title={TypeStrTooltip.titleQuiztButt}
-              enterDelay={1500}
-              TransitionComponent={Fade}
-              TransitionProps={{ timeout: 600 }}
-            >
-              <IconButton onClick={() => handleClickOpenWind(2)}>
-                <QuizIcon sx={sx.icon} />
-              </IconButton>
-            </Tooltip>
+            <>
+              {location.pathname.split("/").length === 3 ? (
+                <Tooltip
+                  title={"Вернуться к темам"}
+                  TransitionComponent={Fade}
+                  enterDelay={1500}
+                  TransitionProps={{ timeout: 600 }}
+                >
+                  <IconButton
+                    component={RouterLink}
+                    to={location.pathname.split("/")[1]}
+                  >
+                    <DashboardIcon sx={sx.icon} />
+                  </IconButton>
+                </Tooltip>
+              ) : (
+                <></>
+              )}
+            </>
           </Menu>
         )}
       </>
