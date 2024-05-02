@@ -100,7 +100,6 @@ const AppH: React.FC<RequestType> = ({
 }) => {
   const state = useSelector((state: RootState) => state.static);
   const location = useLocation();
-  console.log(location.pathname.split("/"));
 
   const chooseVariantBG = (): string => {
     if (location.pathname === state.main[0].list[1].path) return BG2;

@@ -1,4 +1,6 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
+
+import NProgress from "nprogress";
 import { Routes, Route } from "react-router-dom";
 import TitlePage from "../components/titlePage/TitlePage";
 import LoadingPage from "../components/loadingPage/LoadingPage";
@@ -38,6 +40,18 @@ const PageRoute: React.FC<{ state: StateMaimPageType }> = ({ state }) => {
     { element: <FactorizationPage />, path: "factorization" },
   ];
 
+  const LazyLoad = () => {
+    useEffect(() => {
+      NProgress.start();
+
+      return () => {
+        NProgress.done();
+      };
+    });
+
+    return <LoadingPage />;
+  };
+
   return (
     <Routes>
       <Route path="/" element={<TitlePage />}></Route>
@@ -45,7 +59,7 @@ const PageRoute: React.FC<{ state: StateMaimPageType }> = ({ state }) => {
         <Route
           index
           element={
-            <Suspense fallback={<LoadingPage />}>
+            <Suspense fallback={<LazyLoad />}>
               <MainPage state={state} />
             </Suspense>
           }
@@ -54,7 +68,7 @@ const PageRoute: React.FC<{ state: StateMaimPageType }> = ({ state }) => {
           <Route
             key={i}
             path={path}
-            element={<Suspense fallback={<LoadingPage />}>{element}</Suspense>}
+            element={<Suspense fallback={<LazyLoad />}>{element}</Suspense>}
           />
         ))}
       </Route>

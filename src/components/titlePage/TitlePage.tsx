@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { NavLink as RouterLink } from "react-router-dom";
 
-const Block = styled.div``;
+const Block = styled.div`
+  background-color: white;
+`;
 
 const Header = styled.header`
   height: 50px;
@@ -106,7 +108,7 @@ const TitleSpan = styled.span`
   font-weight: 900;
 `;
 
-const TitlePage = () => {
+const TitlePage: React.FC = () => {
   return (
     <Block>
       <Header>
@@ -135,8 +137,8 @@ const TitlePage = () => {
       <MainWrapper>
         <main>
           <Title>
-            <TitleSpan>MathPush</TitleSpan> - это продук, который создан помочь
-            тебе понять математику
+            <TitleSpan>MathPush</TitleSpan> - это платформа, которая создана
+            помочь понять математику
           </Title>
           <h2 style={{ color: "red" }}>
             В ближайшее время сайт будет доработан и переведен на платную форму!

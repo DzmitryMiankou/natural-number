@@ -1,12 +1,25 @@
-import React from "react";
-import styled from "styled-components";
+import { useEffect, useState } from "react";
 
-const Main = styled.main`
-  height: calc(100vh - 40px);
-`;
+const LoadingPage: React.FC = () => {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const timeout = setTimeout(() => setShow(true), 1000);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, []);
 
-const LoadingPage = () => {
-  return <Main></Main>;
+  return (
+    <>
+      {show ? (
+        <div className="block_loader">
+          <span className="loader"></span>
+        </div>
+      ) : (
+        <div className="block_loader"></div>
+      )}
+    </>
+  );
 };
 
 export default LoadingPage;
