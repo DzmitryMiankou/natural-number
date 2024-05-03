@@ -6,6 +6,11 @@ import PersonIcon from "@mui/icons-material/Person";
 import Img1 from "../../img/1.webp";
 import Img11 from "../../img/1.png";
 import Img12 from "../../img/1.2.jpg";
+import Img2 from "../../img/2.png";
+import Img21 from "../../img/2.1.jpg";
+import Img22 from "../../img/2.2.webp";
+import Img3 from "../../img/3.png";
+import Img31 from "../../img/3.1.jpg";
 
 const Block = styled.div`
   background-color: white;
@@ -23,6 +28,18 @@ const Img = styled.img`
   overflow-clip-margin: content-box;
   overflow: clip;
   height: auto;
+`;
+
+const H3 = styled.h3`
+  padding: 10px;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 120%;
+  word-wrap: break-word;
+  letter-spacing: -1px;
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
 `;
 
 const MainWrapper = styled.div`
@@ -68,9 +85,21 @@ const Menu = styled(Logo)`
   display: block;
 `;
 
-const Items2 = styled.ul`
+const ItemsLink = styled.ul`
   display: flex;
   gap: 15px;
+  align-items: center;
+`;
+
+const MenuLink = styled.a`
+  text-decoration: none;
+  color: #000000;
+  text-transform: uppercase;
+  transition: 200ms;
+  font-weight: 500;
+  &:hover {
+    color: #ffffff;
+  }
 `;
 
 const Item = styled.li``;
@@ -105,9 +134,29 @@ const ContactLink = styled.a`
   color: #00546b;
 `;
 
+const ProductBlock = styled.div`
+  margin: 120px 0px;
+`;
+
+const ProductTitle = styled.h2`
+  padding: 0px 0px 60px 0px;
+  max-width: 900px;
+  font-weight: 700;
+  margin: auto;
+  line-height: 100%;
+  font-weight: 900;
+  letter-spacing: -2px;
+  text-align: center;
+  font-size: 60px;
+  @media (max-width: 600px) {
+    font-size: 40px;
+  }
+`;
+
 const ProductCards = styled.div`
   display: grid;
-  gap: 20px;
+  justify-content: center;
+  gap: 25px;
   grid-template-columns: repeat(3, auto);
   @media (max-width: 1100px) {
     grid-template-columns: repeat(1, auto);
@@ -117,16 +166,15 @@ const ProductCards = styled.div`
 const ProductCard = styled.div`
   min-width: 200px;
   min-height: 300px;
-  border-radius: 30px;
-  background-color: #b26d143b;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 20px;
+  background-color: #b26d1429;
   overflow: hidden;
+  max-width: 450px;
 `;
 
 const Title = styled.h1`
   padding: 0px 0px 120px 0px;
   max-width: 900px;
-  font-weight: 700;
   margin: auto;
   line-height: 100%;
   font-weight: 900;
@@ -162,13 +210,36 @@ const Link = styled(RouterLink)`
   font-size: 20px;
   transition: 0.2s;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   &:hover {
     background-color: #75501f;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
-      0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
-      0 16px 16px rgba(0, 0, 0, 0.12);
   }
+`;
+
+const move = keyframes`
+  0% { stroke-dashoffset: 2500;}
+  100% { stroke-dashoffset: 0;}
+`;
+
+const move2 = keyframes`
+  0% { stroke-dashoffset: 2500;}
+  60% { stroke-dashoffset: 2500;}
+  100% { stroke-dashoffset: 0;}
+`;
+
+const MainSVG = styled.div`
+  display: block;
+  max-width: 400px;
+  margin: auto;
+`;
+
+const Poly = styled.polygon`
+  stroke-dasharray: 2500;
+  animation: ${move} 3s linear;
+`;
+
+const Line = styled.line`
+  stroke-dasharray: 2500;
+  animation: ${move2} 5s linear;
 `;
 
 const TitlePage: React.FC = () => {
@@ -217,17 +288,20 @@ const TitlePage: React.FC = () => {
               </svg>
             </Logo>
             <nav>
-              <Items2>
+              <ItemsLink>
                 <li>
-                  <a href="#">РОДИТЕЛЯМ</a>
+                  <MenuLink href="#">РОДИТЕЛЯМ</MenuLink>
                 </li>
                 <li>
-                  <a href="#">ДЕТЯМ</a>
+                  <MenuLink href="#">ДЕТЯМ</MenuLink>
+                </li>
+                <li>
+                  <MenuLink href="#">Учетная запись</MenuLink>
                 </li>
                 <li>
                   <PersonIcon />
                 </li>
-              </Items2>
+              </ItemsLink>
             </nav>
           </HeaderWrapper>
         </Header>
@@ -236,7 +310,106 @@ const TitlePage: React.FC = () => {
             <Title>
               <TitleSpan>MathPush</TitleSpan> - математика с интресом
             </Title>
+            <MainSVG>
+              <svg
+                x="0px"
+                y="0px"
+                viewBox="0 -20 1067 700"
+                enableBackground="new 0 -20 1067 700"
+                xmlSpace="preserve"
+              >
+                <g>
+                  <Poly
+                    fill="none"
+                    stroke="#8c8c8c"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                    strokeMiterlimit="10"
+                    points="915,564.8 
+		31,564.8 320.5,51.2 619.5,51.2 	"
+                  />
+                  <circle
+                    fill="none"
+                    stroke="#8c8c8c"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                    strokeMiterlimit="10"
+                    cx="473"
+                    cy="306.8"
+                    r="255"
+                  />
+
+                  <Line
+                    fill="none"
+                    stroke="#8c8c8c"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                    strokeMiterlimit="10"
+                    x1="473.2"
+                    y1="308.2"
+                    x2="31.2"
+                    y2="564.2"
+                  />
+                  <line
+                    fill="none"
+                    stroke="#8c8c8c"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                    strokeMiterlimit="10"
+                    x1="473.5"
+                    y1="561.5"
+                    x2="474.8"
+                    y2="308.2"
+                  />
+                  <circle cx="474" cy="313" r="9.5" fill="#5c5c5c" />
+                  <text
+                    fill="#8c8c8c"
+                    transform="matrix(1 0 0 1 450 290)"
+                    fontSize="63.9423px"
+                  >
+                    O
+                  </text>
+                  <text
+                    fill="#8c8c8c"
+                    transform="matrix(1 0 0 1 10 620)"
+                    fontSize="63.9423px"
+                  >
+                    A
+                  </text>
+                  <text
+                    transform="matrix(1 0 0 1 300 40)"
+                    fontSize="63.9423px"
+                    fill="#8c8c8c"
+                  >
+                    B
+                  </text>
+                  <text
+                    transform="matrix(1 0 0 1 600 40)"
+                    fontSize="63.9423px"
+                    fill="#8c8c8c"
+                  >
+                    C
+                  </text>
+                  <text
+                    transform="matrix(1 0 0 1 900 620)"
+                    fontSize="63.9423px"
+                    fill="#8c8c8c"
+                  >
+                    D
+                  </text>
+                  <text
+                    transform="matrix(1 0 0 1 450 620)"
+                    fontSize="63.9423px"
+                    fill="#8c8c8c"
+                  >
+                    M
+                  </text>
+                </g>
+              </svg>
+            </MainSVG>
+
             <Menu>
+              <ProductTitle>Более 1000 интерактивных плакатов</ProductTitle>
               <Items>
                 <Item>
                   <Link to="five_class">5 класс</Link>
@@ -262,46 +435,60 @@ const TitlePage: React.FC = () => {
               </Items>
             </Menu>
             <h2 style={{ color: "red" }}>
-              В ближайшее время сайт будет доработан и переведен на платную
-              форму!
+              В ближайшее время платформа будет доработана и переведена на
+              платную основу!
             </h2>
-            <p>
-              Просто удобный продукт для изучения математики, который никогда
-              вас не предаст
-            </p>
-
-            <h2>Современные технологии на временем проверенном фундаменте</h2>
-            <ProductCards>
-              <ProductCard>
-                <picture>
-                  <source type="image/png" srcSet={Img11} />
-                  <source type="image/webp" srcSet={Img1} />
-                  <Img
-                    src={Img12}
-                    alt="img"
-                    height="225"
-                    width="400"
-                    loading="lazy"
-                  />
-                </picture>
-                <h3>
-                  Учебный материал создан на базе школьной программы Республики
-                  Беларусь
-                </h3>
-              </ProductCard>
-              <ProductCard>
-                <h3>
-                  Текстовая информация сведена к минимуму. Материал насыщен
-                  яркими авторскими иллюстрациями
-                </h3>
-              </ProductCard>
-              <ProductCard>
-                <h3>
-                  Компьютерные программы генерируют и контролируют выполнение
-                  интрактивных заданий
-                </h3>
-              </ProductCard>
-            </ProductCards>
+            <ProductBlock>
+              <ProductTitle>
+                Сочетание компьютерных технологий и искусства
+              </ProductTitle>
+              <ProductCards>
+                <ProductCard>
+                  <picture>
+                    <source type="image/png" srcSet={Img11} />
+                    <source type="image/webp" srcSet={Img1} />
+                    <Img
+                      src={Img12}
+                      alt="img"
+                      height="225"
+                      width="400"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <H3>
+                    Создано на основе школьной программы Республики Беларусь
+                  </H3>
+                </ProductCard>
+                <ProductCard>
+                  <picture>
+                    <source type="image/png" srcSet={Img3} />
+                    <source type="image/webp" srcSet={Img1} />
+                    <Img
+                      src={Img31}
+                      alt="img"
+                      height="225"
+                      width="400"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <H3>Украшено анимированными иллюстрациями</H3>
+                </ProductCard>
+                <ProductCard>
+                  <picture>
+                    <source type="image/png" srcSet={Img2} />
+                    <source type="image/webp" srcSet={Img22} />
+                    <Img
+                      src={Img21}
+                      alt="img"
+                      height="225"
+                      width="400"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <H3>Компьютер генерирует и проверяет задания</H3>
+                </ProductCard>
+              </ProductCards>
+            </ProductBlock>
           </main>
         </MainWrapper>
         <Footer $bg={"#DB953A"}>
