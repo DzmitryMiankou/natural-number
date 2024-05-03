@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import MultiActionAreaCard from "./card/Cards";
 import { StateMaimPageType } from "../../routes/routes";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const Main = styled.main`
   max-width: 1900px;
@@ -35,10 +36,15 @@ const Title = styled.h1`
 
 const MaimPage: React.FC<{ state: StateMaimPageType }> = ({ state }) => {
   return (
-    <Main>
-      <Title>{state.main[0].title}</Title>
-      <MultiActionAreaCard state={state} />
-    </Main>
+    <HelmetProvider>
+      <Main>
+        <Helmet>
+          <title>Mathpush - 5 класс</title>
+        </Helmet>
+        <Title>{state.main[0].title}</Title>
+        <MultiActionAreaCard state={state} />
+      </Main>
+    </HelmetProvider>
   );
 };
 
