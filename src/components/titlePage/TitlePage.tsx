@@ -17,9 +17,11 @@ const Header = styled.header`
 const MainWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   max-width: 1900px;
   padding: 90px 150px;
   margin: auto;
+  text-align: center;
   @media (max-width: 780px) {
     padding: 90px 20px;
   }
@@ -38,6 +40,7 @@ const HeaderWrapper = styled.div`
 const Items = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 `;
 
@@ -100,14 +103,30 @@ const ProductCard = styled.div`
 `;
 
 const Title = styled.h1`
-  padding: 0px 0px 150px 0px;
+  padding: 0px 0px 120px 0px;
   max-width: 700px;
   font-weight: 500;
+  margin: auto;
+  text-align: center;
 `;
 
 const TitleSpan = styled.span`
-  color: #6b4400;
+  color: #db953a;
   font-weight: 900;
+  font-size: 50px;
+`;
+
+const Link = styled(RouterLink)`
+  text-decoration: none;
+  background-color: #db953a;
+  padding: 5px 25px;
+  color: white;
+  font-size: 20px;
+  transition: 0.2s;
+  border-radius: 5px;
+  &:hover {
+    background-color: #ad772f;
+  }
 `;
 
 const TitlePage: React.FC = () => {
@@ -146,6 +165,31 @@ const TitlePage: React.FC = () => {
               <TitleSpan>MathPush</TitleSpan> - это платформа, которая создана
               помочь понять математику
             </Title>
+            <Menu>
+              <Items>
+                <Item>
+                  <Link to="five_class">5 класс</Link>
+                </Item>
+                <Item>
+                  <Link to="five_class">6 класс</Link>
+                </Item>
+                <Item>
+                  <Link to="five_class">7 класс</Link>
+                </Item>
+                <Item>
+                  <Link to="five_class">8 класс</Link>
+                </Item>
+                <Item>
+                  <Link to="five_class">9 класс</Link>
+                </Item>
+                <Item>
+                  <Link to="five_class">10 класс</Link>
+                </Item>
+                <Item>
+                  <Link to="five_class">11 класс</Link>
+                </Item>
+              </Items>
+            </Menu>
             <h2 style={{ color: "red" }}>
               В ближайшее время сайт будет доработан и переведен на платную
               форму!
@@ -154,31 +198,7 @@ const TitlePage: React.FC = () => {
               Просто удобный продукт для изучения математики, который никогда
               вас не предаст
             </p>
-            <Menu>
-              <Items>
-                <Item>
-                  <RouterLink to="five_class">5 класс</RouterLink>
-                </Item>
-                <Item>
-                  <RouterLink to="five_class">6 класс</RouterLink>
-                </Item>
-                <Item>
-                  <RouterLink to="five_class">7 класс</RouterLink>
-                </Item>
-                <Item>
-                  <RouterLink to="five_class">8 класс</RouterLink>
-                </Item>
-                <Item>
-                  <RouterLink to="five_class">9 класс</RouterLink>
-                </Item>
-                <Item>
-                  <RouterLink to="five_class">10 класс</RouterLink>
-                </Item>
-                <Item>
-                  <RouterLink to="five_class">11 класс</RouterLink>
-                </Item>
-              </Items>
-            </Menu>
+
             <h2>Современные технологии на временем проверенном фундаменте</h2>
             <ProductCards>
               <ProductCard>
