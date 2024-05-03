@@ -32,6 +32,9 @@ const HeaderWrapper = styled.div`
   padding: 0px 150px;
   margin: auto;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   @media (max-width: 780px) {
     padding: 0px 20px;
   }
@@ -52,6 +55,11 @@ const Logo = styled.div`
 const Menu = styled(Logo)`
   width: 100%;
   display: block;
+`;
+
+const Items2 = styled.ul`
+  display: flex;
+  gap: 15px;
 `;
 
 const Item = styled.li``;
@@ -157,6 +165,16 @@ const TitlePage: React.FC = () => {
                 <rect x="72" y="44" fill="#B5B0E9" width="3" height="3" />
               </svg>
             </Logo>
+            <nav>
+              <Items2>
+                <li>
+                  <a href="#">РОДИТЕЛЯМ</a>
+                </li>
+                <li>
+                  <a href="#">ДЕТЯМ</a>
+                </li>
+              </Items2>
+            </nav>
           </HeaderWrapper>
         </Header>
         <MainWrapper>
