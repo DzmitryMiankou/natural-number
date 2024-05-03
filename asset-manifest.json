@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/natural-number/static/css/main.0b29a495.css",
-    "main.js": "/natural-number/static/js/main.57bc0dde.js",
+    "main.js": "/natural-number/static/js/main.12b0c255.js",
     "static/js/471.b5e07ed5.chunk.js": "/natural-number/static/js/471.b5e07ed5.chunk.js",
     "static/js/28.5443a3f3.chunk.js": "/natural-number/static/js/28.5443a3f3.chunk.js",
     "static/js/314.a842c295.chunk.js": "/natural-number/static/js/314.a842c295.chunk.js",
@@ -13,9 +13,12 @@
     "static/js/345.2abe1fc4.chunk.js": "/natural-number/static/js/345.2abe1fc4.chunk.js",
     "static/js/356.839c55e7.chunk.js": "/natural-number/static/js/356.839c55e7.chunk.js",
     "static/js/787.b9fb9049.chunk.js": "/natural-number/static/js/787.b9fb9049.chunk.js",
+    "static/media/1.png": "/natural-number/static/media/1.58290c678cde30aee398.png",
     "static/media/multiplGame.svg": "/natural-number/static/media/multiplGame.ed94dcd62dec296dbe956510d582454e.svg",
+    "static/media/1.2.jpg": "/natural-number/static/media/1.2.0af74e0fbb1a1f82b63f.jpg",
     "static/media/mins.svg": "/natural-number/static/media/mins.38a62c747d24285568a8833a6a5104a8.svg",
     "static/media/aaa.svg": "/natural-number/static/media/aaa.4ab430aaba55aeb32997fbc0f42ba241.svg",
+    "static/media/1.webp": "/natural-number/static/media/1.b0c8da0151a345a4d850.webp",
     "static/media/plus.svg": "/natural-number/static/media/plus.bd8a9a3f6ae07ab34bd5a71969d690ef.svg",
     "static/media/minus.svg": "/natural-number/static/media/minus.f5dfe38c597262110c7005902344026f.svg",
     "static/media/multiplication.svg": "/natural-number/static/media/multiplication.cbb32da71cbef57ec3dbf42f6528f8d1.svg",
@@ -30,7 +33,7 @@
     "static/media/backG.svg": "/natural-number/static/media/backG.5bb15d4d7db65f687b5da19856944b70.svg",
     "static/media/factorization.svg": "/natural-number/static/media/factorization.1acf4476f77b49b9ae71af37ade0efef.svg",
     "main.0b29a495.css.map": "/natural-number/static/css/main.0b29a495.css.map",
-    "main.57bc0dde.js.map": "/natural-number/static/js/main.57bc0dde.js.map",
+    "main.12b0c255.js.map": "/natural-number/static/js/main.12b0c255.js.map",
     "471.b5e07ed5.chunk.js.map": "/natural-number/static/js/471.b5e07ed5.chunk.js.map",
     "28.5443a3f3.chunk.js.map": "/natural-number/static/js/28.5443a3f3.chunk.js.map",
     "314.a842c295.chunk.js.map": "/natural-number/static/js/314.a842c295.chunk.js.map",
@@ -45,6 +48,6 @@
   },
   "entrypoints": [
     "static/css/main.0b29a495.css",
-    "static/js/main.57bc0dde.js"
+    "static/js/main.12b0c255.js"
   ]
 }
