@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect } from "react";
-
+import ScrollToTop from "../ScrollTop";
 import NProgress from "nprogress";
 import { Routes, Route } from "react-router-dom";
 import TitlePage from "../components/titlePage/TitlePage";
@@ -54,12 +54,21 @@ const PageRoute: React.FC<{ state: StateMaimPageType }> = ({ state }) => {
 
   return (
     <Routes>
-      <Route path="/" element={<TitlePage />}></Route>
+      <Route
+        path="/"
+        element={
+          <>
+            <ScrollToTop />
+            <TitlePage />
+          </>
+        }
+      ></Route>
       <Route path="five_class">
         <Route
           index
           element={
             <Suspense fallback={<LazyLoad />}>
+              <ScrollToTop />
               <MainPage state={state} />
             </Suspense>
           }
@@ -68,7 +77,16 @@ const PageRoute: React.FC<{ state: StateMaimPageType }> = ({ state }) => {
           <Route
             key={i}
             path={path}
-            element={<Suspense fallback={<LazyLoad />}>{element}</Suspense>}
+            element={
+              <Suspense fallback={<LazyLoad />}>
+                {
+                  <>
+                    <ScrollToTop />
+                    <>{element}</>
+                  </>
+                }
+              </Suspense>
+            }
           />
         ))}
       </Route>

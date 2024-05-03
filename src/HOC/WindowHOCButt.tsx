@@ -30,6 +30,7 @@ export type RequestType = {
 
 const WindowHOCButt = (OriginalComponent: FC<PropType | any>) => {
   function NewComponent(params: PropType | {}) {
+    const data = params as never as PropType;
     const dispatch: AppDispatch = useDispatch();
     const [openWind, setOpenWind] = useState<boolean>(false);
     const [dataWind, setDatanWind] = useState<number>();
@@ -50,7 +51,7 @@ const WindowHOCButt = (OriginalComponent: FC<PropType | any>) => {
         handleClickOpenWind={handleClickOpenWind}
         dataWind={dataWind}
         openWind={openWind}
-        params={params}
+        params={data}
       />
     );
   }

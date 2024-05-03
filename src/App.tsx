@@ -19,7 +19,7 @@ import data from "./data/twoLevelData.json";
 import WindowHOCButt from "./HOC/WindowHOCButt";
 import { RequestType } from "./HOC/WindowHOCButt";
 import { SxProps } from "@mui/material";
-import DashboardIcon from "@mui/icons-material/Dashboard";
+import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
 
 interface TypeBG {
   $url: string;
@@ -160,7 +160,7 @@ const AppH: React.FC<RequestType> = ({
                     component={RouterLink}
                     to={location.pathname.split("/")[1]}
                   >
-                    <DashboardIcon sx={sx.icon} />
+                    <ArrowCircleLeftOutlinedIcon sx={sx.icon} />
                   </IconButton>
                 </Tooltip>
               ) : (

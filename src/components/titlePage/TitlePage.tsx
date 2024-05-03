@@ -1,7 +1,11 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { NavLink as RouterLink } from "react-router-dom";
 import { HelmetProvider, Helmet } from "react-helmet-async";
+import PersonIcon from "@mui/icons-material/Person";
+import Img1 from "../../img/1.webp";
+import Img11 from "../../img/1.png";
+import Img12 from "../../img/1.2.jpg";
 
 const Block = styled.div`
   background-color: white;
@@ -12,6 +16,13 @@ const Header = styled.header`
   background-color: #db953a;
   display: flex;
   align-items: center;
+`;
+
+const Img = styled.img`
+  width: 100%;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+  height: auto;
 `;
 
 const MainWrapper = styled.div`
@@ -105,35 +116,58 @@ const ProductCards = styled.div`
 
 const ProductCard = styled.div`
   min-width: 200px;
-  min-height: 200px;
-  background-color: #6b440055;
-  padding: 20px;
+  min-height: 300px;
+  border-radius: 30px;
+  background-color: #b26d143b;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow: hidden;
 `;
 
 const Title = styled.h1`
   padding: 0px 0px 120px 0px;
-  max-width: 700px;
-  font-weight: 500;
+  max-width: 900px;
+  font-weight: 700;
   margin: auto;
+  line-height: 100%;
+  font-weight: 900;
+  letter-spacing: -2px;
   text-align: center;
+  font-size: 70px;
+  @media (max-width: 600px) {
+    font-size: 50px;
+  }
 `;
 
 const TitleSpan = styled.span`
-  color: #db953a;
-  font-weight: 900;
-  font-size: 50px;
+  color: #b26d14;
+`;
+
+const rotate = keyframes`
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const Round = styled.g`
+  transform-origin: 30% 59%;
+  animation: ${rotate} 10s linear infinite;
 `;
 
 const Link = styled(RouterLink)`
+  display: block;
   text-decoration: none;
-  background-color: #db953a;
+  background-color: #b26d14;
   padding: 5px 25px;
   color: white;
   font-size: 20px;
   transition: 0.2s;
   border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   &:hover {
-    background-color: #ad772f;
+    background-color: #75501f;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+      0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
+      0 16px 16px rgba(0, 0, 0, 0.12);
   }
 `;
 
@@ -151,18 +185,35 @@ const TitlePage: React.FC = () => {
                 version="1.1"
                 x="0px"
                 y="0px"
-                viewBox="0 0 100 60"
-                enableBackground="new 0 0 100 60"
+                viewBox="0 0 97 65"
+                enableBackground="new 0 0 97 65"
                 xmlSpace="preserve"
               >
-                <rect x="0" y="0" fill="#D7E9A5" width="60" height="60" />
-                <rect x="60" y="0" fill="#47CD85" width="38" height="38" />
-                <rect x="60" y="47" fill="#437729" width="15" height="15" />
-                <rect x="75" y="38" fill="#BC9241" width="23" height="24" />
-                <rect x="60" y="38" fill="#9BE9D7" width="9" height="9" />
-                <rect x="69" y="38" fill="#588BE9" width="6" height="6" />
-                <rect x="69" y="44" fill="#D84B9A" width="3" height="3" />
-                <rect x="72" y="44" fill="#B5B0E9" width="3" height="3" />
+                <Round>
+                  <path
+                    fill="none"
+                    stroke="#000000"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    d="M15.1,58.2C8.3,53.9,3.9,46.3,3.9,37.7
+		c0-13.4,10.9-24.3,24.3-24.3c4.2,0,8.1,1.1,11.5,2.9"
+                  />
+                  <path
+                    fill="none"
+                    stroke="#000000"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    d="M52.1,34c0.2,1.2,0.3,2.5,0.3,3.7
+		C52.4,51.1,41.6,62,28.2,62"
+                  />
+                </Round>
+                <polygon
+                  fill="#ffffff64"
+                  stroke="#000000"
+                  strokeWidth="4"
+                  strokeMiterlimit="10"
+                  points="59.5,6 27.2,62 91.9,62 "
+                />
               </svg>
             </Logo>
             <nav>
@@ -173,6 +224,9 @@ const TitlePage: React.FC = () => {
                 <li>
                   <a href="#">ДЕТЯМ</a>
                 </li>
+                <li>
+                  <PersonIcon />
+                </li>
               </Items2>
             </nav>
           </HeaderWrapper>
@@ -180,8 +234,7 @@ const TitlePage: React.FC = () => {
         <MainWrapper>
           <main>
             <Title>
-              <TitleSpan>MathPush</TitleSpan> - это платформа, которая создана
-              помочь понять математику
+              <TitleSpan>MathPush</TitleSpan> - математика с интресом
             </Title>
             <Menu>
               <Items>
@@ -220,16 +273,33 @@ const TitlePage: React.FC = () => {
             <h2>Современные технологии на временем проверенном фундаменте</h2>
             <ProductCards>
               <ProductCard>
-                Учебный материал создан на базе школьной программы Республики
-                Беларусь
+                <picture>
+                  <source type="image/png" srcSet={Img11} />
+                  <source type="image/webp" srcSet={Img1} />
+                  <Img
+                    src={Img12}
+                    alt="img"
+                    height="225"
+                    width="400"
+                    loading="lazy"
+                  />
+                </picture>
+                <h3>
+                  Учебный материал создан на базе школьной программы Республики
+                  Беларусь
+                </h3>
               </ProductCard>
               <ProductCard>
-                Текстовая информация сведена к минимуму. Материал насыщен яркими
-                авторскими иллюстрациями
+                <h3>
+                  Текстовая информация сведена к минимуму. Материал насыщен
+                  яркими авторскими иллюстрациями
+                </h3>
               </ProductCard>
               <ProductCard>
-                Компьютерные программы генерируют и контролируют выполнение
-                интрактивных заданий
+                <h3>
+                  Компьютерные программы генерируют и контролируют выполнение
+                  интрактивных заданий
+                </h3>
               </ProductCard>
             </ProductCards>
           </main>
