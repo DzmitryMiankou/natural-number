@@ -1,18 +1,7 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import MultiActionAreaCard from "./card/Cards";
 import { StateMaimPageType } from "../../routes/routes";
-
-const openWindAnim = keyframes`
- 0% {  
-  opacity: 0;  
-  transform: translateY(-20px);
-  }
- 100% {  
-  opacity: 1; 
-  transform: translateY(0px);
-  }
-`;
 
 const Main = styled.main`
   max-width: 1900px;
@@ -21,7 +10,6 @@ const Main = styled.main`
   place-items: center;
   margin: auto;
   min-height: calc(100vh - 40px);
-  animation: ${openWindAnim} 300ms ease-in-out;
 `;
 
 const Title = styled.h1`

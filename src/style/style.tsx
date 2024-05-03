@@ -1,17 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { SxProps } from "@mui/material";
 
-const opacityAnimation = keyframes`
- 0% {  
-  opacity: 0;  
-  transform: translateY(20px);
-  }
- 100% {  
-  opacity: 1; 
-  transform: translateY(0px);
-  }
-`;
-
 const rotateAnimation = keyframes`
   0% {  rotate: 0deg;  }
   50% {  rotate: 2deg;  }
@@ -25,7 +14,6 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   gap: 30px;
-  animation: ${opacityAnimation} 300ms ease-in-out;
 `;
 
 const Pann = styled.p`
@@ -80,13 +68,4 @@ const sxGroupButton: { boxButton: SxProps; button: SxProps } = {
   },
 };
 
-export {
-  Pann,
-  Akcent,
-  Main,
-  opacityAnimation,
-  P,
-  rotateAnimation,
-  BoxTitlePage,
-  sxGroupButton,
-};
+export { Pann, Akcent, Main, P, rotateAnimation, BoxTitlePage, sxGroupButton };
