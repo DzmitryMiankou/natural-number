@@ -4,14 +4,6 @@ import { NavLink as RouterLink } from "react-router-dom";
 import { HelmetProvider, Helmet } from "react-helmet-async";
 import PersonIcon from "@mui/icons-material/Person";
 import TitleSvg from "./TitleSvg";
-import Img1 from "../../img/1.webp";
-import Img11 from "../../img/1.png";
-import Img12 from "../../img/1.2.jpg";
-import Img2 from "../../img/2.png";
-import Img21 from "../../img/2.1.jpg";
-import Img22 from "../../img/2.2.webp";
-import Img3 from "../../img/3.png";
-import Img31 from "../../img/3.1.jpg";
 import FamilyRestroomIcon from "@mui/icons-material/FamilyRestroom";
 import ChildCareRoundedIcon from "@mui/icons-material/ChildCareRounded";
 import SchoolRoundedIcon from "@mui/icons-material/SchoolRounded";
@@ -220,6 +212,7 @@ const Box = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin: 70px 0;
+  padding: 80px 0px;
   @media (max-width: 1100px) {
     grid-template-columns: repeat(1, auto);
   }
@@ -360,10 +353,16 @@ const TitlePage: React.FC = () => {
               <ProductCards>
                 <ProductCard>
                   <picture>
-                    <source type="image/png" srcSet={Img11} />
-                    <source type="image/webp" srcSet={Img1} />
+                    <source
+                      type="image/png"
+                      srcSet="http://localhost:5000/1.png"
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet="http://localhost:5000/1.webp"
+                    />
                     <Img
-                      src={Img12}
+                      src="http://localhost:5000/1.2.jpg"
                       alt="img"
                       height="225"
                       width="400"
@@ -376,10 +375,16 @@ const TitlePage: React.FC = () => {
                 </ProductCard>
                 <ProductCard>
                   <picture>
-                    <source type="image/png" srcSet={Img3} />
-                    <source type="image/webp" srcSet={Img1} />
+                    <source
+                      type="image/png"
+                      srcSet="http://localhost:5000/3.png"
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet="http://localhost:5000/3.2.webp"
+                    />
                     <Img
-                      src={Img31}
+                      src="http://localhost:5000/3.1.jpg"
                       alt="img"
                       height="225"
                       width="400"
@@ -390,10 +395,16 @@ const TitlePage: React.FC = () => {
                 </ProductCard>
                 <ProductCard>
                   <picture>
-                    <source type="image/png" srcSet={Img2} />
-                    <source type="image/webp" srcSet={Img22} />
+                    <source
+                      type="image/png"
+                      srcSet="http://localhost:5000/2.png"
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet="http://localhost:5000/2.2.webp"
+                    />
                     <Img
-                      src={Img21}
+                      src="http://localhost:5000/2.1.jpg"
                       alt="img"
                       height="225"
                       width="400"
