@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { NavLink as RouterLink } from "react-router-dom";
 import { HelmetProvider, Helmet } from "react-helmet-async";
 import PersonIcon from "@mui/icons-material/Person";
+import TitleSvg from "./TitleSvg";
 import Img1 from "../../img/1.webp";
 import Img11 from "../../img/1.png";
 import Img12 from "../../img/1.2.jpg";
@@ -11,6 +12,9 @@ import Img21 from "../../img/2.1.jpg";
 import Img22 from "../../img/2.2.webp";
 import Img3 from "../../img/3.png";
 import Img31 from "../../img/3.1.jpg";
+import FamilyRestroomIcon from "@mui/icons-material/FamilyRestroom";
+import ChildCareRoundedIcon from "@mui/icons-material/ChildCareRounded";
+import SchoolRoundedIcon from "@mui/icons-material/SchoolRounded";
 
 const Block = styled.div`
   background-color: white;
@@ -47,7 +51,7 @@ const MainWrapper = styled.div`
   align-items: center;
   justify-content: center;
   max-width: 1900px;
-  padding: 90px 150px;
+  padding: 50px 150px;
   margin: auto;
   text-align: center;
   @media (max-width: 780px) {
@@ -77,11 +81,6 @@ const Items = styled.ul`
 
 const Logo = styled.div`
   width: 65px;
-  display: block;
-`;
-
-const Menu = styled(Logo)`
-  width: 100%;
   display: block;
 `;
 
@@ -170,10 +169,11 @@ const ProductCard = styled.div`
   background-color: #b26d1429;
   overflow: hidden;
   max-width: 450px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 `;
 
 const Title = styled.h1`
-  padding: 0px 0px 120px 0px;
+  padding: 50px 0px 70px 0px;
   max-width: 900px;
   margin: auto;
   line-height: 100%;
@@ -215,31 +215,22 @@ const Link = styled(RouterLink)`
   }
 `;
 
-const move = keyframes`
-  0% { stroke-dashoffset: 2500;}
-  100% { stroke-dashoffset: 0;}
+const Box = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 70px 0;
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(1, auto);
+  }
 `;
 
-const move2 = keyframes`
-  0% { stroke-dashoffset: 2500;}
-  60% { stroke-dashoffset: 2500;}
-  100% { stroke-dashoffset: 0;}
-`;
-
-const MainSVG = styled.div`
-  display: block;
-  max-width: 400px;
-  margin: auto;
-`;
-
-const Poly = styled.polygon`
-  stroke-dasharray: 2500;
-  animation: ${move} 3s linear;
-`;
-
-const Line = styled.line`
-  stroke-dasharray: 2500;
-  animation: ${move2} 5s linear;
+const Client = styled.div`
+  min-height: 200px;
+  background-color: #ff6a0011;
+  border-radius: 40px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 `;
 
 const TitlePage: React.FC = () => {
@@ -307,137 +298,61 @@ const TitlePage: React.FC = () => {
         </Header>
         <MainWrapper>
           <main>
-            <Title>
-              <TitleSpan>MathPush</TitleSpan> - математика с интресом
-            </Title>
-            <MainSVG>
-              <svg
-                x="0px"
-                y="0px"
-                viewBox="0 -20 1067 700"
-                enableBackground="new 0 -20 1067 700"
-                xmlSpace="preserve"
-              >
-                <g>
-                  <Poly
-                    fill="none"
-                    stroke="#8c8c8c"
-                    strokeWidth="5"
-                    strokeLinecap="round"
-                    strokeMiterlimit="10"
-                    points="915,564.8 
-		31,564.8 320.5,51.2 619.5,51.2 	"
-                  />
-                  <circle
-                    fill="none"
-                    stroke="#8c8c8c"
-                    strokeWidth="5"
-                    strokeLinecap="round"
-                    strokeMiterlimit="10"
-                    cx="473"
-                    cy="306.8"
-                    r="255"
-                  />
-
-                  <Line
-                    fill="none"
-                    stroke="#8c8c8c"
-                    strokeWidth="5"
-                    strokeLinecap="round"
-                    strokeMiterlimit="10"
-                    x1="473.2"
-                    y1="308.2"
-                    x2="31.2"
-                    y2="564.2"
-                  />
-                  <line
-                    fill="none"
-                    stroke="#8c8c8c"
-                    strokeWidth="5"
-                    strokeLinecap="round"
-                    strokeMiterlimit="10"
-                    x1="473.5"
-                    y1="561.5"
-                    x2="474.8"
-                    y2="308.2"
-                  />
-                  <circle cx="474" cy="313" r="9.5" fill="#5c5c5c" />
-                  <text
-                    fill="#8c8c8c"
-                    transform="matrix(1 0 0 1 450 290)"
-                    fontSize="63.9423px"
-                  >
-                    O
-                  </text>
-                  <text
-                    fill="#8c8c8c"
-                    transform="matrix(1 0 0 1 10 620)"
-                    fontSize="63.9423px"
-                  >
-                    A
-                  </text>
-                  <text
-                    transform="matrix(1 0 0 1 300 40)"
-                    fontSize="63.9423px"
-                    fill="#8c8c8c"
-                  >
-                    B
-                  </text>
-                  <text
-                    transform="matrix(1 0 0 1 600 40)"
-                    fontSize="63.9423px"
-                    fill="#8c8c8c"
-                  >
-                    C
-                  </text>
-                  <text
-                    transform="matrix(1 0 0 1 900 620)"
-                    fontSize="63.9423px"
-                    fill="#8c8c8c"
-                  >
-                    D
-                  </text>
-                  <text
-                    transform="matrix(1 0 0 1 450 620)"
-                    fontSize="63.9423px"
-                    fill="#8c8c8c"
-                  >
-                    M
-                  </text>
-                </g>
-              </svg>
-            </MainSVG>
-
-            <Menu>
-              <ProductTitle>Более 1000 интерактивных плакатов</ProductTitle>
-              <Items>
-                <Item>
-                  <Link to="five_class">5 класс</Link>
-                </Item>
-                <Item>
-                  <Link to="five_class">6 класс</Link>
-                </Item>
-                <Item>
-                  <Link to="five_class">7 класс</Link>
-                </Item>
-                <Item>
-                  <Link to="five_class">8 класс</Link>
-                </Item>
-                <Item>
-                  <Link to="five_class">9 класс</Link>
-                </Item>
-                <Item>
-                  <Link to="five_class">10 класс</Link>
-                </Item>
-                <Item>
-                  <Link to="five_class">11 класс</Link>
-                </Item>
-              </Items>
-            </Menu>
             <h2 style={{ color: "red" }}>
               В ближайшее время платформа будет доработана и переведена на
               платную основу!
             </h2>
+            <Title>
+              <TitleSpan>MathPush</TitleSpan> - математика с интресом
+            </Title>
+            <Items>
+              <Item>
+                <Link to="five_class">5 класс</Link>
+              </Item>
+              <Item>
+                <Link to="five_class">6 класс</Link>
+              </Item>
+              <Item>
+                <Link to="five_class">7 класс</Link>
+              </Item>
+              <Item>
+                <Link to="five_class">8 класс</Link>
+              </Item>
+              <Item>
+                <Link to="five_class">9 класс</Link>
+              </Item>
+              <Item>
+                <Link to="five_class">10 класс</Link>
+              </Item>
+              <Item>
+                <Link to="five_class">11 класс</Link>
+              </Item>
+            </Items>
+            <Box>
+              <Client>
+                <ChildCareRoundedIcon
+                  sx={{ fontSize: "80px", color: "#e97400" }}
+                />
+                <H3>Интересные задания для детей</H3>
+              </Client>
+              <Client>
+                <FamilyRestroomIcon
+                  sx={{ fontSize: "80px", color: "#00ab6f" }}
+                />
+                <H3>Поможет родителям увлечь своего ребенка математикорй</H3>
+              </Client>
+              <Client>
+                <SchoolRoundedIcon
+                  sx={{ fontSize: "80px", color: "#ba00e9" }}
+                />
+                <H3>
+                  100 способов для учителя сделать свой урок увлекательным
+                </H3>
+              </Client>
+            </Box>
+            <ProductTitle>Более 1000 интерактивных плакатов</ProductTitle>
+            <TitleSvg />
+
             <ProductBlock>
               <ProductTitle>
                 Сочетание компьютерных технологий и искусства
