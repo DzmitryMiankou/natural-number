@@ -4,6 +4,7 @@ import NProgress from "nprogress";
 import { Routes, Route } from "react-router-dom";
 import TitlePage from "../components/titlePage/TitlePage";
 import LoadingPage from "../components/loadingPage/LoadingPage";
+import StartPage from "../components/titlePage/startPage/startPage";
 const MainPage = React.lazy(() => import("../components/mainPage/MainPage"));
 const OnePage = React.lazy(() => import("../components/onePage/OnePage"));
 const PlusPage = React.lazy(() => import("../components/plusPage/PlusPage"));
@@ -62,7 +63,10 @@ const PageRoute: React.FC<{ state: StateMaimPageType }> = ({ state }) => {
             <TitlePage />
           </>
         }
-      ></Route>
+      >
+        <Route index element={<StartPage />}></Route>
+        <Route path="messages" element={<div>hi</div>} />
+      </Route>
       <Route path="five_class">
         <Route
           index
