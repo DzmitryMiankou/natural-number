@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/natural-number/static/css/main.0b29a495.css",
-    "main.js": "/natural-number/static/js/main.c9273f42.js",
+    "main.js": "/natural-number/static/js/main.bb6effc2.js",
     "index.html": "/natural-number/index.html",
     "main.0b29a495.css.map": "/natural-number/static/css/main.0b29a495.css.map",
-    "main.c9273f42.js.map": "/natural-number/static/js/main.c9273f42.js.map"
+    "main.bb6effc2.js.map": "/natural-number/static/js/main.bb6effc2.js.map"
   },
   "entrypoints": [
     "static/css/main.0b29a495.css",
-    "static/js/main.c9273f42.js"
+    "static/js/main.bb6effc2.js"
   ]
 }
